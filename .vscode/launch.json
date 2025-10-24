@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Flutter Web - Port 8080",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "args": [
+                "--web-port=8080",
+                "--web-hostname=localhost"
+            ],
+            "web": true
+        }
+    ]
+}

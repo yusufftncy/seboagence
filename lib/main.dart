@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'core/theme/app_theme.dart';
+import 'core/theme/theme_providers.dart';
+import 'core/routing/app_router.dart';
+import 'presentation/pages/home_page.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const ProviderScope(child: MyApp()));
+}
+
+/// Ana uygulama widget'ı
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SeboAgencyApp();
+  }
+}
+
+class SeboAgencyApp extends ConsumerWidget {
+  const SeboAgencyApp({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(themeModeProvider);
+
+    return MaterialApp(
+      title: 'Ajans Şebo',
+      debugShowCheckedModeBanner: false,
+      home: const HomePage(),
+      onGenerateRoute: AppRouter.generateRoute,
+
+      // Tema
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: themeMode,
+
+      // Localization
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [Locale('tr', 'TR'), Locale('en', 'US')],
+      locale: const Locale('tr', 'TR'),
+
+      // Builder
+      builder: (context, child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            textScaler: const TextScaler.linear(
+              1.0,
+            ), // Font scaling'i devre dışı bırak
+          ),
+          child: child!,
+        );
+      },
+    );
+  }
+}
