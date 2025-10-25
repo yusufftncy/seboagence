@@ -27,6 +27,8 @@ class _HomePageState extends ConsumerState<HomePage>
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
 
+  bool _isLinkedInHovered = false;
+
   @override
   void initState() {
     super.initState();
@@ -732,7 +734,7 @@ class _HomePageState extends ConsumerState<HomePage>
         'image': 'assets/images/projects/sifa_project.jpg',
         'category': 'Sosyal Sorumluluk',
         'icon': Icons.favorite,
-        'color': const Color(0xFF6B7280), // Yumuşak gri
+        'color': const Color(0xFF10B981), // Yeşil
       },
       {
         'id': 'vefa',
@@ -742,7 +744,7 @@ class _HomePageState extends ConsumerState<HomePage>
         'image': 'assets/images/projects/vefa_project.jpg',
         'category': 'Eğitim',
         'icon': Icons.school,
-        'color': const Color(0xFF6B7280), // Yumuşak gri
+        'color': const Color(0xFF3B82F6), // Mavi
       },
       {
         'id': 'sefa',
@@ -752,7 +754,7 @@ class _HomePageState extends ConsumerState<HomePage>
         'image': 'assets/images/projects/sefa_project.jpg',
         'category': 'El Sanatları',
         'icon': Icons.palette,
-        'color': const Color(0xFF6B7280), // Yumuşak gri
+        'color': const Color(0xFFF59E0B), // Turuncu
       },
     ];
 
@@ -795,15 +797,26 @@ class _HomePageState extends ConsumerState<HomePage>
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Colors.white, const Color(0xFFF8F9FA)],
+          colors: [
+            Colors.white,
+            (project['color'] as Color).withValues(alpha: 0.05),
+          ],
         ),
         borderRadius: BorderRadius.circular(Branding.radiusXL),
-        border: Border.all(color: const Color(0xFFE5E7EB), width: 1),
+        border: Border.all(
+          color: (project['color'] as Color).withValues(alpha: 0.2),
+          width: 1,
+        ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF6B6B6B).withValues(alpha: 0.08),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
+            color: (project['color'] as Color).withValues(alpha: 0.1),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+          ),
+          BoxShadow(
+            color: const Color(0xFF6B6B6B).withValues(alpha: 0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -1210,34 +1223,51 @@ class _HomePageState extends ConsumerState<HomePage>
                 const SizedBox(height: Branding.spacingL),
 
                 // LinkedIn Link
-                GestureDetector(
-                  onTap: () => _launchLinkedIn(),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: Branding.spacingM,
-                      vertical: Branding.spacingS,
-                    ),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF0077B5),
-                      borderRadius: BorderRadius.circular(Branding.radiusL),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(
-                          Icons.business,
-                          color: Colors.white,
-                          size: 16,
-                        ),
-                        const SizedBox(width: Branding.spacingS),
-                        Text(
-                          'LinkedIn Profili',
-                          style: AppTypography.bodyMedium.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
+                MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  onEnter: (_) => setState(() => _isLinkedInHovered = true),
+                  onExit: (_) => setState(() => _isLinkedInHovered = false),
+                  child: GestureDetector(
+                    onTap: () => _launchLinkedIn(),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: Branding.spacingM,
+                        vertical: Branding.spacingS,
+                      ),
+                      decoration: BoxDecoration(
+                        color: _isLinkedInHovered
+                            ? const Color(0xFF005885) // Daha koyu mavi
+                            : const Color(0xFF0077B5), // Normal mavi
+                        borderRadius: BorderRadius.circular(Branding.radiusL),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(
+                              0xFF0077B5,
+                            ).withValues(alpha: _isLinkedInHovered ? 0.4 : 0.2),
+                            blurRadius: _isLinkedInHovered ? 12 : 8,
+                            offset: Offset(0, _isLinkedInHovered ? 6 : 4),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.business,
+                            color: Colors.white,
+                            size: 16,
+                          ),
+                          const SizedBox(width: Branding.spacingS),
+                          Text(
+                            'LinkedIn Profili',
+                            style: AppTypography.bodyMedium.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
