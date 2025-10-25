@@ -2,6 +2,7 @@
 ///
 /// Bu sayfa, uygulamanın ana sayfasıdır.
 library;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/theme/branding.dart';
@@ -151,25 +152,34 @@ class _HomePageState extends ConsumerState<HomePage>
                     vertical: Branding.spacingM,
                   ),
                   decoration: BoxDecoration(
-                    color: Branding.white,
-                    borderRadius: BorderRadius.circular(Branding.radiusM),
+                    color: const Color(0xFFE0E0E0), // Light grey background
+                    borderRadius: BorderRadius.circular(Branding.radiusXL),
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color(0xFFE0E0E0).withValues(alpha: 0.3),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
                   ),
                   child: Text(
                     'ŞEBO',
                     style: AppTypography.h5.copyWith(
-                      color: Branding.primaryColor,
+                      color: const Color(0xFF1A1A1A), // Dark text
                       fontWeight: FontWeight.w900,
                       fontSize: 18,
                     ),
                   ),
                 ),
-                const SizedBox(width: Branding.spacingS),
+                const SizedBox(width: Branding.spacingM),
                 Text(
                   'creative agency',
-                  style: AppTypography.bodySmall.copyWith(
-                    color: Branding.white,
+                  style: AppTypography.bodyMedium.copyWith(
+                    color: const Color(0xFFE0E0E0), // Light grey text
                     decoration: TextDecoration.underline,
-                    decorationColor: Branding.white,
+                    decorationColor: const Color(0xFFE0E0E0),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
                   ),
                 ),
               ],
