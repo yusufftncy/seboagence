@@ -128,7 +128,7 @@ class _HomePageState extends ConsumerState<HomePage>
     return Container(
       height: 80,
       decoration: const BoxDecoration(
-        color: Color(0xFF141C1C), // rgb(20,28,28) - Very dark grey
+        color: Color(0xFF131B2E), // rgba(19, 27, 46) - Dark blue-grey
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -335,10 +335,10 @@ class _HomePageState extends ConsumerState<HomePage>
         maxHeight: Responsive.screenHeight(context) * 0.9,
       ),
       decoration: BoxDecoration(
-        color: const Color(0xFF141C1C), // rgb(20,28,28) - Very dark grey
+        color: const Color(0xFF131B2E), // rgba(19, 27, 46) - Dark blue-grey
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF141C1C).withValues(alpha: 0.5),
+            color: const Color(0xFF131B2E).withValues(alpha: 0.5),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -1450,45 +1450,64 @@ class _HomePageState extends ConsumerState<HomePage>
 class _BackgroundPatternPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    // Create soft blurred circles like in the reference
+    // Create very subtle platin grey circles with soft shimmer effect
     final paint1 = Paint()
-      ..color = const Color(0xFF3949AB).withValues(alpha: 0.15)
+      ..color = const Color(0xFFE8E8E8)
+          .withValues(alpha: 0.06) // Çok daha süzgün platin gri
       ..style = PaintingStyle.fill
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 20);
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 60);
 
     final paint2 = Paint()
-      ..color = const Color(0xFF5C6BC0).withValues(alpha: 0.1)
+      ..color = const Color(0xFFF2F2F2)
+          .withValues(alpha: 0.08) // Çok daha süzgün parlak platin gri
       ..style = PaintingStyle.fill
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 30);
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 65);
 
-    final paint3 = Paint()
-      ..color = const Color(0xFF7986CB).withValues(alpha: 0.08)
-      ..style = PaintingStyle.fill
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 40);
-
-    // Draw large soft blurred circles
+    // Sol üst köşe - çok süzgün yuvarlak
     canvas.drawCircle(
-      Offset(size.width * 0.2, size.height * 0.3),
-      size.width * 0.15,
+      Offset(size.width * 0.12, size.height * 0.18),
+      size.width * 0.32,
       paint1,
     );
 
+    // Sağ alt köşe - çok süzgün yuvarlak
     canvas.drawCircle(
-      Offset(size.width * 0.8, size.height * 0.2),
-      size.width * 0.12,
+      Offset(size.width * 0.88, size.height * 0.82),
+      size.width * 0.28,
       paint2,
     );
 
+    // Çok süzgün parıltı efekti
+    final shimmerPaint = Paint()
+      ..color = const Color(0xFFFFFFFF).withValues(alpha: 0.03)
+      ..style = PaintingStyle.fill
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 45);
+
+    // Sol üst çok süzgün parıltı
     canvas.drawCircle(
-      Offset(size.width * 0.7, size.height * 0.7),
-      size.width * 0.18,
-      paint3,
+      Offset(size.width * 0.08, size.height * 0.12),
+      size.width * 0.15,
+      shimmerPaint,
     );
 
+    // Sağ alt çok süzgün parıltı
     canvas.drawCircle(
-      Offset(size.width * 0.3, size.height * 0.8),
-      size.width * 0.1,
-      paint1,
+      Offset(size.width * 0.92, size.height * 0.88),
+      size.width * 0.12,
+      shimmerPaint,
+    );
+
+    // Ek süzgün katman
+    final subtlePaint = Paint()
+      ..color = const Color(0xFFF5F5F5).withValues(alpha: 0.02)
+      ..style = PaintingStyle.fill
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 80);
+
+    // Merkez süzgün efekt
+    canvas.drawCircle(
+      Offset(size.width * 0.5, size.height * 0.5),
+      size.width * 0.25,
+      subtlePaint,
     );
   }
 

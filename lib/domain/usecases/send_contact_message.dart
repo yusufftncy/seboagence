@@ -16,5 +16,3 @@ class SendContactMessageUseCase {
     return await _repository.sendContactMessage(contact);
   }
 }
-
-

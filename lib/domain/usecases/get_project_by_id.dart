@@ -16,5 +16,3 @@ class GetProjectByIdUseCase {
     return await _repository.getProjectById(id);
   }
 }
-
-

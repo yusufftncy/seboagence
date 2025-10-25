@@ -15,5 +15,3 @@ abstract class ContactRepository {
   /// Mesajı okundu olarak işaretle
   Future<void> markAsRead(String contactId);
 }
-
-

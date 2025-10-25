@@ -16,5 +16,3 @@ class GetProjectsUseCase {
     return await _repository.getProjects();
   }
 }
-
-
