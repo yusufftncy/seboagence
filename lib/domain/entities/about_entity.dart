@@ -67,3 +67,4 @@ class AboutEntity {
     return 'AboutEntity(id: $id, title: $title)';
   }
 }
+

@@ -1,6 +1,8 @@
 /// ⏳ Loading Widget - Yükleme widget'ı
 ///
 /// Bu widget, yükleme durumlarını gösterir.
+library;
+
 import 'package:flutter/material.dart';
 import '../../core/theme/branding.dart';
 import '../../core/theme/typography.dart';
@@ -43,3 +45,4 @@ class LoadingWidget extends StatelessWidget {
     );
   }
 }
+

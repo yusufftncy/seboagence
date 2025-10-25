@@ -1,6 +1,8 @@
 /// 💾 Storage Service - Depolama servisi
 ///
 /// Bu servis, yerel depolama işlemlerini yönetir.
+library;
+
 import 'dart:convert';
 
 class StorageService {
@@ -49,3 +51,4 @@ class StorageService {
     return _storage.containsKey(key);
   }
 }
+

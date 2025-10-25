@@ -1,6 +1,8 @@
 /// 🚀 Project Providers - Proje provider'ları
 ///
 /// Bu dosya, proje ile ilgili Riverpod provider'larını içerir.
+library;
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/entities/project_entity.dart';
 import '../../domain/usecases/get_projects.dart';
@@ -56,3 +58,4 @@ final projectsByCategoryProvider =
       final projects = await ref.watch(projectsProvider.future);
       return projects.where((project) => project.category == category).toList();
     });
+

@@ -1,6 +1,8 @@
 /// 🚀 Works Page - Projeler sayfası
 ///
 /// Bu sayfa, tüm projeleri listeler.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/theme/branding.dart';

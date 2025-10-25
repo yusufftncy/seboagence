@@ -1,6 +1,8 @@
 /// ❌ Error Widget - Hata widget'ı
 ///
 /// Bu widget, hata durumlarını gösterir.
+library;
+
 import 'package:flutter/material.dart';
 import '../../core/theme/branding.dart';
 import '../../core/theme/typography.dart';

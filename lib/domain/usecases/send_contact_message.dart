@@ -1,6 +1,8 @@
 /// 📧 Send Contact Message Use Case - İletişim mesajı gönderme use case'i
 ///
 /// Bu sınıf, iletişim mesajı gönderme iş mantığını yönetir.
+library;
+
 import '../entities/contact_entity.dart';
 import '../repositories/contact_repository.dart';
 
@@ -14,3 +16,4 @@ class SendContactMessageUseCase {
     return await _repository.sendContactMessage(contact);
   }
 }
+

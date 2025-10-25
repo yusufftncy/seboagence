@@ -1,6 +1,8 @@
 /// 🚀 Project Model - Proje model'i
 ///
 /// Bu sınıf, proje verilerini JSON ile dönüştürür.
+library;
+
 import '../../domain/entities/project_entity.dart';
 
 class ProjectModel {
@@ -115,3 +117,4 @@ class ProjectModel {
     return 'ProjectModel(id: $id, title: $title, category: $category)';
   }
 }
+

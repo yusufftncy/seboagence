@@ -76,3 +76,4 @@ class ContactEntity {
     return 'ContactEntity(id: $id, name: $name, email: $email)';
   }
 }
+

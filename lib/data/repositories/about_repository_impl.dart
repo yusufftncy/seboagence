@@ -1,6 +1,8 @@
 /// ℹ️ About Repository Implementation - Hakkımızda repository implementasyonu
 ///
 /// Bu sınıf, hakkımızda verilerini yönetir.
+library;
+
 import '../../domain/entities/about_entity.dart';
 import '../../domain/repositories/about_repository.dart';
 import '../models/about_model.dart';
@@ -38,3 +40,4 @@ class AboutRepositoryImpl implements AboutRepository {
     // Gerçek uygulamada API'den yeni veriler çekilecek
   }
 }
+

@@ -1,6 +1,8 @@
 /// 🚀 Project Repository Implementation - Proje repository implementasyonu
 ///
 /// Bu sınıf, proje verilerini yönetir.
+library;
+
 import '../../domain/entities/project_entity.dart';
 import '../../domain/repositories/project_repository.dart';
 import '../models/project_model.dart';

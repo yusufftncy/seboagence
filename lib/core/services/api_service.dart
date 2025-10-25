@@ -1,6 +1,8 @@
 /// 🌐 API Service - API servisi
 ///
 /// Bu servis, HTTP isteklerini yönetir.
+library;
+
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
@@ -85,3 +87,4 @@ class ApiService {
     _client.close();
   }
 }
+

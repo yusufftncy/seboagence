@@ -1,6 +1,8 @@
 /// 📧 Contact Model - İletişim model'i
 ///
 /// Bu sınıf, iletişim verilerini JSON ile dönüştürür.
+library;
+
 import '../../domain/entities/contact_entity.dart';
 
 class ContactModel {
@@ -100,3 +102,4 @@ class ContactModel {
     return 'ContactModel(id: $id, name: $name, email: $email)';
   }
 }
+

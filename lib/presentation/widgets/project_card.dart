@@ -1,6 +1,8 @@
 /// 🚀 Project Card - Proje kartı widget'ı
 ///
 /// Bu widget, proje bilgilerini kart formatında gösterir.
+library;
+
 import 'package:flutter/material.dart';
 import '../../core/theme/branding.dart';
 import '../../core/theme/typography.dart';

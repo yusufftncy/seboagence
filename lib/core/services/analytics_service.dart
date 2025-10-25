@@ -1,6 +1,8 @@
 /// 📊 Analytics Service - Analitik servisi
 ///
 /// Bu servis, kullanıcı etkileşimlerini ve uygulama metriklerini takip eder.
+library;
+
 import 'package:flutter/foundation.dart';
 
 class AnalyticsService {

@@ -1,6 +1,8 @@
 /// 🚀 Project Repository Interface - Proje repository interface'i
 ///
 /// Bu interface, proje verilerini yönetir.
+library;
+
 import '../entities/project_entity.dart';
 
 abstract class ProjectRepository {
@@ -22,3 +24,4 @@ abstract class ProjectRepository {
   /// Projeleri yenile
   Future<void> refreshProjects();
 }
+

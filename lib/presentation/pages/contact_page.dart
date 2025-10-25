@@ -1,6 +1,8 @@
 /// 📧 Contact Page - İletişim sayfası
 ///
 /// Bu sayfa, iletişim formunu gösterir.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/theme/branding.dart';
@@ -141,3 +143,4 @@ class ContactPage extends ConsumerWidget {
     );
   }
 }
+

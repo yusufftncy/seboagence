@@ -1,6 +1,8 @@
 /// ℹ️ Get About Info Use Case - Hakkımızda bilgilerini getirme use case'i
 ///
 /// Bu sınıf, hakkımızda bilgilerini getirme iş mantığını yönetir.
+library;
+
 import '../entities/about_entity.dart';
 import '../repositories/about_repository.dart';
 
@@ -14,3 +16,4 @@ class GetAboutInfoUseCase {
     return await _repository.getAboutInfo();
   }
 }
+

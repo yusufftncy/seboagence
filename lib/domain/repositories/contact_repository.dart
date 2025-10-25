@@ -1,6 +1,8 @@
 /// 📧 Contact Repository Interface - İletişim repository interface'i
 ///
 /// Bu interface, iletişim verilerini yönetir.
+library;
+
 import '../entities/contact_entity.dart';
 
 abstract class ContactRepository {
@@ -13,3 +15,4 @@ abstract class ContactRepository {
   /// Mesajı okundu olarak işaretle
   Future<void> markAsRead(String contactId);
 }
+

@@ -1,6 +1,8 @@
 /// ℹ️ About Providers - Hakkımızda provider'ları
 ///
 /// Bu dosya, hakkımızda ile ilgili Riverpod provider'larını içerir.
+library;
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/entities/about_entity.dart';
 import '../../domain/usecases/get_about_info.dart';
@@ -20,3 +22,4 @@ final aboutInfoProvider = FutureProvider<AboutEntity>((ref) async {
   final getAboutInfoUseCase = ref.watch(getAboutInfoUseCaseProvider);
   return await getAboutInfoUseCase();
 });
+

@@ -1,6 +1,8 @@
 /// 🚀 App Router - Uygulama router'ı
 ///
 /// Bu sınıf, uygulamanın routing yapısını yönetir.
+library;
+
 import 'package:flutter/material.dart';
 import '../../presentation/pages/home_page.dart';
 import '../../presentation/pages/about_page.dart';

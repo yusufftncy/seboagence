@@ -128,58 +128,70 @@ class _HomePageState extends ConsumerState<HomePage>
   Widget _buildNavigationBar(BuildContext context) {
     return Container(
       height: 80,
-      decoration: BoxDecoration(
-        color: const Color(0xFF141C1C), // rgb(20,28,28) - Very dark grey
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0xFF141C1C).withValues(alpha: 0.3),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
+      decoration: const BoxDecoration(
+        color: Color(0xFF141C1C), // rgb(20,28,28) - Very dark grey
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: Branding.spacingXL),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // Logo
+            // Logo Section - Exact match to reference
             Row(
               children: [
+                // ŞEBO Logo Container
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: Branding.spacingL,
-                    vertical: Branding.spacingM,
+                    horizontal: 28.0,
+                    vertical: 10.0,
                   ),
                   decoration: BoxDecoration(
                     color: const Color(0xFFE0E0E0), // Light grey background
-                    borderRadius: BorderRadius.circular(Branding.radiusXL),
+                    borderRadius: BorderRadius.circular(
+                      25.0,
+                    ), // Very rounded corners
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFFE0E0E0).withValues(alpha: 0.3),
-                        blurRadius: 8,
-                        offset: const Offset(0, 2),
+                        color: const Color(0xFFE0E0E0).withValues(alpha: 0.2),
+                        blurRadius: 4,
+                        offset: const Offset(0, 1),
                       ),
                     ],
                   ),
-                  child: Text(
+                  child: const Text(
                     'ŞEBO',
-                    style: AppTypography.h5.copyWith(
-                      color: const Color(0xFF1A1A1A), // Dark text
+                    style: TextStyle(
+                      color: Color(0xFF1A1A1A), // Dark text
                       fontWeight: FontWeight.w900,
-                      fontSize: 18,
+                      fontSize: 16,
+                      letterSpacing: 0.5,
                     ),
                   ),
                 ),
-                const SizedBox(width: Branding.spacingM),
-                Text(
-                  'creative agency',
-                  style: AppTypography.bodyMedium.copyWith(
-                    color: const Color(0xFFE0E0E0), // Light grey text
-                    decoration: TextDecoration.underline,
-                    decorationColor: const Color(0xFFE0E0E0),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
+                const SizedBox(width: 16.0),
+                // Creative Agency Text
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12.0,
+                    vertical: 4.0,
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: const Color(0xFFE0E0E0),
+                        width: 1.5,
+                      ),
+                    ),
+                  ),
+                  child: const Text(
+                    'creative agency',
+                    style: TextStyle(
+                      color: Color(0xFFE0E0E0), // Light grey text
+                      fontWeight: FontWeight.w300,
+                      fontSize: 13,
+                      letterSpacing: 1.2,
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
                 ),
               ],
@@ -214,10 +226,83 @@ class _HomePageState extends ConsumerState<HomePage>
         const SizedBox(width: Branding.spacingL),
         _buildNavItem('Hakkımızda', false),
         const SizedBox(width: Branding.spacingL),
-        _buildNavItem('Hoş İşler', false),
+        _buildDropdownMenu(context),
         const SizedBox(width: Branding.spacingL),
         _buildNavItem('İletişim', false),
       ],
+    );
+  }
+
+  Widget _buildDropdownMenu(BuildContext context) {
+    return PopupMenuButton<String>(
+      offset: const Offset(0, 40),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Hoş İşler',
+              style: AppTypography.bodyMedium.copyWith(
+                color: const Color(0xFFE0E0E0),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            const SizedBox(width: 4),
+            const Icon(
+              Icons.keyboard_arrow_down,
+              color: Color(0xFFE0E0E0),
+              size: 16,
+            ),
+          ],
+        ),
+      ),
+      itemBuilder: (BuildContext context) => [
+        PopupMenuItem<String>(
+          value: 'vefa',
+          child: Row(
+            children: [
+              const Icon(Icons.business, color: Color(0xFF1A1A1A)),
+              const SizedBox(width: 8),
+              const Text('Vefa Projesi'),
+            ],
+          ),
+        ),
+        PopupMenuItem<String>(
+          value: 'sefa',
+          child: Row(
+            children: [
+              const Icon(Icons.home, color: Color(0xFF1A1A1A)),
+              const SizedBox(width: 8),
+              const Text('Sefa Projesi'),
+            ],
+          ),
+        ),
+        PopupMenuItem<String>(
+          value: 'sifa',
+          child: Row(
+            children: [
+              const Icon(Icons.health_and_safety, color: Color(0xFF1A1A1A)),
+              const SizedBox(width: 8),
+              const Text('Şifa Projesi'),
+            ],
+          ),
+        ),
+      ],
+      onSelected: (String value) {
+        // Proje detayına git
+        switch (value) {
+          case 'vefa':
+            // Vefa projesi detayı
+            break;
+          case 'sefa':
+            // Sefa projesi detayı
+            break;
+          case 'sifa':
+            // Şifa projesi detayı
+            break;
+        }
+      },
     );
   }
 

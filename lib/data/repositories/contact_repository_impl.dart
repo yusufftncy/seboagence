@@ -1,6 +1,8 @@
 /// 📧 Contact Repository Implementation - İletişim repository implementasyonu
 ///
 /// Bu sınıf, iletişim formu işlemlerini yönetir.
+library;
+
 import '../../domain/entities/contact_entity.dart';
 import '../../domain/repositories/contact_repository.dart';
 import '../models/contact_model.dart';
@@ -64,3 +66,4 @@ class ContactRepositoryImpl implements ContactRepository {
     }
   }
 }
+

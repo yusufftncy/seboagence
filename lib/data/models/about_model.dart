@@ -1,6 +1,8 @@
 /// ℹ️ About Model - Hakkımızda model'i
 ///
 /// Bu sınıf, hakkımızda verilerini JSON ile dönüştürür.
+library;
+
 import '../../domain/entities/about_entity.dart';
 
 class AboutModel {
@@ -90,3 +92,4 @@ class AboutModel {
     return 'AboutModel(id: $id, title: $title)';
   }
 }
+

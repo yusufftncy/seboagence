@@ -1,6 +1,8 @@
 /// 🚀 Project Detail Page - Proje detay sayfası
 ///
 /// Bu sayfa, belirli bir projenin detaylarını gösterir.
+library;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/theme/branding.dart';
