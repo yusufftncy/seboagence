@@ -173,8 +173,10 @@ class ContactForm extends ConsumerWidget {
                   formState.isLoading ? 'Gönderiliyor...' : 'Mesaj Gönder',
                 ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Branding.primary,
-                  foregroundColor: Branding.textOnPrimary,
+                  backgroundColor: const Color(
+                    0xFFB8B8B8,
+                  ), // rgba(184, 184, 184)
+                  foregroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(
                     vertical: Branding.spacingM,
                   ),
