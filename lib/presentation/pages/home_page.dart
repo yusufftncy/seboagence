@@ -1164,7 +1164,7 @@ class _HomePageState extends ConsumerState<HomePage>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Şebnem Yüceer',
+                  'Şebnem Berkol Yüceer',
                   style: AppTypography.h3.copyWith(
                     color: const Color(0xFF2C2C2C),
                     fontWeight: FontWeight.w700,
@@ -1174,7 +1174,7 @@ class _HomePageState extends ConsumerState<HomePage>
                 const SizedBox(height: Branding.spacingS),
 
                 Text(
-                  'Şebo Ajans Kurucusu',
+                  'Lüks Perakende Sektörü Lideri & Şebo Ajans Kurucusu',
                   style: AppTypography.h5.copyWith(
                     color: const Color(0xFF6B6B6B),
                     fontWeight: FontWeight.w500,
@@ -1184,7 +1184,7 @@ class _HomePageState extends ConsumerState<HomePage>
                 const SizedBox(height: Branding.spacingL),
 
                 Text(
-                  'Dijital dünyada markaların güçlü bir şekilde var olmasını sağlayan yaratıcı ve stratejik düşünceyi birleştiren bir lider.',
+                  'Louis Vuitton, Gucci ve Bulgari gibi dünya devi lüks markaların Türkiye Genel Müdürlüğü yapmış, Harvard Business School mezunu deneyimli bir lider.',
                   style: AppTypography.bodyLarge.copyWith(
                     color: const Color(0xFF4A4A4A),
                     height: 1.6,
@@ -1272,7 +1272,7 @@ class _HomePageState extends ConsumerState<HomePage>
           const SizedBox(height: Branding.spacingL),
 
           Text(
-            'Şebo Ajans olarak, dijital dünyada markaların güçlü bir şekilde var olmasını sağlıyoruz. Yaratıcılık ve stratejik düşünceyi birleştirerek, müşterilerimizin hedeflerine ulaşmalarına yardımcı oluyoruz.',
+            '20+ yıllık lüks perakende deneyimi ile Louis Vuitton, Gucci ve Bulgari gibi dünya devi markaların Türkiye pazarında büyümesine liderlik ettim. Harvard Business School eğitimi ve küresel marka yönetimi deneyimimle, Şebo Ajans\'ı kurarak bu bilgi birikimini dijital dünyaya taşıyorum.',
             style: AppTypography.bodyLarge.copyWith(
               color: const Color(0xFF4A4A4A),
               height: 1.6,
@@ -1282,7 +1282,7 @@ class _HomePageState extends ConsumerState<HomePage>
           const SizedBox(height: Branding.spacingL),
 
           Text(
-            'Her proje, bir hikaye anlatır. Biz de bu hikayeleri en güzel şekilde dijital dünyada yaşatmak için çalışıyoruz. Müşterilerimizin başarısı, bizim başarımızdır.',
+            'Türkiye Tanıtım Grubu İcra Kurulu Başkanlığı ve Comité Colbert Türkiye Yılı Başkanlığı deneyimlerimle, markaların küresel pazarlarda güçlü konumlanması için stratejik yaklaşımlar geliştiriyoruz. Her proje, bir markanın hikayesini en etkili şekilde anlatma fırsatıdır.',
             style: AppTypography.bodyMedium.copyWith(
               color: const Color(0xFF6B6B6B),
               height: 1.6,
@@ -1294,79 +1294,78 @@ class _HomePageState extends ConsumerState<HomePage>
   }
 
   Widget _buildAboutStats(BuildContext context) {
-    final stats = [
-      {'number': '150+', 'label': 'Tamamlanan Proje'},
-      {'number': '50+', 'label': 'Mutlu Müşteri'},
-      {'number': '8+', 'label': 'Yıllık Deneyim'},
-      {'number': '24/7', 'label': 'Destek Hizmeti'},
-    ];
-
     return Container(
       padding: const EdgeInsets.all(Branding.spacingXL),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            const Color(0xFFFFFFFF), // Beyaz
-            const Color(0xFFF8F9FA), // Çok açık gri
-          ],
-        ),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(Branding.radiusXL),
-        border: Border.all(color: const Color(0xFFE5E7EB), width: 1),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF6B6B6B).withValues(alpha: 0.05),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
+            color: const Color(0xFF6B6B6B).withValues(alpha: 0.08),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
           ),
         ],
       ),
       child: Column(
-        children: stats
-            .map(
-              (stat) => Padding(
-                padding: const EdgeInsets.only(bottom: Branding.spacingXL),
-                child: _buildStatItem(context, stat),
-              ),
-            )
-            .toList(),
+        children: [
+          // Basit başlık
+          Text(
+            'Neden Bizi Seçmelisiniz?',
+            style: AppTypography.h3.copyWith(
+              color: const Color(0xFF2C2C2C),
+              fontWeight: FontWeight.w700,
+            ),
+            textAlign: TextAlign.center,
+          ),
+
+          const SizedBox(height: Branding.spacingXL),
+
+          // Basit liste
+          _buildSimpleFeaturesList(context),
+        ],
       ),
     );
   }
 
-  Widget _buildStatItem(BuildContext context, Map<String, String> stat) {
+  Widget _buildSimpleFeaturesList(BuildContext context) {
+    final features = [
+      '🏆 20+ yıl lüks perakende deneyimi',
+      '🎓 Harvard Business School eğitimi',
+      '🌍 Küresel marka yönetimi uzmanlığı',
+      '🤝 Louis Vuitton, Gucci, Bulgari deneyimi',
+      '📈 Türkiye Tanıtım Grubu liderliği',
+      '🎨 Comité Colbert Türkiye Yılı başkanlığı',
+    ];
+
     return Column(
-      children: [
-        Text(
-          stat['number']!,
-          style: AppTypography.h2.copyWith(
-            color: const Color(0xFF2C2C2C), // Koyu gri
-            fontSize: Responsive.responsiveFontSize(
-              context,
-              mobile: 32,
-              tablet: 40,
-              desktop: 48,
-            ),
-            fontWeight: FontWeight.w900,
+      children: features.map((feature) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: Branding.spacingL),
+          child: Row(
+            children: [
+              Container(
+                width: 8,
+                height: 8,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF6366F1),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              ),
+              const SizedBox(width: Branding.spacingM),
+              Expanded(
+                child: Text(
+                  feature,
+                  style: AppTypography.bodyLarge.copyWith(
+                    color: const Color(0xFF2C2C2C),
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ),
-        const SizedBox(height: Branding.spacingS),
-        Text(
-          stat['label']!,
-          style: AppTypography.bodyMedium.copyWith(
-            color: const Color(0xFF6B6B6B), // Orta gri
-            fontSize: Responsive.responsiveFontSize(
-              context,
-              mobile: 14,
-              tablet: 15,
-              desktop: 16,
-            ),
-            fontWeight: FontWeight.w500,
-          ),
-          textAlign: TextAlign.center,
-        ),
-      ],
+        );
+      }).toList(),
     );
   }
 
