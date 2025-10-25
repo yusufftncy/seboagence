@@ -1,6 +1,7 @@
 /// 🏠 Home Page - Ana sayfa
 ///
 /// Bu sayfa, uygulamanın ana sayfasıdır.
+library;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/theme/branding.dart';
@@ -127,12 +128,7 @@ class _HomePageState extends ConsumerState<HomePage>
     return Container(
       height: 80,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(
-          255,
-          0,
-          2,
-          90,
-        ), // rgb(20,28,28) - Very dark grey
+        color: const Color(0xFF141C1C), // rgb(20,28,28) - Very dark grey
         boxShadow: [
           BoxShadow(
             color: const Color(0xFF141C1C).withValues(alpha: 0.3),

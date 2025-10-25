@@ -1,6 +1,8 @@
 /// 📧 Contact Providers - İletişim provider'ları
 ///
 /// Bu dosya, iletişim ile ilgili Riverpod provider'larını içerir.
+library;
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/usecases/send_contact_message.dart';
 import '../../data/repositories/contact_repository_impl.dart';
