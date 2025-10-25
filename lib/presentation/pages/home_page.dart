@@ -653,17 +653,34 @@ class _HomePageState extends ConsumerState<HomePage>
           desktop: Branding.spacingXXL,
         ),
       ),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            const Color(0xFFF8F9FA), // Açık gri
+            const Color(0xFFE9ECEF), // Yumuşak gri
+          ],
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF6B6B6B).withValues(alpha: 0.1),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
       child: Column(
         children: [
           // Section Header
           Text(
             'Hoş İşler',
             style: AppTypography.h2.copyWith(
-              color: const Color(0xFFE0E0E0),
+              color: const Color(0xFF2C2C2C),
               fontSize: Responsive.responsiveFontSize(
                 context,
-                desktop: 48,
-                tablet: 36,
+                desktop: 42,
+                tablet: 32,
                 mobile: 28,
               ),
               fontWeight: FontWeight.w800,
@@ -674,16 +691,16 @@ class _HomePageState extends ConsumerState<HomePage>
           const SizedBox(height: Branding.spacingM),
 
           Text(
-            'Şebo Ajans\'ın En Önemli Projeleri',
+            'Sosyal Sorumluluk ve El Sanatları Platformu',
             style: AppTypography.h4.copyWith(
-              color: const Color(0xFFB0B0B0),
+              color: const Color(0xFF6B6B6B),
               fontSize: Responsive.responsiveFontSize(
                 context,
-                desktop: 20,
-                tablet: 18,
-                mobile: 16,
+                desktop: 18,
+                tablet: 16,
+                mobile: 14,
               ),
-              fontWeight: FontWeight.w300,
+              fontWeight: FontWeight.w500,
             ),
             textAlign: TextAlign.center,
           ),
@@ -707,34 +724,34 @@ class _HomePageState extends ConsumerState<HomePage>
   Widget _buildAgencyProjectsGrid(BuildContext context) {
     final projects = [
       {
-        'id': 'vefa',
-        'title': 'Vefa Projesi',
+        'id': 'sifa',
+        'title': 'Şifa İpek',
         'description':
-            'Kurumsal kimlik ve web tasarımı projesi. Modern ve profesyonel bir dijital varlık oluşturduk.',
+            'Hatay\'da yetişen Barış ipeği ve Hatay depreminden sonra köylerde yaşayan kadın çiftçilerin tezgahlarında dokudukları ürünlerin değere döndürülmesine yardım eden sosyal sorumluluk projesi.',
+        'image': 'assets/images/projects/sifa_project.jpg',
+        'category': 'Sosyal Sorumluluk',
+        'icon': Icons.favorite,
+        'color': const Color(0xFF6B7280), // Yumuşak gri
+      },
+      {
+        'id': 'vefa',
+        'title': 'Vefa',
+        'description':
+            'Alanya\'daki ailemden kalan kız meslek lisesi ve turizm otelcilik okulu öğrencilerine ve Alanya ile ilgili projeleri kapsayan eğitim ve gelişim platformu.',
         'image': 'assets/images/projects/vefa_project.jpg',
-        'category': 'Kurumsal',
-        'icon': Icons.business,
-        'color': const Color(0xFF9CA3AF), // Açık gri
+        'category': 'Eğitim',
+        'icon': Icons.school,
+        'color': const Color(0xFF6B7280), // Yumuşak gri
       },
       {
         'id': 'sefa',
-        'title': 'Sefa Projesi',
+        'title': 'Sefa',
         'description':
-            'Konut projesi için kapsamlı dijital pazarlama stratejisi ve web platformu geliştirdik.',
+            'Şifa İpeği ile üretilen keyifli ürünlerden oluşan bir seri. Geleneksel el sanatlarının modern yaşamla buluştuğu özel koleksiyon.',
         'image': 'assets/images/projects/sefa_project.jpg',
-        'category': 'Konut',
-        'icon': Icons.home,
-        'color': const Color(0xFF9CA3AF), // Açık gri
-      },
-      {
-        'id': 'sifa',
-        'title': 'Şifa Projesi',
-        'description':
-            'Sağlık sektörü için özel tasarlanmış mobil uygulama ve web platformu projesi.',
-        'image': 'assets/images/projects/sifa_project.jpg',
-        'category': 'Sağlık',
-        'icon': Icons.health_and_safety,
-        'color': const Color(0xFF9CA3AF), // Açık gri
+        'category': 'El Sanatları',
+        'icon': Icons.palette,
+        'color': const Color(0xFF6B7280), // Yumuşak gri
       },
     ];
 
@@ -1369,15 +1386,15 @@ class _HomePageState extends ConsumerState<HomePage>
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            const Color(0xFFF8F9FA), // Light grey-white
-            const Color(0xFFE9ECEF), // Soft grey
+            const Color(0xFFFFFFFF), // Beyaz
+            const Color(0xFFF8F9FA), // Çok açık gri
           ],
         ),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF6B6B6B).withValues(alpha: 0.1),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
+            color: const Color(0xFF6B6B6B).withValues(alpha: 0.05),
+            blurRadius: 15,
+            offset: const Offset(0, 5),
           ),
         ],
       ),
@@ -1389,28 +1406,28 @@ class _HomePageState extends ConsumerState<HomePage>
               color: const Color(0xFF2C2C2C),
               fontSize: Responsive.responsiveFontSize(
                 context,
-                desktop: 48,
-                tablet: 36,
-                mobile: 28,
+                desktop: 32,
+                tablet: 28,
+                mobile: 24,
               ),
-              fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.w700,
             ),
             textAlign: TextAlign.center,
           ),
 
-          const SizedBox(height: Branding.spacingL),
+          const SizedBox(height: Branding.spacingM),
 
           Text(
-            'Dijital dünyada global düzeyde temsil ediyoruz',
-            style: AppTypography.h4.copyWith(
+            'Uluslararası platformlarda yer aldığımız etkinlikler',
+            style: AppTypography.bodyLarge.copyWith(
               color: const Color(0xFF6B6B6B),
               fontSize: Responsive.responsiveFontSize(
                 context,
-                desktop: 20,
-                tablet: 18,
-                mobile: 16,
+                desktop: 16,
+                tablet: 15,
+                mobile: 14,
               ),
-              fontWeight: FontWeight.w300,
+              fontWeight: FontWeight.w400,
             ),
             textAlign: TextAlign.center,
           ),
@@ -1424,235 +1441,242 @@ class _HomePageState extends ConsumerState<HomePage>
             ),
           ),
 
-          // Conferences Grid
-          _buildConferencesGrid(context),
+          // Conferences Grid (sadece 2 tane göster)
+          _buildMinimalConferencesGrid(context),
+
+          SizedBox(
+            height: Responsive.responsiveValue(
+              context,
+              mobile: Branding.spacingXL,
+              tablet: Branding.spacingXXL,
+              desktop: Branding.spacingXXL,
+            ),
+          ),
+
+          // Daha Fazla Butonu
+          _buildMoreConferencesButton(context),
         ],
       ),
     );
   }
 
-  Widget _buildConferencesGrid(BuildContext context) {
+  Widget _buildMinimalConferencesGrid(BuildContext context) {
     final conferences = [
       {
-        'title': 'Berlin Digital Summit 2024',
+        'title': 'Vefa Buluşmaları 2025',
         'description':
-            'Dijital dönüşüm ve yapay zeka konularında sunum yaptık.',
-        'location': 'Berlin, Almanya',
-        'date': 'Mart 2024',
-        'type': 'Konferans',
-        'icon': Icons.business,
-        'color': const Color(0xFF4A4A4A),
-      },
-      {
-        'title': 'London Tech Forum 2023',
-        'description':
-            'Web tasarım trendleri ve kullanıcı deneyimi üzerine konuşma.',
-        'location': 'Londra, İngiltere',
-        'date': 'Ekim 2023',
-        'type': 'Forum',
-        'icon': Icons.forum,
+            'Anadolu Eğitim ve Kültür Vakfı ile İstanbul Aydın Üniversitesi iş birliğiyle düzenlenen etkinlikte, Zeytinburnu Semiha Şakir Huzurevi sakinleriyle bir araya geldi. Fizyoterapi Bölümü akademisyenleri ve öğrencileriyle birlikte, yaşlı bireylerin fiziksel ve sosyal refahını desteklemek amacıyla çeşitli çalışmalar gerçekleştirdi.',
+        'location': 'İstanbul, Türkiye',
+        'date': 'Ocak 2025',
+        'type': 'Etkinlik',
+        'icon': Icons.favorite,
         'color': const Color(0xFF6B6B6B),
       },
       {
-        'title': 'New York Brand Conference',
+        'title': 'Avrupa İklim Değişikliği Uyum Konferansı',
         'description':
-            'Marka kimliği ve dijital pazarlama stratejileri sunumu.',
-        'location': 'New York, ABD',
-        'date': 'Aralık 2023',
+            'Rimini, İtalya\'da düzenlenen konferansta, uygulayıcılar, hükümetler, araştırmacılar ve paydaşlardan oluşan geniş bir ağın adaptasyon uzmanlığını bir araya getirdi. Pratik deneyimlerin paylaşılması ve Avrupa\'da daha akıllı, hızlı ve sistemik adaptasyona yönelik iş birliğinin teşvik edilmesi amacıyla dinamik bir platform olarak hizmet verdi.',
+        'location': 'Rimini, İtalya',
+        'date': 'Şubat 2025',
         'type': 'Konferans',
-        'icon': Icons.campaign,
-        'color': const Color(0xFF8A8A8A),
-      },
-      {
-        'title': 'Paris Innovation Summit',
-        'description': 'Yaratıcı teknolojiler ve inovasyon konularında panel.',
-        'location': 'Paris, Fransa',
-        'date': 'Haziran 2024',
-        'type': 'Zirve',
-        'icon': Icons.trending_up,
-        'color': const Color(0xFF4A4A4A),
+        'icon': Icons.eco,
+        'color': const Color(0xFF6B6B6B),
       },
     ];
 
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: Responsive.responsiveValue(
-          context,
-          mobile: 1,
-          tablet: 2,
-          desktop: 2,
-        ),
-        crossAxisSpacing: Branding.spacingL,
-        mainAxisSpacing: Branding.spacingL,
-        childAspectRatio: Responsive.responsiveValue(
-          context,
-          mobile: 1.5,
-          tablet: 1.4,
-          desktop: 1.3,
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Branding.spacingXXL),
+      child: Row(
+        children: conferences.map((conference) {
+          return Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: Branding.spacingS,
+              ),
+              child: _buildMinimalConferenceCard(context, conference),
+            ),
+          );
+        }).toList(),
       ),
-      itemCount: conferences.length,
-      itemBuilder: (context, index) {
-        return _buildConferenceCard(context, conferences[index]);
-      },
     );
   }
 
-  Widget _buildConferenceCard(
+  Widget _buildMinimalConferenceCard(
     BuildContext context,
     Map<String, dynamic> conference,
   ) {
     return Container(
+      constraints: const BoxConstraints(minHeight: 280),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(Branding.radiusXL),
-        border: Border.all(
-          color: (conference['color'] as Color).withValues(alpha: 0.2),
-          width: 1,
-        ),
+        borderRadius: BorderRadius.circular(Branding.radiusL),
+        border: Border.all(color: const Color(0xFFE5E7EB), width: 1),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF6B6B6B).withValues(alpha: 0.1),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
+            color: const Color(0xFF6B6B6B).withValues(alpha: 0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 3),
           ),
         ],
       ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(Branding.radiusXL),
-          onTap: () {
-            // Konferans detayına git
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(Branding.spacingL),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      child: Padding(
+        padding: const EdgeInsets.all(Branding.spacingXL),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Başlık ve tip
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Konferans başlığı ve tip
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        conference['title'] as String,
-                        style: AppTypography.h5.copyWith(
-                          color: const Color(0xFF2C2C2C),
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: Branding.spacingM,
-                        vertical: Branding.spacingS,
-                      ),
-                      decoration: BoxDecoration(
-                        color: (conference['color'] as Color).withValues(
-                          alpha: 0.2,
-                        ),
-                        borderRadius: BorderRadius.circular(Branding.radiusL),
-                      ),
-                      child: Text(
-                        conference['type'] as String,
-                        style: AppTypography.bodySmall.copyWith(
-                          color: conference['color'] as Color,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: Branding.spacingS),
-
-                // Tarih ve lokasyon
-                Row(
-                  children: [
-                    Icon(
-                      Icons.calendar_today,
-                      color: const Color(0xFF6B6B6B),
-                      size: 16,
-                    ),
-                    const SizedBox(width: Branding.spacingS),
-                    Text(
-                      conference['date'] as String,
-                      style: AppTypography.bodySmall.copyWith(
-                        color: const Color(0xFF6B6B6B),
-                      ),
-                    ),
-                    const SizedBox(width: Branding.spacingL),
-                    Icon(
-                      Icons.location_on,
-                      color: const Color(0xFF6B6B6B),
-                      size: 16,
-                    ),
-                    const SizedBox(width: Branding.spacingS),
-                    Text(
-                      conference['location'] as String,
-                      style: AppTypography.bodySmall.copyWith(
-                        color: const Color(0xFF6B6B6B),
-                      ),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: Branding.spacingM),
-
-                // Açıklama
                 Expanded(
                   child: Text(
-                    conference['description'] as String,
-                    style: AppTypography.bodyMedium.copyWith(
-                      color: const Color(0xFF6B6B6B),
-                      height: 1.5,
+                    conference['title'] as String,
+                    style: AppTypography.h6.copyWith(
+                      color: const Color(0xFF2C2C2C),
+                      fontWeight: FontWeight.w600,
                     ),
-                    maxLines: 3,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-
-                const SizedBox(height: Branding.spacingM),
-
-                // Alt bilgi
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(Branding.spacingS),
-                      decoration: BoxDecoration(
-                        color: (conference['color'] as Color).withValues(
-                          alpha: 0.1,
-                        ),
-                        borderRadius: BorderRadius.circular(Branding.radiusL),
-                      ),
-                      child: Icon(
-                        conference['icon'] as IconData,
-                        color: conference['color'] as Color,
-                        size: 20,
-                      ),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: Branding.spacingS,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF3F4F6),
+                    borderRadius: BorderRadius.circular(Branding.radiusM),
+                  ),
+                  child: Text(
+                    conference['type'] as String,
+                    style: AppTypography.bodySmall.copyWith(
+                      color: const Color(0xFF6B6B6B),
+                      fontWeight: FontWeight.w500,
                     ),
-                    const Spacer(),
-                    Text(
-                      'Detayları Gör',
-                      style: AppTypography.bodyMedium.copyWith(
-                        color: conference['color'] as Color,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(width: Branding.spacingS),
-                    Icon(
-                      Icons.arrow_forward,
-                      color: conference['color'] as Color,
-                      size: 16,
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
+
+            const SizedBox(height: Branding.spacingL),
+
+            // Tarih ve lokasyon
+            Row(
+              children: [
+                Icon(
+                  Icons.location_on,
+                  color: const Color(0xFF6B6B6B),
+                  size: 16,
+                ),
+                const SizedBox(width: Branding.spacingS),
+                Expanded(
+                  child: Text(
+                    conference['location'] as String,
+                    style: AppTypography.bodySmall.copyWith(
+                      color: const Color(0xFF6B6B6B),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: Branding.spacingS),
+
+            Row(
+              children: [
+                Icon(
+                  Icons.calendar_today,
+                  color: const Color(0xFF6B6B6B),
+                  size: 16,
+                ),
+                const SizedBox(width: Branding.spacingS),
+                Text(
+                  conference['date'] as String,
+                  style: AppTypography.bodySmall.copyWith(
+                    color: const Color(0xFF6B6B6B),
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: Branding.spacingL),
+
+            // Açıklama
+            Text(
+              conference['description'] as String,
+              style: AppTypography.bodyMedium.copyWith(
+                color: const Color(0xFF6B6B6B),
+                height: 1.5,
+              ),
+              maxLines: 4,
+              overflow: TextOverflow.ellipsis,
+            ),
+
+            const SizedBox(height: Branding.spacingM),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMoreConferencesButton(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [const Color(0xFF6B6B6B), const Color(0xFF4A4A4A)],
+        ),
+        borderRadius: BorderRadius.circular(Branding.radiusL),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF6B6B6B).withValues(alpha: 0.2),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
           ),
+        ],
+      ),
+      child: ElevatedButton(
+        onPressed: () {
+          // Tüm konferanslar sayfasına git
+          // Navigator.push(context, MaterialPageRoute(builder: (context) => AllConferencesPage()));
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          padding: EdgeInsets.symmetric(
+            horizontal: Responsive.responsiveValue(
+              context,
+              mobile: Branding.spacingXL,
+              tablet: Branding.spacingXXL,
+              desktop: Branding.spacingXXL + 8,
+            ),
+            vertical: Branding.spacingL,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Branding.radiusL),
+          ),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Tüm Etkinlikleri Gör',
+              style: AppTypography.button.copyWith(
+                color: Colors.white,
+                fontSize: Responsive.responsiveFontSize(
+                  context,
+                  mobile: 14,
+                  tablet: 15,
+                  desktop: 16,
+                ),
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(width: Branding.spacingS),
+            const Icon(Icons.arrow_forward, color: Colors.white, size: 18),
+          ],
         ),
       ),
     );
