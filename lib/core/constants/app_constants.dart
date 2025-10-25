@@ -20,10 +20,10 @@ class AppConstants {
   static const int maxCacheSize = 100; // MB
 
   // UI Sabitleri
-  static const double maxContentWidth = 1200.0;
+  static const double maxContentWidth = 1400.0;
   static const double mobileBreakpoint = 768.0;
-  static const double tabletBreakpoint = 1200.0;
-  static const double desktopBreakpoint = 1200.0;
+  static const double tabletBreakpoint = 1024.0;
+  static const double desktopBreakpoint = 1400.0;
 
   // Animation Sabitleri
   static const Duration defaultAnimationDuration = Duration(milliseconds: 300);
