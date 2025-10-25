@@ -5,6 +5,7 @@ library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../core/theme/branding.dart';
 import '../../core/theme/typography.dart';
 import '../../core/utils/responsive.dart';
@@ -1209,28 +1210,35 @@ class _HomePageState extends ConsumerState<HomePage>
                 const SizedBox(height: Branding.spacingL),
 
                 // LinkedIn Link
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: Branding.spacingM,
-                    vertical: Branding.spacingS,
-                  ),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF0077B5),
-                    borderRadius: BorderRadius.circular(Branding.radiusL),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(Icons.business, color: Colors.white, size: 16),
-                      const SizedBox(width: Branding.spacingS),
-                      Text(
-                        'LinkedIn Profili',
-                        style: AppTypography.bodyMedium.copyWith(
+                GestureDetector(
+                  onTap: () => _launchLinkedIn(),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: Branding.spacingM,
+                      vertical: Branding.spacingS,
+                    ),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF0077B5),
+                      borderRadius: BorderRadius.circular(Branding.radiusL),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(
+                          Icons.business,
                           color: Colors.white,
-                          fontWeight: FontWeight.w600,
+                          size: 16,
                         ),
-                      ),
-                    ],
+                        const SizedBox(width: Branding.spacingS),
+                        Text(
+                          'LinkedIn Profili',
+                          style: AppTypography.bodyMedium.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -1694,6 +1702,29 @@ class _HomePageState extends ConsumerState<HomePage>
         ),
       ),
     );
+  }
+
+  Future<void> _launchLinkedIn() async {
+    try {
+      final Uri url = Uri.parse(
+        'https://www.linkedin.com/in/sebnem-berkol-yuceer-1255947/',
+      );
+
+      // Direkt launchUrl kullan - en basit yaklaşım
+      await launchUrl(url, mode: LaunchMode.platformDefault);
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'LinkedIn profili açılamadı. Manuel olarak açın: https://www.linkedin.com/in/sebnem-berkol-yuceer-1255947/',
+            ),
+            backgroundColor: Colors.orange,
+            duration: const Duration(seconds: 5),
+          ),
+        );
+      }
+    }
   }
 
   void _showImageDialog(BuildContext context) {

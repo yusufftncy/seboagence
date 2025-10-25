@@ -64,6 +64,9 @@ dependencies:
   
   # Image Viewer
   photo_view: ^0.14.0
+  
+  # URL Launcher
+  url_launcher: ^6.2.2
 
 dev_dependencies:
   flutter_test:
