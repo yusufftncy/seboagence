@@ -9,7 +9,6 @@ import '../../core/theme/branding.dart';
 import '../../core/theme/typography.dart';
 import '../../core/utils/responsive.dart';
 import '../widgets/error_widget.dart' as custom;
-import '../widgets/loading_widget.dart';
 import '../../core/providers/project_providers.dart';
 
 class ProjectDetailPage extends ConsumerWidget {
@@ -30,7 +29,7 @@ class ProjectDetailPage extends ConsumerWidget {
       ),
       body: projectAsync.when(
         data: (project) => _buildProjectDetail(context, project),
-        loading: () => const LoadingWidget(message: 'Proje yükleniyor...'),
+        loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, stackTrace) => custom.ErrorWidget(
           message: error.toString(),
           onRetry: () => ref.refresh(projectByIdProvider(projectId)),

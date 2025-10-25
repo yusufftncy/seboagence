@@ -9,7 +9,6 @@ import '../../core/theme/branding.dart';
 import '../../core/theme/typography.dart';
 import '../../core/utils/responsive.dart';
 import '../widgets/error_widget.dart' as custom;
-import '../widgets/loading_widget.dart';
 import '../widgets/project_card.dart';
 import '../../core/providers/project_providers.dart';
 
@@ -954,8 +953,7 @@ class _HomePageState extends ConsumerState<HomePage>
           // Projects Content
           projectsAsync.when(
             data: (projects) => _buildProjectsGrid(context, projects),
-            loading: () =>
-                const LoadingWidget(message: 'Projeler yükleniyor...'),
+            loading: () => const Center(child: CircularProgressIndicator()),
             error: (error, stackTrace) => custom.ErrorWidget(
               message: error.toString(),
               onRetry: () => ref.refresh(projectsProvider),

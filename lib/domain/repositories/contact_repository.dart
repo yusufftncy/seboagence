@@ -16,3 +16,4 @@ abstract class ContactRepository {
   Future<void> markAsRead(String contactId);
 }
 
+

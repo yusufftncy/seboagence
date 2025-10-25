@@ -59,3 +59,4 @@ final projectsByCategoryProvider =
       return projects.where((project) => project.category == category).toList();
     });
 
+

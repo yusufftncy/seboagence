@@ -9,7 +9,6 @@ import '../../core/theme/branding.dart';
 import '../../core/theme/typography.dart';
 import '../../core/utils/responsive.dart';
 import '../widgets/error_widget.dart' as custom;
-import '../widgets/loading_widget.dart';
 import '../../core/providers/about_providers.dart';
 
 class AboutPage extends ConsumerWidget {
@@ -28,7 +27,7 @@ class AboutPage extends ConsumerWidget {
       ),
       body: aboutAsync.when(
         data: (about) => _buildAboutContent(context, about),
-        loading: () => const LoadingWidget(message: 'Bilgiler yükleniyor...'),
+        loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, stackTrace) => custom.ErrorWidget(
           message: error.toString(),
           onRetry: () => ref.refresh(aboutInfoProvider),
