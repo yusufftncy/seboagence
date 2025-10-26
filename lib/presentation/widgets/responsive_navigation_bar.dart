@@ -1,21 +1,22 @@
-/// 🧭 Ultra-Optimized Navigation Bar Widget
+/// 🧭 Responsive Navigation Bar Widget
 ///
-/// Bu widget, maksimum performans ve kullanıcı deneyimi için optimize edilmiş navigation bar'ı içerir.
+/// Tüm cihazlar için optimize edilmiş responsive navigation bar
 library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../../core/theme/branding.dart';
 import '../../core/utils/responsive.dart';
 import '../../core/services/navigation_service.dart';
 import 'optimized_logo.dart';
+import 'mobile_navigation_widget.dart';
+import 'mobile_menu_overlay.dart';
 
-class OptimizedNavigationBar extends StatefulWidget {
+class ResponsiveNavigationBar extends StatefulWidget {
   final bool isSticky;
   final bool showScrollIndicator;
   final VoidCallback? onLogoTap;
 
-  const OptimizedNavigationBar({
+  const ResponsiveNavigationBar({
     super.key,
     this.isSticky = true,
     this.showScrollIndicator = false,
@@ -23,10 +24,10 @@ class OptimizedNavigationBar extends StatefulWidget {
   });
 
   @override
-  State<OptimizedNavigationBar> createState() => _OptimizedNavigationBarState();
+  State<ResponsiveNavigationBar> createState() => _ResponsiveNavigationBarState();
 }
 
-class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
+class _ResponsiveNavigationBarState extends State<ResponsiveNavigationBar>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   // Animation Controllers
   late AnimationController _logoAnimationController;
@@ -37,10 +38,8 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
   late Animation<double> _logoAnimation;
   late Animation<double> _menuAnimation;
   late Animation<double> _scrollAnimation;
-  late Animation<Offset> _slideAnimation;
 
   // State
-  bool _isMenuOpen = false;
   bool _isScrolled = false;
 
   // Performance optimizations
@@ -97,19 +96,9 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
         curve: Curves.easeInOut,
       ),
     );
-
-    // Slide animation for mobile menu
-    _slideAnimation =
-        Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero).animate(
-          CurvedAnimation(
-            parent: _menuAnimationController,
-            curve: Curves.easeOutCubic,
-          ),
-        );
   }
 
   void _startInitialAnimations() {
-    // Staggered animation start
     _logoAnimationController.forward();
     Future.delayed(const Duration(milliseconds: 100), () {
       if (mounted) _menuAnimationController.forward();
@@ -126,7 +115,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
 
   @override
   Widget build(BuildContext context) {
-    super.build(context); // Required for AutomaticKeepAliveClientMixin
+    super.build(context);
 
     return AnimatedBuilder(
       animation: _scrollAnimation,
@@ -140,7 +129,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
     );
   }
 
-  // 📱 RESPONSIVE HEIGHT CALCULATION
+  // 📱 RESPONSIVE HEIGHT
   double _getResponsiveHeight(BuildContext context) {
     if (Responsive.isMobile(context)) {
       return Responsive.isPortrait(context) ? 64.0 : 48.0;
@@ -222,50 +211,9 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
   }
 
   Widget _buildMobileNavigation() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        if (widget.showScrollIndicator) ...[
-          _buildScrollIndicator(),
-          const SizedBox(width: 12),
-        ],
-        _buildMobileMenuButton(),
-      ],
-    );
-  }
-
-  Widget _buildMobileMenuButton() {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0x1AFFFFFF), Color(0x33FFFFFF)],
-        ),
-        borderRadius: BorderRadius.circular(12.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.white.withValues(alpha: 0.1),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: _toggleMobileMenuWithHaptic,
-          borderRadius: BorderRadius.circular(12.0),
-          child: Container(
-            padding: const EdgeInsets.all(12.0),
-            child: AnimatedRotation(
-              turns: _isMenuOpen ? 0.125 : 0.0,
-              duration: _fastAnimation,
-              child: const Icon(Icons.menu, color: Branding.white, size: 20),
-            ),
-          ),
-        ),
-      ),
+    return MobileNavigationWidget(
+      showScrollIndicator: widget.showScrollIndicator,
+      onMenuTap: _showMobileMenu,
     );
   }
 
@@ -521,218 +469,13 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
     );
   }
 
-  Widget _buildScrollIndicator() {
-    return AnimatedBuilder(
-      animation: _scrollAnimation,
-      builder: (context, child) {
-        return Container(
-          width: 4,
-          height: 20,
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.3),
-            borderRadius: BorderRadius.circular(2),
-          ),
-          child: FractionallySizedBox(
-            heightFactor: _scrollAnimation.value,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(2),
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  void _toggleMobileMenuWithHaptic() {
-    HapticFeedback.lightImpact();
-    _toggleMobileMenu();
-  }
-
-  void _toggleMobileMenu() {
-    setState(() {
-      _isMenuOpen = !_isMenuOpen;
-    });
-
-    if (_isMenuOpen) {
-      _showMobileMenuOverlay();
-    }
-  }
-
-  void _showMobileMenuOverlay() {
+  void _showMobileMenu() {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
       enableDrag: true,
-      builder: (context) => _buildMobileMenuOverlay(),
-    ).then((_) {
-      if (mounted) {
-        setState(() {
-          _isMenuOpen = false;
-        });
-      }
-    });
-  }
-
-  Widget _buildMobileMenuOverlay() {
-    return SlideTransition(
-      position: _slideAnimation,
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFF131B2E),
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(25)),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.3),
-              blurRadius: 20,
-              offset: const Offset(0, -5),
-            ),
-          ],
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Handle bar
-            Container(
-              width: 50,
-              height: 5,
-              margin: const EdgeInsets.symmetric(vertical: 16),
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [Color(0x4DFFFFFF), Color(0x80FFFFFF)],
-                ),
-                borderRadius: BorderRadius.circular(3),
-              ),
-            ),
-
-            // Header section
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        colors: [Color(0x1AFFFFFF), Color(0x33FFFFFF)],
-                      ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: const Icon(
-                      Icons.menu,
-                      color: Branding.white,
-                      size: 20,
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  const Text(
-                    'Menü',
-                    style: TextStyle(
-                      color: Branding.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            // Divider
-            Container(
-              height: 1,
-              margin: const EdgeInsets.symmetric(horizontal: 24),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.transparent,
-                    Colors.white.withValues(alpha: 0.2),
-                    Colors.transparent,
-                  ],
-                ),
-              ),
-            ),
-
-            // Menu items
-            Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                children: [
-                  _buildMobileMenuItem('Ana Sayfa', Icons.home, false),
-                  _buildMobileMenuItem('Hakkımızda', Icons.info, false),
-                  _buildMobileMenuItem('Hoş İşler', Icons.work, false),
-                  _buildMobileMenuItem('Konferanslar', Icons.event, false),
-                  _buildMobileMenuItem('İletişim', Icons.contact_phone, false),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMobileMenuItem(String title, IconData icon, bool isActive) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: () {
-            HapticFeedback.lightImpact();
-            Navigator.pop(context);
-            _handleNavigation(title);
-          },
-          borderRadius: BorderRadius.circular(15),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-            decoration: BoxDecoration(
-              gradient: isActive
-                  ? const LinearGradient(
-                      colors: [Color(0x1AFFFFFF), Color(0x33FFFFFF)],
-                    )
-                  : null,
-              borderRadius: BorderRadius.circular(15),
-              border: Border.all(
-                color: Colors.white.withValues(alpha: 0.1),
-                width: 1,
-              ),
-            ),
-            child: Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [Color(0x0DFFFFFF), Color(0x26FFFFFF)],
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Icon(icon, color: Branding.white, size: 18),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      color: Branding.white,
-                      fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  color: Colors.white.withValues(alpha: 0.5),
-                  size: 14,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      builder: (context) => const MobileMenuOverlay(),
     );
   }
 
@@ -795,15 +538,6 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       } else {
         _scrollAnimationController.reverse();
       }
-    }
-  }
-
-  void closeMobileMenu() {
-    if (_isMenuOpen) {
-      setState(() {
-        _isMenuOpen = false;
-      });
-      Navigator.pop(context);
     }
   }
 }

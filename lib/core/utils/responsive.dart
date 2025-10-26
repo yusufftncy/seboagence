@@ -110,6 +110,21 @@ class Responsive {
     return smallMobile;
   }
 
+  // 📱 SIMPLE RESPONSIVE VALUES
+  static T responsiveValue<T>(
+    BuildContext context, {
+    required T mobile,
+    T? tablet,
+    T? desktop,
+  }) {
+    if (isDesktop(context) && desktop != null) {
+      return desktop;
+    } else if (isTablet(context) && tablet != null) {
+      return tablet;
+    }
+    return mobile;
+  }
+
   // 📱 ADAPTIVE MOBILE VALUES
   static T adaptiveMobileValue<T>(
     BuildContext context, {
