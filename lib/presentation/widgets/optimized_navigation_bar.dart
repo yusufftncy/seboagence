@@ -268,101 +268,31 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
   }
 
   Widget _buildMobileNavigation() {
-    return Responsive.responsiveWidget(
-      context,
-      mobile: _buildSmallMobileNavigation(),
-      tablet: _buildTabletNavigation(),
-      desktop: _buildDesktopNavigation(),
-    );
-  }
-
-  Widget _buildSmallMobileNavigation() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        // Logo - Mobile'da daha küçük
-        _buildMobileLogo(),
-        
-        // Right side - Menu button and scroll indicator
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            // Scroll indicator - Mobile'da minimal
-            if (widget.showScrollIndicator) ...[
-              _buildMobileScrollIndicator(),
-              const SizedBox(width: 6),
-            ],
+        // Scroll indicator - responsive spacing
+        if (widget.showScrollIndicator) ...[
+          _buildScrollIndicator(),
+          SizedBox(
+            width: Responsive.mobileResponsiveValue(
+              context,
+              smallMobile: 8.0, // Minimal spacing for small screens
+              mediumMobile: 10.0,
+              largeMobile: 12.0,
+              tablet: 12.0,
+              desktop: 12.0,
+            ),
+          ),
+        ],
 
-            // Mobile menu button - Kompakt
-            _buildMobileMenuButton(),
-          ],
-        ),
+        // Fully responsive mobile menu button
+        _buildResponsiveMobileMenuButton(),
       ],
     );
   }
 
-  Widget _buildTabletNavigation() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        // Logo - Tablet'de orta boy
-        _buildTabletLogo(),
-        
-        // Right side - Menu button and scroll indicator
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            // Scroll indicator - Tablet'de orta boy
-            if (widget.showScrollIndicator) ...[
-              _buildTabletScrollIndicator(),
-              const SizedBox(width: 10),
-            ],
-
-            // Tablet menu button - Orta boy
-            _buildTabletMenuButton(),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildMobileLogo() {
-    return AnimatedBuilder(
-      animation: _logoAnimation,
-      builder: (context, child) {
-        return Transform.scale(
-          scale: 0.7 + (0.3 * _logoAnimation.value), // Mobile'da daha küçük
-          child: Opacity(
-            opacity: _logoAnimation.value,
-            child: GestureDetector(
-              onTap: widget.onLogoTap ?? () => NavigationService.goToHome(),
-              child: const OptimizedLogo(),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  Widget _buildTabletLogo() {
-    return AnimatedBuilder(
-      animation: _logoAnimation,
-      builder: (context, child) {
-        return Transform.scale(
-          scale: 0.8 + (0.2 * _logoAnimation.value), // Tablet'de orta boy
-          child: Opacity(
-            opacity: _logoAnimation.value,
-            child: GestureDetector(
-              onTap: widget.onLogoTap ?? () => NavigationService.goToHome(),
-              child: const OptimizedLogo(),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  Widget _buildMobileMenuButton() {
+  Widget _buildResponsiveMobileMenuButton() {
     return Container(
       decoration: BoxDecoration(
         gradient: const LinearGradient(
@@ -370,11 +300,27 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
           end: Alignment.bottomRight,
           colors: [Color(0x0DFFFFFF), Color(0x1AFFFFFF)],
         ),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(
+          Responsive.mobileResponsiveValue(
+            context,
+            smallMobile: 6.0, // Smaller radius for small screens
+            mediumMobile: 8.0,
+            largeMobile: 10.0,
+            tablet: 12.0,
+            desktop: 12.0,
+          ),
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.white.withValues(alpha: 0.05),
-            blurRadius: 2,
+            blurRadius: Responsive.mobileResponsiveValue(
+              context,
+              smallMobile: 1.0, // Subtle shadow for small screens
+              mediumMobile: 2.0,
+              largeMobile: 3.0,
+              tablet: 4.0,
+              desktop: 4.0,
+            ),
             offset: const Offset(0, 1),
           ),
         ],
@@ -383,85 +329,45 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
         color: Colors.transparent,
         child: InkWell(
           onTap: _toggleMobileMenuWithHaptic,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(
+            Responsive.mobileResponsiveValue(
+              context,
+              smallMobile: 6.0,
+              mediumMobile: 8.0,
+              largeMobile: 10.0,
+              tablet: 12.0,
+              desktop: 12.0,
+            ),
+          ),
           child: Container(
-            padding: const EdgeInsets.all(8),
+            padding: EdgeInsets.all(
+              Responsive.mobileResponsiveValue(
+                context,
+                smallMobile: 6.0, // Minimal padding for small screens
+                mediumMobile: 8.0,
+                largeMobile: 10.0,
+                tablet: 12.0,
+                desktop: 12.0,
+              ),
+            ),
             child: AnimatedRotation(
               turns: _isMenuOpen ? 0.125 : 0.0,
               duration: _fastAnimation,
               child: Icon(
                 Icons.menu,
                 color: Branding.white,
-                size: 18,
+                size: Responsive.mobileResponsiveValue(
+                  context,
+                  smallMobile: 16.0, // Smaller icon for small screens
+                  mediumMobile: 18.0,
+                  largeMobile: 20.0,
+                  tablet: 22.0,
+                  desktop: 24.0,
+                ),
               ),
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildTabletMenuButton() {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0x0DFFFFFF), Color(0x1AFFFFFF)],
-        ),
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.white.withValues(alpha: 0.05),
-            blurRadius: 3,
-            offset: const Offset(0, 1),
-          ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: _toggleMobileMenuWithHaptic,
-          borderRadius: BorderRadius.circular(10),
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            child: AnimatedRotation(
-              turns: _isMenuOpen ? 0.125 : 0.0,
-              duration: _fastAnimation,
-              child: Icon(
-                Icons.menu,
-                color: Branding.white,
-                size: 20,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMobileScrollIndicator() {
-    return Container(
-      width: 20,
-      height: 3,
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0x4DFFFFFF), Color(0x80FFFFFF)],
-        ),
-        borderRadius: BorderRadius.circular(2),
-      ),
-    );
-  }
-
-  Widget _buildTabletScrollIndicator() {
-    return Container(
-      width: 24,
-      height: 4,
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0x4DFFFFFF), Color(0x80FFFFFF)],
-        ),
-        borderRadius: BorderRadius.circular(2),
       ),
     );
   }
@@ -811,6 +717,62 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
     );
   }
 
+  Widget _buildScrollIndicator() {
+    return AnimatedBuilder(
+      animation: _scrollAnimation,
+      builder: (context, child) {
+        return Container(
+          width: Responsive.mobileResponsiveValue(
+            context,
+            smallMobile: 2.0, // Ultra-thin for small screens
+            mediumMobile: 3.0,
+            largeMobile: 3.5,
+            tablet: 4.0,
+            desktop: 4.0,
+          ),
+          height: Responsive.mobileResponsiveValue(
+            context,
+            smallMobile: 14.0, // Shorter for small screens
+            mediumMobile: 16.0,
+            largeMobile: 18.0,
+            tablet: 20.0,
+            desktop: 20.0,
+          ),
+          decoration: BoxDecoration(
+            color: Colors.white.withValues(alpha: 0.3),
+            borderRadius: BorderRadius.circular(
+              Responsive.mobileResponsiveValue(
+                context,
+                smallMobile: 1.0, // Smaller radius for small screens
+                mediumMobile: 1.5,
+                largeMobile: 2.0,
+                tablet: 2.0,
+                desktop: 2.0,
+              ),
+            ),
+          ),
+          child: FractionallySizedBox(
+            heightFactor: _scrollAnimation.value,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(
+                  Responsive.mobileResponsiveValue(
+                    context,
+                    smallMobile: 1.0, // Smaller radius for small screens
+                    mediumMobile: 1.5,
+                    largeMobile: 2.0,
+                    tablet: 2.0,
+                    desktop: 2.0,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   void _toggleMobileMenuWithHaptic() {
     HapticFeedback.lightImpact();

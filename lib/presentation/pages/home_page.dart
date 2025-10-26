@@ -278,17 +278,17 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildTabletHeroContent(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        // Main Title
-        FadeTransition(
-          opacity: _fadeAnimation,
-          child: SlideTransition(
-            position: _slideAnimation,
-            child: Text(
-              'ŞEBO AJANS',
-              style: AppTypography.h1.copyWith(
-                color: Branding.white,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // Main Title
+                          FadeTransition(
+                            opacity: _fadeAnimation,
+                            child: SlideTransition(
+                              position: _slideAnimation,
+                              child: Text(
+                                'ŞEBO AJANS',
+                                style: AppTypography.h1.copyWith(
+                                  color: Branding.white,
                 fontSize: 48,
                 fontWeight: FontWeight.w900,
                 letterSpacing: 2.5,
@@ -388,87 +388,87 @@ class _HomePageState extends ConsumerState<HomePage>
               style: AppTypography.h1.copyWith(
                 color: Branding.white,
                 fontSize: 72,
-                fontWeight: FontWeight.w900,
-                letterSpacing: 3.0,
-                shadows: [
-                  Shadow(
+                                  fontWeight: FontWeight.w900,
+                                  letterSpacing: 3.0,
+                                  shadows: [
+                                    Shadow(
                     color: Branding.black.withValues(alpha: 0.3),
-                    offset: const Offset(0, 4),
-                    blurRadius: 8,
-                  ),
-                ],
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
+                                      offset: const Offset(0, 4),
+                                      blurRadius: 8,
+                                    ),
+                                  ],
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
 
         const SizedBox(height: 24),
 
-        // Agency Tagline
-        FadeTransition(
-          opacity: _fadeAnimation,
-          child: SlideTransition(
-            position: _slideAnimation,
-            child: Container(
-              padding: const EdgeInsets.symmetric(
+                          // Agency Tagline
+                          FadeTransition(
+                            opacity: _fadeAnimation,
+                            child: SlideTransition(
+                              position: _slideAnimation,
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
                 horizontal: 32,
                 vertical: 12,
-              ),
-              decoration: BoxDecoration(
-                color: Branding.white.withValues(alpha: 0.1),
+                                ),
+                                decoration: BoxDecoration(
+                                  color: Branding.white.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(
+                                  border: Border.all(
                   color: Branding.white.withValues(alpha: 0.3),
-                  width: 1,
-                ),
-              ),
-              child: Text(
-                'Yaratıcı Dijital Çözümler',
-                style: AppTypography.h5.copyWith(
-                  color: Branding.white,
+                                    width: 1,
+                                  ),
+                                ),
+                                child: Text(
+                                  'Yaratıcı Dijital Çözümler',
+                                  style: AppTypography.h5.copyWith(
+                                    color: Branding.white,
                   fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 1.5,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ),
-        ),
+                                    fontWeight: FontWeight.w600,
+                                    letterSpacing: 1.5,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+                          ),
 
         const SizedBox(height: 32),
 
-        // Subtitle
-        FadeTransition(
-          opacity: _fadeAnimation,
-          child: SlideTransition(
-            position: _slideAnimation,
-            child: Text(
-              'Dijital dünyada markanızı öne çıkaran\nstratejik ve yaratıcı çözümler',
-              style: AppTypography.h4.copyWith(
-                color: Branding.white.withValues(alpha: 0.9),
+                          // Subtitle
+                          FadeTransition(
+                            opacity: _fadeAnimation,
+                            child: SlideTransition(
+                              position: _slideAnimation,
+                              child: Text(
+                                'Dijital dünyada markanızı öne çıkaran\nstratejik ve yaratıcı çözümler',
+                                style: AppTypography.h4.copyWith(
+                                  color: Branding.white.withValues(alpha: 0.9),
                 fontSize: 28,
-                fontWeight: FontWeight.w300,
-                letterSpacing: 1.2,
+                                  fontWeight: FontWeight.w300,
+                                  letterSpacing: 1.2,
                 height: 1.6,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
 
         const SizedBox(height: 32),
 
-        // CTA Buttons
-        FadeTransition(
-          opacity: _fadeAnimation,
-          child: SlideTransition(
-            position: _slideAnimation,
+                          // CTA Buttons
+                          FadeTransition(
+                            opacity: _fadeAnimation,
+                            child: SlideTransition(
+                              position: _slideAnimation,
             child: _buildDesktopHeroButtons(context),
-          ),
-        ),
-      ],
+                            ),
+                          ),
+                        ],
     );
   }
 
@@ -481,7 +481,7 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildMobileHeroButtons(BuildContext context) {
     return Column(
-      children: [
+        children: [
         _buildMobilePrimaryButton(context),
         const SizedBox(height: 12),
         _buildMobileSecondaryButton(context),
@@ -491,8 +491,8 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildTabletHeroButtons(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
         _buildTabletPrimaryButton(context),
         const SizedBox(width: 16),
         _buildTabletSecondaryButton(context),
@@ -502,8 +502,8 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildDesktopHeroButtons(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
         _buildDesktopPrimaryButton(context),
         const SizedBox(width: 24),
         _buildDesktopSecondaryButton(context),
@@ -722,7 +722,7 @@ class _HomePageState extends ConsumerState<HomePage>
     return Container(
       width: double.infinity,
       padding: Responsive.responsivePadding(
-        context,
+          context,
         mobile: const EdgeInsets.all(16.0),
         tablet: const EdgeInsets.all(20.0),
         desktop: const EdgeInsets.all(24.0),
@@ -755,24 +755,24 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildMobileProjectsSection(BuildContext context) {
     return Column(
-      children: [
+        children: [
         // Section Header - Mobile'da ortalanmış ve küçük
-        Text(
-          'Hoş İşler',
-          style: AppTypography.h2.copyWith(
-            color: const Color(0xFF2C2C2C),
+          Text(
+            'Hoş İşler',
+            style: AppTypography.h2.copyWith(
+              color: const Color(0xFF2C2C2C),
             fontSize: 20,
-            fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.w800,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
-        ),
 
         const SizedBox(height: 8),
 
-        Text(
-          'Sosyal Sorumluluk ve El Sanatları Platformu',
-          style: AppTypography.h4.copyWith(
-            color: const Color(0xFF6B6B6B),
+          Text(
+            'Sosyal Sorumluluk ve El Sanatları Platformu',
+            style: AppTypography.h4.copyWith(
+              color: const Color(0xFF6B6B6B),
             fontSize: 12,
             fontWeight: FontWeight.w500,
           ),
@@ -790,30 +790,34 @@ class _HomePageState extends ConsumerState<HomePage>
   Widget _buildTabletProjectsSection(BuildContext context) {
     return Column(
       children: [
+        // Section Header - Tablet'de orta boyut ve ortalanmış
         Text(
           'Hoş İşler',
           style: AppTypography.h2.copyWith(
             color: const Color(0xFF2C2C2C),
-            fontSize: 28,
-            fontWeight: FontWeight.w800,
+            fontSize: 24,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.5,
           ),
           textAlign: TextAlign.center,
         ),
 
-        const SizedBox(height: 12),
+        const SizedBox(height: 8),
 
         Text(
           'Sosyal Sorumluluk ve El Sanatları Platformu',
           style: AppTypography.h4.copyWith(
             color: const Color(0xFF6B6B6B),
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
+            fontSize: 13,
+            fontWeight: FontWeight.w400,
+            letterSpacing: 0.3,
           ),
           textAlign: TextAlign.center,
         ),
 
-        const SizedBox(height: 24),
+        const SizedBox(height: 20),
 
+        // Projects Grid - Tablet'de 2 sütun, kompakt
         _buildTabletProjectsGrid(context),
       ],
     );
@@ -872,9 +876,9 @@ class _HomePageState extends ConsumerState<HomePage>
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 16.0,
-        mainAxisSpacing: 16.0,
-        childAspectRatio: 0.8,
+        crossAxisSpacing: 12.0,
+        mainAxisSpacing: 12.0,
+        childAspectRatio: 0.75,
       ),
       itemCount: projects.length,
       itemBuilder: (context, index) {
@@ -1189,103 +1193,103 @@ class _HomePageState extends ConsumerState<HomePage>
           end: Alignment.bottomRight,
           colors: [
             Colors.white,
-            (project['color'] as Color).withValues(alpha: 0.05),
+            (project['color'] as Color).withValues(alpha: 0.03),
           ],
         ),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: (project['color'] as Color).withValues(alpha: 0.2),
+          color: (project['color'] as Color).withValues(alpha: 0.15),
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: (project['color'] as Color).withValues(alpha: 0.1),
-            blurRadius: 15,
-            offset: const Offset(0, 6),
+            color: (project['color'] as Color).withValues(alpha: 0.08),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(16),
           onTap: () {
             // Proje detayına git
           },
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Proje ikonu ve başlık
+                // Proje ikonu ve başlık - Tablet'de kompakt
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [
-                            (project['color'] as Color).withValues(alpha: 0.3),
-                            (project['color'] as Color).withValues(alpha: 0.1),
+                            (project['color'] as Color).withValues(alpha: 0.2),
+                            (project['color'] as Color).withValues(alpha: 0.08),
                           ],
                         ),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       child: Icon(
                         project['icon'] as IconData,
                         color: project['color'] as Color,
-                        size: 20,
+                        size: 16,
                       ),
                     ),
-                    const SizedBox(width: 16),
+                    const SizedBox(width: 12),
                     Expanded(
                       child: Text(
                         project['title'] as String,
                         style: AppTypography.h5.copyWith(
                           color: const Color(0xFF2C2C2C),
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
                         ),
                       ),
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
+                        horizontal: 8,
+                        vertical: 4,
                       ),
                       decoration: BoxDecoration(
                         color: (project['color'] as Color).withValues(
-                          alpha: 0.2,
+                          alpha: 0.15,
                         ),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
                         '2023',
                         style: AppTypography.bodySmall.copyWith(
                           color: project['color'] as Color,
                           fontWeight: FontWeight.w600,
-                          fontSize: 11,
+                          fontSize: 9,
                         ),
                       ),
                     ),
                   ],
                 ),
 
-                const SizedBox(height: 16),
+                const SizedBox(height: 12),
 
-                // Müşteri bilgisi
+                // Müşteri bilgisi - Tablet'de küçük
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
+                    horizontal: 8,
+                    vertical: 4,
                   ),
                   decoration: BoxDecoration(
-                    color: (project['color'] as Color).withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(12),
+                    color: (project['color'] as Color).withValues(alpha: 0.08),
+                    borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                      color: (project['color'] as Color).withValues(alpha: 0.3),
+                      color: (project['color'] as Color).withValues(alpha: 0.2),
                       width: 1,
                     ),
                   ),
@@ -1295,60 +1299,60 @@ class _HomePageState extends ConsumerState<HomePage>
                       Icon(
                         Icons.business,
                         color: project['color'] as Color,
-                        size: 14,
+                        size: 12,
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: 6),
                       Text(
                         'Müşteri: ${project['category']} Holding',
                         style: AppTypography.bodySmall.copyWith(
                           color: project['color'] as Color,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 10,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 9,
                         ),
                       ),
                     ],
                   ),
                 ),
 
-                const SizedBox(height: 16),
+                const SizedBox(height: 12),
 
-                // Proje açıklaması
+                // Proje açıklaması - Tablet'de kompakt
                 Expanded(
                   child: Text(
                     project['description'] as String,
                     style: AppTypography.bodyMedium.copyWith(
                       color: const Color(0xFF6B6B6B),
-                      height: 1.5,
-                      fontSize: 12,
+                      height: 1.4,
+                      fontSize: 11,
                     ),
-                    maxLines: 4,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
 
-                const SizedBox(height: 16),
+                const SizedBox(height: 12),
 
-                // Alt bilgi
+                // Alt bilgi - Tablet'de kompakt
                 Row(
                   children: [
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
+                        horizontal: 8,
+                        vertical: 4,
                       ),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [
-                            (project['color'] as Color).withValues(alpha: 0.2),
-                            (project['color'] as Color).withValues(alpha: 0.1),
+                            (project['color'] as Color).withValues(alpha: 0.15),
+                            (project['color'] as Color).withValues(alpha: 0.08),
                           ],
                         ),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(8),
                         border: Border.all(
                           color: (project['color'] as Color).withValues(
-                            alpha: 0.4,
+                            alpha: 0.3,
                           ),
                           width: 1,
                         ),
@@ -1359,15 +1363,15 @@ class _HomePageState extends ConsumerState<HomePage>
                           Icon(
                             project['icon'] as IconData,
                             color: project['color'] as Color,
-                            size: 14,
+                            size: 12,
                           ),
-                          const SizedBox(width: 8),
+                          const SizedBox(width: 6),
                           Text(
                             project['category'] as String,
                             style: AppTypography.bodySmall.copyWith(
                               color: project['color'] as Color,
                               fontWeight: FontWeight.w600,
-                              fontSize: 10,
+                              fontSize: 9,
                             ),
                           ),
                         ],
@@ -1376,17 +1380,17 @@ class _HomePageState extends ConsumerState<HomePage>
                     const Spacer(),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
+                        horizontal: 8,
+                        vertical: 4,
                       ),
                       decoration: BoxDecoration(
                         color: (project['color'] as Color).withValues(
-                          alpha: 0.1,
+                          alpha: 0.08,
                         ),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(8),
                         border: Border.all(
                           color: (project['color'] as Color).withValues(
-                            alpha: 0.3,
+                            alpha: 0.2,
                           ),
                           width: 1,
                         ),
@@ -1399,14 +1403,14 @@ class _HomePageState extends ConsumerState<HomePage>
                             style: AppTypography.bodyMedium.copyWith(
                               color: project['color'] as Color,
                               fontWeight: FontWeight.w600,
-                              fontSize: 10,
+                              fontSize: 9,
                             ),
                           ),
-                          const SizedBox(width: 6),
+                          const SizedBox(width: 4),
                           Icon(
                             Icons.arrow_forward,
                             color: project['color'] as Color,
-                            size: 14,
+                            size: 12,
                           ),
                         ],
                       ),
@@ -1980,82 +1984,82 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildDesktopProfileLayout(BuildContext context) {
     return Row(
-      children: [
-        // Profil Fotoğrafı
-        GestureDetector(
-          onTap: () => _showImageDialog(context),
-          child: Container(
-            width: 120,
-            height: 120,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(60),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0xFF6B6B6B).withValues(alpha: 0.2),
-                  blurRadius: 15,
-                  offset: const Offset(0, 5),
-                ),
-              ],
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(60),
-              child: Image.asset(
-                'assets/images/sebnemyuceer.jpg',
-                width: 120,
-                height: 120,
-                fit: BoxFit.cover,
-                filterQuality: FilterQuality.high,
-                isAntiAlias: true,
+        children: [
+          // Profil Fotoğrafı
+          GestureDetector(
+            onTap: () => _showImageDialog(context),
+            child: Container(
+              width: 120,
+              height: 120,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(60),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF6B6B6B).withValues(alpha: 0.2),
+                    blurRadius: 15,
+                    offset: const Offset(0, 5),
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(60),
+                child: Image.asset(
+                  'assets/images/sebnemyuceer.jpg',
+                  width: 120,
+                  height: 120,
+                  fit: BoxFit.cover,
+                  filterQuality: FilterQuality.high,
+                  isAntiAlias: true,
                 cacheWidth: 240,
-                cacheHeight: 240,
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    color: const Color(0xFFE5E7EB),
-                    child: const Icon(
-                      Icons.person,
-                      size: 60,
-                      color: Color(0xFF9CA3AF),
-                    ),
-                  );
-                },
+                  cacheHeight: 240,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: const Color(0xFFE5E7EB),
+                      child: const Icon(
+                        Icons.person,
+                        size: 60,
+                        color: Color(0xFF9CA3AF),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ),
-        ),
 
         const SizedBox(width: 24),
 
-        // Profil Bilgileri
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Şebnem Yüceer',
-                style: AppTypography.h3.copyWith(
-                  color: const Color(0xFF2C2C2C),
-                  fontWeight: FontWeight.w700,
+          // Profil Bilgileri
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Şebnem Yüceer',
+                  style: AppTypography.h3.copyWith(
+                    color: const Color(0xFF2C2C2C),
+                    fontWeight: FontWeight.w700,
                   fontSize: 28,
                 ),
               ),
 
               const SizedBox(height: 8),
 
-              Text(
-                'Lüks Marka Lideri & Ajans Kurucusu',
-                style: AppTypography.h5.copyWith(
-                  color: const Color(0xFF6B6B6B),
-                  fontWeight: FontWeight.w500,
+                Text(
+                  'Lüks Marka Lideri & Ajans Kurucusu',
+                  style: AppTypography.h5.copyWith(
+                    color: const Color(0xFF6B6B6B),
+                    fontWeight: FontWeight.w500,
                   fontSize: 18,
                 ),
               ),
 
               const SizedBox(height: 20),
 
-              Text(
-                'Louis Vuitton, Gucci ve Bulgari gibi dünya devi lüks markaların Türkiye Genel Müdürlüğü yapmış, Harvard Business School mezunu deneyimli bir lider.',
-                style: AppTypography.bodyLarge.copyWith(
-                  color: const Color(0xFF4A4A4A),
+                Text(
+                  'Louis Vuitton, Gucci ve Bulgari gibi dünya devi lüks markaların Türkiye Genel Müdürlüğü yapmış, Harvard Business School mezunu deneyimli bir lider.',
+                  style: AppTypography.bodyLarge.copyWith(
+                    color: const Color(0xFF4A4A4A),
                   fontSize: 16,
                   height: 1.6,
                 ),
@@ -2073,59 +2077,59 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildLinkedInButton(BuildContext context, {required bool isMobile}) {
     return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() => _isLinkedInHovered = true),
-      onExit: (_) => setState(() => _isLinkedInHovered = false),
-      child: GestureDetector(
-        onTap: () => _launchLinkedIn(),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
+                  cursor: SystemMouseCursors.click,
+                  onEnter: (_) => setState(() => _isLinkedInHovered = true),
+                  onExit: (_) => setState(() => _isLinkedInHovered = false),
+                  child: GestureDetector(
+                    onTap: () => _launchLinkedIn(),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
           width: isMobile ? double.infinity : null,
           padding: EdgeInsets.symmetric(
             horizontal: isMobile ? 16.0 : 12.0,
             vertical: isMobile ? 12.0 : 8.0,
-          ),
-          decoration: BoxDecoration(
-            color: _isLinkedInHovered
+                      ),
+                      decoration: BoxDecoration(
+                        color: _isLinkedInHovered
                 ? const Color(0xFF005885)
                 : const Color(0xFF0077B5),
-            borderRadius: BorderRadius.circular(Branding.radiusL),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(
-                  0xFF0077B5,
-                ).withValues(alpha: _isLinkedInHovered ? 0.4 : 0.2),
-                blurRadius: _isLinkedInHovered ? 12 : 8,
-                offset: Offset(0, _isLinkedInHovered ? 6 : 4),
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
+                        borderRadius: BorderRadius.circular(Branding.radiusL),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(
+                              0xFF0077B5,
+                            ).withValues(alpha: _isLinkedInHovered ? 0.4 : 0.2),
+                            blurRadius: _isLinkedInHovered ? 12 : 8,
+                            offset: Offset(0, _isLinkedInHovered ? 6 : 4),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: isMobile
                 ? MainAxisAlignment.center
                 : MainAxisAlignment.start,
-            children: [
+                        children: [
               Icon(
-                Icons.business,
-                color: Colors.white,
+                            Icons.business,
+                            color: Colors.white,
                 size: isMobile ? 14 : 16,
-              ),
+                          ),
               SizedBox(width: isMobile ? 8 : 8),
               Flexible(
                 child: Text(
-                  'LinkedIn Profili',
-                  style: AppTypography.bodyMedium.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
+                            'LinkedIn Profili',
+                            style: AppTypography.bodyMedium.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
                     fontSize: isMobile ? 12 : 14,
-                  ),
+                            ),
                   overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
       ),
     );
   }
@@ -2229,50 +2233,50 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildTabletAgencyStory(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Şebo Ajans Hikayesi',
-          style: AppTypography.h3.copyWith(
-            color: const Color(0xFF2C2C2C),
-            fontWeight: FontWeight.w700,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Şebo Ajans Hikayesi',
+            style: AppTypography.h3.copyWith(
+              color: const Color(0xFF2C2C2C),
+              fontWeight: FontWeight.w700,
             fontSize: 22,
+            ),
           ),
-        ),
 
         const SizedBox(height: 16),
 
-        Text(
-          'Kimim, Ne Yapıyoruz, Neden Çalışıyoruz',
-          style: AppTypography.h5.copyWith(
-            color: const Color(0xFF6B6B6B),
-            fontWeight: FontWeight.w500,
+          Text(
+            'Kimim, Ne Yapıyoruz, Neden Çalışıyoruz',
+            style: AppTypography.h5.copyWith(
+              color: const Color(0xFF6B6B6B),
+              fontWeight: FontWeight.w500,
             fontSize: 14,
+            ),
           ),
-        ),
 
         const SizedBox(height: 20),
 
-        Text(
-          '20+ yıllık lüks perakende deneyimi ile Louis Vuitton, Gucci ve Bulgari gibi dünya devi markaların Türkiye pazarında büyümesine liderlik ettim. Harvard Business School eğitimi ve küresel marka yönetimi deneyimimle, Şebo Ajans\'ı kurarak bu bilgi birikimini dijital dünyaya taşıyorum.',
-          style: AppTypography.bodyLarge.copyWith(
-            color: const Color(0xFF4A4A4A),
-            height: 1.6,
+          Text(
+            '20+ yıllık lüks perakende deneyimi ile Louis Vuitton, Gucci ve Bulgari gibi dünya devi markaların Türkiye pazarında büyümesine liderlik ettim. Harvard Business School eğitimi ve küresel marka yönetimi deneyimimle, Şebo Ajans\'ı kurarak bu bilgi birikimini dijital dünyaya taşıyorum.',
+            style: AppTypography.bodyLarge.copyWith(
+              color: const Color(0xFF4A4A4A),
+              height: 1.6,
             fontSize: 13,
+            ),
           ),
-        ),
 
         const SizedBox(height: 20),
 
-        Text(
-          'Türkiye Tanıtım Grubu İcra Kurulu Başkanlığı ve Comité Colbert Türkiye Yılı Başkanlığı deneyimlerimle, markaların küresel pazarlarda güçlü konumlanması için stratejik yaklaşımlar geliştiriyoruz. Her proje, bir markanın hikayesini en etkili şekilde anlatma fırsatıdır.',
-          style: AppTypography.bodyMedium.copyWith(
-            color: const Color(0xFF6B6B6B),
-            height: 1.6,
+          Text(
+            'Türkiye Tanıtım Grubu İcra Kurulu Başkanlığı ve Comité Colbert Türkiye Yılı Başkanlığı deneyimlerimle, markaların küresel pazarlarda güçlü konumlanması için stratejik yaklaşımlar geliştiriyoruz. Her proje, bir markanın hikayesini en etkili şekilde anlatma fırsatıdır.',
+            style: AppTypography.bodyMedium.copyWith(
+              color: const Color(0xFF6B6B6B),
+              height: 1.6,
             fontSize: 12,
+            ),
           ),
-        ),
-      ],
+        ],
     );
   }
 
@@ -2355,17 +2359,17 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildMobileAboutStats(BuildContext context) {
     return Column(
-      children: [
+        children: [
         // Başlık - Mobile'da ortalanmış ve küçük
-        Text(
-          'Neden Bizi Seçmelisiniz?',
-          style: AppTypography.h3.copyWith(
-            color: const Color(0xFF2C2C2C),
-            fontWeight: FontWeight.w700,
+          Text(
+            'Neden Bizi Seçmelisiniz?',
+            style: AppTypography.h3.copyWith(
+              color: const Color(0xFF2C2C2C),
+              fontWeight: FontWeight.w700,
             fontSize: 18,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
-        ),
 
         const SizedBox(height: 20),
 
@@ -2548,7 +2552,7 @@ class _HomePageState extends ConsumerState<HomePage>
     return Container(
       width: double.infinity,
       padding: Responsive.responsivePadding(
-        context,
+          context,
         mobile: const EdgeInsets.all(16.0),
         tablet: const EdgeInsets.all(20.0),
         desktop: const EdgeInsets.all(24.0),
@@ -2581,24 +2585,24 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildMobileConferencesSection(BuildContext context) {
     return Column(
-      children: [
+        children: [
         // Başlık - Mobile'da ortalanmış ve küçük
-        Text(
-          'Yurt Dışı Konferanslar & Etkinlikler',
-          style: AppTypography.h2.copyWith(
-            color: const Color(0xFF2C2C2C),
+          Text(
+            'Yurt Dışı Konferanslar & Etkinlikler',
+            style: AppTypography.h2.copyWith(
+              color: const Color(0xFF2C2C2C),
             fontSize: 18,
-            fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w700,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
-        ),
 
         const SizedBox(height: 8),
 
-        Text(
-          'Uluslararası platformlarda yer aldığımız etkinlikler',
-          style: AppTypography.bodyLarge.copyWith(
-            color: const Color(0xFF6B6B6B),
+          Text(
+            'Uluslararası platformlarda yer aldığımız etkinlikler',
+            style: AppTypography.bodyLarge.copyWith(
+              color: const Color(0xFF6B6B6B),
             fontSize: 11,
             fontWeight: FontWeight.w400,
           ),
@@ -2638,10 +2642,10 @@ class _HomePageState extends ConsumerState<HomePage>
           style: AppTypography.bodyLarge.copyWith(
             color: const Color(0xFF6B6B6B),
             fontSize: 13,
-            fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w400,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
-        ),
 
         const SizedBox(height: 24),
 
@@ -2781,7 +2785,7 @@ class _HomePageState extends ConsumerState<HomePage>
           ),
         ],
       ),
-      child: Padding(
+            child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -2803,7 +2807,7 @@ class _HomePageState extends ConsumerState<HomePage>
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                     horizontal: 8,
                     vertical: 4,
                   ),
@@ -3425,7 +3429,7 @@ class _FooterWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: Responsive.responsivePadding(
-        context,
+          context,
         mobile: const EdgeInsets.all(16.0),
         tablet: const EdgeInsets.all(20.0),
         desktop: const EdgeInsets.all(24.0),
