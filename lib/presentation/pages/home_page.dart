@@ -126,17 +126,19 @@ class _HomePageState extends ConsumerState<HomePage>
   Widget _buildAgencyHeroSection(BuildContext context) {
     return Container(
       width: double.infinity,
-      constraints: BoxConstraints(
-        minHeight: Responsive.screenHeight(context) * 0.85,
-        maxHeight: Responsive.screenHeight(context) * 0.9,
+      height: Responsive.responsiveValue(
+        context,
+        mobile: Responsive.screenHeight(context), // Tam ekran mobil
+        tablet: Responsive.screenHeight(context), // Tam ekran tablet
+        desktop: Responsive.screenHeight(context) * 0.9, // %90 desktop
       ),
       decoration: BoxDecoration(
         color: const Color(0xFF131B2E), // rgba(19, 27, 46) - Dark blue-grey
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF131B2E).withValues(alpha: 0.5),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
+            color: const Color(0xFF131B2E).withValues(alpha: 0.3),
+            blurRadius: 15,
+            offset: const Offset(0, 6),
           ),
         ],
       ),
@@ -152,7 +154,7 @@ class _HomePageState extends ConsumerState<HomePage>
                 context,
                 mobile: const EdgeInsets.all(16.0),
                 tablet: const EdgeInsets.all(20.0),
-                desktop: const EdgeInsets.all(24.0),
+                desktop: const EdgeInsets.all(20.0),
               ),
               child: AnimatedBuilder(
                 animation: _heroAnimation,
@@ -215,10 +217,7 @@ class _HomePageState extends ConsumerState<HomePage>
           child: SlideTransition(
             position: _slideAnimation,
             child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 8,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(
                 color: Branding.white.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
@@ -278,17 +277,17 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildTabletHeroContent(BuildContext context) {
     return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // Main Title
-                          FadeTransition(
-                            opacity: _fadeAnimation,
-                            child: SlideTransition(
-                              position: _slideAnimation,
-                              child: Text(
-                                'ŞEBO AJANS',
-                                style: AppTypography.h1.copyWith(
-                                  color: Branding.white,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        // Main Title
+        FadeTransition(
+          opacity: _fadeAnimation,
+          child: SlideTransition(
+            position: _slideAnimation,
+            child: Text(
+              'ŞEBO AJANS',
+              style: AppTypography.h1.copyWith(
+                color: Branding.white,
                 fontSize: 48,
                 fontWeight: FontWeight.w900,
                 letterSpacing: 2.5,
@@ -313,10 +312,7 @@ class _HomePageState extends ConsumerState<HomePage>
           child: SlideTransition(
             position: _slideAnimation,
             child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 10,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
                 color: Branding.white.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(16),
@@ -387,88 +383,85 @@ class _HomePageState extends ConsumerState<HomePage>
               'ŞEBO AJANS',
               style: AppTypography.h1.copyWith(
                 color: Branding.white,
-                fontSize: 72,
-                                  fontWeight: FontWeight.w900,
-                                  letterSpacing: 3.0,
-                                  shadows: [
-                                    Shadow(
+                fontSize: 56,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 2.5,
+                shadows: [
+                  Shadow(
                     color: Branding.black.withValues(alpha: 0.3),
-                                      offset: const Offset(0, 4),
-                                      blurRadius: 8,
-                                    ),
-                                  ],
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
+                    offset: const Offset(0, 3),
+                    blurRadius: 6,
+                  ),
+                ],
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+
+        const SizedBox(height: 20),
+
+        // Agency Tagline
+        FadeTransition(
+          opacity: _fadeAnimation,
+          child: SlideTransition(
+            position: _slideAnimation,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+              decoration: BoxDecoration(
+                color: Branding.white.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                  color: Branding.white.withValues(alpha: 0.3),
+                  width: 1,
+                ),
+              ),
+              child: Text(
+                'Yaratıcı Dijital Çözümler',
+                style: AppTypography.h5.copyWith(
+                  color: Branding.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 1.2,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ),
 
         const SizedBox(height: 24),
 
-                          // Agency Tagline
-                          FadeTransition(
-                            opacity: _fadeAnimation,
-                            child: SlideTransition(
-                              position: _slideAnimation,
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                horizontal: 32,
-                vertical: 12,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Branding.white.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(
-                  color: Branding.white.withValues(alpha: 0.3),
-                                    width: 1,
-                                  ),
-                                ),
-                                child: Text(
-                                  'Yaratıcı Dijital Çözümler',
-                                  style: AppTypography.h5.copyWith(
-                                    color: Branding.white,
-                  fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                    letterSpacing: 1.5,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ),
-                          ),
+        // Subtitle
+        FadeTransition(
+          opacity: _fadeAnimation,
+          child: SlideTransition(
+            position: _slideAnimation,
+            child: Text(
+              'Dijital dünyada markanızı öne çıkaran\nstratejik ve yaratıcı çözümler',
+              style: AppTypography.h4.copyWith(
+                color: Branding.white.withValues(alpha: 0.9),
+                fontSize: 22,
+                fontWeight: FontWeight.w300,
+                letterSpacing: 1.0,
+                height: 1.5,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
 
-        const SizedBox(height: 32),
+        const SizedBox(height: 28),
 
-                          // Subtitle
-                          FadeTransition(
-                            opacity: _fadeAnimation,
-                            child: SlideTransition(
-                              position: _slideAnimation,
-                              child: Text(
-                                'Dijital dünyada markanızı öne çıkaran\nstratejik ve yaratıcı çözümler',
-                                style: AppTypography.h4.copyWith(
-                                  color: Branding.white.withValues(alpha: 0.9),
-                fontSize: 28,
-                                  fontWeight: FontWeight.w300,
-                                  letterSpacing: 1.2,
-                height: 1.6,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
-
-        const SizedBox(height: 32),
-
-                          // CTA Buttons
-                          FadeTransition(
-                            opacity: _fadeAnimation,
-                            child: SlideTransition(
-                              position: _slideAnimation,
+        // CTA Buttons
+        FadeTransition(
+          opacity: _fadeAnimation,
+          child: SlideTransition(
+            position: _slideAnimation,
             child: _buildDesktopHeroButtons(context),
-                            ),
-                          ),
-                        ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -481,7 +474,7 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildMobileHeroButtons(BuildContext context) {
     return Column(
-        children: [
+      children: [
         _buildMobilePrimaryButton(context),
         const SizedBox(height: 12),
         _buildMobileSecondaryButton(context),
@@ -491,8 +484,8 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildTabletHeroButtons(BuildContext context) {
     return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
         _buildTabletPrimaryButton(context),
         const SizedBox(width: 16),
         _buildTabletSecondaryButton(context),
@@ -502,10 +495,10 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildDesktopHeroButtons(BuildContext context) {
     return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
         _buildDesktopPrimaryButton(context),
-        const SizedBox(width: 24),
+        const SizedBox(width: 20),
         _buildDesktopSecondaryButton(context),
       ],
     );
@@ -531,10 +524,7 @@ class _HomePageState extends ConsumerState<HomePage>
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 12,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
@@ -561,13 +551,8 @@ class _HomePageState extends ConsumerState<HomePage>
           color: Color(0xFFE0E0E0), // Light grey border
           width: 1.5,
         ),
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 12,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
       child: Text(
         'Projelerimizi İncele',
@@ -600,10 +585,7 @@ class _HomePageState extends ConsumerState<HomePage>
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: 14,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -630,13 +612,8 @@ class _HomePageState extends ConsumerState<HomePage>
           color: Color(0xFFE0E0E0), // Light grey border
           width: 1.8,
         ),
-        padding: const EdgeInsets.symmetric(
-          horizontal: 24,
-          vertical: 14,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       ),
       child: Text(
         'Projelerimizi İncele',
@@ -653,12 +630,12 @@ class _HomePageState extends ConsumerState<HomePage>
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xFFE0E0E0), // Light grey
-        borderRadius: BorderRadius.circular(Branding.radiusXL),
+        borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFE0E0E0).withValues(alpha: 0.3),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
+            color: const Color(0xFFE0E0E0).withValues(alpha: 0.25),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -669,19 +646,16 @@ class _HomePageState extends ConsumerState<HomePage>
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 32,
-            vertical: 16,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Branding.radiusXL),
+            borderRadius: BorderRadius.circular(16),
           ),
         ),
         child: Text(
           'Hemen İletişime Geç',
           style: AppTypography.button.copyWith(
             color: const Color(0xFF4A4A4A), // Medium grey
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -697,21 +671,16 @@ class _HomePageState extends ConsumerState<HomePage>
       style: OutlinedButton.styleFrom(
         side: const BorderSide(
           color: Color(0xFFE0E0E0), // Light grey border
-          width: 2,
+          width: 1.5,
         ),
-        padding: const EdgeInsets.symmetric(
-          horizontal: 32,
-          vertical: 16,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Branding.radiusXL),
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
       child: Text(
         'Projelerimizi İncele',
         style: AppTypography.button.copyWith(
           color: const Color(0xFFE0E0E0), // Light grey
-          fontSize: 16,
+          fontSize: 14,
           fontWeight: FontWeight.w600,
         ),
       ),
@@ -722,7 +691,7 @@ class _HomePageState extends ConsumerState<HomePage>
     return Container(
       width: double.infinity,
       padding: Responsive.responsivePadding(
-          context,
+        context,
         mobile: const EdgeInsets.all(16.0),
         tablet: const EdgeInsets.all(20.0),
         desktop: const EdgeInsets.all(24.0),
@@ -755,24 +724,24 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildMobileProjectsSection(BuildContext context) {
     return Column(
-        children: [
+      children: [
         // Section Header - Mobile'da ortalanmış ve küçük
-          Text(
-            'Hoş İşler',
-            style: AppTypography.h2.copyWith(
-              color: const Color(0xFF2C2C2C),
+        Text(
+          'Hoş İşler',
+          style: AppTypography.h2.copyWith(
+            color: const Color(0xFF2C2C2C),
             fontSize: 20,
-              fontWeight: FontWeight.w800,
-            ),
-            textAlign: TextAlign.center,
+            fontWeight: FontWeight.w800,
           ),
+          textAlign: TextAlign.center,
+        ),
 
         const SizedBox(height: 8),
 
-          Text(
-            'Sosyal Sorumluluk ve El Sanatları Platformu',
-            style: AppTypography.h4.copyWith(
-              color: const Color(0xFF6B6B6B),
+        Text(
+          'Sosyal Sorumluluk ve El Sanatları Platformu',
+          style: AppTypography.h4.copyWith(
+            color: const Color(0xFF6B6B6B),
             fontSize: 12,
             fontWeight: FontWeight.w500,
           ),
@@ -807,10 +776,10 @@ class _HomePageState extends ConsumerState<HomePage>
           style: AppTypography.h4.copyWith(
             color: const Color(0xFF6B6B6B),
             fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-            textAlign: TextAlign.center,
+            fontWeight: FontWeight.w500,
           ),
+          textAlign: TextAlign.center,
+        ),
 
         const SizedBox(height: 24),
 
@@ -891,9 +860,9 @@ class _HomePageState extends ConsumerState<HomePage>
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
-        crossAxisSpacing: 20.0,
-        mainAxisSpacing: 20.0,
-        childAspectRatio: 0.9,
+        crossAxisSpacing: 24.0,
+        mainAxisSpacing: 24.0,
+        childAspectRatio: 1.0, // Daha dengeli oran
       ),
       itemCount: projects.length,
       itemBuilder: (context, index) {
@@ -910,7 +879,7 @@ class _HomePageState extends ConsumerState<HomePage>
         'description':
             'Hatay\'da yetişen Barış ipeği ve Hatay depreminden sonra köylerde yaşayan kadın çiftçilerin tezgahlarında dokudukları ürünlerin değere döndürülmesine yardım eden sosyal sorumluluk projesi.',
         'image': 'assets/images/projects/sifa_project.jpg',
-        'category': 'Sosyal Sorumluluk',
+        'category': 'Sosyal',
         'icon': Icons.favorite,
         'color': const Color(0xFF10B981), // Yeşil
       },
@@ -1312,101 +1281,116 @@ class _HomePageState extends ConsumerState<HomePage>
 
                 const SizedBox(height: 12),
 
-                // Proje açıklaması - 3 sütun için kompakt
-                Text(
-                  project['description'] as String,
-                  style: AppTypography.bodyMedium.copyWith(
-                    color: const Color(0xFF6B6B6B),
-                    height: 1.3,
-                    fontSize: 9,
+                // Proje açıklaması - 3 sütun için kompakt, genişleyebilir
+                Expanded(
+                  child: Text(
+                    project['description'] as String,
+                    style: AppTypography.bodyMedium.copyWith(
+                      color: const Color(0xFF6B6B6B),
+                      height: 1.3,
+                      fontSize: 9,
+                    ),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
                 ),
 
                 const SizedBox(height: 12),
 
-                // Alt bilgi - 3 sütun için kompakt
+                // Alt bilgi - 3 sütun için kompakt, yan yana, kartın en altında
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            (project['color'] as Color).withValues(alpha: 0.2),
-                            (project['color'] as Color).withValues(alpha: 0.1),
+                    // Kategori butonu - solda, orta boyut
+                    Flexible(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              (project['color'] as Color).withValues(
+                                alpha: 0.2,
+                              ),
+                              (project['color'] as Color).withValues(
+                                alpha: 0.1,
+                              ),
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: (project['color'] as Color).withValues(
+                              alpha: 0.4,
+                            ),
+                            width: 1,
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              project['icon'] as IconData,
+                              color: project['color'] as Color,
+                              size: 12,
+                            ),
+                            const SizedBox(width: 6),
+                            Text(
+                              project['category'] as String,
+                              style: AppTypography.bodySmall.copyWith(
+                                color: project['color'] as Color,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 8,
+                              ),
+                            ),
                           ],
                         ),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          color: (project['color'] as Color).withValues(
-                            alpha: 0.4,
-                          ),
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            project['icon'] as IconData,
-                            color: project['color'] as Color,
-                            size: 12,
-                          ),
-                          const SizedBox(width: 6),
-                          Text(
-                            project['category'] as String,
-                            style: AppTypography.bodySmall.copyWith(
-                              color: project['color'] as Color,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 8,
-                            ),
-                          ),
-                        ],
                       ),
                     ),
-                    const Spacer(),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: (project['color'] as Color).withValues(
-                          alpha: 0.1,
+
+                    const SizedBox(width: 8),
+
+                    // Detayları Gör butonu - sağda, orta boyut
+                    Flexible(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
                         ),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
+                        decoration: BoxDecoration(
                           color: (project['color'] as Color).withValues(
-                            alpha: 0.3,
+                            alpha: 0.1,
                           ),
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'Detayları Gör',
-                            style: AppTypography.bodyMedium.copyWith(
-                              color: project['color'] as Color,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 8,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: (project['color'] as Color).withValues(
+                              alpha: 0.3,
                             ),
+                            width: 1,
                           ),
-                          const SizedBox(width: 4),
-                          Icon(
-                            Icons.arrow_forward,
-                            color: project['color'] as Color,
-                            size: 12,
-                          ),
-                        ],
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Detayları Gör',
+                              style: AppTypography.bodyMedium.copyWith(
+                                color: project['color'] as Color,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 8,
+                              ),
+                            ),
+                            const SizedBox(width: 4),
+                            Icon(
+                              Icons.arrow_forward,
+                              color: project['color'] as Color,
+                              size: 12,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -1433,7 +1417,7 @@ class _HomePageState extends ConsumerState<HomePage>
             (project['color'] as Color).withValues(alpha: 0.05),
           ],
         ),
-        borderRadius: BorderRadius.circular(Branding.radiusXL),
+        borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: (project['color'] as Color).withValues(alpha: 0.2),
           width: 1,
@@ -1441,12 +1425,12 @@ class _HomePageState extends ConsumerState<HomePage>
         boxShadow: [
           BoxShadow(
             color: (project['color'] as Color).withValues(alpha: 0.1),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
           ),
           BoxShadow(
             color: const Color(0xFF6B6B6B).withValues(alpha: 0.05),
-            blurRadius: 10,
+            blurRadius: 8,
             offset: const Offset(0, 2),
           ),
         ],
@@ -1454,20 +1438,20 @@ class _HomePageState extends ConsumerState<HomePage>
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(Branding.radiusXL),
+          borderRadius: BorderRadius.circular(20),
           onTap: () {
             // Proje detayına git
           },
           child: Padding(
-            padding: const EdgeInsets.all(Branding.spacingXL),
+            padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Proje ikonu ve başlık
+                // Proje ikonu ve başlık - Desktop için optimize
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(Branding.spacingM),
+                      padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           begin: Alignment.topLeft,
@@ -1477,57 +1461,59 @@ class _HomePageState extends ConsumerState<HomePage>
                             (project['color'] as Color).withValues(alpha: 0.1),
                           ],
                         ),
-                        borderRadius: BorderRadius.circular(Branding.radiusL),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
                         project['icon'] as IconData,
                         color: project['color'] as Color,
-                        size: 28,
+                        size: 24,
                       ),
                     ),
-                    const SizedBox(width: Branding.spacingL),
+                    const SizedBox(width: 16),
                     Expanded(
                       child: Text(
                         project['title'] as String,
                         style: AppTypography.h5.copyWith(
                           color: const Color(0xFF2C2C2C),
                           fontWeight: FontWeight.w700,
+                          fontSize: 16,
                         ),
                       ),
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: Branding.spacingM,
-                        vertical: Branding.spacingS,
+                        horizontal: 12,
+                        vertical: 6,
                       ),
                       decoration: BoxDecoration(
                         color: (project['color'] as Color).withValues(
                           alpha: 0.2,
                         ),
-                        borderRadius: BorderRadius.circular(Branding.radiusL),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
                         '2023',
                         style: AppTypography.bodySmall.copyWith(
                           color: project['color'] as Color,
                           fontWeight: FontWeight.w600,
+                          fontSize: 11,
                         ),
                       ),
                     ),
                   ],
                 ),
 
-                const SizedBox(height: Branding.spacingM),
+                const SizedBox(height: 16),
 
-                // Müşteri bilgisi
+                // Müşteri bilgisi - Desktop için optimize
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: Branding.spacingM,
-                    vertical: Branding.spacingS,
+                    horizontal: 12,
+                    vertical: 6,
                   ),
                   decoration: BoxDecoration(
                     color: (project['color'] as Color).withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(Branding.radiusL),
+                    borderRadius: BorderRadius.circular(12),
                     border: Border.all(
                       color: (project['color'] as Color).withValues(alpha: 0.3),
                       width: 1,
@@ -1539,116 +1525,133 @@ class _HomePageState extends ConsumerState<HomePage>
                       Icon(
                         Icons.business,
                         color: project['color'] as Color,
-                        size: 16,
+                        size: 14,
                       ),
-                      const SizedBox(width: Branding.spacingS),
+                      const SizedBox(width: 8),
                       Text(
                         'Müşteri: ${project['category']} Holding',
                         style: AppTypography.bodySmall.copyWith(
                           color: project['color'] as Color,
                           fontWeight: FontWeight.w600,
+                          fontSize: 10,
                         ),
                       ),
                     ],
                   ),
                 ),
 
-                const SizedBox(height: Branding.spacingL),
+                const SizedBox(height: 16),
 
-                // Proje açıklaması
+                // Proje açıklaması - Desktop için optimize
                 Expanded(
                   child: Text(
                     project['description'] as String,
                     style: AppTypography.bodyMedium.copyWith(
                       color: const Color(0xFF6B6B6B),
-                      height: 1.5,
+                      height: 1.4,
+                      fontSize: 12,
                     ),
-                    maxLines: 4,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
 
-                const SizedBox(height: Branding.spacingL),
+                const SizedBox(height: 16),
 
-                // Alt bilgi
+                // Alt bilgi - Desktop için optimize
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: Branding.spacingM,
-                        vertical: Branding.spacingS,
-                      ),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            (project['color'] as Color).withValues(alpha: 0.2),
-                            (project['color'] as Color).withValues(alpha: 0.1),
+                    // Kategori butonu - solda
+                    Flexible(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              (project['color'] as Color).withValues(
+                                alpha: 0.2,
+                              ),
+                              (project['color'] as Color).withValues(
+                                alpha: 0.1,
+                              ),
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: (project['color'] as Color).withValues(
+                              alpha: 0.4,
+                            ),
+                            width: 1,
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              project['icon'] as IconData,
+                              color: project['color'] as Color,
+                              size: 14,
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              project['category'] as String,
+                              style: AppTypography.bodySmall.copyWith(
+                                color: project['color'] as Color,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 10,
+                              ),
+                            ),
                           ],
                         ),
-                        borderRadius: BorderRadius.circular(Branding.radiusL),
-                        border: Border.all(
-                          color: (project['color'] as Color).withValues(
-                            alpha: 0.4,
-                          ),
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            project['icon'] as IconData,
-                            color: project['color'] as Color,
-                            size: 16,
-                          ),
-                          const SizedBox(width: Branding.spacingS),
-                          Text(
-                            project['category'] as String,
-                            style: AppTypography.bodySmall.copyWith(
-                              color: project['color'] as Color,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
                       ),
                     ),
-                    const Spacer(),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: Branding.spacingM,
-                        vertical: Branding.spacingS,
-                      ),
-                      decoration: BoxDecoration(
-                        color: (project['color'] as Color).withValues(
-                          alpha: 0.1,
+
+                    const SizedBox(width: 12),
+
+                    // Detayları Gör butonu - sağda
+                    Flexible(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
                         ),
-                        borderRadius: BorderRadius.circular(Branding.radiusL),
-                        border: Border.all(
+                        decoration: BoxDecoration(
                           color: (project['color'] as Color).withValues(
-                            alpha: 0.3,
+                            alpha: 0.1,
                           ),
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'Detayları Gör',
-                            style: AppTypography.bodyMedium.copyWith(
-                              color: project['color'] as Color,
-                              fontWeight: FontWeight.w600,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: (project['color'] as Color).withValues(
+                              alpha: 0.3,
                             ),
+                            width: 1,
                           ),
-                          const SizedBox(width: Branding.spacingS),
-                          Icon(
-                            Icons.arrow_forward,
-                            color: project['color'] as Color,
-                            size: 16,
-                          ),
-                        ],
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Detayları Gör',
+                              style: AppTypography.bodyMedium.copyWith(
+                                color: project['color'] as Color,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 10,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Icon(
+                              Icons.arrow_forward,
+                              color: project['color'] as Color,
+                              size: 14,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -1756,7 +1759,7 @@ class _HomePageState extends ConsumerState<HomePage>
         context,
         mobile: const EdgeInsets.all(16.0),
         tablet: const EdgeInsets.all(20.0),
-        desktop: const EdgeInsets.all(24.0),
+        desktop: const EdgeInsets.all(20.0),
       ),
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -1767,13 +1770,13 @@ class _HomePageState extends ConsumerState<HomePage>
             const Color(0xFFF8F9FA), // Çok açık gri
           ],
         ),
-        borderRadius: BorderRadius.circular(Branding.radiusXL),
+        borderRadius: BorderRadius.circular(20),
         border: Border.all(color: const Color(0xFFE5E7EB), width: 1),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF6B6B6B).withValues(alpha: 0.05),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
+            color: const Color(0xFF6B6B6B).withValues(alpha: 0.08),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -1978,88 +1981,88 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildDesktopProfileLayout(BuildContext context) {
     return Row(
-        children: [
-          // Profil Fotoğrafı
-          GestureDetector(
-            onTap: () => _showImageDialog(context),
-            child: Container(
-              width: 120,
-              height: 120,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(60),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0xFF6B6B6B).withValues(alpha: 0.2),
-                    blurRadius: 15,
-                    offset: const Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(60),
-                child: Image.asset(
-                  'assets/images/sebnemyuceer.jpg',
-                  width: 120,
-                  height: 120,
-                  fit: BoxFit.cover,
-                  filterQuality: FilterQuality.high,
-                  isAntiAlias: true,
-                cacheWidth: 240,
-                  cacheHeight: 240,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Container(
-                      color: const Color(0xFFE5E7EB),
-                      child: const Icon(
-                        Icons.person,
-                        size: 60,
-                        color: Color(0xFF9CA3AF),
-                      ),
-                    );
-                  },
+      children: [
+        // Profil Fotoğrafı
+        GestureDetector(
+          onTap: () => _showImageDialog(context),
+          child: Container(
+            width: 100,
+            height: 100,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFF6B6B6B).withValues(alpha: 0.15),
+                  blurRadius: 12,
+                  offset: const Offset(0, 4),
                 ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Image.asset(
+                'assets/images/sebnemyuceer.jpg',
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+                filterQuality: FilterQuality.high,
+                isAntiAlias: true,
+                cacheWidth: 200,
+                cacheHeight: 200,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: const Color(0xFFE5E7EB),
+                    child: const Icon(
+                      Icons.person,
+                      size: 50,
+                      color: Color(0xFF9CA3AF),
+                    ),
+                  );
+                },
               ),
             ),
           ),
+        ),
 
-        const SizedBox(width: 24),
+        const SizedBox(width: 20),
 
-          // Profil Bilgileri
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Şebnem Yüceer',
-                  style: AppTypography.h3.copyWith(
-                    color: const Color(0xFF2C2C2C),
-                    fontWeight: FontWeight.w700,
-                  fontSize: 28,
+        // Profil Bilgileri
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Şebnem Yüceer',
+                style: AppTypography.h3.copyWith(
+                  color: const Color(0xFF2C2C2C),
+                  fontWeight: FontWeight.w700,
+                  fontSize: 24,
                 ),
               ),
 
-              const SizedBox(height: 8),
+              const SizedBox(height: 6),
 
-                Text(
-                  'Lüks Marka Lideri & Ajans Kurucusu',
-                  style: AppTypography.h5.copyWith(
-                    color: const Color(0xFF6B6B6B),
-                    fontWeight: FontWeight.w500,
-                  fontSize: 18,
+              Text(
+                'Lüks Marka Lideri & Ajans Kurucusu',
+                style: AppTypography.h5.copyWith(
+                  color: const Color(0xFF6B6B6B),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14,
+                ),
+              ),
+
+              const SizedBox(height: 16),
+
+              Text(
+                'Louis Vuitton, Gucci ve Bulgari gibi dünya devi lüks markaların Türkiye Genel Müdürlüğü yapmış, Harvard Business School mezunu deneyimli bir lider.',
+                style: AppTypography.bodyLarge.copyWith(
+                  color: const Color(0xFF4A4A4A),
+                  fontSize: 14,
+                  height: 1.5,
                 ),
               ),
 
               const SizedBox(height: 20),
-
-                Text(
-                  'Louis Vuitton, Gucci ve Bulgari gibi dünya devi lüks markaların Türkiye Genel Müdürlüğü yapmış, Harvard Business School mezunu deneyimli bir lider.',
-                  style: AppTypography.bodyLarge.copyWith(
-                    color: const Color(0xFF4A4A4A),
-                  fontSize: 16,
-                  height: 1.6,
-                ),
-              ),
-
-              const SizedBox(height: 24),
 
               _buildLinkedInButton(context, isMobile: false),
             ],
@@ -2071,59 +2074,59 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildLinkedInButton(BuildContext context, {required bool isMobile}) {
     return MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  onEnter: (_) => setState(() => _isLinkedInHovered = true),
-                  onExit: (_) => setState(() => _isLinkedInHovered = false),
-                  child: GestureDetector(
-                    onTap: () => _launchLinkedIn(),
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _isLinkedInHovered = true),
+      onExit: (_) => setState(() => _isLinkedInHovered = false),
+      child: GestureDetector(
+        onTap: () => _launchLinkedIn(),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
           width: isMobile ? double.infinity : null,
           padding: EdgeInsets.symmetric(
             horizontal: isMobile ? 16.0 : 12.0,
             vertical: isMobile ? 12.0 : 8.0,
-                      ),
-                      decoration: BoxDecoration(
-                        color: _isLinkedInHovered
+          ),
+          decoration: BoxDecoration(
+            color: _isLinkedInHovered
                 ? const Color(0xFF005885)
                 : const Color(0xFF0077B5),
-                        borderRadius: BorderRadius.circular(Branding.radiusL),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(
-                              0xFF0077B5,
-                            ).withValues(alpha: _isLinkedInHovered ? 0.4 : 0.2),
-                            blurRadius: _isLinkedInHovered ? 12 : 8,
-                            offset: Offset(0, _isLinkedInHovered ? 6 : 4),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(
+                  0xFF0077B5,
+                ).withValues(alpha: _isLinkedInHovered ? 0.3 : 0.15),
+                blurRadius: _isLinkedInHovered ? 10 : 6,
+                offset: Offset(0, _isLinkedInHovered ? 4 : 2),
+              ),
+            ],
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: isMobile
                 ? MainAxisAlignment.center
                 : MainAxisAlignment.start,
-                        children: [
+            children: [
               Icon(
-                            Icons.business,
-                            color: Colors.white,
-                size: isMobile ? 14 : 16,
-                          ),
-              SizedBox(width: isMobile ? 8 : 8),
+                Icons.business,
+                color: Colors.white,
+                size: isMobile ? 14 : 14,
+              ),
+              SizedBox(width: isMobile ? 8 : 6),
               Flexible(
                 child: Text(
-                            'LinkedIn Profili',
-                            style: AppTypography.bodyMedium.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                    fontSize: isMobile ? 12 : 14,
-                            ),
-                  overflow: TextOverflow.ellipsis,
+                  'LinkedIn Profili',
+                  style: AppTypography.bodyMedium.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: isMobile ? 12 : 12,
                   ),
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
+        ),
       ),
     );
   }
@@ -2134,7 +2137,7 @@ class _HomePageState extends ConsumerState<HomePage>
         context,
         mobile: const EdgeInsets.all(16.0),
         tablet: const EdgeInsets.all(20.0),
-        desktop: const EdgeInsets.all(24.0),
+        desktop: const EdgeInsets.all(20.0),
       ),
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -2145,13 +2148,13 @@ class _HomePageState extends ConsumerState<HomePage>
             const Color(0xFFF8F9FA), // Çok açık gri
           ],
         ),
-        borderRadius: BorderRadius.circular(Branding.radiusXL),
+        borderRadius: BorderRadius.circular(20),
         border: Border.all(color: const Color(0xFFE5E7EB), width: 1),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF6B6B6B).withValues(alpha: 0.05),
-            blurRadius: 15,
-            offset: const Offset(0, 5),
+            color: const Color(0xFF6B6B6B).withValues(alpha: 0.08),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -2227,50 +2230,50 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildTabletAgencyStory(BuildContext context) {
     return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Şebo Ajans Hikayesi',
-            style: AppTypography.h3.copyWith(
-              color: const Color(0xFF2C2C2C),
-              fontWeight: FontWeight.w700,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Şebo Ajans Hikayesi',
+          style: AppTypography.h3.copyWith(
+            color: const Color(0xFF2C2C2C),
+            fontWeight: FontWeight.w700,
             fontSize: 22,
-            ),
           ),
+        ),
 
         const SizedBox(height: 16),
 
-          Text(
-            'Kimim, Ne Yapıyoruz, Neden Çalışıyoruz',
-            style: AppTypography.h5.copyWith(
-              color: const Color(0xFF6B6B6B),
-              fontWeight: FontWeight.w500,
+        Text(
+          'Kimim, Ne Yapıyoruz, Neden Çalışıyoruz',
+          style: AppTypography.h5.copyWith(
+            color: const Color(0xFF6B6B6B),
+            fontWeight: FontWeight.w500,
             fontSize: 14,
-            ),
           ),
+        ),
 
         const SizedBox(height: 20),
 
-          Text(
-            '20+ yıllık lüks perakende deneyimi ile Louis Vuitton, Gucci ve Bulgari gibi dünya devi markaların Türkiye pazarında büyümesine liderlik ettim. Harvard Business School eğitimi ve küresel marka yönetimi deneyimimle, Şebo Ajans\'ı kurarak bu bilgi birikimini dijital dünyaya taşıyorum.',
-            style: AppTypography.bodyLarge.copyWith(
-              color: const Color(0xFF4A4A4A),
-              height: 1.6,
+        Text(
+          '20+ yıllık lüks perakende deneyimi ile Louis Vuitton, Gucci ve Bulgari gibi dünya devi markaların Türkiye pazarında büyümesine liderlik ettim. Harvard Business School eğitimi ve küresel marka yönetimi deneyimimle, Şebo Ajans\'ı kurarak bu bilgi birikimini dijital dünyaya taşıyorum.',
+          style: AppTypography.bodyLarge.copyWith(
+            color: const Color(0xFF4A4A4A),
+            height: 1.6,
             fontSize: 13,
-            ),
           ),
+        ),
 
         const SizedBox(height: 20),
 
-          Text(
-            'Türkiye Tanıtım Grubu İcra Kurulu Başkanlığı ve Comité Colbert Türkiye Yılı Başkanlığı deneyimlerimle, markaların küresel pazarlarda güçlü konumlanması için stratejik yaklaşımlar geliştiriyoruz. Her proje, bir markanın hikayesini en etkili şekilde anlatma fırsatıdır.',
-            style: AppTypography.bodyMedium.copyWith(
-              color: const Color(0xFF6B6B6B),
-              height: 1.6,
+        Text(
+          'Türkiye Tanıtım Grubu İcra Kurulu Başkanlığı ve Comité Colbert Türkiye Yılı Başkanlığı deneyimlerimle, markaların küresel pazarlarda güçlü konumlanması için stratejik yaklaşımlar geliştiriyoruz. Her proje, bir markanın hikayesini en etkili şekilde anlatma fırsatıdır.',
+          style: AppTypography.bodyMedium.copyWith(
+            color: const Color(0xFF6B6B6B),
+            height: 1.6,
             fontSize: 12,
-            ),
           ),
-        ],
+        ),
+      ],
     );
   }
 
@@ -2283,40 +2286,40 @@ class _HomePageState extends ConsumerState<HomePage>
           style: AppTypography.h3.copyWith(
             color: const Color(0xFF2C2C2C),
             fontWeight: FontWeight.w700,
-            fontSize: 28,
+            fontSize: 24,
           ),
         ),
 
-        const SizedBox(height: 20),
+        const SizedBox(height: 16),
 
         Text(
           'Kimim, Ne Yapıyoruz, Neden Çalışıyoruz',
           style: AppTypography.h5.copyWith(
             color: const Color(0xFF6B6B6B),
             fontWeight: FontWeight.w500,
-            fontSize: 18,
+            fontSize: 14,
           ),
         ),
 
-        const SizedBox(height: 24),
+        const SizedBox(height: 20),
 
         Text(
           '20+ yıllık lüks perakende deneyimi ile Louis Vuitton, Gucci ve Bulgari gibi dünya devi markaların Türkiye pazarında büyümesine liderlik ettim. Harvard Business School eğitimi ve küresel marka yönetimi deneyimimle, Şebo Ajans\'ı kurarak bu bilgi birikimini dijital dünyaya taşıyorum.',
           style: AppTypography.bodyLarge.copyWith(
             color: const Color(0xFF4A4A4A),
-            height: 1.6,
-            fontSize: 16,
+            height: 1.5,
+            fontSize: 14,
           ),
         ),
 
-        const SizedBox(height: 24),
+        const SizedBox(height: 20),
 
         Text(
           'Türkiye Tanıtım Grubu İcra Kurulu Başkanlığı ve Comité Colbert Türkiye Yılı Başkanlığı deneyimlerimle, markaların küresel pazarlarda güçlü konumlanması için stratejik yaklaşımlar geliştiriyoruz. Her proje, bir markanın hikayesini en etkili şekilde anlatma fırsatıdır.',
           style: AppTypography.bodyMedium.copyWith(
             color: const Color(0xFF6B6B6B),
-            height: 1.6,
-            fontSize: 14,
+            height: 1.5,
+            fontSize: 12,
           ),
         ),
       ],
@@ -2329,16 +2332,16 @@ class _HomePageState extends ConsumerState<HomePage>
         context,
         mobile: const EdgeInsets.all(16.0),
         tablet: const EdgeInsets.all(20.0),
-        desktop: const EdgeInsets.all(24.0),
+        desktop: const EdgeInsets.all(20.0),
       ),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(Branding.radiusXL),
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
             color: const Color(0xFF6B6B6B).withValues(alpha: 0.08),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -2353,17 +2356,17 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildMobileAboutStats(BuildContext context) {
     return Column(
-        children: [
+      children: [
         // Başlık - Mobile'da ortalanmış ve küçük
-          Text(
-            'Neden Bizi Seçmelisiniz?',
-            style: AppTypography.h3.copyWith(
-              color: const Color(0xFF2C2C2C),
-              fontWeight: FontWeight.w700,
+        Text(
+          'Neden Bizi Seçmelisiniz?',
+          style: AppTypography.h3.copyWith(
+            color: const Color(0xFF2C2C2C),
+            fontWeight: FontWeight.w700,
             fontSize: 18,
-            ),
-            textAlign: TextAlign.center,
           ),
+          textAlign: TextAlign.center,
+        ),
 
         const SizedBox(height: 20),
 
@@ -2401,12 +2404,12 @@ class _HomePageState extends ConsumerState<HomePage>
           style: AppTypography.h3.copyWith(
             color: const Color(0xFF2C2C2C),
             fontWeight: FontWeight.w700,
-            fontSize: 28,
+            fontSize: 24,
           ),
           textAlign: TextAlign.center,
         ),
 
-        const SizedBox(height: 32),
+        const SizedBox(height: 24),
 
         _buildDesktopFeaturesList(context),
       ],
@@ -2512,26 +2515,26 @@ class _HomePageState extends ConsumerState<HomePage>
     return Column(
       children: features.map((feature) {
         return Padding(
-          padding: const EdgeInsets.only(bottom: 20.0),
+          padding: const EdgeInsets.only(bottom: 16.0),
           child: Row(
             children: [
               Container(
-                width: 8,
-                height: 8,
+                width: 6,
+                height: 6,
                 decoration: BoxDecoration(
                   color: const Color(0xFF3B82F6),
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(3),
                 ),
               ),
-              const SizedBox(width: 20),
+              const SizedBox(width: 16),
               Expanded(
                 child: Text(
                   feature,
                   style: AppTypography.bodyLarge.copyWith(
                     color: const Color(0xFF2C2C2C),
                     fontWeight: FontWeight.w500,
-                    fontSize: 15,
-                    height: 1.6,
+                    fontSize: 13,
+                    height: 1.4,
                   ),
                 ),
               ),
@@ -2546,7 +2549,7 @@ class _HomePageState extends ConsumerState<HomePage>
     return Container(
       width: double.infinity,
       padding: Responsive.responsivePadding(
-          context,
+        context,
         mobile: const EdgeInsets.all(16.0),
         tablet: const EdgeInsets.all(20.0),
         desktop: const EdgeInsets.all(24.0),
@@ -2579,24 +2582,24 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildMobileConferencesSection(BuildContext context) {
     return Column(
-        children: [
+      children: [
         // Başlık - Mobile'da ortalanmış ve küçük
-          Text(
-            'Yurt Dışı Konferanslar & Etkinlikler',
-            style: AppTypography.h2.copyWith(
-              color: const Color(0xFF2C2C2C),
+        Text(
+          'Yurt Dışı Konferanslar & Etkinlikler',
+          style: AppTypography.h2.copyWith(
+            color: const Color(0xFF2C2C2C),
             fontSize: 18,
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.center,
+            fontWeight: FontWeight.w700,
           ),
+          textAlign: TextAlign.center,
+        ),
 
         const SizedBox(height: 8),
 
-          Text(
-            'Uluslararası platformlarda yer aldığımız etkinlikler',
-            style: AppTypography.bodyLarge.copyWith(
-              color: const Color(0xFF6B6B6B),
+        Text(
+          'Uluslararası platformlarda yer aldığımız etkinlikler',
+          style: AppTypography.bodyLarge.copyWith(
+            color: const Color(0xFF6B6B6B),
             fontSize: 11,
             fontWeight: FontWeight.w400,
           ),
@@ -2636,10 +2639,10 @@ class _HomePageState extends ConsumerState<HomePage>
           style: AppTypography.bodyLarge.copyWith(
             color: const Color(0xFF6B6B6B),
             fontSize: 13,
-              fontWeight: FontWeight.w400,
-            ),
-            textAlign: TextAlign.center,
+            fontWeight: FontWeight.w400,
           ),
+          textAlign: TextAlign.center,
+        ),
 
         const SizedBox(height: 24),
 
@@ -2659,29 +2662,29 @@ class _HomePageState extends ConsumerState<HomePage>
           'Yurt Dışı Konferanslar & Etkinlikler',
           style: AppTypography.h2.copyWith(
             color: const Color(0xFF2C2C2C),
-            fontSize: 32,
+            fontSize: 28,
             fontWeight: FontWeight.w700,
           ),
           textAlign: TextAlign.center,
         ),
 
-        const SizedBox(height: 16),
+        const SizedBox(height: 12),
 
         Text(
           'Uluslararası platformlarda yer aldığımız etkinlikler',
           style: AppTypography.bodyLarge.copyWith(
             color: const Color(0xFF6B6B6B),
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: FontWeight.w400,
           ),
           textAlign: TextAlign.center,
         ),
 
-        const SizedBox(height: 32),
+        const SizedBox(height: 24),
 
         _buildDesktopConferencesGrid(context),
 
-        const SizedBox(height: 32),
+        const SizedBox(height: 24),
 
         _buildDesktopMoreConferencesButton(context),
       ],
@@ -2723,12 +2726,12 @@ class _HomePageState extends ConsumerState<HomePage>
     final conferences = _getConferencesData();
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 32.0),
+      padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Row(
         children: conferences.map((conference) {
           return Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: _buildDesktopConferenceCard(context, conference),
             ),
           );
@@ -2779,7 +2782,7 @@ class _HomePageState extends ConsumerState<HomePage>
           ),
         ],
       ),
-            child: Padding(
+      child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -2801,7 +2804,7 @@ class _HomePageState extends ConsumerState<HomePage>
                   ),
                 ),
                 Container(
-              padding: const EdgeInsets.symmetric(
+                  padding: const EdgeInsets.symmetric(
                     horizontal: 8,
                     vertical: 4,
                   ),
@@ -3010,21 +3013,21 @@ class _HomePageState extends ConsumerState<HomePage>
     Map<String, dynamic> conference,
   ) {
     return Container(
-      constraints: const BoxConstraints(minHeight: 280),
+      constraints: const BoxConstraints(minHeight: 240),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(Branding.radiusL),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(color: const Color(0xFFE5E7EB), width: 1),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF6B6B6B).withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 3),
+            color: const Color(0xFF6B6B6B).withValues(alpha: 0.08),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(Branding.spacingXL),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -3038,6 +3041,7 @@ class _HomePageState extends ConsumerState<HomePage>
                     style: AppTypography.h6.copyWith(
                       color: const Color(0xFF2C2C2C),
                       fontWeight: FontWeight.w600,
+                      fontSize: 16,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -3045,25 +3049,26 @@ class _HomePageState extends ConsumerState<HomePage>
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: Branding.spacingS,
+                    horizontal: 8,
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
                     color: const Color(0xFFF3F4F6),
-                    borderRadius: BorderRadius.circular(Branding.radiusM),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
                     conference['type'] as String,
                     style: AppTypography.bodySmall.copyWith(
                       color: const Color(0xFF6B6B6B),
                       fontWeight: FontWeight.w500,
+                      fontSize: 10,
                     ),
                   ),
                 ),
               ],
             ),
 
-            const SizedBox(height: Branding.spacingL),
+            const SizedBox(height: 16),
 
             // Tarih ve lokasyon
             Row(
@@ -3071,53 +3076,54 @@ class _HomePageState extends ConsumerState<HomePage>
                 Icon(
                   Icons.location_on,
                   color: const Color(0xFF6B6B6B),
-                  size: 16,
+                  size: 14,
                 ),
-                const SizedBox(width: Branding.spacingS),
+                const SizedBox(width: 6),
                 Expanded(
                   child: Text(
                     conference['location'] as String,
                     style: AppTypography.bodySmall.copyWith(
                       color: const Color(0xFF6B6B6B),
+                      fontSize: 11,
                     ),
                   ),
                 ),
               ],
             ),
 
-            const SizedBox(height: Branding.spacingS),
+            const SizedBox(height: 8),
 
             Row(
               children: [
                 Icon(
                   Icons.calendar_today,
                   color: const Color(0xFF6B6B6B),
-                  size: 16,
+                  size: 14,
                 ),
-                const SizedBox(width: Branding.spacingS),
+                const SizedBox(width: 6),
                 Text(
                   conference['date'] as String,
                   style: AppTypography.bodySmall.copyWith(
                     color: const Color(0xFF6B6B6B),
+                    fontSize: 11,
                   ),
                 ),
               ],
             ),
 
-            const SizedBox(height: Branding.spacingL),
+            const SizedBox(height: 16),
 
             // Açıklama
             Text(
               conference['description'] as String,
               style: AppTypography.bodyMedium.copyWith(
                 color: const Color(0xFF6B6B6B),
-                height: 1.5,
+                height: 1.4,
+                fontSize: 12,
               ),
-              maxLines: 4,
+              maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
-
-            const SizedBox(height: Branding.spacingM),
           ],
         ),
       ),
@@ -3228,12 +3234,12 @@ class _HomePageState extends ConsumerState<HomePage>
           end: Alignment.bottomRight,
           colors: [const Color(0xFF6B6B6B), const Color(0xFF4A4A4A)],
         ),
-        borderRadius: BorderRadius.circular(Branding.radiusL),
+        borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF6B6B6B).withValues(alpha: 0.2),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
+            color: const Color(0xFF6B6B6B).withValues(alpha: 0.15),
+            blurRadius: 8,
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -3244,9 +3250,9 @@ class _HomePageState extends ConsumerState<HomePage>
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Branding.radiusL),
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
         child: Row(
@@ -3256,12 +3262,12 @@ class _HomePageState extends ConsumerState<HomePage>
               'Tüm Etkinlikleri Gör',
               style: AppTypography.button.copyWith(
                 color: Colors.white,
-                fontSize: 14,
+                fontSize: 12,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            const SizedBox(width: 8),
-            Icon(Icons.arrow_forward, color: Colors.white, size: 16),
+            const SizedBox(width: 6),
+            Icon(Icons.arrow_forward, color: Colors.white, size: 14),
           ],
         ),
       ),
@@ -3423,7 +3429,7 @@ class _FooterWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: Responsive.responsivePadding(
-          context,
+        context,
         mobile: const EdgeInsets.all(16.0),
         tablet: const EdgeInsets.all(20.0),
         desktop: const EdgeInsets.all(24.0),
@@ -3480,13 +3486,13 @@ class _FooterWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(flex: 2, child: _buildFooterLogo()),
-            const SizedBox(width: Branding.spacingXXL),
+            const SizedBox(width: 32),
             Expanded(flex: 1, child: _buildFooterLinks()),
-            const SizedBox(width: Branding.spacingXXL),
+            const SizedBox(width: 32),
             Expanded(flex: 1, child: _buildFooterContact()),
           ],
         ),
-        const SizedBox(height: Branding.spacingXXL),
+        const SizedBox(height: 24),
         _buildFooterBottom(),
       ],
     );
@@ -3672,34 +3678,34 @@ class _FooterWidget extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-                vertical: 8.0,
+                horizontal: 16.0,
+                vertical: 6.0,
               ),
               decoration: BoxDecoration(
                 color: const Color(0xFFE0E0E0),
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(16.0),
               ),
               child: const Text(
                 'ŞEBO',
                 style: TextStyle(
                   color: Color(0xFF4A4A4A),
                   fontWeight: FontWeight.w900,
-                  fontSize: 18,
+                  fontSize: 16,
                   letterSpacing: 0.5,
                 ),
               ),
             ),
-            const SizedBox(width: 12.0),
+            const SizedBox(width: 10.0),
             Container(
               padding: const EdgeInsets.symmetric(
-                horizontal: 8.0,
+                horizontal: 6.0,
                 vertical: 2.0,
               ),
               decoration: BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
                     color: const Color(0xFFE0E0E0),
-                    width: 1.5,
+                    width: 1.0,
                   ),
                 ),
               ),
@@ -3708,8 +3714,8 @@ class _FooterWidget extends StatelessWidget {
                 style: TextStyle(
                   color: Color(0xFFE0E0E0),
                   fontWeight: FontWeight.w300,
-                  fontSize: 12,
-                  letterSpacing: 1.2,
+                  fontSize: 10,
+                  letterSpacing: 1.0,
                   fontStyle: FontStyle.italic,
                 ),
               ),
@@ -3717,28 +3723,29 @@ class _FooterWidget extends StatelessWidget {
           ],
         ),
 
-        const SizedBox(height: Branding.spacingL),
+        const SizedBox(height: 16),
 
         // Açıklama
         Text(
           'Yaratıcı ve yenilikçi çözümler sunan premium dijital ajans olarak, müşterilerimize en iyi hizmeti sunmayı hedefliyoruz.',
           style: AppTypography.bodyMedium.copyWith(
             color: const Color(0xFFB0B0B0),
-            height: 1.6,
+            height: 1.4,
+            fontSize: 12,
           ),
         ),
 
-        const SizedBox(height: Branding.spacingL),
+        const SizedBox(height: 16),
 
         // Sosyal medya
         Row(
           children: [
             _buildSocialIcon(Icons.facebook, 'https://facebook.com'),
-            const SizedBox(width: Branding.spacingM),
+            const SizedBox(width: 12),
             _buildSocialIcon(Icons.camera_alt, 'https://instagram.com'),
-            const SizedBox(width: Branding.spacingM),
+            const SizedBox(width: 12),
             _buildSocialIcon(Icons.business, 'https://linkedin.com'),
-            const SizedBox(width: Branding.spacingM),
+            const SizedBox(width: 12),
             _buildSocialIcon(Icons.chat, 'https://twitter.com'),
           ],
         ),
@@ -3770,12 +3777,12 @@ class _FooterWidget extends StatelessWidget {
 
   Widget _buildSocialIcon(IconData icon, String url) {
     return Container(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(6.0),
       decoration: BoxDecoration(
         color: const Color(0xFF2A2A2A),
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(6.0),
       ),
-      child: Icon(icon, color: const Color(0xFFE0E0E0), size: 20),
+      child: Icon(icon, color: const Color(0xFFE0E0E0), size: 16),
     );
   }
 
@@ -3830,9 +3837,10 @@ class _FooterWidget extends StatelessWidget {
           style: AppTypography.h6.copyWith(
             color: const Color(0xFFE0E0E0),
             fontWeight: FontWeight.w600,
+            fontSize: 14,
           ),
         ),
-        const SizedBox(height: Branding.spacingL),
+        const SizedBox(height: 16),
         _buildFooterLink('Ana Sayfa'),
         _buildFooterLink('Hakkımızda'),
         _buildFooterLink('Projelerimiz'),
@@ -3870,11 +3878,12 @@ class _FooterWidget extends StatelessWidget {
 
   Widget _buildFooterLink(String text) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: Branding.spacingM),
+      padding: const EdgeInsets.only(bottom: 12),
       child: Text(
         text,
         style: AppTypography.bodyMedium.copyWith(
           color: const Color(0xFFB0B0B0),
+          fontSize: 12,
         ),
       ),
     );
@@ -3929,9 +3938,10 @@ class _FooterWidget extends StatelessWidget {
           style: AppTypography.h6.copyWith(
             color: const Color(0xFFE0E0E0),
             fontWeight: FontWeight.w600,
+            fontSize: 14,
           ),
         ),
-        const SizedBox(height: Branding.spacingL),
+        const SizedBox(height: 16),
         _buildContactItem(Icons.email, 'info@ajanssebo.com'),
         _buildContactItem(Icons.phone, '+90 (212) 123 45 67'),
         _buildContactItem(Icons.location_on, 'İstanbul, Türkiye'),
@@ -3981,15 +3991,16 @@ class _FooterWidget extends StatelessWidget {
 
   Widget _buildContactItem(IconData icon, String text) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: Branding.spacingM),
+      padding: const EdgeInsets.only(bottom: 12),
       child: Row(
         children: [
-          Icon(icon, color: const Color(0xFFB0B0B0), size: 16),
-          const SizedBox(width: Branding.spacingS),
+          Icon(icon, color: const Color(0xFFB0B0B0), size: 14),
+          const SizedBox(width: 8),
           Text(
             text,
             style: AppTypography.bodyMedium.copyWith(
               color: const Color(0xFFB0B0B0),
+              fontSize: 12,
             ),
           ),
         ],
@@ -4057,7 +4068,7 @@ class _FooterWidget extends StatelessWidget {
 
   Widget _buildFooterBottom() {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: Branding.spacingL),
+      padding: const EdgeInsets.symmetric(vertical: 16),
       decoration: const BoxDecoration(
         border: Border(top: BorderSide(color: Color(0xFF2A2A2A), width: 1)),
       ),
@@ -4068,12 +4079,14 @@ class _FooterWidget extends StatelessWidget {
             '© 2024 Şebo Agence. Tüm hakları saklıdır.',
             style: AppTypography.bodySmall.copyWith(
               color: const Color(0xFF808080),
+              fontSize: 10,
             ),
           ),
           Text(
             'Geliştirildi ❤️ ile',
             style: AppTypography.bodySmall.copyWith(
               color: const Color(0xFF808080),
+              fontSize: 10,
             ),
           ),
         ],

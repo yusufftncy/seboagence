@@ -152,7 +152,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
         mediumMobile: 50.0,
         largeMobile: 52.0,
         tablet: 60.0,
-        desktop: 70.0,
+        desktop: 64.0, // Reduced from 70.0
       );
     }
 
@@ -162,8 +162,8 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       smallMobile: 52.0, // iPhone SE, küçük telefonlar
       mediumMobile: 56.0, // iPhone 12/13/14 standard
       largeMobile: 60.0, // iPhone Plus, büyük telefonlar
-      tablet: 70.0, // Tablet
-      desktop: 80.0, // Desktop
+      tablet: 64.0, // Reduced from 70.0
+      desktop: 72.0, // Reduced from 80.0
     );
   }
 
@@ -206,7 +206,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
           mediumMobile: 8.0,
           largeMobile: 10.0,
           tablet: 12.0,
-          desktop: 16.0,
+          desktop: 16.0, // Reduced from 16.0
         ),
         vertical: Responsive.mobileResponsiveValue(
           context,
@@ -214,7 +214,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
           mediumMobile: 3.0,
           largeMobile: 4.0,
           tablet: 6.0,
-          desktop: 8.0,
+          desktop: 8.0, // Reduced from 8.0
         ),
       );
     }
@@ -226,16 +226,16 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
         smallMobile: 8.0, // iPhone SE için minimal
         mediumMobile: 12.0, // iPhone 12/13/14 standard
         largeMobile: 16.0, // iPhone Plus için daha fazla
-        tablet: 20.0, // Tablet
-        desktop: 24.0, // Desktop
+        tablet: 18.0, // Reduced from 20.0
+        desktop: 20.0, // Reduced from 24.0
       ),
       vertical: Responsive.mobileResponsiveValue(
         context,
         smallMobile: 4.0, // iPhone SE için minimal
         mediumMobile: 6.0, // iPhone 12/13/14 standard
         largeMobile: 8.0, // iPhone Plus için daha fazla
-        tablet: 10.0, // Tablet
-        desktop: 12.0, // Desktop
+        tablet: 8.0, // Reduced from 10.0
+        desktop: 10.0, // Reduced from 12.0
       ),
     );
   }
@@ -402,11 +402,11 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
 
   double _getDesktopSpacing(double width) {
     // Çok küçük spacing'ler ile overflow'u önle
-    if (width > 1600) return 16.0; // Ultra-wide
-    if (width > 1400) return 12.0; // Large desktop
+    if (width > 1600) return 12.0; // Reduced from 16.0
+    if (width > 1400) return 10.0; // Reduced from 12.0
     if (width > 1200) return 8.0; // Desktop
-    if (width > 1000) return 4.0; // Small desktop
-    return 2.0; // Tablet
+    if (width > 1000) return 6.0; // Increased from 4.0
+    return 4.0; // Increased from 2.0
   }
 
   Widget _buildLargeDesktopNavigation(double spacing) {
@@ -466,16 +466,22 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
 
   Widget _buildNavItem(String text, bool isActive, IconData icon) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 1.0), // Reduced margin
+      margin: const EdgeInsets.symmetric(
+        horizontal: 0.5,
+      ), // Further reduced margin
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: () => _handleNavigationWithHaptic(text),
           borderRadius: BorderRadius.circular(
-            8.0,
+            6.0,
           ), // Smaller radius for minimal look
-          hoverColor: Colors.white.withValues(alpha: 0.1),
-          focusColor: Colors.white.withValues(alpha: 0.15),
+          hoverColor: Colors.white.withValues(
+            alpha: 0.08,
+          ), // Reduced hover effect
+          focusColor: Colors.white.withValues(
+            alpha: 0.12,
+          ), // Reduced focus effect
           child: Focus(
             onKeyEvent: (node, event) {
               if (event is KeyDownEvent &&
@@ -492,18 +498,18 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
                   context,
                   mobile: 4.0, // Even smaller padding for mobile
                   tablet: 6.0,
-                  desktop: 8.0,
+                  desktop: 6.0, // Reduced from 8.0
                 ),
                 vertical: Responsive.responsiveValue(
                   context,
                   mobile: 6.0, // Smaller vertical padding
                   tablet: 8.0,
-                  desktop: 10.0,
+                  desktop: 8.0, // Reduced from 10.0
                 ),
               ),
               decoration: BoxDecoration(
                 gradient: _buildNavItemGradient(isActive),
-                borderRadius: BorderRadius.circular(8.0), // Smaller radius
+                borderRadius: BorderRadius.circular(6.0), // Smaller radius
                 border: isActive ? _buildActiveBorder() : null,
                 boxShadow: isActive ? _buildActiveShadow() : null,
               ),
@@ -517,7 +523,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
                       context,
                       mobile: 12, // Slightly larger for better visibility
                       tablet: 13,
-                      desktop: 14,
+                      desktop: 12, // Reduced from 14
                     ),
                   ),
                   SizedBox(
@@ -525,7 +531,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
                       context,
                       mobile: 3, // Slightly larger spacing
                       tablet: 4,
-                      desktop: 5,
+                      desktop: 4, // Reduced from 5
                     ),
                   ),
                   Text(
@@ -537,9 +543,9 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
                         context,
                         mobile: 11, // Slightly larger for better readability
                         tablet: 12,
-                        desktop: 13,
+                        desktop: 12, // Reduced from 13
                       ),
-                      letterSpacing: 0.3, // Reduced letter spacing
+                      letterSpacing: 0.2, // Further reduced letter spacing
                     ),
                   ),
                 ],
@@ -554,9 +560,9 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
   List<BoxShadow> _buildActiveShadow() {
     return [
       BoxShadow(
-        color: Colors.white.withValues(alpha: 0.2),
-        blurRadius: 8,
-        offset: const Offset(0, 2),
+        color: Colors.white.withValues(alpha: 0.15), // Reduced opacity
+        blurRadius: 6, // Reduced blur
+        offset: const Offset(0, 1), // Reduced offset
       ),
     ];
   }
@@ -566,13 +572,16 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
       colors: isActive
-          ? const [Color(0x26FFFFFF), Color(0x40FFFFFF)]
-          : const [Color(0x0DFFFFFF), Color(0x26FFFFFF)],
+          ? const [Color(0x1AFFFFFF), Color(0x26FFFFFF)] // Reduced opacity
+          : const [Color(0x08FFFFFF), Color(0x1AFFFFFF)], // Reduced opacity
     );
   }
 
   Border _buildActiveBorder() {
-    return Border.all(color: Colors.white.withValues(alpha: 0.3), width: 1);
+    return Border.all(
+      color: Colors.white.withValues(alpha: 0.2),
+      width: 0.8,
+    ); // Reduced opacity and width
   }
 
   Widget _buildProjectsDropdown() {
@@ -604,8 +613,8 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
     return PopupMenuButton<String>(
       offset: const Offset(0, 50),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ), // Smaller radius
+        borderRadius: BorderRadius.circular(8.0), // Smaller radius
+      ),
       onOpened: () => HapticFeedback.lightImpact(),
       itemBuilder: (context) => items.cast<PopupMenuEntry<String>>(),
       onSelected: onSelected,
@@ -616,13 +625,13 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
             context,
             mobile: 4, // Even smaller padding for mobile
             tablet: 6,
-            desktop: 8,
+            desktop: 6, // Reduced from 8
           ),
           vertical: Responsive.responsiveValue(
             context,
             mobile: 6, // Smaller vertical padding
             tablet: 8,
-            desktop: 10,
+            desktop: 8, // Reduced from 10
           ),
         ),
         decoration: BoxDecoration(
@@ -630,11 +639,11 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Color(0x0DFFFFFF),
+              Color(0x08FFFFFF), // Reduced opacity
               Color(0x1AFFFFFF),
-            ], // More subtle gradient
+            ],
           ),
-          borderRadius: BorderRadius.circular(8.0), // Smaller radius
+          borderRadius: BorderRadius.circular(6.0), // Smaller radius
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -646,7 +655,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
                 context,
                 mobile: 12, // Slightly larger for better visibility
                 tablet: 13,
-                desktop: 14,
+                desktop: 12, // Reduced from 14
               ),
             ),
             SizedBox(
@@ -654,7 +663,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
                 context,
                 mobile: 3, // Slightly larger spacing
                 tablet: 4,
-                desktop: 5,
+                desktop: 4, // Reduced from 5
               ),
             ),
             Text(
@@ -666,9 +675,9 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
                   context,
                   mobile: 11, // Slightly larger for better readability
                   tablet: 12,
-                  desktop: 13,
+                  desktop: 12, // Reduced from 13
                 ),
-                letterSpacing: 0.3, // Reduced letter spacing
+                letterSpacing: 0.2, // Further reduced letter spacing
               ),
             ),
             SizedBox(
@@ -676,7 +685,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
                 context,
                 mobile: 3, // Slightly larger spacing
                 tablet: 4,
-                desktop: 5,
+                desktop: 4, // Reduced from 5
               ),
             ),
             Icon(
@@ -686,7 +695,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
                 context,
                 mobile: 14, // Smaller arrow for mobile
                 tablet: 15,
-                desktop: 16,
+                desktop: 14, // Reduced from 16
               ),
             ),
           ],
