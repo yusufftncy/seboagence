@@ -27,13 +27,10 @@ class _MobileMenuOverlayState extends State<MobileMenuOverlay>
       duration: const Duration(milliseconds: 300),
       vsync: this,
     );
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, -1),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(
-      parent: _slideController,
-      curve: Curves.easeOutCubic,
-    ));
+    _slideAnimation =
+        Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero).animate(
+          CurvedAnimation(parent: _slideController, curve: Curves.easeOutCubic),
+        );
     _slideController.forward();
   }
 
@@ -99,11 +96,7 @@ class _MobileMenuOverlayState extends State<MobileMenuOverlay>
               ),
               borderRadius: BorderRadius.circular(6),
             ),
-            child: const Icon(
-              Icons.menu,
-              color: Branding.white,
-              size: 16,
-            ),
+            child: const Icon(Icons.menu, color: Branding.white, size: 16),
           ),
           const SizedBox(width: 10),
           const Text(
@@ -143,8 +136,16 @@ class _MobileMenuOverlayState extends State<MobileMenuOverlay>
           _buildMenuItem('Ana Sayfa', Icons.home, () => _navigateToHome()),
           _buildMenuItem('Hakkımızda', Icons.info, () => _navigateToAbout()),
           _buildMenuItem('Hoş İşler', Icons.work, () => _navigateToWorks()),
-          _buildMenuItem('Konferanslar', Icons.event, () => _navigateToConferences()),
-          _buildMenuItem('İletişim', Icons.contact_phone, () => _navigateToContact()),
+          _buildMenuItem(
+            'Konferanslar',
+            Icons.event,
+            () => _navigateToConferences(),
+          ),
+          _buildMenuItem(
+            'İletişim',
+            Icons.contact_phone,
+            () => _navigateToContact(),
+          ),
         ],
       ),
     );
@@ -216,11 +217,15 @@ class _MobileMenuOverlayState extends State<MobileMenuOverlay>
   }
 
   void _navigateToWorks() {
-    // TODO: Implement works navigation
+    if (NavigationService.currentState != null) {
+      NavigationService.currentState!.pushNamed('/project/works');
+    }
   }
 
   void _navigateToConferences() {
-    // TODO: Implement conferences navigation
+    if (NavigationService.currentState != null) {
+      NavigationService.currentState!.pushNamed('/conferences');
+    }
   }
 
   void _navigateToContact() {

@@ -883,7 +883,12 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildFounderProfile(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(Branding.spacingXL),
+      padding: Responsive.responsivePadding(
+        context,
+        mobile: const EdgeInsets.all(16.0),
+        tablet: const EdgeInsets.all(20.0),
+        desktop: const EdgeInsets.all(24.0),
+      ),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -903,41 +908,52 @@ class _HomePageState extends ConsumerState<HomePage>
           ),
         ],
       ),
-      child: Row(
-        children: [
-          // Profil Fotoğrafı
-          GestureDetector(
+      child: Responsive.responsiveWidget(
+        context,
+        mobile: _buildMobileProfileLayout(context),
+        tablet: _buildTabletProfileLayout(context),
+        desktop: _buildDesktopProfileLayout(context),
+      ),
+    );
+  }
+
+  Widget _buildMobileProfileLayout(BuildContext context) {
+    return Column(
+      children: [
+        // Profil Fotoğrafı - Mobile'da ortalanmış
+        Center(
+          child: GestureDetector(
             onTap: () => _showImageDialog(context),
             child: Container(
-              width: 120,
-              height: 120,
+              width: 80,
+              height: 80,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(60),
+                borderRadius: BorderRadius.circular(40),
                 boxShadow: [
                   BoxShadow(
                     color: const Color(0xFF6B6B6B).withValues(alpha: 0.2),
-                    blurRadius: 15,
-                    offset: const Offset(0, 5),
+                    blurRadius: 10,
+                    offset: const Offset(0, 3),
                   ),
                 ],
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(60),
+                borderRadius: BorderRadius.circular(40),
                 child: Image.asset(
                   'assets/images/sebnemyuceer.jpg',
-                  width: 120,
-                  height: 120,
+                  width: 80,
+                  height: 80,
                   fit: BoxFit.cover,
                   filterQuality: FilterQuality.high,
                   isAntiAlias: true,
-                  cacheWidth: 240, // 2x retina için optimize
-                  cacheHeight: 240,
+                  cacheWidth: 160,
+                  cacheHeight: 160,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
                       color: const Color(0xFFE5E7EB),
                       child: const Icon(
                         Icons.person,
-                        size: 60,
+                        size: 40,
                         color: Color(0xFF9CA3AF),
                       ),
                     );
@@ -946,120 +962,297 @@ class _HomePageState extends ConsumerState<HomePage>
               ),
             ),
           ),
+        ),
 
-          const SizedBox(width: Branding.spacingXL),
+        const SizedBox(height: 16),
 
-          // Profil Bilgileri
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Şebnem Yüceer',
-                  style: AppTypography.h3.copyWith(
-                    color: const Color(0xFF2C2C2C),
-                    fontWeight: FontWeight.w700,
-                    fontSize: Responsive.responsiveValue(
-                      context,
-                      mobile: 20,
-                      tablet: 24,
-                      desktop: 28,
-                    ),
-                  ),
-                ),
+        // Profil Bilgileri - Mobile'da ortalanmış
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'Şebnem Yüceer',
+              textAlign: TextAlign.center,
+              style: AppTypography.h3.copyWith(
+                color: const Color(0xFF2C2C2C),
+                fontWeight: FontWeight.w700,
+                fontSize: 18,
+              ),
+            ),
 
-                const SizedBox(height: Branding.spacingS),
+            const SizedBox(height: 8),
 
-                Text(
-                  'Lüks Marka Lideri & Ajans Kurucusu',
-                  style: AppTypography.h5.copyWith(
-                    color: const Color(0xFF6B6B6B),
-                    fontWeight: FontWeight.w500,
-                    fontSize: Responsive.responsiveValue(
-                      context,
-                      mobile: 14,
-                      tablet: 16,
-                      desktop: 18,
-                    ),
-                  ),
-                ),
+            Text(
+              'Lüks Marka Lideri & Ajans Kurucusu',
+              textAlign: TextAlign.center,
+              style: AppTypography.h5.copyWith(
+                color: const Color(0xFF6B6B6B),
+                fontWeight: FontWeight.w500,
+                fontSize: 12,
+              ),
+            ),
 
-                const SizedBox(height: Branding.spacingL),
+            const SizedBox(height: 16),
 
-                Text(
-                  'Louis Vuitton, Gucci ve Bulgari gibi dünya devi lüks markaların Türkiye Genel Müdürlüğü yapmış, Harvard Business School mezunu deneyimli bir lider.',
-                  style: AppTypography.bodyLarge.copyWith(
-                    color: const Color(0xFF4A4A4A),
-                    fontSize: Responsive.responsiveValue(
-                      context,
-                      mobile: 12,
-                      tablet: 14,
-                      desktop: 16,
-                    ),
-                    height: Responsive.responsiveValue(
-                      context,
-                      mobile: 1.4,
-                      tablet: 1.5,
-                      desktop: 1.6,
-                    ),
-                  ),
-                ),
+            Text(
+              'Louis Vuitton, Gucci ve Bulgari gibi dünya devi lüks markaların Türkiye Genel Müdürlüğü yapmış, Harvard Business School mezunu deneyimli bir lider.',
+              textAlign: TextAlign.center,
+              style: AppTypography.bodyLarge.copyWith(
+                color: const Color(0xFF4A4A4A),
+                fontSize: 11,
+                height: 1.4,
+              ),
+            ),
 
-                const SizedBox(height: Branding.spacingL),
+            const SizedBox(height: 20),
 
-                // LinkedIn Link
-                MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  onEnter: (_) => setState(() => _isLinkedInHovered = true),
-                  onExit: (_) => setState(() => _isLinkedInHovered = false),
-                  child: GestureDetector(
-                    onTap: () => _launchLinkedIn(),
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: Branding.spacingM,
-                        vertical: Branding.spacingS,
-                      ),
-                      decoration: BoxDecoration(
-                        color: _isLinkedInHovered
-                            ? const Color(0xFF005885) // Daha koyu mavi
-                            : const Color(0xFF0077B5), // Normal mavi
-                        borderRadius: BorderRadius.circular(Branding.radiusL),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(
-                              0xFF0077B5,
-                            ).withValues(alpha: _isLinkedInHovered ? 0.4 : 0.2),
-                            blurRadius: _isLinkedInHovered ? 12 : 8,
-                            offset: Offset(0, _isLinkedInHovered ? 6 : 4),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(
-                            Icons.business,
-                            color: Colors.white,
-                            size: 16,
-                          ),
-                          const SizedBox(width: Branding.spacingS),
-                          Text(
-                            'LinkedIn Profili',
-                            style: AppTypography.bodyMedium.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+            // LinkedIn Link - Mobile'da tam genişlik
+            _buildLinkedInButton(context, isMobile: true),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTabletProfileLayout(BuildContext context) {
+    return Row(
+      children: [
+        // Profil Fotoğrafı
+        GestureDetector(
+          onTap: () => _showImageDialog(context),
+          child: Container(
+            width: 100,
+            height: 100,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFF6B6B6B).withValues(alpha: 0.2),
+                  blurRadius: 12,
+                  offset: const Offset(0, 4),
                 ),
               ],
             ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Image.asset(
+                'assets/images/sebnemyuceer.jpg',
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+                filterQuality: FilterQuality.high,
+                isAntiAlias: true,
+                cacheWidth: 200,
+                cacheHeight: 200,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: const Color(0xFFE5E7EB),
+                    child: const Icon(
+                      Icons.person,
+                      size: 50,
+                      color: Color(0xFF9CA3AF),
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
-        ],
+        ),
+
+        const SizedBox(width: 20),
+
+        // Profil Bilgileri
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Şebnem Yüceer',
+                style: AppTypography.h3.copyWith(
+                  color: const Color(0xFF2C2C2C),
+                  fontWeight: FontWeight.w700,
+                  fontSize: 22,
+                ),
+              ),
+
+              const SizedBox(height: 8),
+
+              Text(
+                'Lüks Marka Lideri & Ajans Kurucusu',
+                style: AppTypography.h5.copyWith(
+                  color: const Color(0xFF6B6B6B),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14,
+                ),
+              ),
+
+              const SizedBox(height: 16),
+
+              Text(
+                'Louis Vuitton, Gucci ve Bulgari gibi dünya devi lüks markaların Türkiye Genel Müdürlüğü yapmış, Harvard Business School mezunu deneyimli bir lider.',
+                style: AppTypography.bodyLarge.copyWith(
+                  color: const Color(0xFF4A4A4A),
+                  fontSize: 13,
+                  height: 1.5,
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              _buildLinkedInButton(context, isMobile: false),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDesktopProfileLayout(BuildContext context) {
+    return Row(
+      children: [
+        // Profil Fotoğrafı
+        GestureDetector(
+          onTap: () => _showImageDialog(context),
+          child: Container(
+            width: 120,
+            height: 120,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(60),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFF6B6B6B).withValues(alpha: 0.2),
+                  blurRadius: 15,
+                  offset: const Offset(0, 5),
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(60),
+              child: Image.asset(
+                'assets/images/sebnemyuceer.jpg',
+                width: 120,
+                height: 120,
+                fit: BoxFit.cover,
+                filterQuality: FilterQuality.high,
+                isAntiAlias: true,
+                cacheWidth: 240,
+                cacheHeight: 240,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: const Color(0xFFE5E7EB),
+                    child: const Icon(
+                      Icons.person,
+                      size: 60,
+                      color: Color(0xFF9CA3AF),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+        ),
+
+        const SizedBox(width: 24),
+
+        // Profil Bilgileri
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Şebnem Yüceer',
+                style: AppTypography.h3.copyWith(
+                  color: const Color(0xFF2C2C2C),
+                  fontWeight: FontWeight.w700,
+                  fontSize: 28,
+                ),
+              ),
+
+              const SizedBox(height: 8),
+
+              Text(
+                'Lüks Marka Lideri & Ajans Kurucusu',
+                style: AppTypography.h5.copyWith(
+                  color: const Color(0xFF6B6B6B),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              Text(
+                'Louis Vuitton, Gucci ve Bulgari gibi dünya devi lüks markaların Türkiye Genel Müdürlüğü yapmış, Harvard Business School mezunu deneyimli bir lider.',
+                style: AppTypography.bodyLarge.copyWith(
+                  color: const Color(0xFF4A4A4A),
+                  fontSize: 16,
+                  height: 1.6,
+                ),
+              ),
+
+              const SizedBox(height: 24),
+
+              _buildLinkedInButton(context, isMobile: false),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLinkedInButton(BuildContext context, {required bool isMobile}) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _isLinkedInHovered = true),
+      onExit: (_) => setState(() => _isLinkedInHovered = false),
+      child: GestureDetector(
+        onTap: () => _launchLinkedIn(),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          width: isMobile ? double.infinity : null,
+          padding: EdgeInsets.symmetric(
+            horizontal: isMobile ? 16.0 : 12.0,
+            vertical: isMobile ? 12.0 : 8.0,
+          ),
+          decoration: BoxDecoration(
+            color: _isLinkedInHovered
+                ? const Color(0xFF005885)
+                : const Color(0xFF0077B5),
+            borderRadius: BorderRadius.circular(Branding.radiusL),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFF0077B5).withValues(
+                  alpha: _isLinkedInHovered ? 0.4 : 0.2,
+                ),
+                blurRadius: _isLinkedInHovered ? 12 : 8,
+                offset: Offset(0, _isLinkedInHovered ? 6 : 4),
+              ),
+            ],
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: isMobile ? MainAxisAlignment.center : MainAxisAlignment.start,
+            children: [
+              Icon(
+                Icons.business,
+                color: Colors.white,
+                size: isMobile ? 14 : 16,
+              ),
+              SizedBox(width: isMobile ? 8 : 8),
+              Flexible(
+                child: Text(
+                  'LinkedIn Profili',
+                  style: AppTypography.bodyMedium.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: isMobile ? 12 : 14,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

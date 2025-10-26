@@ -11,8 +11,8 @@ class Responsive {
 
   static bool isTablet(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return width >= AppConstants.mobileBreakpoint && 
-           width < AppConstants.tabletBreakpoint;
+    return width >= AppConstants.mobileBreakpoint &&
+        width < AppConstants.tabletBreakpoint;
   }
 
   static bool isDesktop(BuildContext context) {
@@ -25,19 +25,20 @@ class Responsive {
 
   // 📱 DETAILED MOBILE BREAKPOINTS
   static bool isSmallMobile(BuildContext context) {
-    return MediaQuery.of(context).size.width < AppConstants.mediumMobileBreakpoint;
+    return MediaQuery.of(context).size.width <
+        AppConstants.mediumMobileBreakpoint;
   }
 
   static bool isMediumMobile(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return width >= AppConstants.mediumMobileBreakpoint && 
-           width < AppConstants.largeMobileBreakpoint;
+    return width >= AppConstants.mediumMobileBreakpoint &&
+        width < AppConstants.largeMobileBreakpoint;
   }
 
   static bool isLargeMobile(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return width >= AppConstants.largeMobileBreakpoint && 
-           width < AppConstants.mobileBreakpoint;
+    return width >= AppConstants.largeMobileBreakpoint &&
+        width < AppConstants.mobileBreakpoint;
   }
 
   // 📱 MOBILE ORIENTATION
@@ -110,21 +111,6 @@ class Responsive {
     return smallMobile;
   }
 
-  // 📱 SIMPLE RESPONSIVE VALUES
-  static T responsiveValue<T>(
-    BuildContext context, {
-    required T mobile,
-    T? tablet,
-    T? desktop,
-  }) {
-    if (isDesktop(context) && desktop != null) {
-      return desktop;
-    } else if (isTablet(context) && tablet != null) {
-      return tablet;
-    }
-    return mobile;
-  }
-
   // 📱 ADAPTIVE MOBILE VALUES
   static T adaptiveMobileValue<T>(
     BuildContext context, {
@@ -135,7 +121,7 @@ class Responsive {
   }) {
     final width = screenWidth(context);
     final orientation = MediaQuery.of(context).orientation;
-    
+
     // Orientation-based values
     if (orientation == Orientation.landscape && landscapeValue != null) {
       return landscapeValue;
@@ -143,13 +129,14 @@ class Responsive {
     if (orientation == Orientation.portrait && portraitValue != null) {
       return portraitValue;
     }
-    
+
     // Scale factor based on screen width
     if (scaleFactor != null) {
-      final scaledValue = (baseValue as num) * (1 + (width / 1000) * scaleFactor);
+      final scaledValue =
+          (baseValue as num) * (1 + (width / 1000) * scaleFactor);
       return scaledValue as T;
     }
-    
+
     return baseValue;
   }
 
@@ -235,13 +222,15 @@ class Responsive {
     return Container(
       width: double.infinity,
       constraints: BoxConstraints(
-        maxWidth: maxWidth ?? responsiveValue(
-          context,
-          mobile: double.infinity,
-          tablet: 768.0,
-          desktop: 1200.0,
-          largeDesktop: 1400.0,
-        ),
+        maxWidth:
+            maxWidth ??
+            responsiveValue(
+              context,
+              mobile: double.infinity,
+              tablet: 768.0,
+              desktop: 1200.0,
+              largeDesktop: 1400.0,
+            ),
       ),
       padding: padding ?? responsivePadding(context),
       child: child,
@@ -366,9 +355,15 @@ class Responsive {
     return responsiveValue(
       context,
       mobile: mobile,
-      tablet: tablet ?? Duration(milliseconds: (mobile.inMilliseconds * 1.1).round()),
-      desktop: desktop ?? Duration(milliseconds: (mobile.inMilliseconds * 1.2).round()),
-      largeDesktop: largeDesktop ?? Duration(milliseconds: (mobile.inMilliseconds * 1.3).round()),
+      tablet:
+          tablet ??
+          Duration(milliseconds: (mobile.inMilliseconds * 1.1).round()),
+      desktop:
+          desktop ??
+          Duration(milliseconds: (mobile.inMilliseconds * 1.2).round()),
+      largeDesktop:
+          largeDesktop ??
+          Duration(milliseconds: (mobile.inMilliseconds * 1.3).round()),
     );
   }
 }
