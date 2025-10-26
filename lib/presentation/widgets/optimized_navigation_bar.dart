@@ -14,7 +14,7 @@ class OptimizedNavigationBar extends StatefulWidget {
   final bool isSticky;
   final bool showScrollIndicator;
   final VoidCallback? onLogoTap;
-  
+
   const OptimizedNavigationBar({
     super.key,
     this.isSticky = true,
@@ -28,22 +28,21 @@ class OptimizedNavigationBar extends StatefulWidget {
 
 class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
-  
   // Animation Controllers
   late AnimationController _logoAnimationController;
   late AnimationController _menuAnimationController;
   late AnimationController _scrollAnimationController;
-  
+
   // Animations
   late Animation<double> _logoAnimation;
   late Animation<double> _menuAnimation;
   late Animation<double> _scrollAnimation;
   late Animation<Offset> _slideAnimation;
-  
+
   // State
   bool _isMenuOpen = false;
   bool _isScrolled = false;
-  
+
   // Performance optimizations
   static const Duration _fastAnimation = Duration(milliseconds: 150);
   static const Duration _mediumAnimation = Duration(milliseconds: 300);
@@ -65,13 +64,13 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       duration: _slowAnimation,
       vsync: this,
     );
-    
+
     // Menu animation
     _menuAnimationController = AnimationController(
       duration: _mediumAnimation,
       vsync: this,
     );
-    
+
     // Scroll animation
     _scrollAnimationController = AnimationController(
       duration: _fastAnimation,
@@ -85,15 +84,12 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
         curve: Curves.easeOutCubic,
       ),
     );
-    
+
     // Menu fade in
     _menuAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _menuAnimationController,
-        curve: Curves.easeOut,
-      ),
+      CurvedAnimation(parent: _menuAnimationController, curve: Curves.easeOut),
     );
-    
+
     // Scroll-based animations
     _scrollAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
@@ -101,15 +97,15 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
         curve: Curves.easeInOut,
       ),
     );
-    
+
     // Slide animation for mobile menu
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, -1),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(
-      parent: _menuAnimationController,
-      curve: Curves.easeOutCubic,
-    ));
+    _slideAnimation =
+        Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero).animate(
+          CurvedAnimation(
+            parent: _menuAnimationController,
+            curve: Curves.easeOutCubic,
+          ),
+        );
   }
 
   void _startInitialAnimations() {
@@ -131,7 +127,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
   @override
   Widget build(BuildContext context) {
     super.build(context); // Required for AutomaticKeepAliveClientMixin
-    
+
     return AnimatedBuilder(
       animation: _scrollAnimation,
       builder: (context, child) {
@@ -147,7 +143,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
   BoxDecoration _buildDecoration() {
     final double elevation = _isScrolled ? 8.0 : 2.0;
     final double opacity = _isScrolled ? 0.95 : 1.0;
-    
+
     return BoxDecoration(
       color: const Color(0xFF131B2E).withValues(alpha: opacity),
       boxShadow: [
@@ -172,10 +168,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _buildOptimizedLogo(),
-          _buildResponsiveNavigation(),
-        ],
+        children: [_buildOptimizedLogo(), _buildResponsiveNavigation()],
       ),
     );
   }
@@ -212,20 +205,16 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       children: [
         // Scroll indicator
         if (widget.showScrollIndicator) _buildScrollIndicator(),
-        
+
         const SizedBox(width: 8),
-        
+
         // Mobile menu button with haptic feedback
         IconButton(
           onPressed: _toggleMobileMenuWithHaptic,
           icon: AnimatedRotation(
             turns: _isMenuOpen ? 0.125 : 0.0,
             duration: _fastAnimation,
-            child: const Icon(
-              Icons.menu,
-              color: Branding.white,
-              size: 24,
-            ),
+            child: const Icon(Icons.menu, color: Branding.white, size: 24),
           ),
         ),
       ],
@@ -278,11 +267,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
-                  icon,
-                  color: Colors.white,
-                  size: 16,
-                ),
+                Icon(icon, color: Colors.white, size: 16),
                 const SizedBox(width: 8),
                 Text(
                   text,
@@ -318,36 +303,27 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
   }
 
   Border _buildActiveBorder() {
-    return Border.all(
-      color: Colors.white.withValues(alpha: 0.3),
-      width: 1,
-    );
+    return Border.all(color: Colors.white.withValues(alpha: 0.3), width: 1);
   }
 
   Widget _buildProjectsDropdown() {
-    return _buildDropdownMenu(
-      'Hoş İşler',
-      Icons.work,
-      [
-        _buildDropdownItem('Vefa Projesi', 'vefa', Icons.favorite),
-        _buildDropdownItem('Sefa Projesi', 'sefa', Icons.palette),
-        _buildDropdownItem('Şifa Projesi', 'sifa', Icons.healing),
-      ],
-      _handleProjectNavigation,
-    );
+    return _buildDropdownMenu('Hoş İşler', Icons.work, [
+      _buildDropdownItem('Vefa Projesi', 'vefa', Icons.favorite),
+      _buildDropdownItem('Sefa Projesi', 'sefa', Icons.palette),
+      _buildDropdownItem('Şifa Projesi', 'sifa', Icons.healing),
+    ], _handleProjectNavigation);
   }
 
   Widget _buildConferencesDropdown() {
-    return _buildDropdownMenu(
-      'Konferanslar',
-      Icons.event,
-      [
-        _buildDropdownItem('Vefa Buluşmaları 2025', 'vefa_bulusma', Icons.event),
-        _buildDropdownItem('Avrupa İklim Değişikliği Uyum Konferansı', 'iklim_konferans', Icons.eco),
-        _buildDropdownItem('Tüm Konferanslar', 'tum_konferanslar', Icons.list),
-      ],
-      _handleConferenceNavigation,
-    );
+    return _buildDropdownMenu('Konferanslar', Icons.event, [
+      _buildDropdownItem('Vefa Buluşmaları 2025', 'vefa_bulusma', Icons.event),
+      _buildDropdownItem(
+        'Avrupa İklim Değişikliği Uyum Konferansı',
+        'iklim_konferans',
+        Icons.eco,
+      ),
+      _buildDropdownItem('Tüm Konferanslar', 'tum_konferanslar', Icons.list),
+    ], _handleConferenceNavigation);
   }
 
   Widget _buildDropdownMenu(
@@ -613,7 +589,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       setState(() {
         _isScrolled = offset > 50;
       });
-      
+
       if (_isScrolled) {
         _scrollAnimationController.forward();
       } else {
