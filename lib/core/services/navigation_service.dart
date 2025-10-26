@@ -6,7 +6,7 @@ library;
 import 'package:flutter/material.dart';
 
 class NavigationService {
-  static final GlobalKey<NavigatorState> navigatorKey = 
+  static final GlobalKey<NavigatorState> navigatorKey =
       GlobalKey<NavigatorState>();
 
   static NavigatorState? get currentState => navigatorKey.currentState;
@@ -87,7 +87,8 @@ class NavigationService {
   }
 
   /// Snackbar göster
-  static void showSnackBar(String message, {
+  static void showSnackBar(
+    String message, {
     Color? backgroundColor,
     Duration duration = const Duration(seconds: 3),
   }) {
