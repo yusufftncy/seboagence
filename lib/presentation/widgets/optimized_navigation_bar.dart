@@ -227,21 +227,89 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       builder: (context, child) {
         return Opacity(
           opacity: _menuAnimation.value,
-          child: Row(
-            children: [
-              _buildNavItem('Ana Sayfa', true, Icons.home),
-              const SizedBox(width: Branding.spacingL),
-              _buildNavItem('Hakkımızda', false, Icons.info),
-              const SizedBox(width: Branding.spacingL),
-              _buildProjectsDropdown(),
-              const SizedBox(width: Branding.spacingL),
-              _buildConferencesDropdown(),
-              const SizedBox(width: Branding.spacingL),
-              _buildNavItem('İletişim', false, Icons.contact_phone),
-            ],
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              // Advanced responsive spacing for desktop
+              final spacing = _getDesktopSpacing(constraints.maxWidth);
+              final isLargeDesktop = constraints.maxWidth > 1400;
+              final isMediumDesktop = constraints.maxWidth > 1200;
+
+              return Container(
+                constraints: BoxConstraints(maxWidth: constraints.maxWidth),
+                child: isLargeDesktop
+                    ? _buildLargeDesktopNavigation(spacing)
+                    : isMediumDesktop
+                    ? _buildMediumDesktopNavigation(spacing)
+                    : _buildSmallDesktopNavigation(spacing),
+              );
+            },
           ),
         );
       },
+    );
+  }
+
+  double _getDesktopSpacing(double width) {
+    // Çok küçük spacing'ler ile overflow'u önle
+    if (width > 1600) return 16.0; // Ultra-wide
+    if (width > 1400) return 12.0; // Large desktop
+    if (width > 1200) return 8.0; // Desktop
+    if (width > 1000) return 4.0; // Small desktop
+    return 2.0; // Tablet
+  }
+
+  Widget _buildLargeDesktopNavigation(double spacing) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _buildNavItem('Ana Sayfa', false, Icons.home),
+        SizedBox(width: spacing),
+        _buildNavItem('Hakkımızda', false, Icons.info),
+        SizedBox(width: spacing),
+        _buildProjectsDropdown(),
+        SizedBox(width: spacing),
+        _buildConferencesDropdown(),
+        SizedBox(width: spacing),
+        _buildNavItem('İletişim', false, Icons.contact_phone),
+      ],
+    );
+  }
+
+  Widget _buildMediumDesktopNavigation(double spacing) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _buildNavItem('Ana Sayfa', false, Icons.home),
+        SizedBox(width: spacing),
+        _buildNavItem('Hakkımızda', false, Icons.info),
+        SizedBox(width: spacing),
+        _buildProjectsDropdown(),
+        SizedBox(width: spacing),
+        _buildConferencesDropdown(),
+        SizedBox(width: spacing),
+        _buildNavItem('İletişim', false, Icons.contact_phone),
+      ],
+    );
+  }
+
+  Widget _buildSmallDesktopNavigation(double spacing) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      physics: const BouncingScrollPhysics(),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _buildNavItem('Ana Sayfa', false, Icons.home),
+          SizedBox(width: spacing),
+          _buildNavItem('Hakkımızda', false, Icons.info),
+          SizedBox(width: spacing),
+          _buildProjectsDropdown(),
+          SizedBox(width: spacing),
+          _buildConferencesDropdown(),
+          SizedBox(width: spacing),
+          _buildNavItem('İletişim', false, Icons.contact_phone),
+        ],
+      ),
     );
   }
 
@@ -253,32 +321,71 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
         child: InkWell(
           onTap: () => _handleNavigationWithHaptic(text),
           borderRadius: BorderRadius.circular(12.0),
-          child: AnimatedContainer(
-            duration: _fastAnimation,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-              vertical: 12.0,
-            ),
-            decoration: BoxDecoration(
-              gradient: _buildNavItemGradient(isActive),
-              borderRadius: BorderRadius.circular(12.0),
-              border: isActive ? _buildActiveBorder() : null,
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(icon, color: Colors.white, size: 16),
-                const SizedBox(width: 8),
-                Text(
-                  text,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
-                    fontSize: 15,
-                    letterSpacing: 0.5,
-                  ),
+          hoverColor: Colors.white.withValues(alpha: 0.1),
+          focusColor: Colors.white.withValues(alpha: 0.15),
+          child: Focus(
+            onKeyEvent: (node, event) {
+              if (event is KeyDownEvent &&
+                  event.logicalKey == LogicalKeyboardKey.enter) {
+                _handleNavigationWithHaptic(text);
+                return KeyEventResult.handled;
+              }
+              return KeyEventResult.ignored;
+            },
+            child: AnimatedContainer(
+              duration: _fastAnimation,
+              padding: EdgeInsets.symmetric(
+                horizontal: Responsive.responsiveValue(
+                  context,
+                  mobile: 6.0, // Çok küçük padding
+                  tablet: 8.0, // Çok küçük padding
+                  desktop: 10.0, // Çok küçük padding
                 ),
-              ],
+                vertical: 8.0, // Çok küçük vertical padding
+              ),
+              decoration: BoxDecoration(
+                gradient: _buildNavItemGradient(isActive),
+                borderRadius: BorderRadius.circular(12.0),
+                border: isActive ? _buildActiveBorder() : null,
+                boxShadow: isActive ? _buildActiveShadow() : null,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    icon,
+                    color: Colors.white,
+                    size: Responsive.responsiveValue(
+                      context,
+                      mobile: 10, // Çok küçük icon
+                      tablet: 11, // Çok küçük icon
+                      desktop: 12, // Çok küçük icon
+                    ),
+                  ),
+                  SizedBox(
+                    width: Responsive.responsiveValue(
+                      context,
+                      mobile: 2, // Çok küçük spacing
+                      tablet: 3, // Çok küçük spacing
+                      desktop: 4, // Çok küçük spacing
+                    ),
+                  ),
+                  Text(
+                    text,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
+                      fontSize: Responsive.responsiveValue(
+                        context,
+                        mobile: 10, // Çok küçük font
+                        tablet: 11, // Çok küçük font
+                        desktop: 12, // Çok küçük font
+                      ),
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -286,19 +393,23 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
     );
   }
 
+  List<BoxShadow> _buildActiveShadow() {
+    return [
+      BoxShadow(
+        color: Colors.white.withValues(alpha: 0.2),
+        blurRadius: 8,
+        offset: const Offset(0, 2),
+      ),
+    ];
+  }
+
   LinearGradient _buildNavItemGradient(bool isActive) {
     return LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
       colors: isActive
-          ? [
-              Colors.white.withValues(alpha: 0.15),
-              Colors.white.withValues(alpha: 0.25),
-            ]
-          : [
-              Colors.white.withValues(alpha: 0.05),
-              Colors.white.withValues(alpha: 0.15),
-            ],
+          ? const [Color(0x26FFFFFF), Color(0x40FFFFFF)]
+          : const [Color(0x0DFFFFFF), Color(0x26FFFFFF)],
     );
   }
 
@@ -336,44 +447,83 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       offset: const Offset(0, 50),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       onOpened: () => HapticFeedback.lightImpact(),
+      itemBuilder: (context) => items.cast<PopupMenuEntry<String>>(),
+      onSelected: onSelected,
+      tooltip: '$title menüsünü aç',
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        padding: EdgeInsets.symmetric(
+          horizontal: Responsive.responsiveValue(
+            context,
+            mobile: 6, // Çok küçük padding
+            tablet: 8, // Çok küçük padding
+            desktop: 10, // Çok küçük padding
+          ),
+          vertical: 8, // Çok küçük vertical padding
+        ),
         decoration: BoxDecoration(
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              Colors.white.withValues(alpha: 0.05),
-              Colors.white.withValues(alpha: 0.15),
-            ],
+            colors: [Color(0x0DFFFFFF), Color(0x26FFFFFF)],
           ),
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, color: Colors.white, size: 16),
-            const SizedBox(width: 8),
+            Icon(
+              icon,
+              color: Colors.white,
+              size: Responsive.responsiveValue(
+                context,
+                mobile: 10, // Çok küçük icon
+                tablet: 11, // Çok küçük icon
+                desktop: 12, // Çok küçük icon
+              ),
+            ),
+            SizedBox(
+              width: Responsive.responsiveValue(
+                context,
+                mobile: 3, // Çok küçük spacing
+                tablet: 4, // Çok küçük spacing
+                desktop: 5, // Çok küçük spacing
+              ),
+            ),
             Text(
               title,
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
-                fontSize: 15,
+                fontSize: Responsive.responsiveValue(
+                  context,
+                  mobile: 10, // Çok küçük font
+                  tablet: 11, // Çok küçük font
+                  desktop: 12, // Çok küçük font
+                ),
                 letterSpacing: 0.5,
               ),
             ),
-            const SizedBox(width: 8),
-            const Icon(
+            SizedBox(
+              width: Responsive.responsiveValue(
+                context,
+                mobile: 3, // Çok küçük spacing
+                tablet: 4, // Çok küçük spacing
+                desktop: 5, // Çok küçük spacing
+              ),
+            ),
+            Icon(
               Icons.keyboard_arrow_down,
               color: Colors.white,
-              size: 18,
+              size: Responsive.responsiveValue(
+                context,
+                mobile: 16,
+                tablet: 17,
+                desktop: 18,
+              ),
             ),
           ],
         ),
       ),
-      itemBuilder: (context) => items.cast<PopupMenuEntry<String>>(),
-      onSelected: onSelected,
     );
   }
 
@@ -482,7 +632,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
               padding: const EdgeInsets.all(24),
               child: Column(
                 children: [
-                  _buildMobileMenuItem('Ana Sayfa', Icons.home, true),
+                  _buildMobileMenuItem('Ana Sayfa', Icons.home, false),
                   _buildMobileMenuItem('Hakkımızda', Icons.info, false),
                   _buildMobileMenuItem('Hoş İşler', Icons.work, false),
                   _buildMobileMenuItem('Konferanslar', Icons.event, false),
