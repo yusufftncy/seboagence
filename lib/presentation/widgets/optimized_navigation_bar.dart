@@ -202,22 +202,52 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
 
   Widget _buildMobileNavigation() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
         // Scroll indicator
-        if (widget.showScrollIndicator) _buildScrollIndicator(),
+        if (widget.showScrollIndicator) ...[
+          _buildScrollIndicator(),
+          const SizedBox(width: 12),
+        ],
 
-        const SizedBox(width: 8),
+        // Mobile menu button with enhanced design
+        _buildMobileMenuButton(),
+      ],
+    );
+  }
 
-        // Mobile menu button with haptic feedback
-        IconButton(
-          onPressed: _toggleMobileMenuWithHaptic,
-          icon: AnimatedRotation(
-            turns: _isMenuOpen ? 0.125 : 0.0,
-            duration: _fastAnimation,
-            child: const Icon(Icons.menu, color: Branding.white, size: 24),
+  Widget _buildMobileMenuButton() {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0x1AFFFFFF), Color(0x33FFFFFF)],
+        ),
+        borderRadius: BorderRadius.circular(12.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.white.withValues(alpha: 0.1),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: _toggleMobileMenuWithHaptic,
+          borderRadius: BorderRadius.circular(12.0),
+          child: Container(
+            padding: const EdgeInsets.all(12.0),
+            child: AnimatedRotation(
+              turns: _isMenuOpen ? 0.125 : 0.0,
+              duration: _fastAnimation,
+              child: const Icon(Icons.menu, color: Branding.white, size: 20),
+            ),
           ),
         ),
-      ],
+      ),
     );
   }
 
@@ -609,34 +639,98 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
     return SlideTransition(
       position: _slideAnimation,
       child: Container(
-        decoration: const BoxDecoration(
-          color: Color(0xFF131B2E),
-          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        decoration: BoxDecoration(
+          color: const Color(0xFF131B2E),
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(25)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.3),
+              blurRadius: 20,
+              offset: const Offset(0, -5),
+            ),
+          ],
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Handle bar
+            // Enhanced handle bar
             Container(
-              width: 40,
-              height: 4,
-              margin: const EdgeInsets.symmetric(vertical: 12),
+              width: 50,
+              height: 5,
+              margin: const EdgeInsets.symmetric(vertical: 16),
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.3),
-                borderRadius: BorderRadius.circular(2),
+                gradient: const LinearGradient(
+                  colors: [Color(0x4DFFFFFF), Color(0x80FFFFFF)],
+                ),
+                borderRadius: BorderRadius.circular(3),
               ),
             ),
 
-            // Menu items
+            // Header section
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [Color(0x1AFFFFFF), Color(0x33FFFFFF)],
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Icon(
+                      Icons.menu,
+                      color: Branding.white,
+                      size: 20,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  const Text(
+                    'Menü',
+                    style: TextStyle(
+                      color: Branding.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // Divider
+            Container(
+              height: 1,
+              margin: const EdgeInsets.symmetric(horizontal: 24),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.transparent,
+                    Colors.white.withValues(alpha: 0.2),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+            ),
+
+            // Menu items with enhanced design
             Padding(
               padding: const EdgeInsets.all(24),
               child: Column(
                 children: [
-                  _buildMobileMenuItem('Ana Sayfa', Icons.home, false),
-                  _buildMobileMenuItem('Hakkımızda', Icons.info, false),
-                  _buildMobileMenuItem('Hoş İşler', Icons.work, false),
-                  _buildMobileMenuItem('Konferanslar', Icons.event, false),
-                  _buildMobileMenuItem('İletişim', Icons.contact_phone, false),
+                  _buildEnhancedMobileMenuItem('Ana Sayfa', Icons.home, false),
+                  _buildEnhancedMobileMenuItem('Hakkımızda', Icons.info, false),
+                  _buildEnhancedMobileMenuItem('Hoş İşler', Icons.work, false),
+                  _buildEnhancedMobileMenuItem(
+                    'Konferanslar',
+                    Icons.event,
+                    false,
+                  ),
+                  _buildEnhancedMobileMenuItem(
+                    'İletişim',
+                    Icons.contact_phone,
+                    false,
+                  ),
                 ],
               ),
             ),
@@ -646,9 +740,13 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
     );
   }
 
-  Widget _buildMobileMenuItem(String title, IconData icon, bool isActive) {
+  Widget _buildEnhancedMobileMenuItem(
+    String title,
+    IconData icon,
+    bool isActive,
+  ) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 8),
+      margin: const EdgeInsets.only(bottom: 12),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
@@ -657,26 +755,48 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
             Navigator.pop(context);
             _handleNavigation(title);
           },
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(15),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             decoration: BoxDecoration(
-              color: isActive
-                  ? Colors.white.withValues(alpha: 0.1)
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(12),
+              gradient: isActive
+                  ? const LinearGradient(
+                      colors: [Color(0x1AFFFFFF), Color(0x33FFFFFF)],
+                    )
+                  : null,
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(
+                color: Colors.white.withValues(alpha: 0.1),
+                width: 1,
+              ),
             ),
             child: Row(
               children: [
-                Icon(icon, color: Colors.white, size: 20),
-                const SizedBox(width: 16),
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
-                    fontSize: 16,
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [Color(0x0DFFFFFF), Color(0x26FFFFFF)],
+                    ),
+                    borderRadius: BorderRadius.circular(8),
                   ),
+                  child: Icon(icon, color: Branding.white, size: 18),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      color: Branding.white,
+                      fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.white.withValues(alpha: 0.5),
+                  size: 14,
                 ),
               ],
             ),

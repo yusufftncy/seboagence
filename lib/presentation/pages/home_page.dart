@@ -123,7 +123,6 @@ class _HomePageState extends ConsumerState<HomePage>
     );
   }
 
-
   Widget _buildAgencyHeroSection(BuildContext context) {
     return Container(
       width: double.infinity,
@@ -956,20 +955,32 @@ class _HomePageState extends ConsumerState<HomePage>
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Şebnem Berkol Yüceer',
+                  'Şebnem Yüceer',
                   style: AppTypography.h3.copyWith(
                     color: const Color(0xFF2C2C2C),
                     fontWeight: FontWeight.w700,
+                    fontSize: Responsive.responsiveValue(
+                      context,
+                      mobile: 20,
+                      tablet: 24,
+                      desktop: 28,
+                    ),
                   ),
                 ),
 
                 const SizedBox(height: Branding.spacingS),
 
                 Text(
-                  'Lüks Perakende Sektörü Lideri & Şebo Ajans Kurucusu',
+                  'Lüks Marka Lideri & Ajans Kurucusu',
                   style: AppTypography.h5.copyWith(
                     color: const Color(0xFF6B6B6B),
                     fontWeight: FontWeight.w500,
+                    fontSize: Responsive.responsiveValue(
+                      context,
+                      mobile: 14,
+                      tablet: 16,
+                      desktop: 18,
+                    ),
                   ),
                 ),
 
@@ -979,7 +990,18 @@ class _HomePageState extends ConsumerState<HomePage>
                   'Louis Vuitton, Gucci ve Bulgari gibi dünya devi lüks markaların Türkiye Genel Müdürlüğü yapmış, Harvard Business School mezunu deneyimli bir lider.',
                   style: AppTypography.bodyLarge.copyWith(
                     color: const Color(0xFF4A4A4A),
-                    height: 1.6,
+                    fontSize: Responsive.responsiveValue(
+                      context,
+                      mobile: 12,
+                      tablet: 14,
+                      desktop: 16,
+                    ),
+                    height: Responsive.responsiveValue(
+                      context,
+                      mobile: 1.4,
+                      tablet: 1.5,
+                      desktop: 1.6,
+                    ),
                   ),
                 ),
 
