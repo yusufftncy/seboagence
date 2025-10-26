@@ -411,7 +411,7 @@ class _HomePageState extends ConsumerState<HomePage>
     return Container(
       width: double.infinity,
       padding: Responsive.responsivePadding(
-        context,
+          context,
         mobile: const EdgeInsets.all(16.0),
         tablet: const EdgeInsets.all(20.0),
         desktop: const EdgeInsets.all(24.0),
@@ -444,24 +444,24 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildMobileProjectsSection(BuildContext context) {
     return Column(
-      children: [
+        children: [
         // Section Header - Mobile'da ortalanmış ve küçük
-        Text(
-          'Hoş İşler',
-          style: AppTypography.h2.copyWith(
-            color: const Color(0xFF2C2C2C),
+          Text(
+            'Hoş İşler',
+            style: AppTypography.h2.copyWith(
+              color: const Color(0xFF2C2C2C),
             fontSize: 20,
-            fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.w800,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
-        ),
 
         const SizedBox(height: 8),
 
-        Text(
-          'Sosyal Sorumluluk ve El Sanatları Platformu',
-          style: AppTypography.h4.copyWith(
-            color: const Color(0xFF6B6B6B),
+          Text(
+            'Sosyal Sorumluluk ve El Sanatları Platformu',
+            style: AppTypography.h4.copyWith(
+              color: const Color(0xFF6B6B6B),
             fontSize: 12,
             fontWeight: FontWeight.w500,
           ),
@@ -496,10 +496,10 @@ class _HomePageState extends ConsumerState<HomePage>
           style: AppTypography.h4.copyWith(
             color: const Color(0xFF6B6B6B),
             fontSize: 14,
-            fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w500,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
-        ),
 
         const SizedBox(height: 24),
 
@@ -704,7 +704,9 @@ class _HomePageState extends ConsumerState<HomePage>
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: (project['color'] as Color).withValues(alpha: 0.2),
+                        color: (project['color'] as Color).withValues(
+                          alpha: 0.2,
+                        ),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
@@ -791,7 +793,9 @@ class _HomePageState extends ConsumerState<HomePage>
                         ),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: (project['color'] as Color).withValues(alpha: 0.4),
+                          color: (project['color'] as Color).withValues(
+                            alpha: 0.4,
+                          ),
                           width: 1,
                         ),
                       ),
@@ -822,10 +826,14 @@ class _HomePageState extends ConsumerState<HomePage>
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: (project['color'] as Color).withValues(alpha: 0.1),
+                        color: (project['color'] as Color).withValues(
+                          alpha: 0.1,
+                        ),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: (project['color'] as Color).withValues(alpha: 0.3),
+                          color: (project['color'] as Color).withValues(
+                            alpha: 0.3,
+                          ),
                           width: 1,
                         ),
                       ),
@@ -937,7 +945,9 @@ class _HomePageState extends ConsumerState<HomePage>
                         vertical: 6,
                       ),
                       decoration: BoxDecoration(
-                        color: (project['color'] as Color).withValues(alpha: 0.2),
+                        color: (project['color'] as Color).withValues(
+                          alpha: 0.2,
+                        ),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
@@ -1026,7 +1036,9 @@ class _HomePageState extends ConsumerState<HomePage>
                         ),
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                          color: (project['color'] as Color).withValues(alpha: 0.4),
+                          color: (project['color'] as Color).withValues(
+                            alpha: 0.4,
+                          ),
                           width: 1,
                         ),
                       ),
@@ -1057,10 +1069,14 @@ class _HomePageState extends ConsumerState<HomePage>
                         vertical: 6,
                       ),
                       decoration: BoxDecoration(
-                        color: (project['color'] as Color).withValues(alpha: 0.1),
+                        color: (project['color'] as Color).withValues(
+                          alpha: 0.1,
+                        ),
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                          color: (project['color'] as Color).withValues(alpha: 0.3),
+                          color: (project['color'] as Color).withValues(
+                            alpha: 0.3,
+                          ),
                           width: 1,
                         ),
                       ),
@@ -1176,7 +1192,9 @@ class _HomePageState extends ConsumerState<HomePage>
                         vertical: Branding.spacingS,
                       ),
                       decoration: BoxDecoration(
-                        color: (project['color'] as Color).withValues(alpha: 0.2),
+                        color: (project['color'] as Color).withValues(
+                          alpha: 0.2,
+                        ),
                         borderRadius: BorderRadius.circular(Branding.radiusL),
                       ),
                       child: Text(
@@ -1262,7 +1280,9 @@ class _HomePageState extends ConsumerState<HomePage>
                         ),
                         borderRadius: BorderRadius.circular(Branding.radiusL),
                         border: Border.all(
-                          color: (project['color'] as Color).withValues(alpha: 0.4),
+                          color: (project['color'] as Color).withValues(
+                            alpha: 0.4,
+                          ),
                           width: 1,
                         ),
                       ),
@@ -1292,10 +1312,14 @@ class _HomePageState extends ConsumerState<HomePage>
                         vertical: Branding.spacingS,
                       ),
                       decoration: BoxDecoration(
-                        color: (project['color'] as Color).withValues(alpha: 0.1),
+                        color: (project['color'] as Color).withValues(
+                          alpha: 0.1,
+                        ),
                         borderRadius: BorderRadius.circular(Branding.radiusL),
                         border: Border.all(
-                          color: (project['color'] as Color).withValues(alpha: 0.3),
+                          color: (project['color'] as Color).withValues(
+                            alpha: 0.3,
+                          ),
                           width: 1,
                         ),
                       ),
@@ -1645,82 +1669,82 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildDesktopProfileLayout(BuildContext context) {
     return Row(
-      children: [
-        // Profil Fotoğrafı
-        GestureDetector(
-          onTap: () => _showImageDialog(context),
-          child: Container(
-            width: 120,
-            height: 120,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(60),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0xFF6B6B6B).withValues(alpha: 0.2),
-                  blurRadius: 15,
-                  offset: const Offset(0, 5),
-                ),
-              ],
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(60),
-              child: Image.asset(
-                'assets/images/sebnemyuceer.jpg',
-                width: 120,
-                height: 120,
-                fit: BoxFit.cover,
-                filterQuality: FilterQuality.high,
-                isAntiAlias: true,
+        children: [
+          // Profil Fotoğrafı
+          GestureDetector(
+            onTap: () => _showImageDialog(context),
+            child: Container(
+              width: 120,
+              height: 120,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(60),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF6B6B6B).withValues(alpha: 0.2),
+                    blurRadius: 15,
+                    offset: const Offset(0, 5),
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(60),
+                child: Image.asset(
+                  'assets/images/sebnemyuceer.jpg',
+                  width: 120,
+                  height: 120,
+                  fit: BoxFit.cover,
+                  filterQuality: FilterQuality.high,
+                  isAntiAlias: true,
                 cacheWidth: 240,
-                cacheHeight: 240,
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    color: const Color(0xFFE5E7EB),
-                    child: const Icon(
-                      Icons.person,
-                      size: 60,
-                      color: Color(0xFF9CA3AF),
-                    ),
-                  );
-                },
+                  cacheHeight: 240,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: const Color(0xFFE5E7EB),
+                      child: const Icon(
+                        Icons.person,
+                        size: 60,
+                        color: Color(0xFF9CA3AF),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ),
-        ),
 
         const SizedBox(width: 24),
 
-        // Profil Bilgileri
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Şebnem Yüceer',
-                style: AppTypography.h3.copyWith(
-                  color: const Color(0xFF2C2C2C),
-                  fontWeight: FontWeight.w700,
+          // Profil Bilgileri
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Şebnem Yüceer',
+                  style: AppTypography.h3.copyWith(
+                    color: const Color(0xFF2C2C2C),
+                    fontWeight: FontWeight.w700,
                   fontSize: 28,
                 ),
               ),
 
               const SizedBox(height: 8),
 
-              Text(
-                'Lüks Marka Lideri & Ajans Kurucusu',
-                style: AppTypography.h5.copyWith(
-                  color: const Color(0xFF6B6B6B),
-                  fontWeight: FontWeight.w500,
+                Text(
+                  'Lüks Marka Lideri & Ajans Kurucusu',
+                  style: AppTypography.h5.copyWith(
+                    color: const Color(0xFF6B6B6B),
+                    fontWeight: FontWeight.w500,
                   fontSize: 18,
                 ),
               ),
 
               const SizedBox(height: 20),
 
-              Text(
-                'Louis Vuitton, Gucci ve Bulgari gibi dünya devi lüks markaların Türkiye Genel Müdürlüğü yapmış, Harvard Business School mezunu deneyimli bir lider.',
-                style: AppTypography.bodyLarge.copyWith(
-                  color: const Color(0xFF4A4A4A),
+                Text(
+                  'Louis Vuitton, Gucci ve Bulgari gibi dünya devi lüks markaların Türkiye Genel Müdürlüğü yapmış, Harvard Business School mezunu deneyimli bir lider.',
+                  style: AppTypography.bodyLarge.copyWith(
+                    color: const Color(0xFF4A4A4A),
                   fontSize: 16,
                   height: 1.6,
                 ),
@@ -1738,59 +1762,59 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildLinkedInButton(BuildContext context, {required bool isMobile}) {
     return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() => _isLinkedInHovered = true),
-      onExit: (_) => setState(() => _isLinkedInHovered = false),
-      child: GestureDetector(
-        onTap: () => _launchLinkedIn(),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
+                  cursor: SystemMouseCursors.click,
+                  onEnter: (_) => setState(() => _isLinkedInHovered = true),
+                  onExit: (_) => setState(() => _isLinkedInHovered = false),
+                  child: GestureDetector(
+                    onTap: () => _launchLinkedIn(),
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 200),
           width: isMobile ? double.infinity : null,
           padding: EdgeInsets.symmetric(
             horizontal: isMobile ? 16.0 : 12.0,
             vertical: isMobile ? 12.0 : 8.0,
-          ),
-          decoration: BoxDecoration(
-            color: _isLinkedInHovered
+                      ),
+                      decoration: BoxDecoration(
+                        color: _isLinkedInHovered
                 ? const Color(0xFF005885)
                 : const Color(0xFF0077B5),
-            borderRadius: BorderRadius.circular(Branding.radiusL),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(
-                  0xFF0077B5,
-                ).withValues(alpha: _isLinkedInHovered ? 0.4 : 0.2),
-                blurRadius: _isLinkedInHovered ? 12 : 8,
-                offset: Offset(0, _isLinkedInHovered ? 6 : 4),
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
+                        borderRadius: BorderRadius.circular(Branding.radiusL),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(
+                              0xFF0077B5,
+                            ).withValues(alpha: _isLinkedInHovered ? 0.4 : 0.2),
+                            blurRadius: _isLinkedInHovered ? 12 : 8,
+                            offset: Offset(0, _isLinkedInHovered ? 6 : 4),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: isMobile
                 ? MainAxisAlignment.center
                 : MainAxisAlignment.start,
-            children: [
+                        children: [
               Icon(
-                Icons.business,
-                color: Colors.white,
+                            Icons.business,
+                            color: Colors.white,
                 size: isMobile ? 14 : 16,
-              ),
+                          ),
               SizedBox(width: isMobile ? 8 : 8),
               Flexible(
                 child: Text(
-                  'LinkedIn Profili',
-                  style: AppTypography.bodyMedium.copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
+                            'LinkedIn Profili',
+                            style: AppTypography.bodyMedium.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
                     fontSize: isMobile ? 12 : 14,
-                  ),
+                            ),
                   overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
       ),
     );
   }
@@ -1894,50 +1918,50 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildTabletAgencyStory(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Şebo Ajans Hikayesi',
-          style: AppTypography.h3.copyWith(
-            color: const Color(0xFF2C2C2C),
-            fontWeight: FontWeight.w700,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Şebo Ajans Hikayesi',
+            style: AppTypography.h3.copyWith(
+              color: const Color(0xFF2C2C2C),
+              fontWeight: FontWeight.w700,
             fontSize: 22,
+            ),
           ),
-        ),
 
         const SizedBox(height: 16),
 
-        Text(
-          'Kimim, Ne Yapıyoruz, Neden Çalışıyoruz',
-          style: AppTypography.h5.copyWith(
-            color: const Color(0xFF6B6B6B),
-            fontWeight: FontWeight.w500,
+          Text(
+            'Kimim, Ne Yapıyoruz, Neden Çalışıyoruz',
+            style: AppTypography.h5.copyWith(
+              color: const Color(0xFF6B6B6B),
+              fontWeight: FontWeight.w500,
             fontSize: 14,
+            ),
           ),
-        ),
 
         const SizedBox(height: 20),
 
-        Text(
-          '20+ yıllık lüks perakende deneyimi ile Louis Vuitton, Gucci ve Bulgari gibi dünya devi markaların Türkiye pazarında büyümesine liderlik ettim. Harvard Business School eğitimi ve küresel marka yönetimi deneyimimle, Şebo Ajans\'ı kurarak bu bilgi birikimini dijital dünyaya taşıyorum.',
-          style: AppTypography.bodyLarge.copyWith(
-            color: const Color(0xFF4A4A4A),
-            height: 1.6,
+          Text(
+            '20+ yıllık lüks perakende deneyimi ile Louis Vuitton, Gucci ve Bulgari gibi dünya devi markaların Türkiye pazarında büyümesine liderlik ettim. Harvard Business School eğitimi ve küresel marka yönetimi deneyimimle, Şebo Ajans\'ı kurarak bu bilgi birikimini dijital dünyaya taşıyorum.',
+            style: AppTypography.bodyLarge.copyWith(
+              color: const Color(0xFF4A4A4A),
+              height: 1.6,
             fontSize: 13,
+            ),
           ),
-        ),
 
         const SizedBox(height: 20),
 
-        Text(
-          'Türkiye Tanıtım Grubu İcra Kurulu Başkanlığı ve Comité Colbert Türkiye Yılı Başkanlığı deneyimlerimle, markaların küresel pazarlarda güçlü konumlanması için stratejik yaklaşımlar geliştiriyoruz. Her proje, bir markanın hikayesini en etkili şekilde anlatma fırsatıdır.',
-          style: AppTypography.bodyMedium.copyWith(
-            color: const Color(0xFF6B6B6B),
-            height: 1.6,
+          Text(
+            'Türkiye Tanıtım Grubu İcra Kurulu Başkanlığı ve Comité Colbert Türkiye Yılı Başkanlığı deneyimlerimle, markaların küresel pazarlarda güçlü konumlanması için stratejik yaklaşımlar geliştiriyoruz. Her proje, bir markanın hikayesini en etkili şekilde anlatma fırsatıdır.',
+            style: AppTypography.bodyMedium.copyWith(
+              color: const Color(0xFF6B6B6B),
+              height: 1.6,
             fontSize: 12,
+            ),
           ),
-        ),
-      ],
+        ],
     );
   }
 
@@ -2020,17 +2044,17 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildMobileAboutStats(BuildContext context) {
     return Column(
-      children: [
+        children: [
         // Başlık - Mobile'da ortalanmış ve küçük
-        Text(
-          'Neden Bizi Seçmelisiniz?',
-          style: AppTypography.h3.copyWith(
-            color: const Color(0xFF2C2C2C),
-            fontWeight: FontWeight.w700,
+          Text(
+            'Neden Bizi Seçmelisiniz?',
+            style: AppTypography.h3.copyWith(
+              color: const Color(0xFF2C2C2C),
+              fontWeight: FontWeight.w700,
             fontSize: 18,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
-        ),
 
         const SizedBox(height: 20),
 
@@ -2212,13 +2236,11 @@ class _HomePageState extends ConsumerState<HomePage>
   Widget _buildConferencesSection(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(
-        Responsive.responsiveValue(
+      padding: Responsive.responsivePadding(
           context,
-          mobile: Branding.spacingL,
-          tablet: Branding.spacingXL,
-          desktop: Branding.spacingXXL,
-        ),
+        mobile: const EdgeInsets.all(16.0),
+        tablet: const EdgeInsets.all(20.0),
+        desktop: const EdgeInsets.all(24.0),
       ),
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -2237,70 +2259,177 @@ class _HomePageState extends ConsumerState<HomePage>
           ),
         ],
       ),
-      child: Column(
+      child: Responsive.responsiveWidget(
+        context,
+        mobile: _buildMobileConferencesSection(context),
+        tablet: _buildTabletConferencesSection(context),
+        desktop: _buildDesktopConferencesSection(context),
+      ),
+    );
+  }
+
+  Widget _buildMobileConferencesSection(BuildContext context) {
+    return Column(
         children: [
+        // Başlık - Mobile'da ortalanmış ve küçük
           Text(
             'Yurt Dışı Konferanslar & Etkinlikler',
             style: AppTypography.h2.copyWith(
               color: const Color(0xFF2C2C2C),
-              fontSize: Responsive.responsiveFontSize(
-                context,
-                desktop: 32,
-                tablet: 28,
-                mobile: 24,
-              ),
+            fontSize: 18,
               fontWeight: FontWeight.w700,
             ),
             textAlign: TextAlign.center,
           ),
 
-          const SizedBox(height: Branding.spacingM),
+        const SizedBox(height: 8),
 
           Text(
             'Uluslararası platformlarda yer aldığımız etkinlikler',
             style: AppTypography.bodyLarge.copyWith(
               color: const Color(0xFF6B6B6B),
-              fontSize: Responsive.responsiveFontSize(
-                context,
-                desktop: 16,
-                tablet: 15,
-                mobile: 14,
-              ),
+            fontSize: 11,
+            fontWeight: FontWeight.w400,
+          ),
+          textAlign: TextAlign.center,
+        ),
+
+        const SizedBox(height: 20),
+
+        // Conferences Grid - Mobile'da tek sütun
+        _buildMobileConferencesGrid(context),
+
+        const SizedBox(height: 20),
+
+        // Daha Fazla Butonu - Mobile'da küçük
+        _buildMobileMoreConferencesButton(context),
+      ],
+    );
+  }
+
+  Widget _buildTabletConferencesSection(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          'Yurt Dışı Konferanslar & Etkinlikler',
+          style: AppTypography.h2.copyWith(
+            color: const Color(0xFF2C2C2C),
+            fontSize: 24,
+            fontWeight: FontWeight.w700,
+          ),
+          textAlign: TextAlign.center,
+        ),
+
+        const SizedBox(height: 12),
+
+        Text(
+          'Uluslararası platformlarda yer aldığımız etkinlikler',
+          style: AppTypography.bodyLarge.copyWith(
+            color: const Color(0xFF6B6B6B),
+            fontSize: 13,
               fontWeight: FontWeight.w400,
             ),
             textAlign: TextAlign.center,
           ),
 
-          SizedBox(
-            height: Responsive.responsiveValue(
-              context,
-              mobile: Branding.spacingXL,
-              tablet: Branding.spacingXXL,
-              desktop: Branding.spacingXXL + 16,
-            ),
+        const SizedBox(height: 24),
+
+        _buildTabletConferencesGrid(context),
+
+        const SizedBox(height: 24),
+
+        _buildTabletMoreConferencesButton(context),
+      ],
+    );
+  }
+
+  Widget _buildDesktopConferencesSection(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          'Yurt Dışı Konferanslar & Etkinlikler',
+          style: AppTypography.h2.copyWith(
+            color: const Color(0xFF2C2C2C),
+            fontSize: 32,
+            fontWeight: FontWeight.w700,
           ),
+          textAlign: TextAlign.center,
+        ),
 
-          // Conferences Grid (sadece 2 tane göster)
-          _buildMinimalConferencesGrid(context),
+        const SizedBox(height: 16),
 
-          SizedBox(
-            height: Responsive.responsiveValue(
-              context,
-              mobile: Branding.spacingXL,
-              tablet: Branding.spacingXXL,
-              desktop: Branding.spacingXXL,
-            ),
+        Text(
+          'Uluslararası platformlarda yer aldığımız etkinlikler',
+          style: AppTypography.bodyLarge.copyWith(
+            color: const Color(0xFF6B6B6B),
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
           ),
+          textAlign: TextAlign.center,
+        ),
 
-          // Daha Fazla Butonu
-          _buildMoreConferencesButton(context),
-        ],
+        const SizedBox(height: 32),
+
+        _buildDesktopConferencesGrid(context),
+
+        const SizedBox(height: 32),
+
+        _buildDesktopMoreConferencesButton(context),
+      ],
+    );
+  }
+
+  Widget _buildMobileConferencesGrid(BuildContext context) {
+    final conferences = _getConferencesData();
+
+    return Column(
+      children: conferences.map((conference) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 16.0),
+          child: _buildMobileConferenceCard(context, conference),
+        );
+      }).toList(),
+    );
+  }
+
+  Widget _buildTabletConferencesGrid(BuildContext context) {
+    final conferences = _getConferencesData();
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Row(
+        children: conferences.map((conference) {
+          return Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: _buildTabletConferenceCard(context, conference),
+            ),
+          );
+        }).toList(),
       ),
     );
   }
 
-  Widget _buildMinimalConferencesGrid(BuildContext context) {
-    final conferences = [
+  Widget _buildDesktopConferencesGrid(BuildContext context) {
+    final conferences = _getConferencesData();
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 32.0),
+      child: Row(
+        children: conferences.map((conference) {
+          return Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: _buildDesktopConferenceCard(context, conference),
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
+  List<Map<String, dynamic>> _getConferencesData() {
+    return [
       {
         'title': 'Vefa Buluşmaları 2025',
         'description':
@@ -2322,25 +2451,252 @@ class _HomePageState extends ConsumerState<HomePage>
         'color': const Color(0xFF6B6B6B),
       },
     ];
+  }
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: Branding.spacingXXL),
-      child: Row(
-        children: conferences.map((conference) {
-          return Expanded(
+  Widget _buildMobileConferenceCard(
+    BuildContext context,
+    Map<String, dynamic> conference,
+  ) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: const Color(0xFFE5E7EB), width: 1),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF6B6B6B).withValues(alpha: 0.05),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
             child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Başlık ve tip - Mobile'da kompakt
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Text(
+                    conference['title'] as String,
+                    style: AppTypography.h6.copyWith(
+                      color: const Color(0xFF2C2C2C),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                Container(
               padding: const EdgeInsets.symmetric(
-                horizontal: Branding.spacingS,
-              ),
-              child: _buildMinimalConferenceCard(context, conference),
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF3F4F6),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    conference['type'] as String,
+                    style: AppTypography.bodySmall.copyWith(
+                      color: const Color(0xFF6B6B6B),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 9,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          );
-        }).toList(),
+
+            const SizedBox(height: 12),
+
+            // Tarih ve lokasyon - Mobile'da küçük
+            Row(
+              children: [
+                Icon(
+                  Icons.location_on,
+                  color: const Color(0xFF6B6B6B),
+                  size: 12,
+                ),
+                const SizedBox(width: 6),
+                Expanded(
+                  child: Text(
+                    conference['location'] as String,
+                    style: AppTypography.bodySmall.copyWith(
+                      color: const Color(0xFF6B6B6B),
+                      fontSize: 10,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 6),
+
+            Row(
+              children: [
+                Icon(
+                  Icons.calendar_today,
+                  color: const Color(0xFF6B6B6B),
+                  size: 12,
+                ),
+                const SizedBox(width: 6),
+                Text(
+                  conference['date'] as String,
+                  style: AppTypography.bodySmall.copyWith(
+                    color: const Color(0xFF6B6B6B),
+                    fontSize: 10,
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 12),
+
+            // Açıklama - Mobile'da kısa
+            Text(
+              conference['description'] as String,
+              style: AppTypography.bodyMedium.copyWith(
+                color: const Color(0xFF6B6B6B),
+                height: 1.4,
+                fontSize: 10,
+              ),
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildMinimalConferenceCard(
+  Widget _buildTabletConferenceCard(
+    BuildContext context,
+    Map<String, dynamic> conference,
+  ) {
+    return Container(
+      constraints: const BoxConstraints(minHeight: 240),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: const Color(0xFFE5E7EB), width: 1),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF6B6B6B).withValues(alpha: 0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Başlık ve tip
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Text(
+                    conference['title'] as String,
+                    style: AppTypography.h6.copyWith(
+                      color: const Color(0xFF2C2C2C),
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF3F4F6),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    conference['type'] as String,
+                    style: AppTypography.bodySmall.copyWith(
+                      color: const Color(0xFF6B6B6B),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 10,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 16),
+
+            // Tarih ve lokasyon
+            Row(
+              children: [
+                Icon(
+                  Icons.location_on,
+                  color: const Color(0xFF6B6B6B),
+                  size: 14,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    conference['location'] as String,
+                    style: AppTypography.bodySmall.copyWith(
+                      color: const Color(0xFF6B6B6B),
+                      fontSize: 11,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 8),
+
+            Row(
+              children: [
+                Icon(
+                  Icons.calendar_today,
+                  color: const Color(0xFF6B6B6B),
+                  size: 14,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  conference['date'] as String,
+                  style: AppTypography.bodySmall.copyWith(
+                    color: const Color(0xFF6B6B6B),
+                    fontSize: 11,
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 16),
+
+            // Açıklama
+            Text(
+              conference['description'] as String,
+              style: AppTypography.bodyMedium.copyWith(
+                color: const Color(0xFF6B6B6B),
+                height: 1.5,
+                fontSize: 11,
+              ),
+              maxLines: 4,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDesktopConferenceCard(
     BuildContext context,
     Map<String, dynamic> conference,
   ) {
@@ -2459,7 +2815,117 @@ class _HomePageState extends ConsumerState<HomePage>
     );
   }
 
-  Widget _buildMoreConferencesButton(BuildContext context) {
+  Widget _buildMobileMoreConferencesButton(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [const Color(0xFF6B6B6B), const Color(0xFF4A4A4A)],
+        ),
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF6B6B6B).withValues(alpha: 0.2),
+            blurRadius: 8,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: ElevatedButton(
+        onPressed: () {
+          // Tüm konferanslar sayfasına git
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 12,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Tüm Etkinlikleri Gör',
+              style: AppTypography.button.copyWith(
+                color: Colors.white,
+                fontSize: 11,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(width: 6),
+            Icon(
+              Icons.arrow_forward,
+              color: Colors.white,
+              size: 12,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTabletMoreConferencesButton(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [const Color(0xFF6B6B6B), const Color(0xFF4A4A4A)],
+        ),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF6B6B6B).withValues(alpha: 0.2),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: ElevatedButton(
+        onPressed: () {
+          // Tüm konferanslar sayfasına git
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: 14,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Tüm Etkinlikleri Gör',
+              style: AppTypography.button.copyWith(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Icon(
+              Icons.arrow_forward,
+              color: Colors.white,
+              size: 14,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDesktopMoreConferencesButton(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -2479,19 +2945,13 @@ class _HomePageState extends ConsumerState<HomePage>
       child: ElevatedButton(
         onPressed: () {
           // Tüm konferanslar sayfasına git
-          // Navigator.push(context, MaterialPageRoute(builder: (context) => AllConferencesPage()));
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
-          padding: EdgeInsets.symmetric(
-            horizontal: Responsive.responsiveValue(
-              context,
-              mobile: Branding.spacingXL,
-              tablet: Branding.spacingXXL,
-              desktop: Branding.spacingXXL + 8,
-            ),
-            vertical: Branding.spacingL,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 32,
+            vertical: 16,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(Branding.radiusL),
@@ -2504,17 +2964,16 @@ class _HomePageState extends ConsumerState<HomePage>
               'Tüm Etkinlikleri Gör',
               style: AppTypography.button.copyWith(
                 color: Colors.white,
-                fontSize: Responsive.responsiveFontSize(
-                  context,
-                  mobile: 14,
-                  tablet: 15,
-                  desktop: 16,
-                ),
+                fontSize: 14,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            const SizedBox(width: Branding.spacingS),
-            const Icon(Icons.arrow_forward, color: Colors.white, size: 18),
+            const SizedBox(width: 8),
+            Icon(
+              Icons.arrow_forward,
+              color: Colors.white,
+              size: 16,
+            ),
           ],
         ),
       ),
