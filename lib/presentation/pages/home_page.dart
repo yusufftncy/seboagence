@@ -790,34 +790,33 @@ class _HomePageState extends ConsumerState<HomePage>
   Widget _buildTabletProjectsSection(BuildContext context) {
     return Column(
       children: [
-        // Section Header - Tablet'de orta boyut ve ortalanmış
+        // Başlık - Tablet'de orta boyut
         Text(
           'Hoş İşler',
           style: AppTypography.h2.copyWith(
             color: const Color(0xFF2C2C2C),
             fontSize: 24,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.5,
+            fontWeight: FontWeight.w800,
           ),
           textAlign: TextAlign.center,
         ),
 
-        const SizedBox(height: 8),
+        const SizedBox(height: 10),
 
+        // Alt başlık - Tablet'de kompakt
         Text(
           'Sosyal Sorumluluk ve El Sanatları Platformu',
           style: AppTypography.h4.copyWith(
             color: const Color(0xFF6B6B6B),
             fontSize: 13,
-            fontWeight: FontWeight.w400,
-            letterSpacing: 0.3,
+            fontWeight: FontWeight.w500,
           ),
           textAlign: TextAlign.center,
         ),
 
         const SizedBox(height: 20),
 
-        // Projects Grid - Tablet'de 2 sütun, kompakt
+        // Projeler grid'i - Tablet'de optimize edilmiş
         _buildTabletProjectsGrid(context),
       ],
     );
@@ -876,9 +875,9 @@ class _HomePageState extends ConsumerState<HomePage>
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: 12.0,
-        mainAxisSpacing: 12.0,
-        childAspectRatio: 0.75,
+        crossAxisSpacing: 12.0, // Daha kompakt spacing
+        mainAxisSpacing: 12.0,  // Daha kompakt spacing
+        childAspectRatio: 0.75, // Daha kompakt aspect ratio
       ),
       itemCount: projects.length,
       itemBuilder: (context, index) {
@@ -1193,18 +1192,18 @@ class _HomePageState extends ConsumerState<HomePage>
           end: Alignment.bottomRight,
           colors: [
             Colors.white,
-            (project['color'] as Color).withValues(alpha: 0.03),
+            (project['color'] as Color).withValues(alpha: 0.05),
           ],
         ),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16), // Daha kompakt border radius
         border: Border.all(
-          color: (project['color'] as Color).withValues(alpha: 0.15),
+          color: (project['color'] as Color).withValues(alpha: 0.2),
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: (project['color'] as Color).withValues(alpha: 0.08),
-            blurRadius: 12,
+            color: (project['color'] as Color).withValues(alpha: 0.1),
+            blurRadius: 12, // Daha kompakt gölge
             offset: const Offset(0, 4),
           ),
         ],
@@ -1217,22 +1216,22 @@ class _HomePageState extends ConsumerState<HomePage>
             // Proje detayına git
           },
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0), // Daha kompakt padding
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Proje ikonu ve başlık - Tablet'de kompakt
+                // Proje ikonu ve başlık - Kompakt
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10), // Daha kompakt
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [
-                            (project['color'] as Color).withValues(alpha: 0.2),
-                            (project['color'] as Color).withValues(alpha: 0.08),
+                            (project['color'] as Color).withValues(alpha: 0.3),
+                            (project['color'] as Color).withValues(alpha: 0.1),
                           ],
                         ),
                         borderRadius: BorderRadius.circular(10),
@@ -1240,56 +1239,56 @@ class _HomePageState extends ConsumerState<HomePage>
                       child: Icon(
                         project['icon'] as IconData,
                         color: project['color'] as Color,
-                        size: 16,
+                        size: 18, // Daha kompakt icon
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 12), // Daha kompakt spacing
                     Expanded(
                       child: Text(
                         project['title'] as String,
                         style: AppTypography.h5.copyWith(
                           color: const Color(0xFF2C2C2C),
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14, // Daha kompakt font
                         ),
                       ),
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
+                        horizontal: 10, // Daha kompakt
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
                         color: (project['color'] as Color).withValues(
-                          alpha: 0.15,
+                          alpha: 0.2,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
                         '2023',
                         style: AppTypography.bodySmall.copyWith(
                           color: project['color'] as Color,
                           fontWeight: FontWeight.w600,
-                          fontSize: 9,
+                          fontSize: 9, // Daha kompakt font
                         ),
                       ),
                     ),
                   ],
                 ),
 
-                const SizedBox(height: 12),
+                const SizedBox(height: 12), // Daha kompakt spacing
 
-                // Müşteri bilgisi - Tablet'de küçük
+                // Müşteri bilgisi - Kompakt
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
+                    horizontal: 10, // Daha kompakt
                     vertical: 4,
                   ),
                   decoration: BoxDecoration(
-                    color: (project['color'] as Color).withValues(alpha: 0.08),
-                    borderRadius: BorderRadius.circular(8),
+                    color: (project['color'] as Color).withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(10),
                     border: Border.all(
-                      color: (project['color'] as Color).withValues(alpha: 0.2),
+                      color: (project['color'] as Color).withValues(alpha: 0.3),
                       width: 1,
                     ),
                   ),
@@ -1299,45 +1298,45 @@ class _HomePageState extends ConsumerState<HomePage>
                       Icon(
                         Icons.business,
                         color: project['color'] as Color,
-                        size: 12,
+                        size: 12, // Daha kompakt icon
                       ),
                       const SizedBox(width: 6),
                       Text(
                         'Müşteri: ${project['category']} Holding',
                         style: AppTypography.bodySmall.copyWith(
                           color: project['color'] as Color,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 9,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 9, // Daha kompakt font
                         ),
                       ),
                     ],
                   ),
                 ),
 
-                const SizedBox(height: 12),
+                const SizedBox(height: 12), // Daha kompakt spacing
 
-                // Proje açıklaması - Tablet'de kompakt
+                // Proje açıklaması - Kompakt
                 Expanded(
                   child: Text(
                     project['description'] as String,
                     style: AppTypography.bodyMedium.copyWith(
                       color: const Color(0xFF6B6B6B),
-                      height: 1.4,
-                      fontSize: 11,
+                      height: 1.4, // Daha kompakt line height
+                      fontSize: 11, // Daha kompakt font
                     ),
-                    maxLines: 3,
+                    maxLines: 3, // Daha az satır
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
 
-                const SizedBox(height: 12),
+                const SizedBox(height: 12), // Daha kompakt spacing
 
-                // Alt bilgi - Tablet'de kompakt
+                // Alt bilgi - Kompakt
                 Row(
                   children: [
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
+                        horizontal: 10, // Daha kompakt
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
@@ -1345,14 +1344,14 @@ class _HomePageState extends ConsumerState<HomePage>
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [
-                            (project['color'] as Color).withValues(alpha: 0.15),
-                            (project['color'] as Color).withValues(alpha: 0.08),
+                            (project['color'] as Color).withValues(alpha: 0.2),
+                            (project['color'] as Color).withValues(alpha: 0.1),
                           ],
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(10),
                         border: Border.all(
                           color: (project['color'] as Color).withValues(
-                            alpha: 0.3,
+                            alpha: 0.4,
                           ),
                           width: 1,
                         ),
@@ -1363,7 +1362,7 @@ class _HomePageState extends ConsumerState<HomePage>
                           Icon(
                             project['icon'] as IconData,
                             color: project['color'] as Color,
-                            size: 12,
+                            size: 12, // Daha kompakt icon
                           ),
                           const SizedBox(width: 6),
                           Text(
@@ -1371,7 +1370,7 @@ class _HomePageState extends ConsumerState<HomePage>
                             style: AppTypography.bodySmall.copyWith(
                               color: project['color'] as Color,
                               fontWeight: FontWeight.w600,
-                              fontSize: 9,
+                              fontSize: 9, // Daha kompakt font
                             ),
                           ),
                         ],
@@ -1380,17 +1379,17 @@ class _HomePageState extends ConsumerState<HomePage>
                     const Spacer(),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
+                        horizontal: 10, // Daha kompakt
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
                         color: (project['color'] as Color).withValues(
-                          alpha: 0.08,
+                          alpha: 0.1,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(10),
                         border: Border.all(
                           color: (project['color'] as Color).withValues(
-                            alpha: 0.2,
+                            alpha: 0.3,
                           ),
                           width: 1,
                         ),
@@ -1403,14 +1402,14 @@ class _HomePageState extends ConsumerState<HomePage>
                             style: AppTypography.bodyMedium.copyWith(
                               color: project['color'] as Color,
                               fontWeight: FontWeight.w600,
-                              fontSize: 9,
+                              fontSize: 9, // Daha kompakt font
                             ),
                           ),
                           const SizedBox(width: 4),
                           Icon(
                             Icons.arrow_forward,
                             color: project['color'] as Color,
-                            size: 12,
+                            size: 12, // Daha kompakt icon
                           ),
                         ],
                       ),
