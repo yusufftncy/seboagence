@@ -1259,7 +1259,12 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildAgencyStory(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(Branding.spacingXL),
+      padding: Responsive.responsivePadding(
+        context,
+        mobile: const EdgeInsets.all(16.0),
+        tablet: const EdgeInsets.all(20.0),
+        desktop: const EdgeInsets.all(24.0),
+      ),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -1279,48 +1284,171 @@ class _HomePageState extends ConsumerState<HomePage>
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
+      child: Responsive.responsiveWidget(
+        context,
+        mobile: _buildMobileAgencyStory(context),
+        tablet: _buildTabletAgencyStory(context),
+        desktop: _buildDesktopAgencyStory(context),
+      ),
+    );
+  }
+
+  Widget _buildMobileAgencyStory(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Başlık - Mobile'da ortalanmış
+        Center(
+          child: Text(
             'Şebo Ajans Hikayesi',
+            textAlign: TextAlign.center,
             style: AppTypography.h3.copyWith(
               color: const Color(0xFF2C2C2C),
               fontWeight: FontWeight.w700,
+              fontSize: 18,
             ),
           ),
+        ),
 
-          const SizedBox(height: Branding.spacingL),
+        const SizedBox(height: 12),
 
-          Text(
+        // Alt başlık - Mobile'da ortalanmış
+        Center(
+          child: Text(
             'Kimim, Ne Yapıyoruz, Neden Çalışıyoruz',
+            textAlign: TextAlign.center,
             style: AppTypography.h5.copyWith(
               color: const Color(0xFF6B6B6B),
               fontWeight: FontWeight.w500,
+              fontSize: 12,
             ),
           ),
+        ),
 
-          const SizedBox(height: Branding.spacingL),
+        const SizedBox(height: 16),
 
-          Text(
-            '20+ yıllık lüks perakende deneyimi ile Louis Vuitton, Gucci ve Bulgari gibi dünya devi markaların Türkiye pazarında büyümesine liderlik ettim. Harvard Business School eğitimi ve küresel marka yönetimi deneyimimle, Şebo Ajans\'ı kurarak bu bilgi birikimini dijital dünyaya taşıyorum.',
-            style: AppTypography.bodyLarge.copyWith(
-              color: const Color(0xFF4A4A4A),
-              height: 1.6,
-            ),
+        // Ana metin - Mobile'da daha küçük font
+        Text(
+          '20+ yıllık lüks perakende deneyimi ile Louis Vuitton, Gucci ve Bulgari gibi dünya devi markaların Türkiye pazarında büyümesine liderlik ettim. Harvard Business School eğitimi ve küresel marka yönetimi deneyimimle, Şebo Ajans\'ı kurarak bu bilgi birikimini dijital dünyaya taşıyorum.',
+          textAlign: TextAlign.justify,
+          style: AppTypography.bodyLarge.copyWith(
+            color: const Color(0xFF4A4A4A),
+            height: 1.5,
+            fontSize: 11,
           ),
+        ),
 
-          const SizedBox(height: Branding.spacingL),
+        const SizedBox(height: 16),
 
-          Text(
-            'Türkiye Tanıtım Grubu İcra Kurulu Başkanlığı ve Comité Colbert Türkiye Yılı Başkanlığı deneyimlerimle, markaların küresel pazarlarda güçlü konumlanması için stratejik yaklaşımlar geliştiriyoruz. Her proje, bir markanın hikayesini en etkili şekilde anlatma fırsatıdır.',
-            style: AppTypography.bodyMedium.copyWith(
-              color: const Color(0xFF6B6B6B),
-              height: 1.6,
-            ),
+        // İkinci metin - Mobile'da daha küçük font
+        Text(
+          'Türkiye Tanıtım Grubu İcra Kurulu Başkanlığı ve Comité Colbert Türkiye Yılı Başkanlığı deneyimlerimle, markaların küresel pazarlarda güçlü konumlanması için stratejik yaklaşımlar geliştiriyoruz. Her proje, bir markanın hikayesini en etkili şekilde anlatma fırsatıdır.',
+          textAlign: TextAlign.justify,
+          style: AppTypography.bodyMedium.copyWith(
+            color: const Color(0xFF6B6B6B),
+            height: 1.5,
+            fontSize: 10,
           ),
-        ],
-      ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTabletAgencyStory(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Şebo Ajans Hikayesi',
+          style: AppTypography.h3.copyWith(
+            color: const Color(0xFF2C2C2C),
+            fontWeight: FontWeight.w700,
+            fontSize: 22,
+          ),
+        ),
+
+        const SizedBox(height: 16),
+
+        Text(
+          'Kimim, Ne Yapıyoruz, Neden Çalışıyoruz',
+          style: AppTypography.h5.copyWith(
+            color: const Color(0xFF6B6B6B),
+            fontWeight: FontWeight.w500,
+            fontSize: 14,
+          ),
+        ),
+
+        const SizedBox(height: 20),
+
+        Text(
+          '20+ yıllık lüks perakende deneyimi ile Louis Vuitton, Gucci ve Bulgari gibi dünya devi markaların Türkiye pazarında büyümesine liderlik ettim. Harvard Business School eğitimi ve küresel marka yönetimi deneyimimle, Şebo Ajans\'ı kurarak bu bilgi birikimini dijital dünyaya taşıyorum.',
+          style: AppTypography.bodyLarge.copyWith(
+            color: const Color(0xFF4A4A4A),
+            height: 1.6,
+            fontSize: 13,
+          ),
+        ),
+
+        const SizedBox(height: 20),
+
+        Text(
+          'Türkiye Tanıtım Grubu İcra Kurulu Başkanlığı ve Comité Colbert Türkiye Yılı Başkanlığı deneyimlerimle, markaların küresel pazarlarda güçlü konumlanması için stratejik yaklaşımlar geliştiriyoruz. Her proje, bir markanın hikayesini en etkili şekilde anlatma fırsatıdır.',
+          style: AppTypography.bodyMedium.copyWith(
+            color: const Color(0xFF6B6B6B),
+            height: 1.6,
+            fontSize: 12,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDesktopAgencyStory(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Şebo Ajans Hikayesi',
+          style: AppTypography.h3.copyWith(
+            color: const Color(0xFF2C2C2C),
+            fontWeight: FontWeight.w700,
+            fontSize: 28,
+          ),
+        ),
+
+        const SizedBox(height: 20),
+
+        Text(
+          'Kimim, Ne Yapıyoruz, Neden Çalışıyoruz',
+          style: AppTypography.h5.copyWith(
+            color: const Color(0xFF6B6B6B),
+            fontWeight: FontWeight.w500,
+            fontSize: 18,
+          ),
+        ),
+
+        const SizedBox(height: 24),
+
+        Text(
+          '20+ yıllık lüks perakende deneyimi ile Louis Vuitton, Gucci ve Bulgari gibi dünya devi markaların Türkiye pazarında büyümesine liderlik ettim. Harvard Business School eğitimi ve küresel marka yönetimi deneyimimle, Şebo Ajans\'ı kurarak bu bilgi birikimini dijital dünyaya taşıyorum.',
+          style: AppTypography.bodyLarge.copyWith(
+            color: const Color(0xFF4A4A4A),
+            height: 1.6,
+            fontSize: 16,
+          ),
+        ),
+
+        const SizedBox(height: 24),
+
+        Text(
+          'Türkiye Tanıtım Grubu İcra Kurulu Başkanlığı ve Comité Colbert Türkiye Yılı Başkanlığı deneyimlerimle, markaların küresel pazarlarda güçlü konumlanması için stratejik yaklaşımlar geliştiriyoruz. Her proje, bir markanın hikayesini en etkili şekilde anlatma fırsatıdır.',
+          style: AppTypography.bodyMedium.copyWith(
+            color: const Color(0xFF6B6B6B),
+            height: 1.6,
+            fontSize: 14,
+          ),
+        ),
+      ],
     );
   }
 
