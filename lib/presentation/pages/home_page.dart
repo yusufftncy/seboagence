@@ -1221,9 +1221,9 @@ class _HomePageState extends ConsumerState<HomePage>
             borderRadius: BorderRadius.circular(Branding.radiusL),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF0077B5).withValues(
-                  alpha: _isLinkedInHovered ? 0.4 : 0.2,
-                ),
+                color: const Color(
+                  0xFF0077B5,
+                ).withValues(alpha: _isLinkedInHovered ? 0.4 : 0.2),
                 blurRadius: _isLinkedInHovered ? 12 : 8,
                 offset: Offset(0, _isLinkedInHovered ? 6 : 4),
               ),
@@ -1231,7 +1231,9 @@ class _HomePageState extends ConsumerState<HomePage>
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: isMobile ? MainAxisAlignment.center : MainAxisAlignment.start,
+            mainAxisAlignment: isMobile
+                ? MainAxisAlignment.center
+                : MainAxisAlignment.start,
             children: [
               Icon(
                 Icons.business,
@@ -1454,7 +1456,12 @@ class _HomePageState extends ConsumerState<HomePage>
 
   Widget _buildAboutStats(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(Branding.spacingXL),
+      padding: Responsive.responsivePadding(
+        context,
+        mobile: const EdgeInsets.all(16.0),
+        tablet: const EdgeInsets.all(20.0),
+        desktop: const EdgeInsets.all(24.0),
+      ),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(Branding.radiusXL),
@@ -1466,28 +1473,78 @@ class _HomePageState extends ConsumerState<HomePage>
           ),
         ],
       ),
-      child: Column(
-        children: [
-          // Basit başlık
-          Text(
-            'Neden Bizi Seçmelisiniz?',
-            style: AppTypography.h3.copyWith(
-              color: const Color(0xFF2C2C2C),
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          const SizedBox(height: Branding.spacingXL),
-
-          // Basit liste
-          _buildSimpleFeaturesList(context),
-        ],
+      child: Responsive.responsiveWidget(
+        context,
+        mobile: _buildMobileAboutStats(context),
+        tablet: _buildTabletAboutStats(context),
+        desktop: _buildDesktopAboutStats(context),
       ),
     );
   }
 
-  Widget _buildSimpleFeaturesList(BuildContext context) {
+  Widget _buildMobileAboutStats(BuildContext context) {
+    return Column(
+      children: [
+        // Başlık - Mobile'da ortalanmış ve küçük
+        Text(
+          'Neden Bizi Seçmelisiniz?',
+          style: AppTypography.h3.copyWith(
+            color: const Color(0xFF2C2C2C),
+            fontWeight: FontWeight.w700,
+            fontSize: 18,
+          ),
+          textAlign: TextAlign.center,
+        ),
+
+        const SizedBox(height: 20),
+
+        // Özellikler listesi - Mobile'da kompakt
+        _buildMobileFeaturesList(context),
+      ],
+    );
+  }
+
+  Widget _buildTabletAboutStats(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          'Neden Bizi Seçmelisiniz?',
+          style: AppTypography.h3.copyWith(
+            color: const Color(0xFF2C2C2C),
+            fontWeight: FontWeight.w700,
+            fontSize: 22,
+          ),
+          textAlign: TextAlign.center,
+        ),
+
+        const SizedBox(height: 24),
+
+        _buildTabletFeaturesList(context),
+      ],
+    );
+  }
+
+  Widget _buildDesktopAboutStats(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          'Neden Bizi Seçmelisiniz?',
+          style: AppTypography.h3.copyWith(
+            color: const Color(0xFF2C2C2C),
+            fontWeight: FontWeight.w700,
+            fontSize: 28,
+          ),
+          textAlign: TextAlign.center,
+        ),
+
+        const SizedBox(height: 32),
+
+        _buildDesktopFeaturesList(context),
+      ],
+    );
+  }
+
+  Widget _buildMobileFeaturesList(BuildContext context) {
     final features = [
       '🏆 20+ yıl lüks perakende deneyimi',
       '🎓 Harvard Business School eğitimi',
@@ -1500,24 +1557,112 @@ class _HomePageState extends ConsumerState<HomePage>
     return Column(
       children: features.map((feature) {
         return Padding(
-          padding: const EdgeInsets.only(bottom: Branding.spacingL),
+          padding: const EdgeInsets.only(bottom: 12.0),
           child: Row(
             children: [
               Container(
-                width: 8,
-                height: 8,
+                width: 6,
+                height: 6,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF3B82F6), // Ana tema mavi rengi
-                  borderRadius: BorderRadius.circular(4),
+                  color: const Color(0xFF3B82F6),
+                  borderRadius: BorderRadius.circular(3),
                 ),
               ),
-              const SizedBox(width: Branding.spacingM),
+              const SizedBox(width: 12),
               Expanded(
                 child: Text(
                   feature,
                   style: AppTypography.bodyLarge.copyWith(
                     color: const Color(0xFF2C2C2C),
                     fontWeight: FontWeight.w500,
+                    fontSize: 11,
+                    height: 1.4,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      }).toList(),
+    );
+  }
+
+  Widget _buildTabletFeaturesList(BuildContext context) {
+    final features = [
+      '🏆 20+ yıl lüks perakende deneyimi',
+      '🎓 Harvard Business School eğitimi',
+      '🌍 Küresel marka yönetimi uzmanlığı',
+      '🤝 Louis Vuitton, Gucci, Bulgari deneyimi',
+      '📈 Türkiye Tanıtım Grubu liderliği',
+      '🎨 Comité Colbert Türkiye Yılı başkanlığı',
+    ];
+
+    return Column(
+      children: features.map((feature) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 16.0),
+          child: Row(
+            children: [
+              Container(
+                width: 7,
+                height: 7,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF3B82F6),
+                  borderRadius: BorderRadius.circular(3.5),
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Text(
+                  feature,
+                  style: AppTypography.bodyLarge.copyWith(
+                    color: const Color(0xFF2C2C2C),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 13,
+                    height: 1.5,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      }).toList(),
+    );
+  }
+
+  Widget _buildDesktopFeaturesList(BuildContext context) {
+    final features = [
+      '🏆 20+ yıl lüks perakende deneyimi',
+      '🎓 Harvard Business School eğitimi',
+      '🌍 Küresel marka yönetimi uzmanlığı',
+      '🤝 Louis Vuitton, Gucci, Bulgari deneyimi',
+      '📈 Türkiye Tanıtım Grubu liderliği',
+      '🎨 Comité Colbert Türkiye Yılı başkanlığı',
+    ];
+
+    return Column(
+      children: features.map((feature) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 20.0),
+          child: Row(
+            children: [
+              Container(
+                width: 8,
+                height: 8,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF3B82F6),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              ),
+              const SizedBox(width: 20),
+              Expanded(
+                child: Text(
+                  feature,
+                  style: AppTypography.bodyLarge.copyWith(
+                    color: const Color(0xFF2C2C2C),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 15,
+                    height: 1.6,
                   ),
                 ),
               ),
