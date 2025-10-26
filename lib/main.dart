@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/theme_providers.dart';
 import 'core/routing/app_router.dart';
+import 'core/services/navigation_service.dart';
 import 'presentation/pages/home_page.dart';
 
 void main() async {
@@ -31,6 +32,7 @@ class SeboAgencyApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Ajans Şebo',
       debugShowCheckedModeBanner: false,
+      navigatorKey: NavigationService.navigatorKey,
       home: const HomePage(),
       onGenerateRoute: AppRouter.generateRoute,
 

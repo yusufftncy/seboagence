@@ -21,12 +21,15 @@ class AppConstants {
 
   // UI Sabitleri
   static const double maxContentWidth = 1400.0;
-  
+
   // Mobile Breakpoints - Detaylı responsive tasarım için
-  static const double smallMobileBreakpoint = 320.0;  // iPhone SE, küçük telefonlar
-  static const double mediumMobileBreakpoint = 375.0; // iPhone 12/13/14 standard
-  static const double largeMobileBreakpoint = 414.0;  // iPhone Plus, büyük telefonlar
-  static const double mobileBreakpoint = 768.0;       // Tablet başlangıcı
+  static const double smallMobileBreakpoint =
+      320.0; // iPhone SE, küçük telefonlar
+  static const double mediumMobileBreakpoint =
+      375.0; // iPhone 12/13/14 standard
+  static const double largeMobileBreakpoint =
+      414.0; // iPhone Plus, büyük telefonlar
+  static const double mobileBreakpoint = 768.0; // Tablet başlangıcı
   static const double tabletBreakpoint = 1024.0;
   static const double desktopBreakpoint = 1400.0;
 
@@ -52,6 +55,24 @@ class AppConstants {
   static const String successMessage = 'İşlem başarıyla tamamlandı';
   static const String saveSuccessMessage = 'Kayıt başarıyla kaydedildi';
   static const String deleteSuccessMessage = 'Kayıt başarıyla silindi';
+
+  // İletişim Bilgileri
+  static const String companyEmail = 'info@seboagency.com';
+  static const String companyPhone = '+90 (212) 123 45 67';
+  static const String companyAddress = 'İstanbul, Türkiye';
+  static const String companyWebsite = 'www.seboagency.com';
+  static const String companyLinkedIn = 'linkedin.com/company/seboagency';
+  static const String companyInstagram = '@seboagency';
+
+  // İletişim Sayfası Metinleri
+  static const String contactPageTitle = 'İletişim';
+  static const String contactPageSubtitle =
+      'Projeleriniz için bizimle iletişime geçin';
+  static const String contactFormTitle = 'Mesaj Gönderin';
+  static const String contactFormSubtitle =
+      'Size en kısa sürede dönüş yapacağız';
+  static const String contactInfoTitle = 'İletişim Bilgileri';
+  static const String contactInfoSubtitle = 'Bize ulaşmanın farklı yolları';
 
   // Private constructor - Bu sınıf instantiate edilemez
   AppConstants._();

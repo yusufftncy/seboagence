@@ -4,6 +4,8 @@
 library;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import '../../presentation/widgets/simple_loading_indicator.dart';
 
 class NavigationService {
   static final GlobalKey<NavigatorState> navigatorKey =
@@ -16,21 +18,51 @@ class NavigationService {
   /// Ana sayfaya git
   static void goToHome() {
     if (currentState != null) {
-      currentState!.pushNamedAndRemoveUntil('/', (route) => false);
+      HapticFeedback.lightImpact();
+      _showLoadingAndNavigate('Ana Sayfaya Geçiliyor...', () {
+        currentState!.pushNamedAndRemoveUntil('/', (route) => false);
+      });
     }
   }
 
   /// Hakkımızda sayfasına git
   static void goToAbout() {
     if (currentState != null) {
-      currentState!.pushNamed('/about');
+      HapticFeedback.lightImpact();
+      _showLoadingAndNavigate('Hakkımızda Sayfası Yükleniyor...', () {
+        currentState!.pushNamed('/about');
+      });
     }
   }
 
   /// İletişim sayfasına git
   static void goToContact() {
     if (currentState != null) {
-      currentState!.pushNamed('/contact');
+      HapticFeedback.lightImpact();
+      _showLoadingAndNavigate('İletişim Sayfası Yükleniyor...', () {
+        currentState!.pushNamed('/contact');
+      });
+    }
+  }
+
+  /// Yükleme göster ve navigasyon yap
+  static void _showLoadingAndNavigate(String message, VoidCallback navigation) {
+    if (currentContext != null) {
+      // Yükleme overlay'ini göster
+      showDialog(
+        context: currentContext!,
+        barrierDismissible: false,
+        barrierColor: Colors.transparent,
+        builder: (context) => PageTransitionLoading(message: message),
+      );
+
+      // Kısa bir gecikme sonrası navigasyon yap
+      Future.delayed(const Duration(milliseconds: 300), () {
+        // Yükleme ekranını kapat
+        Navigator.of(currentContext!).pop();
+        // Navigasyonu yap
+        navigation();
+      });
     }
   }
 
