@@ -3134,13 +3134,11 @@ class _FooterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(
-        Responsive.responsiveValue(
-          context,
-          mobile: Branding.spacingL,
-          tablet: Branding.spacingXL,
-          desktop: Branding.spacingXXL,
-        ),
+      padding: Responsive.responsivePadding(
+        context,
+        mobile: const EdgeInsets.all(16.0),
+        tablet: const EdgeInsets.all(20.0),
+        desktop: const EdgeInsets.all(24.0),
       ),
       decoration: const BoxDecoration(
         color: Color(0xFF131B2E), // Dark blue-grey
@@ -3148,7 +3146,7 @@ class _FooterWidget extends StatelessWidget {
       child: Responsive.responsiveWidget(
         context,
         mobile: _buildMobileFooter(context),
-        tablet: _buildDesktopFooter(context),
+        tablet: _buildTabletFooter(context),
         desktop: _buildDesktopFooter(context),
       ),
     );
@@ -3157,13 +3155,32 @@ class _FooterWidget extends StatelessWidget {
   Widget _buildMobileFooter(BuildContext context) {
     return Column(
       children: [
-        _buildFooterLogo(),
-        const SizedBox(height: Branding.spacingXL),
-        _buildFooterLinks(),
-        const SizedBox(height: Branding.spacingXL),
-        _buildFooterContact(),
-        const SizedBox(height: Branding.spacingXL),
-        _buildFooterBottom(),
+        _buildMobileFooterLogo(),
+        const SizedBox(height: 20),
+        _buildMobileFooterLinks(),
+        const SizedBox(height: 20),
+        _buildMobileFooterContact(),
+        const SizedBox(height: 20),
+        _buildMobileFooterBottom(),
+      ],
+    );
+  }
+
+  Widget _buildTabletFooter(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(flex: 2, child: _buildTabletFooterLogo()),
+            const SizedBox(width: 20),
+            Expanded(flex: 1, child: _buildTabletFooterLinks()),
+            const SizedBox(width: 20),
+            Expanded(flex: 1, child: _buildTabletFooterContact()),
+          ],
+        ),
+        const SizedBox(height: 24),
+        _buildTabletFooterBottom(),
       ],
     );
   }
@@ -3183,6 +3200,177 @@ class _FooterWidget extends StatelessWidget {
         ),
         const SizedBox(height: Branding.spacingXXL),
         _buildFooterBottom(),
+      ],
+    );
+  }
+
+  Widget _buildMobileFooterLogo() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        // Logo - Mobile'da ortalanmış
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 6.0,
+              ),
+              decoration: BoxDecoration(
+                color: const Color(0xFFE0E0E0),
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              child: const Text(
+                'ŞEBO',
+                style: TextStyle(
+                  color: Color(0xFF4A4A4A),
+                  fontWeight: FontWeight.w900,
+                  fontSize: 14,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
+            const SizedBox(width: 8.0),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 6.0,
+                vertical: 2.0,
+              ),
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: const Color(0xFFE0E0E0),
+                    width: 1.0,
+                  ),
+                ),
+              ),
+              child: const Text(
+                'creative agency',
+                style: TextStyle(
+                  color: Color(0xFFE0E0E0),
+                  fontWeight: FontWeight.w300,
+                  fontSize: 9,
+                  letterSpacing: 1.0,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+            ),
+          ],
+        ),
+
+        const SizedBox(height: 12),
+
+        // Açıklama - Mobile'da küçük ve ortalanmış
+        Text(
+          'Yaratıcı ve yenilikçi çözümler sunan premium dijital ajans olarak, müşterilerimize en iyi hizmeti sunmayı hedefliyoruz.',
+          textAlign: TextAlign.center,
+          style: AppTypography.bodyMedium.copyWith(
+            color: const Color(0xFFB0B0B0),
+            height: 1.4,
+            fontSize: 10,
+          ),
+        ),
+
+        const SizedBox(height: 16),
+
+        // Sosyal medya - Mobile'da kompakt
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _buildMobileSocialIcon(Icons.facebook, 'https://facebook.com'),
+            const SizedBox(width: 8),
+            _buildMobileSocialIcon(Icons.camera_alt, 'https://instagram.com'),
+            const SizedBox(width: 8),
+            _buildMobileSocialIcon(Icons.business, 'https://linkedin.com'),
+            const SizedBox(width: 8),
+            _buildMobileSocialIcon(Icons.chat, 'https://twitter.com'),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTabletFooterLogo() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Logo
+        Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 18.0,
+                vertical: 7.0,
+              ),
+              decoration: BoxDecoration(
+                color: const Color(0xFFE0E0E0),
+                borderRadius: BorderRadius.circular(18.0),
+              ),
+              child: const Text(
+                'ŞEBO',
+                style: TextStyle(
+                  color: Color(0xFF4A4A4A),
+                  fontWeight: FontWeight.w900,
+                  fontSize: 16,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
+            const SizedBox(width: 10.0),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 7.0,
+                vertical: 2.0,
+              ),
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: const Color(0xFFE0E0E0),
+                    width: 1.2,
+                  ),
+                ),
+              ),
+              child: const Text(
+                'creative agency',
+                style: TextStyle(
+                  color: Color(0xFFE0E0E0),
+                  fontWeight: FontWeight.w300,
+                  fontSize: 11,
+                  letterSpacing: 1.1,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+            ),
+          ],
+        ),
+
+        const SizedBox(height: 16),
+
+        // Açıklama
+        Text(
+          'Yaratıcı ve yenilikçi çözümler sunan premium dijital ajans olarak, müşterilerimize en iyi hizmeti sunmayı hedefliyoruz.',
+          style: AppTypography.bodyMedium.copyWith(
+            color: const Color(0xFFB0B0B0),
+            height: 1.5,
+            fontSize: 11,
+          ),
+        ),
+
+        const SizedBox(height: 16),
+
+        // Sosyal medya
+        Row(
+          children: [
+            _buildTabletSocialIcon(Icons.facebook, 'https://facebook.com'),
+            const SizedBox(width: 12),
+            _buildTabletSocialIcon(Icons.camera_alt, 'https://instagram.com'),
+            const SizedBox(width: 12),
+            _buildTabletSocialIcon(Icons.business, 'https://linkedin.com'),
+            const SizedBox(width: 12),
+            _buildTabletSocialIcon(Icons.chat, 'https://twitter.com'),
+          ],
+        ),
       ],
     );
   }
@@ -3270,6 +3458,28 @@ class _FooterWidget extends StatelessWidget {
     );
   }
 
+  Widget _buildMobileSocialIcon(IconData icon, String url) {
+    return Container(
+      padding: const EdgeInsets.all(6.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFF2A2A2A),
+        borderRadius: BorderRadius.circular(6.0),
+      ),
+      child: Icon(icon, color: const Color(0xFFE0E0E0), size: 14),
+    );
+  }
+
+  Widget _buildTabletSocialIcon(IconData icon, String url) {
+    return Container(
+      padding: const EdgeInsets.all(7.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFF2A2A2A),
+        borderRadius: BorderRadius.circular(7.0),
+      ),
+      child: Icon(icon, color: const Color(0xFFE0E0E0), size: 16),
+    );
+  }
+
   Widget _buildSocialIcon(IconData icon, String url) {
     return Container(
       padding: const EdgeInsets.all(8.0),
@@ -3278,6 +3488,48 @@ class _FooterWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Icon(icon, color: const Color(0xFFE0E0E0), size: 20),
+    );
+  }
+
+  Widget _buildMobileFooterLinks() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          'Hızlı Linkler',
+          style: AppTypography.h6.copyWith(
+            color: const Color(0xFFE0E0E0),
+            fontWeight: FontWeight.w600,
+            fontSize: 12,
+          ),
+        ),
+        const SizedBox(height: 12),
+        _buildMobileFooterLink('Ana Sayfa'),
+        _buildMobileFooterLink('Hakkımızda'),
+        _buildMobileFooterLink('Projelerimiz'),
+        _buildMobileFooterLink('İletişim'),
+      ],
+    );
+  }
+
+  Widget _buildTabletFooterLinks() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Hızlı Linkler',
+          style: AppTypography.h6.copyWith(
+            color: const Color(0xFFE0E0E0),
+            fontWeight: FontWeight.w600,
+            fontSize: 13,
+          ),
+        ),
+        const SizedBox(height: 14),
+        _buildTabletFooterLink('Ana Sayfa'),
+        _buildTabletFooterLink('Hakkımızda'),
+        _buildTabletFooterLink('Projelerimiz'),
+        _buildTabletFooterLink('İletişim'),
+      ],
     );
   }
 
@@ -3301,6 +3553,33 @@ class _FooterWidget extends StatelessWidget {
     );
   }
 
+  Widget _buildMobileFooterLink(String text) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: AppTypography.bodyMedium.copyWith(
+          color: const Color(0xFFB0B0B0),
+          fontSize: 10,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTabletFooterLink(String text) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Text(
+        text,
+        style: AppTypography.bodyMedium.copyWith(
+          color: const Color(0xFFB0B0B0),
+          fontSize: 11,
+        ),
+      ),
+    );
+  }
+
   Widget _buildFooterLink(String text) {
     return Padding(
       padding: const EdgeInsets.only(bottom: Branding.spacingM),
@@ -3310,6 +3589,46 @@ class _FooterWidget extends StatelessWidget {
           color: const Color(0xFFB0B0B0),
         ),
       ),
+    );
+  }
+
+  Widget _buildMobileFooterContact() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          'İletişim',
+          style: AppTypography.h6.copyWith(
+            color: const Color(0xFFE0E0E0),
+            fontWeight: FontWeight.w600,
+            fontSize: 12,
+          ),
+        ),
+        const SizedBox(height: 12),
+        _buildMobileContactItem(Icons.email, 'info@ajanssebo.com'),
+        _buildMobileContactItem(Icons.phone, '+90 (212) 123 45 67'),
+        _buildMobileContactItem(Icons.location_on, 'İstanbul, Türkiye'),
+      ],
+    );
+  }
+
+  Widget _buildTabletFooterContact() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'İletişim',
+          style: AppTypography.h6.copyWith(
+            color: const Color(0xFFE0E0E0),
+            fontWeight: FontWeight.w600,
+            fontSize: 13,
+          ),
+        ),
+        const SizedBox(height: 14),
+        _buildTabletContactItem(Icons.email, 'info@ajanssebo.com'),
+        _buildTabletContactItem(Icons.phone, '+90 (212) 123 45 67'),
+        _buildTabletContactItem(Icons.location_on, 'İstanbul, Türkiye'),
+      ],
     );
   }
 
@@ -3332,6 +3651,46 @@ class _FooterWidget extends StatelessWidget {
     );
   }
 
+  Widget _buildMobileContactItem(IconData icon, String text) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, color: const Color(0xFFB0B0B0), size: 12),
+          const SizedBox(width: 6),
+          Text(
+            text,
+            textAlign: TextAlign.center,
+            style: AppTypography.bodyMedium.copyWith(
+              color: const Color(0xFFB0B0B0),
+              fontSize: 9,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTabletContactItem(IconData icon, String text) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        children: [
+          Icon(icon, color: const Color(0xFFB0B0B0), size: 14),
+          const SizedBox(width: 8),
+          Text(
+            text,
+            style: AppTypography.bodyMedium.copyWith(
+              color: const Color(0xFFB0B0B0),
+              fontSize: 10,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildContactItem(IconData icon, String text) {
     return Padding(
       padding: const EdgeInsets.only(bottom: Branding.spacingM),
@@ -3343,6 +3702,64 @@ class _FooterWidget extends StatelessWidget {
             text,
             style: AppTypography.bodyMedium.copyWith(
               color: const Color(0xFFB0B0B0),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMobileFooterBottom() {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 12),
+      decoration: const BoxDecoration(
+        border: Border(top: BorderSide(color: Color(0xFF2A2A2A), width: 1)),
+      ),
+      child: Column(
+        children: [
+          Text(
+            '© 2024 Şebo Agence. Tüm hakları saklıdır.',
+            textAlign: TextAlign.center,
+            style: AppTypography.bodySmall.copyWith(
+              color: const Color(0xFF808080),
+              fontSize: 8,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            'Geliştirildi ❤️ ile',
+            textAlign: TextAlign.center,
+            style: AppTypography.bodySmall.copyWith(
+              color: const Color(0xFF808080),
+              fontSize: 8,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTabletFooterBottom() {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 14),
+      decoration: const BoxDecoration(
+        border: Border(top: BorderSide(color: Color(0xFF2A2A2A), width: 1)),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            '© 2024 Şebo Agence. Tüm hakları saklıdır.',
+            style: AppTypography.bodySmall.copyWith(
+              color: const Color(0xFF808080),
+              fontSize: 9,
+            ),
+          ),
+          Text(
+            'Geliştirildi ❤️ ile',
+            style: AppTypography.bodySmall.copyWith(
+              color: const Color(0xFF808080),
+              fontSize: 9,
             ),
           ),
         ],
