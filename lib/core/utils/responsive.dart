@@ -23,6 +23,41 @@ class Responsive {
     return MediaQuery.of(context).size.width >= AppConstants.desktopBreakpoint;
   }
 
+  // 📱 DETAILED MOBILE BREAKPOINTS
+  static bool isSmallMobile(BuildContext context) {
+    return MediaQuery.of(context).size.width < AppConstants.mediumMobileBreakpoint;
+  }
+
+  static bool isMediumMobile(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    return width >= AppConstants.mediumMobileBreakpoint && 
+           width < AppConstants.largeMobileBreakpoint;
+  }
+
+  static bool isLargeMobile(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    return width >= AppConstants.largeMobileBreakpoint && 
+           width < AppConstants.mobileBreakpoint;
+  }
+
+  // 📱 MOBILE ORIENTATION
+  static bool isPortrait(BuildContext context) {
+    return MediaQuery.of(context).orientation == Orientation.portrait;
+  }
+
+  static bool isLandscape(BuildContext context) {
+    return MediaQuery.of(context).orientation == Orientation.landscape;
+  }
+
+  // 📱 MOBILE SCREEN DENSITY
+  static double getDevicePixelRatio(BuildContext context) {
+    return MediaQuery.of(context).devicePixelRatio;
+  }
+
+  static bool isHighDensity(BuildContext context) {
+    return getDevicePixelRatio(context) >= 3.0;
+  }
+
   // 📏 SCREEN SIZE GETTERS
   static double screenWidth(BuildContext context) {
     return MediaQuery.of(context).size.width;
@@ -52,6 +87,55 @@ class Responsive {
       return tablet;
     }
     return mobile;
+  }
+
+  // 📱 DETAILED MOBILE RESPONSIVE VALUES
+  static T mobileResponsiveValue<T>(
+    BuildContext context, {
+    required T smallMobile,
+    T? mediumMobile,
+    T? largeMobile,
+    T? tablet,
+    T? desktop,
+  }) {
+    if (isDesktop(context) && desktop != null) {
+      return desktop;
+    } else if (isTablet(context) && tablet != null) {
+      return tablet;
+    } else if (isLargeMobile(context) && largeMobile != null) {
+      return largeMobile;
+    } else if (isMediumMobile(context) && mediumMobile != null) {
+      return mediumMobile;
+    }
+    return smallMobile;
+  }
+
+  // 📱 ADAPTIVE MOBILE VALUES
+  static T adaptiveMobileValue<T>(
+    BuildContext context, {
+    required T baseValue,
+    double? scaleFactor,
+    T? portraitValue,
+    T? landscapeValue,
+  }) {
+    final width = screenWidth(context);
+    final orientation = MediaQuery.of(context).orientation;
+    
+    // Orientation-based values
+    if (orientation == Orientation.landscape && landscapeValue != null) {
+      return landscapeValue;
+    }
+    if (orientation == Orientation.portrait && portraitValue != null) {
+      return portraitValue;
+    }
+    
+    // Scale factor based on screen width
+    if (scaleFactor != null) {
+      final scaledValue = (baseValue as num) * (1 + (width / 1000) * scaleFactor);
+      return scaledValue as T;
+    }
+    
+    return baseValue;
   }
 
   // 📐 RESPONSIVE PADDING

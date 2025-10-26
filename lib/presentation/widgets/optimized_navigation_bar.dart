@@ -132,16 +132,38 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       animation: _scrollAnimation,
       builder: (context, child) {
         return Container(
-          height: Responsive.responsiveValue(
-            context,
-            mobile: 56.0, // Ultra-compact mobile height
-            tablet: 64.0, // Compact tablet height
-            desktop: 80.0, // Keep original for desktop
-          ),
+          height: _getResponsiveHeight(context),
           decoration: _buildDecoration(),
           child: _buildContent(),
         );
       },
+    );
+  }
+
+  // 📱 FULLY RESPONSIVE HEIGHT CALCULATION
+  double _getResponsiveHeight(BuildContext context) {
+    final orientation = MediaQuery.of(context).orientation;
+    
+    // Landscape mode adjustments
+    if (orientation == Orientation.landscape && Responsive.isMobile(context)) {
+      return Responsive.mobileResponsiveValue(
+        context,
+        smallMobile: 48.0, // Ultra-compact for landscape
+        mediumMobile: 50.0,
+        largeMobile: 52.0,
+        tablet: 60.0,
+        desktop: 70.0,
+      );
+    }
+    
+    // Portrait mode - detailed mobile breakpoints
+    return Responsive.mobileResponsiveValue(
+      context,
+      smallMobile: 52.0, // iPhone SE, küçük telefonlar
+      mediumMobile: 56.0, // iPhone 12/13/14 standard
+      largeMobile: 60.0, // iPhone Plus, büyük telefonlar
+      tablet: 70.0, // Tablet
+      desktop: 80.0, // Desktop
     );
   }
 
@@ -163,26 +185,57 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
 
   Widget _buildContent() {
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: Responsive.responsiveValue(
-          context,
-          mobile: 8.0, // Ultra-minimal horizontal padding for mobile
-          tablet: 12.0, // Minimal for tablet
-          desktop: 24.0, // Keep original for desktop
-        ),
-        vertical: Responsive.responsiveValue(
-          context,
-          mobile: 4.0, // Ultra-minimal vertical padding for mobile
-          tablet: 6.0, // Minimal for tablet
-          desktop: 12.0, // Keep original for desktop
-        ),
-      ),
+      padding: _getResponsivePadding(context),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _buildOptimizedLogo(),
-          _buildResponsiveNavigation(),
-        ],
+        children: [_buildOptimizedLogo(), _buildResponsiveNavigation()],
+      ),
+    );
+  }
+
+  // 📱 FULLY RESPONSIVE PADDING CALCULATION
+  EdgeInsets _getResponsivePadding(BuildContext context) {
+    final orientation = MediaQuery.of(context).orientation;
+    
+    // Landscape mode adjustments
+    if (orientation == Orientation.landscape && Responsive.isMobile(context)) {
+      return EdgeInsets.symmetric(
+        horizontal: Responsive.mobileResponsiveValue(
+          context,
+          smallMobile: 6.0, // Ultra-minimal for landscape
+          mediumMobile: 8.0,
+          largeMobile: 10.0,
+          tablet: 12.0,
+          desktop: 16.0,
+        ),
+        vertical: Responsive.mobileResponsiveValue(
+          context,
+          smallMobile: 2.0, // Ultra-minimal vertical
+          mediumMobile: 3.0,
+          largeMobile: 4.0,
+          tablet: 6.0,
+          desktop: 8.0,
+        ),
+      );
+    }
+    
+    // Portrait mode - detailed mobile breakpoints
+    return EdgeInsets.symmetric(
+      horizontal: Responsive.mobileResponsiveValue(
+        context,
+        smallMobile: 8.0, // iPhone SE için minimal
+        mediumMobile: 12.0, // iPhone 12/13/14 standard
+        largeMobile: 16.0, // iPhone Plus için daha fazla
+        tablet: 20.0, // Tablet
+        desktop: 24.0, // Desktop
+      ),
+      vertical: Responsive.mobileResponsiveValue(
+        context,
+        smallMobile: 4.0, // iPhone SE için minimal
+        mediumMobile: 6.0, // iPhone 12/13/14 standard
+        largeMobile: 8.0, // iPhone Plus için daha fazla
+        tablet: 10.0, // Tablet
+        desktop: 12.0, // Desktop
       ),
     );
   }
@@ -218,35 +271,60 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        // Scroll indicator - only show on very small screens if needed
-        if (widget.showScrollIndicator && Responsive.isMobile(context)) ...[
+        // Scroll indicator - responsive spacing
+        if (widget.showScrollIndicator) ...[
           _buildScrollIndicator(),
-          const SizedBox(width: 8), // Reduced spacing
+          SizedBox(
+            width: Responsive.mobileResponsiveValue(
+              context,
+              smallMobile: 8.0, // Minimal spacing for small screens
+              mediumMobile: 10.0,
+              largeMobile: 12.0,
+              tablet: 12.0,
+              desktop: 12.0,
+            ),
+          ),
         ],
 
-        // Ultra-compact mobile menu button
-        _buildUltraCompactMobileMenuButton(),
+        // Fully responsive mobile menu button
+        _buildResponsiveMobileMenuButton(),
       ],
     );
   }
 
-  Widget _buildUltraCompactMobileMenuButton() {
+  Widget _buildResponsiveMobileMenuButton() {
     return Container(
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Color(0x08FFFFFF), // Ultra-subtle gradient
-            Color(0x12FFFFFF),
+            Color(0x0DFFFFFF),
+            Color(0x1AFFFFFF),
           ],
         ),
-        borderRadius: BorderRadius.circular(6.0), // Even smaller radius
+        borderRadius: BorderRadius.circular(
+          Responsive.mobileResponsiveValue(
+            context,
+            smallMobile: 6.0, // Smaller radius for small screens
+            mediumMobile: 8.0,
+            largeMobile: 10.0,
+            tablet: 12.0,
+            desktop: 12.0,
+          ),
+        ),
         boxShadow: [
           BoxShadow(
-            color: Colors.white.withValues(alpha: 0.03), // Ultra-subtle shadow
-            blurRadius: 1,
-            offset: const Offset(0, 0.5),
+            color: Colors.white.withValues(alpha: 0.05),
+            blurRadius: Responsive.mobileResponsiveValue(
+              context,
+              smallMobile: 1.0, // Subtle shadow for small screens
+              mediumMobile: 2.0,
+              largeMobile: 3.0,
+              tablet: 4.0,
+              desktop: 4.0,
+            ),
+            offset: const Offset(0, 1),
           ),
         ],
       ),
@@ -254,20 +332,40 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
         color: Colors.transparent,
         child: InkWell(
           onTap: _toggleMobileMenuWithHaptic,
-          borderRadius: BorderRadius.circular(6.0),
+          borderRadius: BorderRadius.circular(
+            Responsive.mobileResponsiveValue(
+              context,
+              smallMobile: 6.0,
+              mediumMobile: 8.0,
+              largeMobile: 10.0,
+              tablet: 12.0,
+              desktop: 12.0,
+            ),
+          ),
           child: Container(
-            padding: const EdgeInsets.all(6.0), // Ultra-minimal padding
+            padding: EdgeInsets.all(
+              Responsive.mobileResponsiveValue(
+                context,
+                smallMobile: 6.0, // Minimal padding for small screens
+                mediumMobile: 8.0,
+                largeMobile: 10.0,
+                tablet: 12.0,
+                desktop: 12.0,
+              ),
+            ),
             child: AnimatedRotation(
               turns: _isMenuOpen ? 0.125 : 0.0,
               duration: _fastAnimation,
               child: Icon(
                 Icons.menu,
                 color: Branding.white,
-                size: Responsive.responsiveValue(
+                size: Responsive.mobileResponsiveValue(
                   context,
-                  mobile: 16.0, // Ultra-compact icon for mobile
-                  tablet: 18.0,
-                  desktop: 20.0,
+                  smallMobile: 16.0, // Smaller icon for small screens
+                  mediumMobile: 18.0,
+                  largeMobile: 20.0,
+                  tablet: 22.0,
+                  desktop: 24.0,
                 ),
               ),
             ),
@@ -628,28 +726,50 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       animation: _scrollAnimation,
       builder: (context, child) {
         return Container(
-          width: Responsive.responsiveValue(
+          width: Responsive.mobileResponsiveValue(
             context,
-            mobile: 3, // Ultra-thin for mobile
-            tablet: 3,
-            desktop: 4,
+            smallMobile: 2.0, // Ultra-thin for small screens
+            mediumMobile: 3.0,
+            largeMobile: 3.5,
+            tablet: 4.0,
+            desktop: 4.0,
           ),
-          height: Responsive.responsiveValue(
+          height: Responsive.mobileResponsiveValue(
             context,
-            mobile: 16, // Shorter for mobile
-            tablet: 18,
-            desktop: 20,
+            smallMobile: 14.0, // Shorter for small screens
+            mediumMobile: 16.0,
+            largeMobile: 18.0,
+            tablet: 20.0,
+            desktop: 20.0,
           ),
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.2), // More subtle
-            borderRadius: BorderRadius.circular(1.5), // Smaller radius
+            color: Colors.white.withValues(alpha: 0.3),
+            borderRadius: BorderRadius.circular(
+              Responsive.mobileResponsiveValue(
+                context,
+                smallMobile: 1.0, // Smaller radius for small screens
+                mediumMobile: 1.5,
+                largeMobile: 2.0,
+                tablet: 2.0,
+                desktop: 2.0,
+              ),
+            ),
           ),
           child: FractionallySizedBox(
             heightFactor: _scrollAnimation.value,
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(1.5), // Smaller radius
+                borderRadius: BorderRadius.circular(
+                  Responsive.mobileResponsiveValue(
+                    context,
+                    smallMobile: 1.0, // Smaller radius for small screens
+                    mediumMobile: 1.5,
+                    largeMobile: 2.0,
+                    tablet: 2.0,
+                    desktop: 2.0,
+                  ),
+                ),
               ),
             ),
           ),
@@ -695,73 +815,157 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       child: Container(
         decoration: BoxDecoration(
           color: const Color(0xFF131B2E),
-          borderRadius: const BorderRadius.vertical(
-            top: Radius.circular(16), // Even smaller radius for modern look
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(
+              Responsive.mobileResponsiveValue(
+                context,
+                smallMobile: 16.0, // Smaller radius for small screens
+                mediumMobile: 18.0,
+                largeMobile: 20.0,
+                tablet: 22.0,
+                desktop: 24.0,
+              ),
+            ),
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.15), // Ultra-subtle shadow
-              blurRadius: 12,
-              offset: const Offset(0, -2),
+              color: Colors.black.withValues(alpha: 0.2),
+              blurRadius: Responsive.mobileResponsiveValue(
+                context,
+                smallMobile: 12.0, // Smaller shadow for small screens
+                mediumMobile: 15.0,
+                largeMobile: 18.0,
+                tablet: 20.0,
+                desktop: 24.0,
+              ),
+              offset: const Offset(0, -3),
             ),
           ],
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Ultra-minimal handle bar
+            // Responsive handle bar
             Container(
-              width: 32, // Even smaller width
-              height: 3, // Even smaller height
-              margin: const EdgeInsets.symmetric(vertical: 8), // Ultra-minimal margin
+              width: Responsive.mobileResponsiveValue(
+                context,
+                smallMobile: 32.0, // Smaller for small screens
+                mediumMobile: 36.0,
+                largeMobile: 40.0,
+                tablet: 44.0,
+                desktop: 48.0,
+              ),
+              height: Responsive.mobileResponsiveValue(
+                context,
+                smallMobile: 3.0, // Thinner for small screens
+                mediumMobile: 4.0,
+                largeMobile: 4.0,
+                tablet: 5.0,
+                desktop: 5.0,
+              ),
+              margin: EdgeInsets.symmetric(
+                vertical: Responsive.mobileResponsiveValue(
+                  context,
+                  smallMobile: 8.0, // Minimal margin for small screens
+                  mediumMobile: 10.0,
+                  largeMobile: 12.0,
+                  tablet: 14.0,
+                  desktop: 16.0,
+                ),
+              ),
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [Color(0x26FFFFFF), Color(0x4DFFFFFF)], // Ultra-subtle
+                  colors: [Color(0x33FFFFFF), Color(0x66FFFFFF)],
                 ),
-                borderRadius: BorderRadius.circular(1.5),
+                borderRadius: BorderRadius.circular(2),
               ),
             ),
 
-            // Ultra-compact header section
+            // Responsive header section
             Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16, // Ultra-minimal padding
-                vertical: 8, // Ultra-minimal padding
+              padding: EdgeInsets.symmetric(
+                horizontal: Responsive.mobileResponsiveValue(
+                  context,
+                  smallMobile: 16.0, // Minimal padding for small screens
+                  mediumMobile: 18.0,
+                  largeMobile: 20.0,
+                  tablet: 22.0,
+                  desktop: 24.0,
+                ),
+                vertical: Responsive.mobileResponsiveValue(
+                  context,
+                  smallMobile: 8.0, // Minimal vertical padding
+                  mediumMobile: 10.0,
+                  largeMobile: 12.0,
+                  tablet: 14.0,
+                  desktop: 16.0,
+                ),
               ),
               child: Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(4), // Ultra-minimal padding
+                    padding: EdgeInsets.all(
+                      Responsive.mobileResponsiveValue(
+                        context,
+                        smallMobile: 4.0, // Minimal padding for small screens
+                        mediumMobile: 5.0,
+                        largeMobile: 6.0,
+                        tablet: 7.0,
+                        desktop: 8.0,
+                      ),
+                    ),
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
                         colors: [
-                          Color(0x08FFFFFF), // Ultra-subtle
-                          Color(0x12FFFFFF),
+                          Color(0x0DFFFFFF),
+                          Color(0x1AFFFFFF),
                         ],
                       ),
-                      borderRadius: BorderRadius.circular(4), // Smaller radius
+                      borderRadius: BorderRadius.circular(
+                        Responsive.mobileResponsiveValue(
+                          context,
+                          smallMobile: 4.0, // Smaller radius for small screens
+                          mediumMobile: 5.0,
+                          largeMobile: 6.0,
+                          tablet: 7.0,
+                          desktop: 8.0,
+                        ),
+                      ),
                     ),
                     child: Icon(
                       Icons.menu,
                       color: Branding.white,
-                      size: Responsive.responsiveValue(
+                      size: Responsive.mobileResponsiveValue(
                         context,
-                        mobile: 14.0, // Ultra-compact icon
-                        tablet: 16.0,
-                        desktop: 18.0,
+                        smallMobile: 14.0, // Smaller icon for small screens
+                        mediumMobile: 16.0,
+                        largeMobile: 18.0,
+                        tablet: 20.0,
+                        desktop: 22.0,
                       ),
                     ),
                   ),
-                  const SizedBox(width: 8), // Ultra-minimal spacing
+                  SizedBox(
+                    width: Responsive.mobileResponsiveValue(
+                      context,
+                      smallMobile: 8.0, // Minimal spacing for small screens
+                      mediumMobile: 10.0,
+                      largeMobile: 12.0,
+                      tablet: 14.0,
+                      desktop: 16.0,
+                    ),
+                  ),
                   Text(
                     'Menü',
                     style: TextStyle(
                       color: Branding.white,
-                      fontSize: Responsive.responsiveValue(
+                      fontSize: Responsive.mobileResponsiveValue(
                         context,
-                        mobile: 14.0, // Ultra-compact font
-                        tablet: 15.0,
-                        desktop: 16.0,
+                        smallMobile: 14.0, // Smaller font for small screens
+                        mediumMobile: 16.0,
+                        largeMobile: 18.0,
+                        tablet: 20.0,
+                        desktop: 22.0,
                       ),
                       fontWeight: FontWeight.w600,
                     ),
@@ -770,31 +974,56 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
               ),
             ),
 
-            // Ultra-subtle divider
+            // Responsive divider
             Container(
-              height: 0.5, // Thinner divider
-              margin: const EdgeInsets.symmetric(horizontal: 16), // Ultra-minimal margin
+              height: Responsive.mobileResponsiveValue(
+                context,
+                smallMobile: 0.5, // Thinner for small screens
+                mediumMobile: 0.8,
+                largeMobile: 1.0,
+                tablet: 1.2,
+                desktop: 1.5,
+              ),
+              margin: EdgeInsets.symmetric(
+                horizontal: Responsive.mobileResponsiveValue(
+                  context,
+                  smallMobile: 16.0, // Minimal margin for small screens
+                  mediumMobile: 18.0,
+                  largeMobile: 20.0,
+                  tablet: 22.0,
+                  desktop: 24.0,
+                ),
+              ),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
                     Colors.transparent,
-                    Colors.white.withValues(alpha: 0.08), // Ultra-subtle
+                    Colors.white.withValues(alpha: 0.15),
                     Colors.transparent,
                   ],
                 ),
               ),
             ),
 
-            // Ultra-compact menu items
+            // Responsive menu items
             Padding(
-              padding: const EdgeInsets.all(16), // Ultra-minimal padding
+              padding: EdgeInsets.all(
+                Responsive.mobileResponsiveValue(
+                  context,
+                  smallMobile: 16.0, // Minimal padding for small screens
+                  mediumMobile: 18.0,
+                  largeMobile: 20.0,
+                  tablet: 22.0,
+                  desktop: 24.0,
+                ),
+              ),
               child: Column(
                 children: [
-                  _buildUltraCompactMobileMenuItem('Ana Sayfa', Icons.home, false),
-                  _buildUltraCompactMobileMenuItem('Hakkımızda', Icons.info, false),
-                  _buildUltraCompactMobileMenuItem('Hoş İşler', Icons.work, false),
-                  _buildUltraCompactMobileMenuItem('Konferanslar', Icons.event, false),
-                  _buildUltraCompactMobileMenuItem('İletişim', Icons.contact_phone, false),
+                  _buildResponsiveMobileMenuItem('Ana Sayfa', Icons.home, false),
+                  _buildResponsiveMobileMenuItem('Hakkımızda', Icons.info, false),
+                  _buildResponsiveMobileMenuItem('Hoş İşler', Icons.work, false),
+                  _buildResponsiveMobileMenuItem('Konferanslar', Icons.event, false),
+                  _buildResponsiveMobileMenuItem('İletişim', Icons.contact_phone, false),
                 ],
               ),
             ),
@@ -804,13 +1033,22 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
     );
   }
 
-  Widget _buildUltraCompactMobileMenuItem(
+  Widget _buildResponsiveMobileMenuItem(
     String title,
     IconData icon,
     bool isActive,
   ) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 4), // Ultra-minimal margin
+      margin: EdgeInsets.only(
+        bottom: Responsive.mobileResponsiveValue(
+          context,
+          smallMobile: 4.0, // Minimal margin for small screens
+          mediumMobile: 6.0,
+          largeMobile: 8.0,
+          tablet: 10.0,
+          desktop: 12.0,
+        ),
+      ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
@@ -819,67 +1057,118 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
             Navigator.pop(context);
             _handleNavigation(title);
           },
-          borderRadius: BorderRadius.circular(8), // Even smaller radius
+          borderRadius: BorderRadius.circular(
+            Responsive.mobileResponsiveValue(
+              context,
+              smallMobile: 8.0, // Smaller radius for small screens
+              mediumMobile: 10.0,
+              largeMobile: 12.0,
+              tablet: 14.0,
+              desktop: 16.0,
+            ),
+          ),
           child: Container(
             padding: EdgeInsets.symmetric(
-              horizontal: Responsive.responsiveValue(
+              horizontal: Responsive.mobileResponsiveValue(
                 context,
-                mobile: 12.0, // Ultra-minimal padding
+                smallMobile: 12.0, // Minimal padding for small screens
+                mediumMobile: 14.0,
+                largeMobile: 16.0,
+                tablet: 18.0,
+                desktop: 20.0,
+              ),
+              vertical: Responsive.mobileResponsiveValue(
+                context,
+                smallMobile: 8.0, // Minimal vertical padding
+                mediumMobile: 10.0,
+                largeMobile: 12.0,
                 tablet: 14.0,
                 desktop: 16.0,
-              ),
-              vertical: Responsive.responsiveValue(
-                context,
-                mobile: 8.0, // Ultra-minimal vertical padding
-                tablet: 10.0,
-                desktop: 12.0,
               ),
             ),
             decoration: BoxDecoration(
               gradient: isActive
                   ? const LinearGradient(
                       colors: [
-                        Color(0x08FFFFFF), // Ultra-subtle
-                        Color(0x12FFFFFF),
+                        Color(0x0DFFFFFF),
+                        Color(0x1AFFFFFF),
                       ],
                     )
                   : null,
-              borderRadius: BorderRadius.circular(8), // Even smaller radius
+              borderRadius: BorderRadius.circular(
+                Responsive.mobileResponsiveValue(
+                  context,
+                  smallMobile: 8.0, // Smaller radius for small screens
+                  mediumMobile: 10.0,
+                  largeMobile: 12.0,
+                  tablet: 14.0,
+                  desktop: 16.0,
+                ),
+              ),
               border: Border.all(
-                color: Colors.white.withValues(alpha: 0.03), // Ultra-subtle border
-                width: 0.3, // Ultra-thin border
+                color: Colors.white.withValues(alpha: 0.05),
+                width: Responsive.mobileResponsiveValue(
+                  context,
+                  smallMobile: 0.3, // Thinner border for small screens
+                  mediumMobile: 0.4,
+                  largeMobile: 0.5,
+                  tablet: 0.6,
+                  desktop: 0.7,
+                ),
               ),
             ),
             child: Row(
               children: [
                 Container(
-                  padding: const EdgeInsets.all(4), // Ultra-minimal padding
+                  padding: EdgeInsets.all(
+                    Responsive.mobileResponsiveValue(
+                      context,
+                      smallMobile: 4.0, // Minimal padding for small screens
+                      mediumMobile: 5.0,
+                      largeMobile: 6.0,
+                      tablet: 7.0,
+                      desktop: 8.0,
+                    ),
+                  ),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [
-                        Color(0x08FFFFFF), // Ultra-subtle
-                        Color(0x12FFFFFF),
+                        Color(0x0DFFFFFF),
+                        Color(0x1AFFFFFF),
                       ],
                     ),
-                    borderRadius: BorderRadius.circular(4), // Smaller radius
+                    borderRadius: BorderRadius.circular(
+                      Responsive.mobileResponsiveValue(
+                        context,
+                        smallMobile: 4.0, // Smaller radius for small screens
+                        mediumMobile: 5.0,
+                        largeMobile: 6.0,
+                        tablet: 7.0,
+                        desktop: 8.0,
+                      ),
+                    ),
                   ),
                   child: Icon(
                     icon,
                     color: Branding.white,
-                    size: Responsive.responsiveValue(
+                    size: Responsive.mobileResponsiveValue(
                       context,
-                      mobile: 14.0, // Ultra-compact icon
-                      tablet: 15.0,
-                      desktop: 16.0,
+                      smallMobile: 14.0, // Smaller icon for small screens
+                      mediumMobile: 16.0,
+                      largeMobile: 18.0,
+                      tablet: 20.0,
+                      desktop: 22.0,
                     ),
                   ),
                 ),
                 SizedBox(
-                  width: Responsive.responsiveValue(
+                  width: Responsive.mobileResponsiveValue(
                     context,
-                    mobile: 8.0, // Ultra-minimal spacing
-                    tablet: 10.0,
-                    desktop: 12.0,
+                    smallMobile: 8.0, // Minimal spacing for small screens
+                    mediumMobile: 10.0,
+                    largeMobile: 12.0,
+                    tablet: 14.0,
+                    desktop: 16.0,
                   ),
                 ),
                 Expanded(
@@ -888,23 +1177,27 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
                     style: TextStyle(
                       color: Branding.white,
                       fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
-                      fontSize: Responsive.responsiveValue(
+                      fontSize: Responsive.mobileResponsiveValue(
                         context,
-                        mobile: 13.0, // Ultra-compact font
-                        tablet: 14.0,
-                        desktop: 15.0,
+                        smallMobile: 13.0, // Smaller font for small screens
+                        mediumMobile: 14.0,
+                        largeMobile: 15.0,
+                        tablet: 16.0,
+                        desktop: 17.0,
                       ),
                     ),
                   ),
                 ),
                 Icon(
                   Icons.arrow_forward_ios,
-                  color: Colors.white.withValues(alpha: 0.2), // Ultra-subtle
-                  size: Responsive.responsiveValue(
+                  color: Colors.white.withValues(alpha: 0.3),
+                  size: Responsive.mobileResponsiveValue(
                     context,
-                    mobile: 10.0, // Ultra-compact arrow
-                    tablet: 11.0,
-                    desktop: 12.0,
+                    smallMobile: 10.0, // Smaller arrow for small screens
+                    mediumMobile: 11.0,
+                    largeMobile: 12.0,
+                    tablet: 13.0,
+                    desktop: 14.0,
                   ),
                 ),
               ],
@@ -987,3 +1280,4 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
     }
   }
 }
+

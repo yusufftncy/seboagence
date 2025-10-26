@@ -21,7 +21,12 @@ class AppConstants {
 
   // UI Sabitleri
   static const double maxContentWidth = 1400.0;
-  static const double mobileBreakpoint = 768.0;
+  
+  // Mobile Breakpoints - Detaylı responsive tasarım için
+  static const double smallMobileBreakpoint = 320.0;  // iPhone SE, küçük telefonlar
+  static const double mediumMobileBreakpoint = 375.0; // iPhone 12/13/14 standard
+  static const double largeMobileBreakpoint = 414.0;  // iPhone Plus, büyük telefonlar
+  static const double mobileBreakpoint = 768.0;       // Tablet başlangıcı
   static const double tabletBreakpoint = 1024.0;
   static const double desktopBreakpoint = 1400.0;
 
