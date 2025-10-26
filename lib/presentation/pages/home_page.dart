@@ -871,10 +871,10 @@ class _HomePageState extends ConsumerState<HomePage>
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 20.0,
-        mainAxisSpacing: 20.0,
-        childAspectRatio: 1.1, // Daha dengeli oran
+        crossAxisCount: 3, // 3 sütun - yan yana
+        crossAxisSpacing: 16.0,
+        mainAxisSpacing: 16.0,
+        childAspectRatio: 0.9, // Daha kompakt oran
       ),
       itemCount: projects.length,
       itemBuilder: (context, index) {
@@ -1213,15 +1213,15 @@ class _HomePageState extends ConsumerState<HomePage>
             // Proje detayına git
           },
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(12.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Proje ikonu ve başlık
+                // Proje ikonu ve başlık - 3 sütun için kompakt
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           begin: Alignment.topLeft,
@@ -1231,42 +1231,42 @@ class _HomePageState extends ConsumerState<HomePage>
                             (project['color'] as Color).withValues(alpha: 0.1),
                           ],
                         ),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(8),
                       ),
                       child: Icon(
                         project['icon'] as IconData,
                         color: project['color'] as Color,
-                        size: 20,
+                        size: 16,
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 8),
                     Expanded(
                       child: Text(
                         project['title'] as String,
                         style: AppTypography.h5.copyWith(
                           color: const Color(0xFF2C2C2C),
                           fontWeight: FontWeight.w700,
-                          fontSize: 14,
+                          fontSize: 12,
                         ),
                       ),
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
+                        horizontal: 8,
+                        vertical: 4,
                       ),
                       decoration: BoxDecoration(
                         color: (project['color'] as Color).withValues(
                           alpha: 0.2,
                         ),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
                         '2023',
                         style: AppTypography.bodySmall.copyWith(
                           color: project['color'] as Color,
                           fontWeight: FontWeight.w600,
-                          fontSize: 11,
+                          fontSize: 9,
                         ),
                       ),
                     ),
@@ -1275,15 +1275,15 @@ class _HomePageState extends ConsumerState<HomePage>
 
                 const SizedBox(height: 12),
 
-                // Müşteri bilgisi
+                // Müşteri bilgisi - 3 sütun için kompakt
                 Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
+                    horizontal: 8,
+                    vertical: 4,
                   ),
                   decoration: BoxDecoration(
                     color: (project['color'] as Color).withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(8),
                     border: Border.all(
                       color: (project['color'] as Color).withValues(alpha: 0.3),
                       width: 1,
@@ -1295,15 +1295,15 @@ class _HomePageState extends ConsumerState<HomePage>
                       Icon(
                         Icons.business,
                         color: project['color'] as Color,
-                        size: 14,
+                        size: 12,
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: 6),
                       Text(
                         'Müşteri: ${project['category']} Holding',
                         style: AppTypography.bodySmall.copyWith(
                           color: project['color'] as Color,
                           fontWeight: FontWeight.w600,
-                          fontSize: 10,
+                          fontSize: 8,
                         ),
                       ),
                     ],
@@ -1312,27 +1312,27 @@ class _HomePageState extends ConsumerState<HomePage>
 
                 const SizedBox(height: 12),
 
-                // Proje açıklaması - Tablet'te sabit yükseklik
+                // Proje açıklaması - 3 sütun için kompakt
                 Text(
                   project['description'] as String,
                   style: AppTypography.bodyMedium.copyWith(
                     color: const Color(0xFF6B6B6B),
-                    height: 1.4,
-                    fontSize: 11,
+                    height: 1.3,
+                    fontSize: 9,
                   ),
-                  maxLines: 3,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
 
                 const SizedBox(height: 12),
 
-                // Alt bilgi
+                // Alt bilgi - 3 sütun için kompakt
                 Row(
                   children: [
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
+                        horizontal: 8,
+                        vertical: 4,
                       ),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -1343,7 +1343,7 @@ class _HomePageState extends ConsumerState<HomePage>
                             (project['color'] as Color).withValues(alpha: 0.1),
                           ],
                         ),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(8),
                         border: Border.all(
                           color: (project['color'] as Color).withValues(
                             alpha: 0.4,
@@ -1357,15 +1357,15 @@ class _HomePageState extends ConsumerState<HomePage>
                           Icon(
                             project['icon'] as IconData,
                             color: project['color'] as Color,
-                            size: 14,
+                            size: 12,
                           ),
-                          const SizedBox(width: 8),
+                          const SizedBox(width: 6),
                           Text(
                             project['category'] as String,
                             style: AppTypography.bodySmall.copyWith(
                               color: project['color'] as Color,
                               fontWeight: FontWeight.w600,
-                              fontSize: 10,
+                              fontSize: 8,
                             ),
                           ),
                         ],
@@ -1374,14 +1374,14 @@ class _HomePageState extends ConsumerState<HomePage>
                     const Spacer(),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
+                        horizontal: 8,
+                        vertical: 4,
                       ),
                       decoration: BoxDecoration(
                         color: (project['color'] as Color).withValues(
                           alpha: 0.1,
                         ),
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(8),
                         border: Border.all(
                           color: (project['color'] as Color).withValues(
                             alpha: 0.3,
@@ -1397,14 +1397,14 @@ class _HomePageState extends ConsumerState<HomePage>
                             style: AppTypography.bodyMedium.copyWith(
                               color: project['color'] as Color,
                               fontWeight: FontWeight.w600,
-                              fontSize: 10,
+                              fontSize: 8,
                             ),
                           ),
-                          const SizedBox(width: 6),
+                          const SizedBox(width: 4),
                           Icon(
                             Icons.arrow_forward,
                             color: project['color'] as Color,
-                            size: 14,
+                            size: 12,
                           ),
                         ],
                       ),
