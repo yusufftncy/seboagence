@@ -410,13 +410,11 @@ class _HomePageState extends ConsumerState<HomePage>
   Widget _buildAgencyProjectsSection(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(
-        Responsive.responsiveValue(
-          context,
-          mobile: Branding.spacingL,
-          tablet: Branding.spacingXL,
-          desktop: Branding.spacingXXL,
-        ),
+      padding: Responsive.responsivePadding(
+        context,
+        mobile: const EdgeInsets.all(16.0),
+        tablet: const EdgeInsets.all(20.0),
+        desktop: const EdgeInsets.all(24.0),
       ),
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -435,59 +433,166 @@ class _HomePageState extends ConsumerState<HomePage>
           ),
         ],
       ),
-      child: Column(
-        children: [
-          // Section Header
-          Text(
-            'Hoş İşler',
-            style: AppTypography.h2.copyWith(
-              color: const Color(0xFF2C2C2C),
-              fontSize: Responsive.responsiveFontSize(
-                context,
-                desktop: 42,
-                tablet: 32,
-                mobile: 28,
-              ),
-              fontWeight: FontWeight.w800,
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          const SizedBox(height: Branding.spacingM),
-
-          Text(
-            'Sosyal Sorumluluk ve El Sanatları Platformu',
-            style: AppTypography.h4.copyWith(
-              color: const Color(0xFF6B6B6B),
-              fontSize: Responsive.responsiveFontSize(
-                context,
-                desktop: 18,
-                tablet: 16,
-                mobile: 14,
-              ),
-              fontWeight: FontWeight.w500,
-            ),
-            textAlign: TextAlign.center,
-          ),
-
-          SizedBox(
-            height: Responsive.responsiveValue(
-              context,
-              mobile: Branding.spacingXL,
-              tablet: Branding.spacingXXL,
-              desktop: Branding.spacingXXL + 16,
-            ),
-          ),
-
-          // Projects Grid
-          _buildAgencyProjectsGrid(context),
-        ],
+      child: Responsive.responsiveWidget(
+        context,
+        mobile: _buildMobileProjectsSection(context),
+        tablet: _buildTabletProjectsSection(context),
+        desktop: _buildDesktopProjectsSection(context),
       ),
     );
   }
 
-  Widget _buildAgencyProjectsGrid(BuildContext context) {
-    final projects = [
+  Widget _buildMobileProjectsSection(BuildContext context) {
+    return Column(
+      children: [
+        // Section Header - Mobile'da ortalanmış ve küçük
+        Text(
+          'Hoş İşler',
+          style: AppTypography.h2.copyWith(
+            color: const Color(0xFF2C2C2C),
+            fontSize: 20,
+            fontWeight: FontWeight.w800,
+          ),
+          textAlign: TextAlign.center,
+        ),
+
+        const SizedBox(height: 8),
+
+        Text(
+          'Sosyal Sorumluluk ve El Sanatları Platformu',
+          style: AppTypography.h4.copyWith(
+            color: const Color(0xFF6B6B6B),
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+          ),
+          textAlign: TextAlign.center,
+        ),
+
+        const SizedBox(height: 20),
+
+        // Projects Grid - Mobile'da tek sütun
+        _buildMobileProjectsGrid(context),
+      ],
+    );
+  }
+
+  Widget _buildTabletProjectsSection(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          'Hoş İşler',
+          style: AppTypography.h2.copyWith(
+            color: const Color(0xFF2C2C2C),
+            fontSize: 28,
+            fontWeight: FontWeight.w800,
+          ),
+          textAlign: TextAlign.center,
+        ),
+
+        const SizedBox(height: 12),
+
+        Text(
+          'Sosyal Sorumluluk ve El Sanatları Platformu',
+          style: AppTypography.h4.copyWith(
+            color: const Color(0xFF6B6B6B),
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+          textAlign: TextAlign.center,
+        ),
+
+        const SizedBox(height: 24),
+
+        _buildTabletProjectsGrid(context),
+      ],
+    );
+  }
+
+  Widget _buildDesktopProjectsSection(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          'Hoş İşler',
+          style: AppTypography.h2.copyWith(
+            color: const Color(0xFF2C2C2C),
+            fontSize: 42,
+            fontWeight: FontWeight.w800,
+          ),
+          textAlign: TextAlign.center,
+        ),
+
+        const SizedBox(height: 16),
+
+        Text(
+          'Sosyal Sorumluluk ve El Sanatları Platformu',
+          style: AppTypography.h4.copyWith(
+            color: const Color(0xFF6B6B6B),
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
+          textAlign: TextAlign.center,
+        ),
+
+        const SizedBox(height: 32),
+
+        _buildDesktopProjectsGrid(context),
+      ],
+    );
+  }
+
+  Widget _buildMobileProjectsGrid(BuildContext context) {
+    final projects = _getProjectsData();
+
+    return Column(
+      children: projects.map((project) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 16.0),
+          child: _buildMobileProjectCard(context, project),
+        );
+      }).toList(),
+    );
+  }
+
+  Widget _buildTabletProjectsGrid(BuildContext context) {
+    final projects = _getProjectsData();
+
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 16.0,
+        mainAxisSpacing: 16.0,
+        childAspectRatio: 0.8,
+      ),
+      itemCount: projects.length,
+      itemBuilder: (context, index) {
+        return _buildTabletProjectCard(context, projects[index]);
+      },
+    );
+  }
+
+  Widget _buildDesktopProjectsGrid(BuildContext context) {
+    final projects = _getProjectsData();
+
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing: 20.0,
+        mainAxisSpacing: 20.0,
+        childAspectRatio: 0.9,
+      ),
+      itemCount: projects.length,
+      itemBuilder: (context, index) {
+        return _buildDesktopProjectCard(context, projects[index]);
+      },
+    );
+  }
+
+  List<Map<String, dynamic>> _getProjectsData() {
+    return [
       {
         'id': 'sifa',
         'title': 'Şifa İpek',
@@ -519,38 +624,477 @@ class _HomePageState extends ConsumerState<HomePage>
         'color': const Color(0xFFF59E0B), // Turuncu
       },
     ];
+  }
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: Responsive.responsiveValue(
-              context,
-              mobile: 1,
-              tablet: 2,
-              desktop: 3,
-            ),
-            crossAxisSpacing: Branding.spacingL,
-            mainAxisSpacing: Branding.spacingL,
-            childAspectRatio: Responsive.responsiveValue(
-              context,
-              mobile: 0.7,
-              tablet: 0.8,
-              desktop: 0.9,
+  Widget _buildMobileProjectCard(
+    BuildContext context,
+    Map<String, dynamic> project,
+  ) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Colors.white,
+            (project['color'] as Color).withValues(alpha: 0.05),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: (project['color'] as Color).withValues(alpha: 0.2),
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: (project['color'] as Color).withValues(alpha: 0.1),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: () {
+            // Proje detayına git
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Proje ikonu ve başlık - Mobile'da kompakt
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            (project['color'] as Color).withValues(alpha: 0.3),
+                            (project['color'] as Color).withValues(alpha: 0.1),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Icon(
+                        project['icon'] as IconData,
+                        color: project['color'] as Color,
+                        size: 16,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        project['title'] as String,
+                        style: AppTypography.h5.copyWith(
+                          color: const Color(0xFF2C2C2C),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: (project['color'] as Color).withValues(alpha: 0.2),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        '2023',
+                        style: AppTypography.bodySmall.copyWith(
+                          color: project['color'] as Color,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 12),
+
+                // Müşteri bilgisi - Mobile'da küçük
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: (project['color'] as Color).withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: (project['color'] as Color).withValues(alpha: 0.3),
+                      width: 1,
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.business,
+                        color: project['color'] as Color,
+                        size: 12,
+                      ),
+                      const SizedBox(width: 6),
+                      Text(
+                        'Müşteri: ${project['category']} Holding',
+                        style: AppTypography.bodySmall.copyWith(
+                          color: project['color'] as Color,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 9,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 12),
+
+                // Proje açıklaması - Mobile'da kısa
+                Text(
+                  project['description'] as String,
+                  style: AppTypography.bodyMedium.copyWith(
+                    color: const Color(0xFF6B6B6B),
+                    height: 1.4,
+                    fontSize: 10,
+                  ),
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
+
+                const SizedBox(height: 12),
+
+                // Alt bilgi - Mobile'da kompakt
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            (project['color'] as Color).withValues(alpha: 0.2),
+                            (project['color'] as Color).withValues(alpha: 0.1),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(
+                          color: (project['color'] as Color).withValues(alpha: 0.4),
+                          width: 1,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            project['icon'] as IconData,
+                            color: project['color'] as Color,
+                            size: 12,
+                          ),
+                          const SizedBox(width: 6),
+                          Text(
+                            project['category'] as String,
+                            style: AppTypography.bodySmall.copyWith(
+                              color: project['color'] as Color,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 9,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Spacer(),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: (project['color'] as Color).withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(
+                          color: (project['color'] as Color).withValues(alpha: 0.3),
+                          width: 1,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Detayları Gör',
+                            style: AppTypography.bodyMedium.copyWith(
+                              color: project['color'] as Color,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 9,
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          Icon(
+                            Icons.arrow_forward,
+                            color: project['color'] as Color,
+                            size: 12,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
-          itemCount: projects.length,
-          itemBuilder: (context, index) {
-            return _buildAgencyProjectCard(context, projects[index]);
-          },
-        );
-      },
+        ),
+      ),
     );
   }
 
-  Widget _buildAgencyProjectCard(
+  Widget _buildTabletProjectCard(
+    BuildContext context,
+    Map<String, dynamic> project,
+  ) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Colors.white,
+            (project['color'] as Color).withValues(alpha: 0.05),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: (project['color'] as Color).withValues(alpha: 0.2),
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: (project['color'] as Color).withValues(alpha: 0.1),
+            blurRadius: 15,
+            offset: const Offset(0, 6),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(20),
+          onTap: () {
+            // Proje detayına git
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Proje ikonu ve başlık
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            (project['color'] as Color).withValues(alpha: 0.3),
+                            (project['color'] as Color).withValues(alpha: 0.1),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Icon(
+                        project['icon'] as IconData,
+                        color: project['color'] as Color,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Text(
+                        project['title'] as String,
+                        style: AppTypography.h5.copyWith(
+                          color: const Color(0xFF2C2C2C),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: (project['color'] as Color).withValues(alpha: 0.2),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Text(
+                        '2023',
+                        style: AppTypography.bodySmall.copyWith(
+                          color: project['color'] as Color,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 11,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 16),
+
+                // Müşteri bilgisi
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: (project['color'] as Color).withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: (project['color'] as Color).withValues(alpha: 0.3),
+                      width: 1,
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.business,
+                        color: project['color'] as Color,
+                        size: 14,
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Müşteri: ${project['category']} Holding',
+                        style: AppTypography.bodySmall.copyWith(
+                          color: project['color'] as Color,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+
+                // Proje açıklaması
+                Expanded(
+                  child: Text(
+                    project['description'] as String,
+                    style: AppTypography.bodyMedium.copyWith(
+                      color: const Color(0xFF6B6B6B),
+                      height: 1.5,
+                      fontSize: 12,
+                    ),
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+
+                // Alt bilgi
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            (project['color'] as Color).withValues(alpha: 0.2),
+                            (project['color'] as Color).withValues(alpha: 0.1),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: (project['color'] as Color).withValues(alpha: 0.4),
+                          width: 1,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            project['icon'] as IconData,
+                            color: project['color'] as Color,
+                            size: 14,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            project['category'] as String,
+                            style: AppTypography.bodySmall.copyWith(
+                              color: project['color'] as Color,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 10,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Spacer(),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: (project['color'] as Color).withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: (project['color'] as Color).withValues(alpha: 0.3),
+                          width: 1,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Detayları Gör',
+                            style: AppTypography.bodyMedium.copyWith(
+                              color: project['color'] as Color,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 10,
+                            ),
+                          ),
+                          const SizedBox(width: 6),
+                          Icon(
+                            Icons.arrow_forward,
+                            color: project['color'] as Color,
+                            size: 14,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDesktopProjectCard(
     BuildContext context,
     Map<String, dynamic> project,
   ) {
@@ -632,9 +1176,7 @@ class _HomePageState extends ConsumerState<HomePage>
                         vertical: Branding.spacingS,
                       ),
                       decoration: BoxDecoration(
-                        color: (project['color'] as Color).withValues(
-                          alpha: 0.2,
-                        ),
+                        color: (project['color'] as Color).withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(Branding.radiusL),
                       ),
                       child: Text(
@@ -720,9 +1262,7 @@ class _HomePageState extends ConsumerState<HomePage>
                         ),
                         borderRadius: BorderRadius.circular(Branding.radiusL),
                         border: Border.all(
-                          color: (project['color'] as Color).withValues(
-                            alpha: 0.4,
-                          ),
+                          color: (project['color'] as Color).withValues(alpha: 0.4),
                           width: 1,
                         ),
                       ),
@@ -752,14 +1292,10 @@ class _HomePageState extends ConsumerState<HomePage>
                         vertical: Branding.spacingS,
                       ),
                       decoration: BoxDecoration(
-                        color: (project['color'] as Color).withValues(
-                          alpha: 0.1,
-                        ),
+                        color: (project['color'] as Color).withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(Branding.radiusL),
                         border: Border.all(
-                          color: (project['color'] as Color).withValues(
-                            alpha: 0.3,
-                          ),
+                          color: (project['color'] as Color).withValues(alpha: 0.3),
                           width: 1,
                         ),
                       ),
