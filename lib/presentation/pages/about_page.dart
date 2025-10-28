@@ -725,7 +725,7 @@ class _AchievementsSection extends StatelessWidget {
             ),
           ),
           SizedBox(height: Branding.spacingM),
- 
+
           // Title with minimal styling
           Text(
             title,
