@@ -461,8 +461,7 @@ class _PastEventsSection extends StatelessWidget {
           title: 'CCI France Turquie Etkinliği',
           date: 'Aralık 2025',
           participants: '150+ Katılımcı',
-          description:
-              'Fransız Ticaret Odası Türkiye ile işbirliği etkinliği ve networking',
+          description: 'Fransız Ticaret Odası Türkiye ile işbirliği etkinliği',
           color: Branding.secondary,
         ),
         SizedBox(height: Branding.spacingL),
@@ -497,7 +496,7 @@ class _PastEventsSection extends StatelessWidget {
                 date: 'Aralık 2025',
                 participants: '150+ Katılımcı',
                 description:
-                    'Fransız Ticaret Odası Türkiye ile işbirliği etkinliği ve networking',
+                    'Fransız Ticaret Odası Türkiye ile işbirliği etkinliği',
                 color: Branding.secondary,
               ),
             ),
@@ -544,7 +543,7 @@ class _PastEventsSection extends StatelessWidget {
             date: 'Aralık 2025',
             participants: '150+ Katılımcı',
             description:
-                'Fransız Ticaret Odası Türkiye ile işbirliği etkinliği ve networking',
+                'Fransız Ticaret Odası Türkiye ile işbirliği etkinliği',
             color: Branding.secondary,
           ),
         ),

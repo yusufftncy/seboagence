@@ -11,6 +11,7 @@ import '../../core/theme/typography.dart';
 import '../../core/utils/responsive.dart';
 import '../../core/services/navigation_service.dart';
 import '../widgets/optimized_navigation_bar.dart';
+import 'sifa_ipek_detail_page.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -939,7 +940,14 @@ class _HomePageState extends ConsumerState<HomePage>
         child: InkWell(
           borderRadius: BorderRadius.circular(16),
           onTap: () {
-            // Proje detayına git
+            if (project['id'] == 'sifa') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SifaIpekDetailPage(),
+                ),
+              );
+            }
           },
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -1180,7 +1188,14 @@ class _HomePageState extends ConsumerState<HomePage>
         child: InkWell(
           borderRadius: BorderRadius.circular(20),
           onTap: () {
-            // Proje detayına git
+            if (project['id'] == 'sifa') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SifaIpekDetailPage(),
+                ),
+              );
+            }
           },
           child: Padding(
             padding: const EdgeInsets.all(12.0),
@@ -1441,7 +1456,14 @@ class _HomePageState extends ConsumerState<HomePage>
         child: InkWell(
           borderRadius: BorderRadius.circular(20),
           onTap: () {
-            // Proje detayına git
+            if (project['id'] == 'sifa') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SifaIpekDetailPage(),
+                ),
+              );
+            }
           },
           child: Padding(
             padding: const EdgeInsets.all(20),
