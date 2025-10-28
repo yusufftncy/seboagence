@@ -183,7 +183,11 @@ class _SummaryItem extends StatelessWidget {
             color: color.withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(Branding.borderRadiusM),
           ),
-          child: Icon(icon, color: color, size: isMobile ? 24.0 : 32.0),
+          child: Icon(
+            icon,
+            color: Branding.white,
+            size: isMobile ? 24.0 : 32.0,
+          ),
         ),
         SizedBox(height: Branding.spacingS),
         Text(
@@ -463,7 +467,7 @@ class _ContactCard extends StatelessWidget {
                   color: color.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(Branding.borderRadiusM),
                 ),
-                child: Icon(icon, color: color, size: 28.0),
+                child: Icon(icon, color: Branding.white, size: 28.0),
               ),
               SizedBox(width: Branding.spacingM),
               Expanded(
@@ -614,7 +618,7 @@ class _SocialButton extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Icon(icon, color: color, size: 32.0),
+          Icon(icon, color: Branding.white, size: 32.0),
           SizedBox(height: Branding.spacingS),
           Text(
             title,
