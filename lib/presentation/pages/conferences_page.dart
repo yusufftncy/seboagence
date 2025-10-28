@@ -166,28 +166,28 @@ class _UpcomingEventsSection extends StatelessWidget {
     return Column(
       children: [
         _buildEventCard(
-          title: 'Dijital Pazarlama Zirvesi 2024',
+          title: 'İklim Değişikliği Uyum Stratejileri',
           date: '15 Mart 2024',
           location: 'İstanbul Kongre Merkezi',
-          description: 'Dijital pazarlama trendleri ve gelecek stratejileri',
+          description: 'Sürdürülebilir kalkınma ve iklim uyum çözümleri',
           type: 'Konferans',
           color: Branding.primary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildEventCard(
-          title: 'E-ticaret Masterclass',
+          title: 'Dijital Dönüşüm Masterclass',
           date: '22 Mart 2024',
           location: 'Online',
-          description: 'E-ticaret dünyasında başarılı olmanın sırları',
+          description: 'Kurumsal dijital dönüşüm ve teknoloji entegrasyonu',
           type: 'Workshop',
           color: Branding.secondary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildEventCard(
-          title: 'Sosyal Medya Stratejileri',
+          title: 'Sürdürülebilir İş Modelleri',
           date: '5 Nisan 2024',
-          location: 'Ankara Üniversitesi',
-          description: 'Etkili sosyal medya yönetimi ve içerik stratejileri',
+          location: 'Boğaziçi Üniversitesi',
+          description: 'Yeşil ekonomi ve sürdürülebilir iş stratejileri',
           type: 'Seminer',
           color: Branding.primary,
         ),
@@ -202,11 +202,10 @@ class _UpcomingEventsSection extends StatelessWidget {
           children: [
             Expanded(
               child: _buildEventCard(
-                title: 'Dijital Pazarlama Zirvesi 2024',
+                title: 'İklim Değişikliği Uyum Stratejileri',
                 date: '15 Mart 2024',
                 location: 'İstanbul Kongre Merkezi',
-                description:
-                    'Dijital pazarlama trendleri ve gelecek stratejileri',
+                description: 'Sürdürülebilir kalkınma ve iklim uyum çözümleri',
                 type: 'Konferans',
                 color: Branding.primary,
               ),
@@ -214,10 +213,11 @@ class _UpcomingEventsSection extends StatelessWidget {
             SizedBox(width: Branding.spacingL),
             Expanded(
               child: _buildEventCard(
-                title: 'E-ticaret Masterclass',
+                title: 'Dijital Dönüşüm Masterclass',
                 date: '22 Mart 2024',
                 location: 'Online',
-                description: 'E-ticaret dünyasında başarılı olmanın sırları',
+                description:
+                    'Kurumsal dijital dönüşüm ve teknoloji entegrasyonu',
                 type: 'Workshop',
                 color: Branding.secondary,
               ),
@@ -229,11 +229,10 @@ class _UpcomingEventsSection extends StatelessWidget {
           children: [
             Expanded(
               child: _buildEventCard(
-                title: 'Sosyal Medya Stratejileri',
+                title: 'Sürdürülebilir İş Modelleri',
                 date: '5 Nisan 2024',
-                location: 'Ankara Üniversitesi',
-                description:
-                    'Etkili sosyal medya yönetimi ve içerik stratejileri',
+                location: 'Boğaziçi Üniversitesi',
+                description: 'Yeşil ekonomi ve sürdürülebilir iş stratejileri',
                 type: 'Seminer',
                 color: Branding.primary,
               ),
@@ -251,10 +250,10 @@ class _UpcomingEventsSection extends StatelessWidget {
       children: [
         Expanded(
           child: _buildEventCard(
-            title: 'Dijital Pazarlama Zirvesi 2024',
+            title: 'İklim Değişikliği Uyum Stratejileri',
             date: '15 Mart 2024',
             location: 'İstanbul Kongre Merkezi',
-            description: 'Dijital pazarlama trendleri ve gelecek stratejileri',
+            description: 'Sürdürülebilir kalkınma ve iklim uyum çözümleri',
             type: 'Konferans',
             color: Branding.primary,
           ),
@@ -262,10 +261,10 @@ class _UpcomingEventsSection extends StatelessWidget {
         SizedBox(width: Branding.spacingL),
         Expanded(
           child: _buildEventCard(
-            title: 'E-ticaret Masterclass',
+            title: 'Dijital Dönüşüm Masterclass',
             date: '22 Mart 2024',
             location: 'Online',
-            description: 'E-ticaret dünyasında başarılı olmanın sırları',
+            description: 'Kurumsal dijital dönüşüm ve teknoloji entegrasyonu',
             type: 'Workshop',
             color: Branding.secondary,
           ),
@@ -273,10 +272,10 @@ class _UpcomingEventsSection extends StatelessWidget {
         SizedBox(width: Branding.spacingL),
         Expanded(
           child: _buildEventCard(
-            title: 'Sosyal Medya Stratejileri',
+            title: 'Sürdürülebilir İş Modelleri',
             date: '5 Nisan 2024',
-            location: 'Ankara Üniversitesi',
-            description: 'Etkili sosyal medya yönetimi ve içerik stratejileri',
+            location: 'Boğaziçi Üniversitesi',
+            description: 'Yeşil ekonomi ve sürdürülebilir iş stratejileri',
             type: 'Seminer',
             color: Branding.primary,
           ),
@@ -316,7 +315,7 @@ class _UpcomingEventsSection extends StatelessWidget {
             child: Text(
               type,
               style: TextStyle(
-                color: color,
+                color: Branding.white,
                 fontSize: 12.0,
                 fontWeight: FontWeight.w600,
               ),
@@ -338,7 +337,7 @@ class _UpcomingEventsSection extends StatelessWidget {
           // Tarih ve lokasyon
           Row(
             children: [
-              Icon(Icons.calendar_today, color: color, size: 16.0),
+              Icon(Icons.calendar_today, color: Branding.white, size: 16.0),
               SizedBox(width: 8),
               Text(
                 date,
@@ -353,7 +352,7 @@ class _UpcomingEventsSection extends StatelessWidget {
           SizedBox(height: 8),
           Row(
             children: [
-              Icon(Icons.location_on, color: color, size: 16.0),
+              Icon(Icons.location_on, color: Branding.white, size: 16.0),
               SizedBox(width: 8),
               Expanded(
                 child: Text(
@@ -459,26 +458,27 @@ class _PastEventsSection extends StatelessWidget {
     return Column(
       children: [
         _buildPastEventCard(
-          title: 'Dijital Dönüşüm Konferansı 2023',
+          title: 'Avrupa İklim Değişikliği Uyum Konferansı',
           date: '15 Aralık 2023',
-          participants: '250+ Katılımcı',
-          description: 'İş dünyasında dijital dönüşümün etkileri',
+          participants: '300+ Katılımcı',
+          description:
+              'İklim değişikliği uyum stratejileri ve sürdürülebilir kalkınma',
           color: Branding.secondary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildPastEventCard(
-          title: 'Startup Ekosistemi Paneli',
+          title: 'Dijital Dönüşüm ve İnovasyon Paneli',
           date: '8 Kasım 2023',
-          participants: '180+ Katılımcı',
-          description: 'Türkiye startup ekosisteminin geleceği',
+          participants: '200+ Katılımcı',
+          description: 'Kurumsal dijital dönüşüm ve teknoloji entegrasyonu',
           color: Branding.primary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildPastEventCard(
-          title: 'E-ticaret Workshop Serisi',
+          title: 'Sürdürülebilir İş Modelleri Workshop',
           date: '20 Ekim 2023',
-          participants: '120+ Katılımcı',
-          description: 'E-ticaret platformları ve pazarlama stratejileri',
+          participants: '150+ Katılımcı',
+          description: 'Yeşil ekonomi ve sürdürülebilir iş stratejileri',
           color: Branding.secondary,
         ),
       ],
@@ -492,20 +492,22 @@ class _PastEventsSection extends StatelessWidget {
           children: [
             Expanded(
               child: _buildPastEventCard(
-                title: 'Dijital Dönüşüm Konferansı 2023',
+                title: 'Avrupa İklim Değişikliği Uyum Konferansı',
                 date: '15 Aralık 2023',
-                participants: '250+ Katılımcı',
-                description: 'İş dünyasında dijital dönüşümün etkileri',
+                participants: '300+ Katılımcı',
+                description:
+                    'İklim değişikliği uyum stratejileri ve sürdürülebilir kalkınma',
                 color: Branding.secondary,
               ),
             ),
             SizedBox(width: Branding.spacingL),
             Expanded(
               child: _buildPastEventCard(
-                title: 'Startup Ekosistemi Paneli',
+                title: 'Dijital Dönüşüm ve İnovasyon Paneli',
                 date: '8 Kasım 2023',
-                participants: '180+ Katılımcı',
-                description: 'Türkiye startup ekosisteminin geleceği',
+                participants: '200+ Katılımcı',
+                description:
+                    'Kurumsal dijital dönüşüm ve teknoloji entegrasyonu',
                 color: Branding.primary,
               ),
             ),
@@ -516,10 +518,10 @@ class _PastEventsSection extends StatelessWidget {
           children: [
             Expanded(
               child: _buildPastEventCard(
-                title: 'E-ticaret Workshop Serisi',
+                title: 'Sürdürülebilir İş Modelleri Workshop',
                 date: '20 Ekim 2023',
-                participants: '120+ Katılımcı',
-                description: 'E-ticaret platformları ve pazarlama stratejileri',
+                participants: '150+ Katılımcı',
+                description: 'Yeşil ekonomi ve sürdürülebilir iş stratejileri',
                 color: Branding.secondary,
               ),
             ),
@@ -536,30 +538,31 @@ class _PastEventsSection extends StatelessWidget {
       children: [
         Expanded(
           child: _buildPastEventCard(
-            title: 'Dijital Dönüşüm Konferansı 2023',
+            title: 'Avrupa İklim Değişikliği Uyum Konferansı',
             date: '15 Aralık 2023',
-            participants: '250+ Katılımcı',
-            description: 'İş dünyasında dijital dönüşümün etkileri',
+            participants: '300+ Katılımcı',
+            description:
+                'İklim değişikliği uyum stratejileri ve sürdürülebilir kalkınma',
             color: Branding.secondary,
           ),
         ),
         SizedBox(width: Branding.spacingL),
         Expanded(
           child: _buildPastEventCard(
-            title: 'Startup Ekosistemi Paneli',
+            title: 'Dijital Dönüşüm ve İnovasyon Paneli',
             date: '8 Kasım 2023',
-            participants: '180+ Katılımcı',
-            description: 'Türkiye startup ekosisteminin geleceği',
+            participants: '200+ Katılımcı',
+            description: 'Kurumsal dijital dönüşüm ve teknoloji entegrasyonu',
             color: Branding.primary,
           ),
         ),
         SizedBox(width: Branding.spacingL),
         Expanded(
           child: _buildPastEventCard(
-            title: 'E-ticaret Workshop Serisi',
+            title: 'Sürdürülebilir İş Modelleri Workshop',
             date: '20 Ekim 2023',
-            participants: '120+ Katılımcı',
-            description: 'E-ticaret platformları ve pazarlama stratejileri',
+            participants: '150+ Katılımcı',
+            description: 'Yeşil ekonomi ve sürdürülebilir iş stratejileri',
             color: Branding.secondary,
           ),
         ),
@@ -597,7 +600,7 @@ class _PastEventsSection extends StatelessWidget {
             child: Text(
               'Tamamlandı',
               style: TextStyle(
-                color: color,
+                color: Branding.white,
                 fontSize: 12.0,
                 fontWeight: FontWeight.w600,
               ),
@@ -619,7 +622,7 @@ class _PastEventsSection extends StatelessWidget {
           // Tarih ve katılımcı sayısı
           Row(
             children: [
-              Icon(Icons.calendar_today, color: color, size: 16.0),
+              Icon(Icons.calendar_today, color: Branding.white, size: 16.0),
               SizedBox(width: 8),
               Text(
                 date,
@@ -634,7 +637,7 @@ class _PastEventsSection extends StatelessWidget {
           SizedBox(height: 8),
           Row(
             children: [
-              Icon(Icons.people, color: color, size: 16.0),
+              Icon(Icons.people, color: Branding.white, size: 16.0),
               SizedBox(width: 8),
               Text(
                 participants,

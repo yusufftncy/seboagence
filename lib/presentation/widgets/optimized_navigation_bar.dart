@@ -419,7 +419,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
         SizedBox(width: spacing),
         _buildProjectsDropdown(),
         SizedBox(width: spacing),
-        _buildConferencesDropdown(),
+        _buildNavItem('Konferanslar', false, Icons.event),
         SizedBox(width: spacing),
         _buildNavItem('İletişim', false, Icons.contact_phone),
       ],
@@ -436,7 +436,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
         SizedBox(width: spacing),
         _buildProjectsDropdown(),
         SizedBox(width: spacing),
-        _buildConferencesDropdown(),
+        _buildNavItem('Konferanslar', false, Icons.event),
         SizedBox(width: spacing),
         _buildNavItem('İletişim', false, Icons.contact_phone),
       ],
@@ -456,7 +456,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
           SizedBox(width: spacing),
           _buildProjectsDropdown(),
           SizedBox(width: spacing),
-          _buildConferencesDropdown(),
+          _buildNavItem('Konferanslar', false, Icons.event),
           SizedBox(width: spacing),
           _buildNavItem('İletişim', false, Icons.contact_phone),
         ],
@@ -586,22 +586,11 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
 
   Widget _buildProjectsDropdown() {
     return _buildDropdownMenu('Hoş İşler', Icons.work, [
+      _buildDropdownItem('Tüm Projeler', 'tum_projeler', Icons.list),
       _buildDropdownItem('Vefa Projesi', 'vefa', Icons.favorite),
       _buildDropdownItem('Sefa Projesi', 'sefa', Icons.palette),
       _buildDropdownItem('Şifa Projesi', 'sifa', Icons.healing),
     ], _handleProjectNavigation);
-  }
-
-  Widget _buildConferencesDropdown() {
-    return _buildDropdownMenu('Konferanslar', Icons.event, [
-      _buildDropdownItem('Vefa Buluşmaları 2025', 'vefa_bulusma', Icons.event),
-      _buildDropdownItem(
-        'Avrupa İklim Değişikliği Uyum Konferansı',
-        'iklim_konferans',
-        Icons.eco,
-      ),
-      _buildDropdownItem('Tüm Konferanslar', 'tum_konferanslar', Icons.list),
-    ], _handleConferenceNavigation);
   }
 
   Widget _buildDropdownMenu(
@@ -1237,6 +1226,9 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       case 'Hakkımızda':
         NavigationService.goToAbout();
         break;
+      case 'Konferanslar':
+        NavigationService.goToConferences();
+        break;
       case 'İletişim':
         NavigationService.goToContact();
         break;
@@ -1245,6 +1237,9 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
 
   void _handleProjectNavigation(String project) {
     switch (project) {
+      case 'tum_projeler':
+        NavigationService.goToWorks();
+        break;
       case 'vefa':
         NavigationService.goToProject('vefa');
         break;
@@ -1253,20 +1248,6 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
         break;
       case 'sifa':
         NavigationService.goToProject('sifa');
-        break;
-    }
-  }
-
-  void _handleConferenceNavigation(String conference) {
-    switch (conference) {
-      case 'vefa_bulusma':
-        NavigationService.goToConference('vefa_bulusma');
-        break;
-      case 'iklim_konferans':
-        NavigationService.goToConference('iklim_konferans');
-        break;
-      case 'tum_konferanslar':
-        NavigationService.goToAllConferences();
         break;
     }
   }

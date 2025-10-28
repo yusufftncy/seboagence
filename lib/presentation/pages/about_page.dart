@@ -477,7 +477,7 @@ class _ValuesSection extends StatelessWidget {
               color: color.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(Branding.borderRadiusM),
             ),
-            child: Icon(icon, color: color, size: 32.0),
+            child: Icon(icon, color: Branding.white, size: 32.0),
           ),
           SizedBox(height: Branding.spacingL),
           Text(

@@ -174,8 +174,7 @@ class _ChaptersSection extends StatelessWidget {
       children: [
         _buildChapterCard(
           title: 'Şifa',
-          description:
-              'Hatay\'da yetişen Barış ipeği ve kadın çiftçilerin ürünlerini değere dönüştürme projesi',
+          description: 'Kadın çiftçilerin ürünlerini değere dönüştürme projesi',
           color: Branding.primary,
           icon: Icons.healing,
         ),
@@ -207,7 +206,7 @@ class _ChaptersSection extends StatelessWidget {
               child: _buildChapterCard(
                 title: 'Şifa',
                 description:
-                    'Hatay\'da yetişen Barış ipeği ve kadın çiftçilerin ürünlerini değere dönüştürme projesi',
+                    'Kadın çiftçilerin ürünlerini değere dönüştürme projesi',
                 color: Branding.primary,
                 icon: Icons.healing,
               ),
@@ -251,7 +250,7 @@ class _ChaptersSection extends StatelessWidget {
           child: _buildChapterCard(
             title: 'Şifa',
             description:
-                'Hatay\'da yetişen Barış ipeği ve kadın çiftçilerin ürünlerini değere dönüştürme projesi',
+                'Kadın çiftçilerin ürünlerini değere dönüştürme projesi',
             color: Branding.primary,
             icon: Icons.healing,
           ),
@@ -431,7 +430,7 @@ class _ProjectsSection extends StatelessWidget {
                 title: 'Şifa İpek',
                 chapter: 'Şifa',
                 description:
-                    'Hatay\'da yetişen Barış ipeği ve kadın çiftçilerin ürünlerini değere dönüştürme projesi',
+                    'Kadın çiftçilerin ürünlerini değere dönüştürme projesi',
                 color: Branding.primary,
                 features: [
                   'Kadın güçlendirme',
@@ -489,7 +488,7 @@ class _ProjectsSection extends StatelessWidget {
             title: 'Şifa İpek',
             chapter: 'Şifa',
             description:
-                'Hatay\'da yetişen Barış ipeği ve kadın çiftçilerin ürünlerini değere dönüştürme projesi',
+                'Kadın çiftçilerin ürünlerini değere dönüştürme projesi',
             color: Branding.primary,
             features: [
               'Kadın güçlendirme',
