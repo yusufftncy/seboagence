@@ -538,7 +538,7 @@ class _AchievementsSection extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: isMobile ? Branding.spacingM : Branding.spacingL),
-          
+
           // Minimal subtitle
           Container(
             width: isMobile ? 200 : 300,
@@ -561,28 +561,46 @@ class _AchievementsSection extends StatelessWidget {
   Widget _buildMobileAchievements() {
     return Column(
       children: [
-        _buildMinimalAchievementCard(
-          number: '150+',
-          title: 'Proje',
-          color: Branding.primary,
+        // First row - 2 cards
+        Row(
+          children: [
+            Expanded(
+              child: _buildMinimalAchievementCard(
+                number: '150+',
+                title: 'Proje',
+                color: Branding.primary,
+              ),
+            ),
+            SizedBox(width: Branding.spacingM),
+            Expanded(
+              child: _buildMinimalAchievementCard(
+                number: '80+',
+                title: 'Müşteri',
+                color: Branding.secondary,
+              ),
+            ),
+          ],
         ),
-        SizedBox(height: Branding.spacingXL),
-        _buildMinimalAchievementCard(
-          number: '80+',
-          title: 'Müşteri',
-          color: Branding.secondary,
-        ),
-        SizedBox(height: Branding.spacingXL),
-        _buildMinimalAchievementCard(
-          number: '5+',
-          title: 'Yıl',
-          color: Branding.primary,
-        ),
-        SizedBox(height: Branding.spacingXL),
-        _buildMinimalAchievementCard(
-          number: '98%',
-          title: 'Memnuniyet',
-          color: Branding.secondary,
+        SizedBox(height: Branding.spacingL),
+        // Second row - 2 cards
+        Row(
+          children: [
+            Expanded(
+              child: _buildMinimalAchievementCard(
+                number: '5+',
+                title: 'Yıl',
+                color: Branding.primary,
+              ),
+            ),
+            SizedBox(width: Branding.spacingM),
+            Expanded(
+              child: _buildMinimalAchievementCard(
+                number: '98%',
+                title: 'Memnuniyet',
+                color: Branding.secondary,
+              ),
+            ),
+          ],
         ),
       ],
     );
@@ -679,29 +697,26 @@ class _AchievementsSection extends StatelessWidget {
   }) {
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: Branding.spacingXL,
-        horizontal: Branding.spacingL,
+        vertical: Branding.spacingL,
+        horizontal: Branding.spacingS,
       ),
       child: Column(
         children: [
           // Number with subtle background
           Container(
-            width: 120,
-            height: 120,
+            width: 80,
+            height: 80,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: color.withValues(alpha: 0.1),
-              border: Border.all(
-                color: color.withValues(alpha: 0.3),
-                width: 1,
-              ),
+              border: Border.all(color: color.withValues(alpha: 0.3), width: 1),
             ),
             child: Center(
               child: Text(
                 number,
                 style: TextStyle(
                   color: color,
-                  fontSize: 32.0,
+                  fontSize: 24.0,
                   fontWeight: FontWeight.w300,
                   letterSpacing: 1.0,
                 ),
@@ -709,14 +724,14 @@ class _AchievementsSection extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: Branding.spacingL),
-          
+          SizedBox(height: Branding.spacingM),
+ 
           // Title with minimal styling
           Text(
             title,
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.9),
-              fontSize: 16.0,
+              fontSize: 14.0,
               fontWeight: FontWeight.w300,
               letterSpacing: 0.5,
             ),
@@ -726,7 +741,6 @@ class _AchievementsSection extends StatelessWidget {
       ),
     );
   }
-
 }
 
 /// Team Section
