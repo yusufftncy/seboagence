@@ -394,7 +394,7 @@ class _UpcomingEventsSection extends StatelessWidget {
               ),
             ),
             child: const Text(
-              'Kayıt Ol',
+              'Git',
               style: TextStyle(
                 color: Branding.white,
                 fontWeight: FontWeight.w600,
@@ -458,27 +458,28 @@ class _PastEventsSection extends StatelessWidget {
     return Column(
       children: [
         _buildPastEventCard(
-          title: 'Avrupa İklim Değişikliği Uyum Konferansı',
-          date: '15 Aralık 2023',
-          participants: '300+ Katılımcı',
+          title: 'CCI France Turquie Etkinliği',
+          date: 'Aralık 2025',
+          participants: '150+ Katılımcı',
           description:
-              'İklim değişikliği uyum stratejileri ve sürdürülebilir kalkınma',
+              'Fransız Ticaret Odası Türkiye ile işbirliği etkinliği ve networking',
           color: Branding.secondary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildPastEventCard(
-          title: 'Dijital Dönüşüm ve İnovasyon Paneli',
-          date: '8 Kasım 2023',
+          title: 'Fransız Ticaret Odası Konferansı',
+          date: 'Kasım 2025',
           participants: '200+ Katılımcı',
-          description: 'Kurumsal dijital dönüşüm ve teknoloji entegrasyonu',
+          description:
+              'CCI France Turquie ile ortak düzenlenen ticaret konferansı',
           color: Branding.primary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildPastEventCard(
-          title: 'Sürdürülebilir İş Modelleri Workshop',
-          date: '20 Ekim 2023',
-          participants: '150+ Katılımcı',
-          description: 'Yeşil ekonomi ve sürdürülebilir iş stratejileri',
+          title: 'CCI France Turquie İşbirliği Etkinliği',
+          date: 'Ekim 2025',
+          participants: '120+ Katılımcı',
+          description: 'Fransız-Türk iş dünyası arasında köprü kuran etkinlik',
           color: Branding.secondary,
         ),
       ],
@@ -492,22 +493,22 @@ class _PastEventsSection extends StatelessWidget {
           children: [
             Expanded(
               child: _buildPastEventCard(
-                title: 'Avrupa İklim Değişikliği Uyum Konferansı',
-                date: '15 Aralık 2023',
-                participants: '300+ Katılımcı',
+                title: 'CCI France Turquie Etkinliği',
+                date: 'Aralık 2025',
+                participants: '150+ Katılımcı',
                 description:
-                    'İklim değişikliği uyum stratejileri ve sürdürülebilir kalkınma',
+                    'Fransız Ticaret Odası Türkiye ile işbirliği etkinliği ve networking',
                 color: Branding.secondary,
               ),
             ),
             SizedBox(width: Branding.spacingL),
             Expanded(
               child: _buildPastEventCard(
-                title: 'Dijital Dönüşüm ve İnovasyon Paneli',
-                date: '8 Kasım 2023',
+                title: 'Fransız Ticaret Odası Konferansı',
+                date: 'Kasım 2025',
                 participants: '200+ Katılımcı',
                 description:
-                    'Kurumsal dijital dönüşüm ve teknoloji entegrasyonu',
+                    'CCI France Turquie ile ortak düzenlenen ticaret konferansı',
                 color: Branding.primary,
               ),
             ),
@@ -518,10 +519,11 @@ class _PastEventsSection extends StatelessWidget {
           children: [
             Expanded(
               child: _buildPastEventCard(
-                title: 'Sürdürülebilir İş Modelleri Workshop',
-                date: '20 Ekim 2023',
-                participants: '150+ Katılımcı',
-                description: 'Yeşil ekonomi ve sürdürülebilir iş stratejileri',
+                title: 'CCI France Turquie İşbirliği Etkinliği',
+                date: 'Ekim 2025',
+                participants: '120+ Katılımcı',
+                description:
+                    'Fransız-Türk iş dünyası arasında köprü kuran etkinlik',
                 color: Branding.secondary,
               ),
             ),
@@ -538,31 +540,33 @@ class _PastEventsSection extends StatelessWidget {
       children: [
         Expanded(
           child: _buildPastEventCard(
-            title: 'Avrupa İklim Değişikliği Uyum Konferansı',
-            date: '15 Aralık 2023',
-            participants: '300+ Katılımcı',
+            title: 'CCI France Turquie Etkinliği',
+            date: 'Aralık 2025',
+            participants: '150+ Katılımcı',
             description:
-                'İklim değişikliği uyum stratejileri ve sürdürülebilir kalkınma',
+                'Fransız Ticaret Odası Türkiye ile işbirliği etkinliği ve networking',
             color: Branding.secondary,
           ),
         ),
         SizedBox(width: Branding.spacingL),
         Expanded(
           child: _buildPastEventCard(
-            title: 'Dijital Dönüşüm ve İnovasyon Paneli',
-            date: '8 Kasım 2023',
+            title: 'Fransız Ticaret Odası Konferansı',
+            date: 'Kasım 2025',
             participants: '200+ Katılımcı',
-            description: 'Kurumsal dijital dönüşüm ve teknoloji entegrasyonu',
+            description:
+                'CCI France Turquie ile ortak düzenlenen ticaret konferansı',
             color: Branding.primary,
           ),
         ),
         SizedBox(width: Branding.spacingL),
         Expanded(
           child: _buildPastEventCard(
-            title: 'Sürdürülebilir İş Modelleri Workshop',
-            date: '20 Ekim 2023',
-            participants: '150+ Katılımcı',
-            description: 'Yeşil ekonomi ve sürdürülebilir iş stratejileri',
+            title: 'CCI France Turquie İşbirliği Etkinliği',
+            date: 'Ekim 2025',
+            participants: '120+ Katılımcı',
+            description:
+                'Fransız-Türk iş dünyası arasında köprü kuran etkinlik',
             color: Branding.secondary,
           ),
         ),
