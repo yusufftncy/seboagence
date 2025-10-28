@@ -5,8 +5,11 @@ library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../core/theme/branding.dart';
 import '../../core/utils/responsive.dart';
+import '../../core/services/navigation_service.dart';
+import '../../core/constants/app_constants.dart';
 import '../widgets/optimized_navigation_bar.dart';
 
 class AboutPage extends ConsumerWidget {
@@ -963,7 +966,7 @@ class _ContactSection extends StatelessWidget {
             children: [
               ElevatedButton.icon(
                 onPressed: () {
-                  // TODO: İletişim sayfasına git
+                  NavigationService.goToContact();
                 },
                 icon: const Icon(Icons.email, color: Branding.white),
                 label: const Text(
@@ -983,8 +986,14 @@ class _ContactSection extends StatelessWidget {
               ),
               SizedBox(width: Branding.spacingL),
               ElevatedButton.icon(
-                onPressed: () {
-                  // TODO: Telefon ara
+                onPressed: () async {
+                  final Uri phoneUri = Uri(
+                    scheme: 'tel',
+                    path: AppConstants.companyPhone,
+                  );
+                  if (await canLaunchUrl(phoneUri)) {
+                    await launchUrl(phoneUri);
+                  }
                 },
                 icon: const Icon(Icons.phone, color: Branding.white),
                 label: const Text(

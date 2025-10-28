@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../../presentation/pages/home_page.dart';
 import '../../presentation/pages/about_page.dart';
 import '../../presentation/pages/works_page.dart';
+import '../../presentation/pages/conferences_page.dart';
 import '../../presentation/pages/contact_page.dart';
 import '../../presentation/pages/project_detail_page.dart';
 
@@ -14,6 +15,7 @@ class AppRouter {
   static const String home = '/';
   static const String about = '/about';
   static const String works = '/works';
+  static const String conferences = '/conferences';
   static const String contact = '/contact';
   static const String projectDetail = '/project';
 
@@ -26,6 +28,8 @@ class AppRouter {
         return const AboutPage();
       case works:
         return const WorksPage();
+      case conferences:
+        return const ConferencesPage();
       case contact:
         return const ContactPage();
       case projectDetail:

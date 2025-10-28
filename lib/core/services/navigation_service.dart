@@ -45,6 +45,16 @@ class NavigationService {
     }
   }
 
+  /// Projeler sayfasına git
+  static void goToWorks() {
+    if (currentState != null) {
+      HapticFeedback.lightImpact();
+      _showLoadingAndNavigate('Projeler Sayfası Yükleniyor...', () {
+        currentState!.pushNamed('/works');
+      });
+    }
+  }
+
   /// Yükleme göster ve navigasyon yap
   static void _showLoadingAndNavigate(String message, VoidCallback navigation) {
     if (currentContext != null) {
@@ -77,6 +87,16 @@ class NavigationService {
   static void goToConference(String conferenceId) {
     if (currentState != null) {
       currentState!.pushNamed('/conference/$conferenceId');
+    }
+  }
+
+  /// Konferanslar sayfasına git
+  static void goToConferences() {
+    if (currentState != null) {
+      HapticFeedback.lightImpact();
+      _showLoadingAndNavigate('Konferanslar Sayfası Yükleniyor...', () {
+        currentState!.pushNamed('/conferences');
+      });
     }
   }
 

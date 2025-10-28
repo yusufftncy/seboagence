@@ -9,6 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../core/theme/branding.dart';
 import '../../core/theme/typography.dart';
 import '../../core/utils/responsive.dart';
+import '../../core/services/navigation_service.dart';
 import '../widgets/optimized_navigation_bar.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -519,7 +520,7 @@ class _HomePageState extends ConsumerState<HomePage>
       ),
       child: ElevatedButton(
         onPressed: () {
-          // Projeler sayfasına git
+          NavigationService.goToContact();
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
@@ -544,7 +545,7 @@ class _HomePageState extends ConsumerState<HomePage>
   Widget _buildMobileSecondaryButton(BuildContext context) {
     return OutlinedButton(
       onPressed: () {
-        // Hakkımızda sayfasına git
+        NavigationService.goToWorks();
       },
       style: OutlinedButton.styleFrom(
         side: const BorderSide(
@@ -580,7 +581,7 @@ class _HomePageState extends ConsumerState<HomePage>
       ),
       child: ElevatedButton(
         onPressed: () {
-          // Projeler sayfasına git
+          NavigationService.goToContact();
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
@@ -605,7 +606,7 @@ class _HomePageState extends ConsumerState<HomePage>
   Widget _buildTabletSecondaryButton(BuildContext context) {
     return OutlinedButton(
       onPressed: () {
-        // Hakkımızda sayfasına git
+        NavigationService.goToWorks();
       },
       style: OutlinedButton.styleFrom(
         side: const BorderSide(
@@ -641,7 +642,7 @@ class _HomePageState extends ConsumerState<HomePage>
       ),
       child: ElevatedButton(
         onPressed: () {
-          // Projeler sayfasına git
+          NavigationService.goToContact();
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
@@ -666,7 +667,7 @@ class _HomePageState extends ConsumerState<HomePage>
   Widget _buildDesktopSecondaryButton(BuildContext context) {
     return OutlinedButton(
       onPressed: () {
-        // Hakkımızda sayfasına git
+        NavigationService.goToWorks();
       },
       style: OutlinedButton.styleFrom(
         side: const BorderSide(
@@ -3149,7 +3150,7 @@ class _HomePageState extends ConsumerState<HomePage>
       ),
       child: ElevatedButton(
         onPressed: () {
-          // Tüm konferanslar sayfasına git
+          NavigationService.goToConferences();
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
@@ -3197,7 +3198,7 @@ class _HomePageState extends ConsumerState<HomePage>
       ),
       child: ElevatedButton(
         onPressed: () {
-          // Tüm konferanslar sayfasına git
+          NavigationService.goToConferences();
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
@@ -3245,7 +3246,7 @@ class _HomePageState extends ConsumerState<HomePage>
       ),
       child: ElevatedButton(
         onPressed: () {
-          // Tüm konferanslar sayfasına git
+          NavigationService.goToConferences();
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
@@ -3802,6 +3803,7 @@ class _FooterWidget extends StatelessWidget {
         _buildMobileFooterLink('Ana Sayfa'),
         _buildMobileFooterLink('Hakkımızda'),
         _buildMobileFooterLink('Projelerimiz'),
+        _buildMobileFooterLink('Konferanslar'),
         _buildMobileFooterLink('İletişim'),
       ],
     );
@@ -3823,6 +3825,7 @@ class _FooterWidget extends StatelessWidget {
         _buildTabletFooterLink('Ana Sayfa'),
         _buildTabletFooterLink('Hakkımızda'),
         _buildTabletFooterLink('Projelerimiz'),
+        _buildTabletFooterLink('Konferanslar'),
         _buildTabletFooterLink('İletişim'),
       ],
     );
@@ -3844,6 +3847,7 @@ class _FooterWidget extends StatelessWidget {
         _buildFooterLink('Ana Sayfa'),
         _buildFooterLink('Hakkımızda'),
         _buildFooterLink('Projelerimiz'),
+        _buildFooterLink('Konferanslar'),
         _buildFooterLink('İletişim'),
       ],
     );
@@ -3851,40 +3855,88 @@ class _FooterWidget extends StatelessWidget {
 
   Widget _buildMobileFooterLink(String text) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Text(
-        text,
+      padding: const EdgeInsets.only(bottom: 4),
+      child: _HoverableFooterLink(
+        text: text,
+        fontSize: 10,
         textAlign: TextAlign.center,
-        style: AppTypography.bodyMedium.copyWith(
-          color: const Color(0xFFB0B0B0),
-          fontSize: 10,
-        ),
+        onTap: () {
+          switch (text) {
+            case 'Ana Sayfa':
+              NavigationService.goToHome();
+              break;
+            case 'Hakkımızda':
+              NavigationService.goToAbout();
+              break;
+            case 'Projelerimiz':
+              NavigationService.goToWorks();
+              break;
+            case 'Konferanslar':
+              NavigationService.goToConferences();
+              break;
+            case 'İletişim':
+              NavigationService.goToContact();
+              break;
+          }
+        },
       ),
     );
   }
 
   Widget _buildTabletFooterLink(String text) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Text(
-        text,
-        style: AppTypography.bodyMedium.copyWith(
-          color: const Color(0xFFB0B0B0),
-          fontSize: 11,
-        ),
+      padding: const EdgeInsets.only(bottom: 6),
+      child: _HoverableFooterLink(
+        text: text,
+        fontSize: 11,
+        onTap: () {
+          switch (text) {
+            case 'Ana Sayfa':
+              NavigationService.goToHome();
+              break;
+            case 'Hakkımızda':
+              NavigationService.goToAbout();
+              break;
+            case 'Projelerimiz':
+              NavigationService.goToWorks();
+              break;
+            case 'Konferanslar':
+              NavigationService.goToConferences();
+              break;
+            case 'İletişim':
+              NavigationService.goToContact();
+              break;
+          }
+        },
       ),
     );
   }
 
   Widget _buildFooterLink(String text) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: Text(
-        text,
-        style: AppTypography.bodyMedium.copyWith(
-          color: const Color(0xFFB0B0B0),
-          fontSize: 12,
-        ),
+      padding: const EdgeInsets.only(bottom: 8),
+      child: _HoverableFooterLink(
+        text: text,
+        fontSize: 12,
+        onTap: () {
+          switch (text) {
+            case 'Ana Sayfa':
+              NavigationService.goToHome();
+              break;
+            case 'Hakkımızda':
+              NavigationService.goToAbout();
+              break;
+            case 'Projelerimiz':
+              NavigationService.goToWorks();
+              break;
+            case 'Konferanslar':
+              NavigationService.goToConferences();
+              break;
+            case 'İletişim':
+              NavigationService.goToContact();
+              break;
+          }
+        },
       ),
     );
   }
@@ -4090,6 +4142,51 @@ class _FooterWidget extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// Hoverable Footer Link Widget
+class _HoverableFooterLink extends StatefulWidget {
+  final String text;
+  final double fontSize;
+  final TextAlign? textAlign;
+  final VoidCallback onTap;
+
+  const _HoverableFooterLink({
+    required this.text,
+    required this.fontSize,
+    this.textAlign,
+    required this.onTap,
+  });
+
+  @override
+  State<_HoverableFooterLink> createState() => _HoverableFooterLinkState();
+}
+
+class _HoverableFooterLinkState extends State<_HoverableFooterLink> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          child: Text(
+            widget.text,
+            textAlign: widget.textAlign,
+            style: AppTypography.bodyMedium.copyWith(
+              color: _isHovered ? Colors.white : const Color(0xFFB0B0B0),
+              fontSize: widget.fontSize,
+            ),
+          ),
+        ),
       ),
     );
   }
