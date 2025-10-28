@@ -61,7 +61,7 @@ class AppConstants {
   static const String companyPhone = '+90 (212) 123 45 67';
   static const String companyAddress = 'İstanbul, Türkiye';
   static const String companyWebsite = 'www.seboagency.com';
-  static const String companyLinkedIn = 'linkedin.com/company/seboagency';
+  static const String companyLinkedIn = 'https://www.linkedin.com/in/sebnem-berkol-yuceer-1255947/';
   static const String companyInstagram = '@seboagency';
 
   // İletişim Sayfası Metinleri

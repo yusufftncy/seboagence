@@ -611,26 +611,29 @@ class _SocialButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(Branding.spacingL),
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(Branding.borderRadiusM),
-        border: Border.all(color: color.withValues(alpha: 0.3), width: 1),
-      ),
-      child: Column(
-        children: [
-          Icon(icon, color: Branding.white, size: 32.0),
-          SizedBox(height: Branding.spacingS),
-          Text(
-            title,
-            style: const TextStyle(
-              color: Branding.white,
-              fontSize: 12.0,
-              fontWeight: FontWeight.w600,
+    return GestureDetector(
+      onTap: () => _launchUrl(url),
+      child: Container(
+        padding: EdgeInsets.all(Branding.spacingL),
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(Branding.borderRadiusM),
+          border: Border.all(color: color.withValues(alpha: 0.3), width: 1),
+        ),
+        child: Column(
+          children: [
+            Icon(icon, color: Branding.white, size: 32.0),
+            SizedBox(height: Branding.spacingS),
+            Text(
+              title,
+              style: const TextStyle(
+                color: Branding.white,
+                fontSize: 12.0,
+                fontWeight: FontWeight.w600,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -724,6 +727,14 @@ void _launchMap() async {
 
   if (await canLaunchUrl(mapUri)) {
     await launchUrl(mapUri);
+  }
+}
+
+void _launchUrl(String url) async {
+  final Uri uri = Uri.parse(url);
+
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
   }
 }
 
