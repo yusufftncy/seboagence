@@ -383,9 +383,7 @@ class _UpcomingEventsSection extends StatelessWidget {
 
           // Kayıt ol butonu
           ElevatedButton(
-            onPressed: () {
-              // TODO: Kayıt olma işlemi
-            },
+            onPressed: () {},
             style: ElevatedButton.styleFrom(
               backgroundColor: color,
               padding: const EdgeInsets.symmetric(
@@ -664,9 +662,7 @@ class _PastEventsSection extends StatelessWidget {
 
           // Detayları gör butonu
           OutlinedButton(
-            onPressed: () {
-              // TODO: Etkinlik detayları
-            },
+            onPressed: () {},
             style: OutlinedButton.styleFrom(
               foregroundColor: Branding.white,
               side: BorderSide(color: Branding.white),
