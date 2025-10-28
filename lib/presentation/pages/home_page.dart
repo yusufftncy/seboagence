@@ -2744,23 +2744,23 @@ class _HomePageState extends ConsumerState<HomePage>
   List<Map<String, dynamic>> _getConferencesData() {
     return [
       {
-        'title': 'Vefa Buluşmaları 2025',
+        'title': 'Empowerment Through Voice Seminar',
         'description':
-            'Anadolu Eğitim ve Kültür Vakfı ile İstanbul Aydın Üniversitesi iş birliğiyle düzenlenen etkinlikte, Zeytinburnu Semiha Şakir Huzurevi sakinleriyle bir araya geldi. Fizyoterapi Bölümü akademisyenleri ve öğrencileriyle birlikte, yaşlı bireylerin fiziksel ve sosyal refahını desteklemek amacıyla çeşitli çalışmalar gerçekleştirdi.',
+            'CCI France-Turquie, Dutch Business Association Turkey, CorporateConnections® ve Yapı Kredi Bankası işbirliğiyle düzenlenen seminer. Arthur Samuel Joseph\'in konuşmacı olarak katıldığı etkinlikte, iletişim stratejileri ve ses mentorluğu konularında değerli paylaşımlar gerçekleştirildi.',
         'location': 'İstanbul, Türkiye',
-        'date': 'Ocak 2025',
-        'type': 'Etkinlik',
-        'icon': Icons.favorite,
+        'date': 'Eylül 2025',
+        'type': 'Seminer',
+        'icon': Icons.record_voice_over,
         'color': const Color(0xFF6B6B6B),
       },
       {
-        'title': 'Avrupa İklim Değişikliği Uyum Konferansı',
+        'title': 'Luxury Retail Brands Luncheon',
         'description':
-            'Rimini, İtalya\'da düzenlenen konferansta, uygulayıcılar, hükümetler, araştırmacılar ve paydaşlardan oluşan geniş bir ağın adaptasyon uzmanlığını bir araya getirdi. Pratik deneyimlerin paylaşılması ve Avrupa\'da daha akıllı, hızlı ve sistemik adaptasyona yönelik iş birliğinin teşvik edilmesi amacıyla dinamik bir platform olarak hizmet verdi.',
-        'location': 'Rimini, İtalya',
-        'date': 'Şubat 2025',
-        'type': 'Konferans',
-        'icon': Icons.eco,
+            'CCI France-Turquie tarafından Rixos Tersane Istanbul - Aliée İstanbul\'da düzenlenen lüks perakende markaları öğle yemeği. Türkiye\'deki lüks perakende markalarının ülke müdürlerinin deneyim paylaşımı ve sektör bazlı görüş alışverişi için mükemmel bir platform oluşturdu.',
+        'location': 'Rixos Tersane Istanbul',
+        'date': 'Eylül 2025',
+        'type': 'Etkinlik',
+        'icon': Icons.business,
         'color': const Color(0xFF6B6B6B),
       },
     ];
