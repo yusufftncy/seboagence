@@ -64,8 +64,8 @@ class _HeroSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(
-        horizontal: isMobile ? Branding.spacingL : Branding.spacingXXL,
-        vertical: isMobile ? Branding.spacingXXL : Branding.spacingXXL * 2,
+        horizontal: isMobile ? Branding.spacingM : Branding.spacingXXL,
+        vertical: isMobile ? Branding.spacingL : Branding.spacingXXL * 2,
       ),
       decoration: const BoxDecoration(color: Color(0xFF131B2E)),
       child: Column(
@@ -75,7 +75,7 @@ class _HeroSection extends StatelessWidget {
             style: TextStyle(
               color: Branding.white,
               fontSize: isMobile
-                  ? 32.0
+                  ? 28.0
                   : isTablet
                   ? 40.0
                   : 48.0,
@@ -84,22 +84,22 @@ class _HeroSection extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: isMobile ? Branding.spacingM : Branding.spacingL),
+          SizedBox(height: isMobile ? Branding.spacingS : Branding.spacingL),
           Text(
             AppConstants.contactPageSubtitle,
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.9),
               fontSize: isMobile
-                  ? 16.0
+                  ? 14.0
                   : isTablet
                   ? 18.0
                   : 20.0,
               fontWeight: FontWeight.w400,
-              height: 1.5,
+              height: 1.4,
             ),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: isMobile ? Branding.spacingXL : Branding.spacingXXL),
+          SizedBox(height: isMobile ? Branding.spacingL : Branding.spacingXXL),
           _ContactSummary(),
         ],
       ),
@@ -117,42 +117,76 @@ class _ContactSummary extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.all(
-        isMobile ? Branding.spacingL : Branding.spacingXL,
+        isMobile ? Branding.spacingM : Branding.spacingXL,
       ),
       decoration: BoxDecoration(
-        color: Branding.white.withValues(alpha: 0.1),
+        color: Branding.white.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(Branding.borderRadiusL),
         border: Border.all(
-          color: Branding.white.withValues(alpha: 0.2),
+          color: Branding.white.withValues(alpha: 0.15),
           width: 1,
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _SummaryItem(
-            icon: Icons.email,
-            title: 'E-posta',
-            content: AppConstants.companyEmail,
-            color: Branding.primary,
-            isMobile: isMobile,
-          ),
-          _SummaryItem(
-            icon: Icons.phone,
-            title: 'Telefon',
-            content: AppConstants.companyPhone,
-            color: Branding.secondary,
-            isMobile: isMobile,
-          ),
-          _SummaryItem(
-            icon: Icons.location_on,
-            title: 'Adres',
-            content: AppConstants.companyAddress,
-            color: Branding.secondary,
-            isMobile: isMobile,
-          ),
-        ],
-      ),
+      child: isMobile ? _buildMobileLayout() : _buildDesktopLayout(),
+    );
+  }
+
+  Widget _buildMobileLayout() {
+    return Column(
+      children: [
+        _SummaryItem(
+          icon: Icons.email,
+          title: 'E-posta',
+          content: AppConstants.companyEmail,
+          color: Branding.primary,
+          isMobile: true,
+        ),
+        SizedBox(height: Branding.spacingM),
+        _SummaryItem(
+          icon: Icons.phone,
+          title: 'Telefon',
+          content: AppConstants.companyPhone,
+          color: Branding.secondary,
+          isMobile: true,
+        ),
+        SizedBox(height: Branding.spacingM),
+        _SummaryItem(
+          icon: Icons.location_on,
+          title: 'Adres',
+          content: AppConstants.companyAddress,
+          color: Branding.secondary,
+          isMobile: true,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDesktopLayout() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _SummaryItem(
+          icon: Icons.email,
+          title: 'E-posta',
+          content: AppConstants.companyEmail,
+          color: Branding.primary,
+          isMobile: false,
+        ),
+        _SummaryItem(
+          icon: Icons.phone,
+          title: 'Telefon',
+          content: AppConstants.companyPhone,
+          color: Branding.secondary,
+          isMobile: false,
+        ),
+        _SummaryItem(
+          icon: Icons.location_on,
+          title: 'Adres',
+          content: AppConstants.companyAddress,
+          color: Branding.secondary,
+          isMobile: false,
+        ),
+      ],
     );
   }
 }
@@ -175,28 +209,79 @@ class _SummaryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return isMobile ? _buildMobileItem() : _buildDesktopItem();
+  }
+
+  Widget _buildMobileItem() {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: Branding.spacingM,
+        vertical: Branding.spacingS,
+      ),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(Branding.borderRadiusM),
+        border: Border.all(color: color.withValues(alpha: 0.3), width: 1),
+      ),
+      child: Row(
+        children: [
+          Container(
+            padding: EdgeInsets.all(Branding.spacingS),
+            decoration: BoxDecoration(
+              color: color.withValues(alpha: 0.2),
+              borderRadius: BorderRadius.circular(Branding.borderRadiusS),
+            ),
+            child: Icon(icon, color: Branding.white, size: 20.0),
+          ),
+          SizedBox(width: Branding.spacingM),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: Branding.white.withValues(alpha: 0.7),
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                SizedBox(height: 2),
+                Text(
+                  content,
+                  style: TextStyle(
+                    color: Branding.white,
+                    fontSize: 13.0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDesktopItem() {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(
-            isMobile ? Branding.spacingM : Branding.spacingL,
-          ),
+          padding: EdgeInsets.all(Branding.spacingL),
           decoration: BoxDecoration(
             color: color.withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(Branding.borderRadiusM),
           ),
-          child: Icon(
-            icon,
-            color: Branding.white,
-            size: isMobile ? 24.0 : 32.0,
-          ),
+          child: Icon(icon, color: Branding.white, size: 32.0),
         ),
         SizedBox(height: Branding.spacingS),
         Text(
           title,
           style: TextStyle(
             color: Branding.white.withValues(alpha: 0.8),
-            fontSize: isMobile ? 12.0 : 14.0,
+            fontSize: 14.0,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -205,7 +290,7 @@ class _SummaryItem extends StatelessWidget {
           content,
           style: TextStyle(
             color: Branding.white,
-            fontSize: isMobile ? 11.0 : 13.0,
+            fontSize: 13.0,
             fontWeight: FontWeight.w600,
           ),
           textAlign: TextAlign.center,
@@ -226,7 +311,7 @@ class _ContactCardsSection extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.all(
-        isMobile ? Branding.spacingL : Branding.spacingXXL,
+        isMobile ? Branding.spacingM : Branding.spacingXXL,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -236,23 +321,23 @@ class _ContactCardsSection extends StatelessWidget {
             style: TextStyle(
               color: Branding.white,
               fontSize: isMobile
-                  ? 28.0
+                  ? 24.0
                   : isTablet
                   ? 32.0
                   : 36.0,
               fontWeight: FontWeight.w700,
             ),
           ),
-          SizedBox(height: Branding.spacingS),
+          SizedBox(height: Branding.spacingXS),
           Text(
             AppConstants.contactInfoSubtitle,
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.7),
-              fontSize: isMobile ? 16.0 : 18.0,
+              fontSize: isMobile ? 14.0 : 18.0,
               fontWeight: FontWeight.w400,
             ),
           ),
-          SizedBox(height: isMobile ? Branding.spacingXL : Branding.spacingXXL),
+          SizedBox(height: isMobile ? Branding.spacingL : Branding.spacingXXL),
           _ContactCardsGrid(),
         ],
       ),
@@ -441,22 +526,28 @@ class _ContactCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = Responsive.isMobile(context);
+
     return Container(
-      padding: EdgeInsets.all(Branding.spacingXL),
+      padding: EdgeInsets.all(
+        isMobile ? Branding.spacingL : Branding.spacingXL,
+      ),
       decoration: BoxDecoration(
-        color: Branding.white.withValues(alpha: 0.12),
+        color: Branding.white.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(Branding.borderRadiusL),
         border: Border.all(
-          color: Branding.white.withValues(alpha: 0.25),
+          color: Branding.white.withValues(alpha: 0.15),
           width: 1,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Branding.white.withValues(alpha: 0.08),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
-          ),
-        ],
+        boxShadow: isMobile
+            ? null
+            : [
+                BoxShadow(
+                  color: Branding.white.withValues(alpha: 0.08),
+                  blurRadius: 20,
+                  offset: const Offset(0, 8),
+                ),
+              ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -464,32 +555,38 @@ class _ContactCard extends StatelessWidget {
           Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(Branding.spacingM),
+                padding: EdgeInsets.all(
+                  isMobile ? Branding.spacingS : Branding.spacingM,
+                ),
                 decoration: BoxDecoration(
                   color: color.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(Branding.borderRadiusM),
                 ),
-                child: Icon(icon, color: Branding.white, size: 28.0),
+                child: Icon(
+                  icon,
+                  color: Branding.white,
+                  size: isMobile ? 24.0 : 28.0,
+                ),
               ),
               SizedBox(width: Branding.spacingM),
               Expanded(
                 child: Text(
                   title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Branding.white,
-                    fontSize: 20.0,
+                    fontSize: isMobile ? 18.0 : 20.0,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: Branding.spacingL),
+          SizedBox(height: isMobile ? Branding.spacingM : Branding.spacingL),
           Text(
             content,
-            style: const TextStyle(
+            style: TextStyle(
               color: Branding.white,
-              fontSize: 18.0,
+              fontSize: isMobile ? 16.0 : 18.0,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -498,23 +595,23 @@ class _ContactCard extends StatelessWidget {
             description,
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.7),
-              fontSize: 14.0,
+              fontSize: isMobile ? 13.0 : 14.0,
               fontWeight: FontWeight.w400,
               height: 1.4,
             ),
           ),
-          SizedBox(height: Branding.spacingXL),
+          SizedBox(height: isMobile ? Branding.spacingL : Branding.spacingXL),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton.icon(
               onPressed: onTap,
-              icon: const Icon(Icons.arrow_forward, size: 18.0),
+              icon: Icon(Icons.arrow_forward, size: isMobile ? 16.0 : 18.0),
               label: Text(actionText),
               style: ElevatedButton.styleFrom(
                 backgroundColor: color,
                 foregroundColor: Branding.white,
                 padding: EdgeInsets.symmetric(
-                  vertical: Branding.spacingM,
+                  vertical: isMobile ? Branding.spacingS : Branding.spacingM,
                   horizontal: Branding.spacingL,
                 ),
                 shape: RoundedRectangleBorder(
@@ -541,56 +638,98 @@ class _SocialMediaSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: EdgeInsets.all(
-        isMobile ? Branding.spacingL : Branding.spacingXXL,
+        isMobile ? Branding.spacingM : Branding.spacingXXL,
       ),
-      decoration: BoxDecoration(color: Branding.white.withValues(alpha: 0.08)),
+      decoration: BoxDecoration(color: Branding.white.withValues(alpha: 0.05)),
       child: Column(
         children: [
           Text(
             'Sosyal Medyada Takip Edin',
             style: TextStyle(
               color: Branding.white,
-              fontSize: isMobile ? 24.0 : 28.0,
+              fontSize: isMobile ? 20.0 : 28.0,
               fontWeight: FontWeight.w700,
             ),
           ),
-          SizedBox(height: Branding.spacingS),
+          SizedBox(height: Branding.spacingXS),
           Text(
             'Güncel projelerimizi ve haberlerimizi takip edin',
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.7),
-              fontSize: isMobile ? 14.0 : 16.0,
+              fontSize: isMobile ? 12.0 : 16.0,
               fontWeight: FontWeight.w400,
             ),
+            textAlign: TextAlign.center,
           ),
-          SizedBox(height: Branding.spacingXL),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _SocialButton(
-                icon: Icons.link,
-                title: 'Website',
-                url: AppConstants.companyWebsite,
-                color: Branding.primary,
-              ),
-              SizedBox(width: Branding.spacingL),
-              _SocialButton(
-                icon: Icons.business,
-                title: 'LinkedIn',
-                url: AppConstants.companyLinkedIn,
-                color: Branding.secondary,
-              ),
-              SizedBox(width: Branding.spacingL),
-              _SocialButton(
-                icon: Icons.camera_alt,
-                title: 'Instagram',
-                url: AppConstants.companyInstagram,
-                color: Branding.secondary,
-              ),
-            ],
-          ),
+          SizedBox(height: isMobile ? Branding.spacingL : Branding.spacingXL),
+          isMobile ? _buildMobileSocialButtons() : _buildDesktopSocialButtons(),
         ],
       ),
+    );
+  }
+
+  Widget _buildMobileSocialButtons() {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _SocialButton(
+              icon: Icons.link,
+              title: 'Website',
+              url: AppConstants.companyWebsite,
+              color: Branding.primary,
+              isMobile: true,
+            ),
+            _SocialButton(
+              icon: Icons.business,
+              title: 'LinkedIn',
+              url: AppConstants.companyLinkedIn,
+              color: Branding.secondary,
+              isMobile: true,
+            ),
+          ],
+        ),
+        SizedBox(height: Branding.spacingM),
+        _SocialButton(
+          icon: Icons.camera_alt,
+          title: 'Instagram',
+          url: AppConstants.companyInstagram,
+          color: Branding.secondary,
+          isMobile: true,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDesktopSocialButtons() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _SocialButton(
+          icon: Icons.link,
+          title: 'Website',
+          url: AppConstants.companyWebsite,
+          color: Branding.primary,
+          isMobile: false,
+        ),
+        SizedBox(width: Branding.spacingL),
+        _SocialButton(
+          icon: Icons.business,
+          title: 'LinkedIn',
+          url: AppConstants.companyLinkedIn,
+          color: Branding.secondary,
+          isMobile: false,
+        ),
+        SizedBox(width: Branding.spacingL),
+        _SocialButton(
+          icon: Icons.camera_alt,
+          title: 'Instagram',
+          url: AppConstants.companyInstagram,
+          color: Branding.secondary,
+          isMobile: false,
+        ),
+      ],
     );
   }
 }
@@ -602,39 +741,65 @@ class _SocialButton extends StatelessWidget {
     required this.title,
     required this.url,
     required this.color,
+    required this.isMobile,
   });
 
   final IconData icon;
   final String title;
   final String url;
   final Color color;
+  final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => _launchUrl(url),
       child: Container(
-        padding: EdgeInsets.all(Branding.spacingL),
+        padding: EdgeInsets.all(
+          isMobile ? Branding.spacingM : Branding.spacingL,
+        ),
         decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.1),
+          color: color.withValues(alpha: 0.08),
           borderRadius: BorderRadius.circular(Branding.borderRadiusM),
-          border: Border.all(color: color.withValues(alpha: 0.3), width: 1),
+          border: Border.all(color: color.withValues(alpha: 0.2), width: 1),
         ),
-        child: Column(
-          children: [
-            Icon(icon, color: Branding.white, size: 32.0),
-            SizedBox(height: Branding.spacingS),
-            Text(
-              title,
-              style: const TextStyle(
-                color: Branding.white,
-                fontSize: 12.0,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
-        ),
+        child: isMobile ? _buildMobileButton() : _buildDesktopButton(),
       ),
+    );
+  }
+
+  Widget _buildMobileButton() {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, color: Branding.white, size: 20.0),
+        SizedBox(width: Branding.spacingS),
+        Text(
+          title,
+          style: const TextStyle(
+            color: Branding.white,
+            fontSize: 12.0,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDesktopButton() {
+    return Column(
+      children: [
+        Icon(icon, color: Branding.white, size: 32.0),
+        SizedBox(height: Branding.spacingS),
+        Text(
+          title,
+          style: const TextStyle(
+            color: Branding.white,
+            fontSize: 12.0,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
     );
   }
 }
