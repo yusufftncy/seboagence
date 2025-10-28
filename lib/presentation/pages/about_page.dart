@@ -92,7 +92,7 @@ class _HeroSection extends StatelessWidget {
 
           // Alt başlık
           Text(
-            'Yaratıcı Çözümler, Etkili Sonuçlar',
+            'Dijital Dünyada Fark Yaratıyoruz',
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.9),
               fontSize: isMobile
@@ -109,7 +109,7 @@ class _HeroSection extends StatelessWidget {
 
           // Açıklama
           Text(
-            'Şebo Agency olarak, dijital dünyada yaratıcılık ve teknolojiyi birleştirerek müşterilerimize en iyi deneyimi sunuyoruz. 5 yıllık deneyimimizle, markanızı dijital dünyada öne çıkarıyoruz.',
+            'Şebo Agency olarak, 2019 yılından bu yana dijital pazarlama, web tasarım ve mobil uygulama geliştirme alanlarında uzmanlaşmış bir ekibiz. Müşterilerimizin dijital dönüşüm yolculuğunda güvenilir partneri olarak, yaratıcı çözümlerle markalarını öne çıkarıyoruz.',
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.8),
               fontSize: isMobile ? 16.0 : 18.0,
@@ -213,7 +213,7 @@ class _MissionVisionSection extends StatelessWidget {
           ),
           SizedBox(height: Branding.spacingS),
           Text(
-            'Müşterilerimize en iyi dijital deneyimi sunarak, markalarını dijital dünyada öne çıkarmak ve hedeflerine ulaşmalarını sağlamak.',
+            'Her projede müşteri memnuniyetini ön planda tutarak, stratejik yaklaşım ve yaratıcı tasarım anlayışıyla markaların dijital varlığını güçlendiriyoruz. Müşterilerimizin iş hedeflerine ulaşması için özelleştirilmiş çözümler üretiyoruz.',
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.8),
               fontSize: 14.0,
@@ -264,7 +264,7 @@ class _MissionVisionSection extends StatelessWidget {
           ),
           SizedBox(height: Branding.spacingS),
           Text(
-            'Dijital dünyada öncü olmak, yaratıcılık ve teknolojiyi birleştirerek sektörde fark yaratan çözümler üretmek.',
+            'Türkiye\'nin önde gelen dijital ajanslarından biri olarak, sürekli gelişen teknoloji dünyasında yenilikçi yaklaşımlarla sektörde öncü konumumuzu korumak ve müşterilerimize en güncel çözümleri sunmak.',
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.8),
               fontSize: 14.0,
@@ -306,7 +306,7 @@ class _ValuesSection extends StatelessWidget {
           ),
           SizedBox(height: Branding.spacingS),
           Text(
-            'Çalışma prensiplerimiz ve değerlerimiz',
+            'İş yapış şeklimizi belirleyen temel değerlerimiz',
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.7),
               fontSize: isMobile ? 16.0 : 18.0,
@@ -333,28 +333,28 @@ class _ValuesSection extends StatelessWidget {
         _buildValueCard(
           icon: Icons.lightbulb,
           title: 'Yaratıcılık',
-          description: 'Benzersiz ve etkili çözümler üretiyoruz',
+          description: 'Her projede özgün ve etkileyici tasarım çözümleri geliştiriyoruz',
           color: Branding.primary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildValueCard(
           icon: Icons.star,
           title: 'Kalite',
-          description: 'En yüksek standartlarda hizmet veriyoruz',
+          description: 'Uluslararası standartlarda, detaylara önem veren yaklaşımla çalışıyoruz',
           color: Branding.secondary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildValueCard(
           icon: Icons.security,
           title: 'Güvenilirlik',
-          description: 'Sözümüzü tutar, güvenilir partneriz',
+          description: 'Zamanında teslimat ve şeffaf iletişimle güvenilir partnerlik kuruyoruz',
           color: Branding.secondary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildValueCard(
           icon: Icons.trending_up,
           title: 'İnovasyon',
-          description: 'Sürekli gelişim ve yenilik peşindeyiz',
+          description: 'En son teknolojileri takip ederek sürekli yenilik ve gelişim sağlıyoruz',
           color: Branding.primary,
         ),
       ],
@@ -532,7 +532,7 @@ class _AchievementsSection extends StatelessWidget {
           ),
           SizedBox(height: Branding.spacingS),
           Text(
-            'Rakamlarla başarı hikayemiz',
+            'Çalışmalarımızın somut göstergeleri',
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.7),
               fontSize: isMobile ? 16.0 : 18.0,
@@ -557,30 +557,30 @@ class _AchievementsSection extends StatelessWidget {
     return Column(
       children: [
         _buildAchievementCard(
-          number: '100+',
+          number: '150+',
           title: 'Başarılı Proje',
-          description: 'Tamamlanan proje sayısı',
+          description: 'Farklı sektörlerde tamamlanan proje',
           color: Branding.primary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildAchievementCard(
-          number: '50+',
+          number: '80+',
           title: 'Mutlu Müşteri',
-          description: 'Memnun müşteri sayısı',
+          description: 'Uzun vadeli işbirliği yapan müşteri',
           color: Branding.secondary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildAchievementCard(
-          number: '5',
+          number: '5+',
           title: 'Yıllık Deneyim',
-          description: 'Sektördeki deneyimimiz',
+          description: 'Dijital pazarlama alanında uzmanlık',
           color: Branding.secondary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildAchievementCard(
-          number: '24/7',
-          title: 'Destek',
-          description: 'Kesintisiz hizmet',
+          number: '98%',
+          title: 'Müşteri Memnuniyeti',
+          description: 'Proje tamamlama oranımız',
           color: Branding.primary,
         ),
       ],
@@ -760,7 +760,7 @@ class _TeamSection extends StatelessWidget {
           ),
           SizedBox(height: Branding.spacingS),
           Text(
-            'Deneyimli ve yaratıcı ekibimizle hizmetinizdeyiz',
+            'Uzman kadromuzla size en iyi hizmeti sunuyoruz',
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.7),
               fontSize: isMobile ? 16.0 : 18.0,
@@ -787,14 +787,14 @@ class _TeamSection extends StatelessWidget {
         _buildTeamCard(
           name: 'Şebo Yüceer',
           role: 'Kurucu & CEO',
-          description: 'Dijital strateji ve yönetim uzmanı',
+          description: 'Dijital pazarlama stratejisti ve proje yöneticisi. 5+ yıllık sektör deneyimi ile müşteri odaklı çözümler geliştiriyor.',
           color: Branding.primary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildTeamCard(
           name: 'Şebo Ekibi',
-          role: 'Yaratıcı Takım',
-          description: 'Tasarım ve geliştirme uzmanları',
+          role: 'Uzman Takım',
+          description: 'Web tasarım, mobil uygulama geliştirme ve dijital pazarlama alanlarında uzmanlaşmış deneyimli profesyoneller.',
           color: Branding.secondary,
         ),
       ],
@@ -1060,7 +1060,7 @@ class _FooterWidget extends StatelessWidget {
 
         // Açıklama - Mobile'da küçük ve ortalanmış
         Text(
-          'Yaratıcı ve yenilikçi çözümler sunan premium dijital ajans olarak, müşterilerimize en iyi hizmeti sunmayı hedefliyoruz.',
+          '2019 yılından bu yana dijital dünyada yaratıcılık ve teknolojiyi harmanlayarak, müşterilerimizin başarısı için çalışan güvenilir bir partneriz.',
           textAlign: TextAlign.center,
           style: AppTypography.bodyMedium.copyWith(
             color: const Color(0xFFB0B0B0),
@@ -1146,7 +1146,7 @@ class _FooterWidget extends StatelessWidget {
 
         // Açıklama
         Text(
-          'Yaratıcı ve yenilikçi çözümler sunan premium dijital ajans olarak, müşterilerimize en iyi hizmeti sunmayı hedefliyoruz.',
+          '2019 yılından bu yana dijital dünyada yaratıcılık ve teknolojiyi harmanlayarak, müşterilerimizin başarısı için çalışan güvenilir bir partneriz.',
           style: AppTypography.bodyMedium.copyWith(
             color: const Color(0xFFB0B0B0),
             height: 1.5,
@@ -1230,7 +1230,7 @@ class _FooterWidget extends StatelessWidget {
 
         // Açıklama
         Text(
-          'Yaratıcı ve yenilikçi çözümler sunan premium dijital ajans olarak, müşterilerimize en iyi hizmeti sunmayı hedefliyoruz.',
+          '2019 yılından bu yana dijital dünyada yaratıcılık ve teknolojiyi harmanlayarak, müşterilerimizin başarısı için çalışan güvenilir bir partneriz.',
           style: AppTypography.bodyMedium.copyWith(
             color: const Color(0xFFB0B0B0),
             height: 1.4,
@@ -1456,8 +1456,8 @@ class _FooterWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        _buildMobileContactItem(Icons.email, 'info@ajanssebo.com'),
-        _buildMobileContactItem(Icons.phone, '+90 (212) 123 45 67'),
+        _buildMobileContactItem(Icons.email, 'info@seboagence.com'),
+        _buildMobileContactItem(Icons.phone, '+90 (212) 555 0123'),
         _buildMobileContactItem(Icons.location_on, 'İstanbul, Türkiye'),
       ],
     );
@@ -1476,8 +1476,8 @@ class _FooterWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 14),
-        _buildTabletContactItem(Icons.email, 'info@ajanssebo.com'),
-        _buildTabletContactItem(Icons.phone, '+90 (212) 123 45 67'),
+        _buildTabletContactItem(Icons.email, 'info@seboagence.com'),
+        _buildTabletContactItem(Icons.phone, '+90 (212) 555 0123'),
         _buildTabletContactItem(Icons.location_on, 'İstanbul, Türkiye'),
       ],
     );
@@ -1496,8 +1496,8 @@ class _FooterWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        _buildContactItem(Icons.email, 'info@ajanssebo.com'),
-        _buildContactItem(Icons.phone, '+90 (212) 123 45 67'),
+        _buildContactItem(Icons.email, 'info@seboagence.com'),
+        _buildContactItem(Icons.phone, '+90 (212) 555 0123'),
         _buildContactItem(Icons.location_on, 'İstanbul, Türkiye'),
       ],
     );
