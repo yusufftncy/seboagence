@@ -333,28 +333,32 @@ class _ValuesSection extends StatelessWidget {
         _buildValueCard(
           icon: Icons.lightbulb,
           title: 'Yaratıcılık',
-          description: 'Her projede özgün ve etkileyici tasarım çözümleri geliştiriyoruz',
+          description:
+              'Her projede özgün ve etkileyici tasarım çözümleri geliştiriyoruz',
           color: Branding.primary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildValueCard(
           icon: Icons.star,
           title: 'Kalite',
-          description: 'Uluslararası standartlarda, detaylara önem veren yaklaşımla çalışıyoruz',
+          description:
+              'Uluslararası standartlarda, detaylara önem veren yaklaşımla çalışıyoruz',
           color: Branding.secondary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildValueCard(
           icon: Icons.security,
           title: 'Güvenilirlik',
-          description: 'Zamanında teslimat ve şeffaf iletişimle güvenilir partnerlik kuruyoruz',
+          description:
+              'Zamanında teslimat ve şeffaf iletişimle güvenilir partnerlik kuruyoruz',
           color: Branding.secondary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildValueCard(
           icon: Icons.trending_up,
           title: 'İnovasyon',
-          description: 'En son teknolojileri takip ederek sürekli yenilik ve gelişim sağlıyoruz',
+          description:
+              'En son teknolojileri takip ederek sürekli yenilik ve gelişim sağlıyoruz',
           color: Branding.primary,
         ),
       ],
@@ -506,7 +510,7 @@ class _ValuesSection extends StatelessWidget {
   }
 }
 
-/// Achievements Section
+/// Achievements Section - Minimal Design
 class _AchievementsSection extends StatelessWidget {
   const _AchievementsSection();
 
@@ -516,31 +520,32 @@ class _AchievementsSection extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(
-        isMobile ? Branding.spacingL : Branding.spacingXXL,
+      padding: EdgeInsets.symmetric(
+        horizontal: isMobile ? Branding.spacingL : Branding.spacingXXL,
+        vertical: isMobile ? Branding.spacingXL : Branding.spacingXXL * 1.5,
       ),
       child: Column(
         children: [
+          // Minimal header
           Text(
-            'Başarılarımız',
+            'Rakamlarla Başarımız',
             style: TextStyle(
               color: Branding.white,
-              fontSize: isMobile ? 28.0 : 36.0,
-              fontWeight: FontWeight.w700,
+              fontSize: isMobile ? 24.0 : 32.0,
+              fontWeight: FontWeight.w300,
+              letterSpacing: 1.2,
             ),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: Branding.spacingS),
-          Text(
-            'Çalışmalarımızın somut göstergeleri',
-            style: TextStyle(
-              color: Branding.white.withValues(alpha: 0.7),
-              fontSize: isMobile ? 16.0 : 18.0,
-              fontWeight: FontWeight.w400,
-            ),
-            textAlign: TextAlign.center,
+          SizedBox(height: isMobile ? Branding.spacingM : Branding.spacingL),
+          
+          // Minimal subtitle
+          Container(
+            width: isMobile ? 200 : 300,
+            height: 1,
+            color: Branding.primary.withValues(alpha: 0.3),
           ),
-          SizedBox(height: Branding.spacingXL),
+          SizedBox(height: isMobile ? Branding.spacingXL : Branding.spacingXXL),
 
           Responsive.responsiveWidget(
             context,
@@ -556,32 +561,28 @@ class _AchievementsSection extends StatelessWidget {
   Widget _buildMobileAchievements() {
     return Column(
       children: [
-        _buildAchievementCard(
+        _buildMinimalAchievementCard(
           number: '150+',
-          title: 'Başarılı Proje',
-          description: 'Farklı sektörlerde tamamlanan proje',
+          title: 'Proje',
           color: Branding.primary,
         ),
-        SizedBox(height: Branding.spacingL),
-        _buildAchievementCard(
+        SizedBox(height: Branding.spacingXL),
+        _buildMinimalAchievementCard(
           number: '80+',
-          title: 'Mutlu Müşteri',
-          description: 'Uzun vadeli işbirliği yapan müşteri',
+          title: 'Müşteri',
           color: Branding.secondary,
         ),
-        SizedBox(height: Branding.spacingL),
-        _buildAchievementCard(
+        SizedBox(height: Branding.spacingXL),
+        _buildMinimalAchievementCard(
           number: '5+',
-          title: 'Yıllık Deneyim',
-          description: 'Dijital pazarlama alanında uzmanlık',
-          color: Branding.secondary,
-        ),
-        SizedBox(height: Branding.spacingL),
-        _buildAchievementCard(
-          number: '98%',
-          title: 'Müşteri Memnuniyeti',
-          description: 'Proje tamamlama oranımız',
+          title: 'Yıl',
           color: Branding.primary,
+        ),
+        SizedBox(height: Branding.spacingXL),
+        _buildMinimalAchievementCard(
+          number: '98%',
+          title: 'Memnuniyet',
+          color: Branding.secondary,
         ),
       ],
     );
@@ -593,42 +594,38 @@ class _AchievementsSection extends StatelessWidget {
         Row(
           children: [
             Expanded(
-              child: _buildAchievementCard(
-                number: '100+',
-                title: 'Başarılı Proje',
-                description: 'Tamamlanan proje sayısı',
+              child: _buildMinimalAchievementCard(
+                number: '150+',
+                title: 'Proje',
                 color: Branding.primary,
               ),
             ),
-            SizedBox(width: Branding.spacingL),
+            SizedBox(width: Branding.spacingXL),
             Expanded(
-              child: _buildAchievementCard(
-                number: '50+',
-                title: 'Mutlu Müşteri',
-                description: 'Memnun müşteri sayısı',
+              child: _buildMinimalAchievementCard(
+                number: '80+',
+                title: 'Müşteri',
                 color: Branding.secondary,
               ),
             ),
           ],
         ),
-        SizedBox(height: Branding.spacingL),
+        SizedBox(height: Branding.spacingXXL),
         Row(
           children: [
             Expanded(
-              child: _buildAchievementCard(
-                number: '5',
-                title: 'Yıllık Deneyim',
-                description: 'Sektördeki deneyimimiz',
-                color: Branding.secondary,
+              child: _buildMinimalAchievementCard(
+                number: '5+',
+                title: 'Yıl',
+                color: Branding.primary,
               ),
             ),
-            SizedBox(width: Branding.spacingL),
+            SizedBox(width: Branding.spacingXL),
             Expanded(
-              child: _buildAchievementCard(
-                number: '24/7',
-                title: 'Destek',
-                description: 'Kesintisiz hizmet',
-                color: Branding.primary,
+              child: _buildMinimalAchievementCard(
+                number: '98%',
+                title: 'Memnuniyet',
+                color: Branding.secondary,
               ),
             ),
           ],
@@ -641,89 +638,87 @@ class _AchievementsSection extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: _buildAchievementCard(
-            number: '100+',
-            title: 'Başarılı Proje',
-            description: 'Tamamlanan proje sayısı',
+          child: _buildMinimalAchievementCard(
+            number: '150+',
+            title: 'Proje',
             color: Branding.primary,
           ),
         ),
-        SizedBox(width: Branding.spacingL),
+        SizedBox(width: Branding.spacingXXL),
         Expanded(
-          child: _buildAchievementCard(
-            number: '50+',
-            title: 'Mutlu Müşteri',
-            description: 'Memnun müşteri sayısı',
+          child: _buildMinimalAchievementCard(
+            number: '80+',
+            title: 'Müşteri',
             color: Branding.secondary,
           ),
         ),
-        SizedBox(width: Branding.spacingL),
+        SizedBox(width: Branding.spacingXXL),
         Expanded(
-          child: _buildAchievementCard(
-            number: '5',
-            title: 'Yıllık Deneyim',
-            description: 'Sektördeki deneyimimiz',
-            color: Branding.secondary,
-          ),
-        ),
-        SizedBox(width: Branding.spacingL),
-        Expanded(
-          child: _buildAchievementCard(
-            number: '24/7',
-            title: 'Destek',
-            description: 'Kesintisiz hizmet',
+          child: _buildMinimalAchievementCard(
+            number: '5+',
+            title: 'Yıl',
             color: Branding.primary,
+          ),
+        ),
+        SizedBox(width: Branding.spacingXXL),
+        Expanded(
+          child: _buildMinimalAchievementCard(
+            number: '98%',
+            title: 'Memnuniyet',
+            color: Branding.secondary,
           ),
         ),
       ],
     );
   }
 
-  Widget _buildAchievementCard({
+  Widget _buildMinimalAchievementCard({
     required String number,
     required String title,
-    required String description,
     required Color color,
   }) {
     return Container(
-      padding: EdgeInsets.all(Branding.spacingXL),
-      decoration: BoxDecoration(
-        color: Branding.white.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(Branding.borderRadiusL),
-        border: Border.all(
-          color: Branding.white.withValues(alpha: 0.2),
-          width: 1,
-        ),
+      padding: EdgeInsets.symmetric(
+        vertical: Branding.spacingXL,
+        horizontal: Branding.spacingL,
       ),
       child: Column(
         children: [
-          Text(
-            number,
-            style: TextStyle(
-              color: color,
-              fontSize: 36.0,
-              fontWeight: FontWeight.w800,
+          // Number with subtle background
+          Container(
+            width: 120,
+            height: 120,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: color.withValues(alpha: 0.1),
+              border: Border.all(
+                color: color.withValues(alpha: 0.3),
+                width: 1,
+              ),
             ),
-            textAlign: TextAlign.center,
+            child: Center(
+              child: Text(
+                number,
+                style: TextStyle(
+                  color: color,
+                  fontSize: 32.0,
+                  fontWeight: FontWeight.w300,
+                  letterSpacing: 1.0,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
           ),
-          SizedBox(height: Branding.spacingS),
+          SizedBox(height: Branding.spacingL),
+          
+          // Title with minimal styling
           Text(
             title,
-            style: const TextStyle(
-              color: Branding.white,
-              fontSize: 18.0,
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: Branding.spacingS),
-          Text(
-            description,
             style: TextStyle(
-              color: Branding.white.withValues(alpha: 0.8),
-              fontSize: 14.0,
-              fontWeight: FontWeight.w400,
-              height: 1.4,
+              color: Branding.white.withValues(alpha: 0.9),
+              fontSize: 16.0,
+              fontWeight: FontWeight.w300,
+              letterSpacing: 0.5,
             ),
             textAlign: TextAlign.center,
           ),
@@ -731,6 +726,7 @@ class _AchievementsSection extends StatelessWidget {
       ),
     );
   }
+
 }
 
 /// Team Section
@@ -787,14 +783,16 @@ class _TeamSection extends StatelessWidget {
         _buildTeamCard(
           name: 'Şebo Yüceer',
           role: 'Kurucu & CEO',
-          description: 'Dijital pazarlama stratejisti ve proje yöneticisi. 5+ yıllık sektör deneyimi ile müşteri odaklı çözümler geliştiriyor.',
+          description:
+              'Dijital pazarlama stratejisti ve proje yöneticisi. 5+ yıllık sektör deneyimi ile müşteri odaklı çözümler geliştiriyor.',
           color: Branding.primary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildTeamCard(
           name: 'Şebo Ekibi',
           role: 'Uzman Takım',
-          description: 'Web tasarım, mobil uygulama geliştirme ve dijital pazarlama alanlarında uzmanlaşmış deneyimli profesyoneller.',
+          description:
+              'Web tasarım, mobil uygulama geliştirme ve dijital pazarlama alanlarında uzmanlaşmış deneyimli profesyoneller.',
           color: Branding.secondary,
         ),
       ],
