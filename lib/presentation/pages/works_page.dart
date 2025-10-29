@@ -10,6 +10,7 @@ import '../../core/theme/typography.dart';
 import '../../core/utils/responsive.dart';
 import '../../core/services/navigation_service.dart';
 import '../widgets/optimized_navigation_bar.dart';
+import 'sifa_ipek_detail_page.dart';
 
 class WorksPage extends ConsumerWidget {
   const WorksPage({super.key});
@@ -160,16 +161,16 @@ class _ChaptersSection extends StatelessWidget {
 
           Responsive.responsiveWidget(
             context,
-            mobile: _buildMobileChapters(),
-            tablet: _buildTabletChapters(),
-            desktop: _buildDesktopChapters(),
+            mobile: _buildMobileChapters(context),
+            tablet: _buildTabletChapters(context),
+            desktop: _buildDesktopChapters(context),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildMobileChapters() {
+  Widget _buildMobileChapters(BuildContext context) {
     return Column(
       children: [
         _buildChapterCard(
@@ -177,6 +178,7 @@ class _ChaptersSection extends StatelessWidget {
           description: 'Kadın çiftçilerin ürünlerini değere dönüştürme projesi',
           color: Branding.primary,
           icon: Icons.healing,
+          context: context,
         ),
         SizedBox(height: Branding.spacingL),
         _buildChapterCard(
@@ -185,6 +187,7 @@ class _ChaptersSection extends StatelessWidget {
               'Alanya\'daki ailemden kalan okullar ve Alanya ile ilgili projeler',
           color: Branding.secondary,
           icon: Icons.school,
+          context: context,
         ),
         SizedBox(height: Branding.spacingL),
         _buildChapterCard(
@@ -192,12 +195,13 @@ class _ChaptersSection extends StatelessWidget {
           description: 'Şifa ipeği ile üretilen keyifli ürünlerden oluşan seri',
           color: Branding.primary,
           icon: Icons.spa,
+          context: context,
         ),
       ],
     );
   }
 
-  Widget _buildTabletChapters() {
+  Widget _buildTabletChapters(BuildContext context) {
     return Column(
       children: [
         Row(
@@ -209,6 +213,7 @@ class _ChaptersSection extends StatelessWidget {
                     'Kadın çiftçilerin ürünlerini değere dönüştürme projesi',
                 color: Branding.primary,
                 icon: Icons.healing,
+                context: context,
               ),
             ),
             SizedBox(width: Branding.spacingL),
@@ -219,6 +224,7 @@ class _ChaptersSection extends StatelessWidget {
                     'Alanya\'daki ailemden kalan okullar ve Alanya ile ilgili projeler',
                 color: Branding.secondary,
                 icon: Icons.school,
+                context: context,
               ),
             ),
           ],
@@ -233,6 +239,7 @@ class _ChaptersSection extends StatelessWidget {
                     'Şifa ipeği ile üretilen keyifli ürünlerden oluşan seri',
                 color: Branding.primary,
                 icon: Icons.spa,
+                context: context,
               ),
             ),
             SizedBox(width: Branding.spacingL),
@@ -243,7 +250,7 @@ class _ChaptersSection extends StatelessWidget {
     );
   }
 
-  Widget _buildDesktopChapters() {
+  Widget _buildDesktopChapters(BuildContext context) {
     return Row(
       children: [
         Expanded(
@@ -253,6 +260,7 @@ class _ChaptersSection extends StatelessWidget {
                 'Kadın çiftçilerin ürünlerini değere dönüştürme projesi',
             color: Branding.primary,
             icon: Icons.healing,
+            context: context,
           ),
         ),
         SizedBox(width: Branding.spacingL),
@@ -263,6 +271,7 @@ class _ChaptersSection extends StatelessWidget {
                 'Alanya\'daki ailemden kalan okullar ve Alanya ile ilgili projeler',
             color: Branding.secondary,
             icon: Icons.school,
+            context: context,
           ),
         ),
         SizedBox(width: Branding.spacingL),
@@ -273,6 +282,7 @@ class _ChaptersSection extends StatelessWidget {
                 'Şifa ipeği ile üretilen keyifli ürünlerden oluşan seri',
             color: Branding.primary,
             icon: Icons.spa,
+            context: context,
           ),
         ),
       ],
@@ -284,49 +294,78 @@ class _ChaptersSection extends StatelessWidget {
     required String description,
     required Color color,
     required IconData icon,
+    required BuildContext context,
   }) {
-    return Container(
-      padding: EdgeInsets.all(Branding.spacingXL),
-      decoration: BoxDecoration(
-        color: Branding.white.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(Branding.borderRadiusL),
-        border: Border.all(
-          color: Branding.white.withValues(alpha: 0.2),
-          width: 1,
+    return GestureDetector(
+      onTap: () {
+        // Proje detay sayfalarına yönlendirme
+        if (title == 'Şifa') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SifaIpekDetailPage(),
+            ),
+          );
+        } else if (title == 'Vefa') {
+          NavigationService.goToVefa();
+        } else if (title == 'Sefa') {
+          NavigationService.goToSefa();
+        }
+      },
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          padding: EdgeInsets.all(Branding.spacingXL),
+          decoration: BoxDecoration(
+            color: Branding.white.withValues(alpha: 0.1),
+            borderRadius: BorderRadius.circular(Branding.borderRadiusL),
+            border: Border.all(
+              color: Branding.white.withValues(alpha: 0.2),
+              width: 1,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: color.withValues(alpha: 0.1),
+                blurRadius: 8,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(Branding.spacingL),
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(Branding.borderRadiusM),
+                ),
+                child: Icon(icon, color: Branding.white, size: 32.0),
+              ),
+              SizedBox(height: Branding.spacingL),
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Branding.white,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w700,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: Branding.spacingS),
+              Text(
+                description,
+                style: TextStyle(
+                  color: Branding.white.withValues(alpha: 0.8),
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.w400,
+                  height: 1.4,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
-      ),
-      child: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(Branding.spacingL),
-            decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.2),
-              borderRadius: BorderRadius.circular(Branding.borderRadiusM),
-            ),
-            child: Icon(icon, color: Branding.white, size: 32.0),
-          ),
-          SizedBox(height: Branding.spacingL),
-          Text(
-            title,
-            style: const TextStyle(
-              color: Branding.white,
-              fontSize: 20.0,
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: Branding.spacingS),
-          Text(
-            description,
-            style: TextStyle(
-              color: Branding.white.withValues(alpha: 0.8),
-              fontSize: 14.0,
-              fontWeight: FontWeight.w400,
-              height: 1.4,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ],
       ),
     );
   }
