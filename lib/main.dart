@@ -5,10 +5,20 @@ import 'core/theme/app_theme.dart';
 import 'core/theme/theme_providers.dart';
 import 'core/routing/app_router.dart';
 import 'core/services/navigation_service.dart';
+import 'core/services/firebase_service.dart';
 import 'presentation/pages/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  // Firebase'i başlat
+  try {
+    await FirebaseService.instance.initialize();
+  } catch (e) {
+    print('Firebase başlatma hatası: $e');
+    // Firebase başlatılamazsa da uygulama çalışmaya devam etsin
+  }
+  
   runApp(const ProviderScope(child: MyApp()));
 }
 
