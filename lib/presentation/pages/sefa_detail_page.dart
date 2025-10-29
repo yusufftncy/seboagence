@@ -107,6 +107,46 @@ class _HeroSection extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SizedBox(
+                height: isMobile ? Branding.spacingM : Branding.spacingXL,
+              ),
+
+              // Proje Görseli
+              _ProjectImage(),
+              SizedBox(
+                height: isMobile ? Branding.spacingM : Branding.spacingXL,
+              ),
+
+              // Proje açıklama metni
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 160.0,
+                ),
+                child: Text(
+                  'Sefa: İyiliğin Estetik Formu ve Keyifli Yaşam Sanatı\n\n"Bir dokunun içinde zarafet, bir detayda huzur saklıdır." Bu felsefeden yola çıkan Sefa bölümü, basit bir alışveriş deneyiminin ötesinde, keyifli ve bilinçli bir yaşam biçimini davet ediyor. Burada üretim, sadece bir ihtiyacı karşılamaktan çıkıp, hayatın ve emeğin bir kutlama hâline dönüşür.\n\nŞifadan İpek ve Huzurun Dokunuşu\n\nSefa\'nın kalbinde, ürünlerin taşıdığı derin anlam yatar. Koleksiyonumuzdaki her bir parça—ister boynunuza narin bir dokunuş katacak bir fular, ister yaşam alanınıza dinginlik getirecek bir ev tekstili ürünü, isterse küçük ama anlamlı bir obje olsun—Şifada İpek gibi doğal malzemelerle, özenle ve sevgiyle üretilir. Amacımız, bu estetik objeler aracılığıyla insanın günlük yaşamına somut bir şifa ve keyif taşımaktır.\n\n"Güzellik, yalnızca görmekle değil; hissetmekle başlar." Biz, estetiğin yalnızca görsel bir algı değil, aynı zamanda ruhsal bir dinginlik olduğunu savunuyoruz. Bu yüzden her ürün, dokunduğunuzda size huzur veren, baktığınızda içinizi ferahlatan bir sanat eseri niteliğindedir.\n\nKadim Zanaatların ve Kadın Emeğinin Temsili\n\nSefa Koleksiyonu\'nun ardındaki en güçlü değer, kadın üreticilerin titiz el emeğidir. Bu ürünler fabrikasyonun soğukluğundan uzaktır; her bir ilmek, her bir boyama ve her bir dikiş, bir kadının emeğe, doğaya ve kadim zanaatlara duyduğu derin sevginin ve saygının somut bir temsilidir. Bu emeğin karşılığı olarak, sadece yüksek kaliteli ürünler sunmakla kalmıyor, aynı zamanda adil ve destekleyici üretim süreçlerine de odaklanıyoruz.\n\nSefa bölümü, modern yaşamın karmaşasında kaybolan "keyifli yaşam" kavramını, sade ve bilinçli bir güzellik anlayışıyla yeniden tanımlar. Burada gördüğünüz her şey doğaldır, kullanılan malzemenin kökeninden üretim sürecine kadar her aşamada şeffaflık esastır ve her bir parçanın kendine ait, yaşanmış bir hikâyesiyle hayat bulur.',
+                  style: TextStyle(
+                    color: const Color(0xFF1F2937),
+                    fontSize: isMobile
+                        ? 12.0
+                        : isTablet
+                        ? 14.0
+                        : 16.0,
+                    fontWeight: FontWeight.w600,
+                    height: isTablet ? 1.4 : 1.5,
+                  ),
+                  textAlign: TextAlign.justify,
+                ),
+              ),
+              SizedBox(
+                height: isMobile ? Branding.spacingM : Branding.spacingXXL,
+              ),
+
+              // SEFA Fotoğrafları Galerisi
+              _SefaImageGallery(),
+              SizedBox(
                 height: isMobile ? Branding.spacingM : Branding.spacingXXL,
               ),
 
@@ -927,6 +967,461 @@ class _HoverableFooterLinkState extends State<_HoverableFooterLink> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// Proje Görseli Widget
+class _ProjectImage extends StatelessWidget {
+  const _ProjectImage();
+
+  @override
+  Widget build(BuildContext context) {
+    final isMobile = Responsive.isMobile(context);
+    final isTablet = Responsive.isTablet(context);
+
+    return Container(
+      height: isMobile
+          ? 300
+          : isTablet
+          ? 400
+          : 450,
+      margin: EdgeInsets.symmetric(horizontal: isMobile ? 0 : 20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.15),
+            blurRadius: 20,
+            offset: const Offset(0, 8),
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            // Ana görsel
+            Image.asset(
+              'assets/images/sefaherosection.jpg', // SEFA ana görseli
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  color: const Color(0xFF8B5CF6).withValues(alpha: 0.1),
+                  child: const Center(
+                    child: Icon(
+                      Icons.image,
+                      color: Color(0xFF8B5CF6),
+                      size: 64,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// SEFA Fotoğrafları Galerisi Widget
+class _SefaImageGallery extends StatelessWidget {
+  const _SefaImageGallery();
+
+  @override
+  Widget build(BuildContext context) {
+    final isMobile = Responsive.isMobile(context);
+    final isTablet = Responsive.isTablet(context);
+
+    return Container(
+      margin: EdgeInsets.symmetric(
+        horizontal: isMobile
+            ? 20.0
+            : isTablet
+            ? 60.0
+            : 80.0,
+      ),
+      child: Column(
+        children: [
+          // İlk satır fotoğraflar
+          Row(
+            children: [
+              // Fotoğraf 1
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa1.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 2
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa2.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 3
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa3.jpg',
+                  context: context,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          // İkinci satır fotoğraflar
+          Row(
+            children: [
+              // Fotoğraf 4
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa4.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 5
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa5.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 6
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa6.jpg',
+                  context: context,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          // Üçüncü satır fotoğraflar
+          Row(
+            children: [
+              // Fotoğraf 7
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa7.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 8
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa8.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 9
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa9.jpg',
+                  context: context,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          // Dördüncü satır fotoğraflar
+          Row(
+            children: [
+              // Fotoğraf 10
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa10.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 11
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa11.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 12
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa12.jpg',
+                  context: context,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          // Beşinci satır fotoğraflar
+          Row(
+            children: [
+              // Fotoğraf 13
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa13.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 14
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa14.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 15
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa15.jpg',
+                  context: context,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          // Altıncı satır fotoğraflar
+          Row(
+            children: [
+              // Fotoğraf 16
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa16.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 17
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa17.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 18
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa18.jpg',
+                  context: context,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          // Yedinci satır fotoğraflar
+          Row(
+            children: [
+              // Fotoğraf 19
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa19.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 20
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa20.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 21
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa21.jpg',
+                  context: context,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          // Sekizinci satır fotoğraflar
+          Row(
+            children: [
+              // Fotoğraf 22
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa22.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 23
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa23.jpg',
+                  context: context,
+                ),
+              ),
+              const SizedBox(width: 12),
+              // Fotoğraf 24
+              Expanded(
+                child: _SefaImageItem(
+                  imagePath: 'assets/images/sefa24.jpg',
+                  context: context,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// SEFA Fotoğraf Öğesi Widget
+class _SefaImageItem extends StatelessWidget {
+  const _SefaImageItem({required this.imagePath, required this.context});
+
+  final String imagePath;
+  final BuildContext context;
+
+  @override
+  Widget build(BuildContext context) {
+    final isMobile = Responsive.isMobile(context);
+
+    return GestureDetector(
+      onTap: () => _showImageDialog(context, imagePath),
+      child: Container(
+        height: isMobile ? 120 : 200,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: const Color(0xFFE5E7EB), width: 1),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.1),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              return Container(
+                color: const Color(0xFF8B5CF6).withValues(alpha: 0.1),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.image,
+                        color: const Color(0xFF8B5CF6),
+                        size: isMobile ? 24 : 36,
+                      ),
+                      SizedBox(height: Branding.spacingS),
+                      Text(
+                        'Fotoğraf Yüklenemedi',
+                        style: TextStyle(
+                          color: const Color(0xFF8B5CF6),
+                          fontSize: isMobile ? 10 : 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showImageDialog(BuildContext context, String imagePath) {
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        opaque: false,
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return PopScope(
+            canPop: true,
+            onPopInvokedWithResult: (didPop, result) {
+              if (!didPop) {
+                Navigator.of(context).pop();
+              }
+            },
+            child: Scaffold(
+              backgroundColor: Colors.black.withValues(alpha: 0.7),
+              body: GestureDetector(
+                onTap: () => Navigator.of(context).pop(),
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: Colors.transparent,
+                  child: Center(
+                    child: AbsorbPointer(
+                      absorbing: false,
+                      child: Container(
+                        constraints: BoxConstraints(
+                          maxWidth: MediaQuery.of(context).size.width * 0.9,
+                          maxHeight: MediaQuery.of(context).size.height * 0.8,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.asset(
+                            imagePath,
+                            fit: BoxFit.contain,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                color: const Color(
+                                  0xFF8B5CF6,
+                                ).withValues(alpha: 0.1),
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.image,
+                                        color: const Color(0xFF8B5CF6),
+                                        size: 64,
+                                      ),
+                                      const SizedBox(height: 16),
+                                      Text(
+                                        'Fotoğraf Yüklenemedi',
+                                        style: TextStyle(
+                                          color: const Color(0xFF8B5CF6),
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+        transitionDuration: const Duration(milliseconds: 300),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(opacity: animation, child: child);
+        },
       ),
     );
   }

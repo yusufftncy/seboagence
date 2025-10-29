@@ -151,255 +151,52 @@ class _UpcomingEventsSection extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: Branding.spacingXL),
-          Responsive.responsiveWidget(
-            context,
-            mobile: _buildMobileUpcomingEvents(),
-            tablet: _buildTabletUpcomingEvents(),
-            desktop: _buildDesktopUpcomingEvents(),
-          ),
+          _buildNoUpcomingEventsMessage(context),
         ],
       ),
     );
   }
 
-  Widget _buildMobileUpcomingEvents() {
-    return Column(
-      children: [
-        _buildEventCard(
-          title: 'İklim Değişikliği Uyum Stratejileri',
-          date: '15 Mart 2024',
-          location: 'İstanbul Kongre Merkezi',
-          description: 'Sürdürülebilir kalkınma ve iklim uyum çözümleri',
-          type: 'Konferans',
-          color: Branding.primary,
-        ),
-        SizedBox(height: Branding.spacingL),
-        _buildEventCard(
-          title: 'Dijital Dönüşüm Masterclass',
-          date: '22 Mart 2024',
-          location: 'Online',
-          description: 'Kurumsal dijital dönüşüm ve teknoloji entegrasyonu',
-          type: 'Workshop',
-          color: Branding.secondary,
-        ),
-        SizedBox(height: Branding.spacingL),
-        _buildEventCard(
-          title: 'Sürdürülebilir İş Modelleri',
-          date: '5 Nisan 2024',
-          location: 'Boğaziçi Üniversitesi',
-          description: 'Yeşil ekonomi ve sürdürülebilir iş stratejileri',
-          type: 'Seminer',
-          color: Branding.primary,
-        ),
-      ],
-    );
-  }
+  Widget _buildNoUpcomingEventsMessage(BuildContext context) {
+    final isMobile = Responsive.isMobile(context);
 
-  Widget _buildTabletUpcomingEvents() {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: _buildEventCard(
-                title: 'İklim Değişikliği Uyum Stratejileri',
-                date: '15 Mart 2024',
-                location: 'İstanbul Kongre Merkezi',
-                description: 'Sürdürülebilir kalkınma ve iklim uyum çözümleri',
-                type: 'Konferans',
-                color: Branding.primary,
-              ),
-            ),
-            SizedBox(width: Branding.spacingL),
-            Expanded(
-              child: _buildEventCard(
-                title: 'Dijital Dönüşüm Masterclass',
-                date: '22 Mart 2024',
-                location: 'Online',
-                description:
-                    'Kurumsal dijital dönüşüm ve teknoloji entegrasyonu',
-                type: 'Workshop',
-                color: Branding.secondary,
-              ),
-            ),
-          ],
-        ),
-        SizedBox(height: Branding.spacingL),
-        Row(
-          children: [
-            Expanded(
-              child: _buildEventCard(
-                title: 'Sürdürülebilir İş Modelleri',
-                date: '5 Nisan 2024',
-                location: 'Boğaziçi Üniversitesi',
-                description: 'Yeşil ekonomi ve sürdürülebilir iş stratejileri',
-                type: 'Seminer',
-                color: Branding.primary,
-              ),
-            ),
-            SizedBox(width: Branding.spacingL),
-            Expanded(child: Container()), // Boş alan
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildDesktopUpcomingEvents() {
-    return Row(
-      children: [
-        Expanded(
-          child: _buildEventCard(
-            title: 'İklim Değişikliği Uyum Stratejileri',
-            date: '15 Mart 2024',
-            location: 'İstanbul Kongre Merkezi',
-            description: 'Sürdürülebilir kalkınma ve iklim uyum çözümleri',
-            type: 'Konferans',
-            color: Branding.primary,
-          ),
-        ),
-        SizedBox(width: Branding.spacingL),
-        Expanded(
-          child: _buildEventCard(
-            title: 'Dijital Dönüşüm Masterclass',
-            date: '22 Mart 2024',
-            location: 'Online',
-            description: 'Kurumsal dijital dönüşüm ve teknoloji entegrasyonu',
-            type: 'Workshop',
-            color: Branding.secondary,
-          ),
-        ),
-        SizedBox(width: Branding.spacingL),
-        Expanded(
-          child: _buildEventCard(
-            title: 'Sürdürülebilir İş Modelleri',
-            date: '5 Nisan 2024',
-            location: 'Boğaziçi Üniversitesi',
-            description: 'Yeşil ekonomi ve sürdürülebilir iş stratejileri',
-            type: 'Seminer',
-            color: Branding.primary,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildEventCard({
-    required String title,
-    required String date,
-    required String location,
-    required String description,
-    required String type,
-    required Color color,
-  }) {
     return Container(
-      padding: EdgeInsets.all(Branding.spacingXL),
+      padding: EdgeInsets.all(isMobile ? 24.0 : 32.0),
       decoration: BoxDecoration(
-        color: Branding.white.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(Branding.borderRadiusL),
+        color: Branding.white.withValues(alpha: 0.05),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: Branding.white.withValues(alpha: 0.2),
+          color: Branding.white.withValues(alpha: 0.1),
           width: 1,
         ),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Etkinlik türü etiketi
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.2),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Text(
-              type,
-              style: TextStyle(
-                color: Branding.white,
-                fontSize: 12.0,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
+          Icon(
+            Icons.event_busy_outlined,
+            color: Branding.white.withValues(alpha: 0.6),
+            size: isMobile ? 48.0 : 64.0,
           ),
-          SizedBox(height: Branding.spacingL),
-
-          // Etkinlik başlığı
+          SizedBox(height: Branding.spacingM),
           Text(
-            title,
-            style: const TextStyle(
+            'Yaklaşan Etkinlik Bulunmuyor',
+            style: TextStyle(
               color: Branding.white,
-              fontSize: 20.0,
-              fontWeight: FontWeight.w700,
+              fontSize: isMobile ? 20.0 : 24.0,
+              fontWeight: FontWeight.w600,
             ),
+            textAlign: TextAlign.center,
           ),
           SizedBox(height: Branding.spacingS),
-
-          // Tarih ve lokasyon
-          Row(
-            children: [
-              Icon(Icons.calendar_today, color: Branding.white, size: 16.0),
-              SizedBox(width: 8),
-              Text(
-                date,
-                style: TextStyle(
-                  color: Branding.white.withValues(alpha: 0.8),
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 8),
-          Row(
-            children: [
-              Icon(Icons.location_on, color: Branding.white, size: 16.0),
-              SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  location,
-                  style: TextStyle(
-                    color: Branding.white.withValues(alpha: 0.8),
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: Branding.spacingL),
-
-          // Açıklama
           Text(
-            description,
+            'Şu anda planlanmış yaklaşan etkinliğimiz bulunmamaktadır.\nYeni etkinlikler için takipte kalın!',
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.7),
-              fontSize: 14.0,
+              fontSize: isMobile ? 14.0 : 16.0,
               fontWeight: FontWeight.w400,
-              height: 1.4,
+              height: 1.5,
             ),
-          ),
-          SizedBox(height: Branding.spacingL),
-
-          // Kayıt ol butonu
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: color,
-              padding: const EdgeInsets.symmetric(
-                horizontal: Branding.spacingL,
-                vertical: Branding.spacingM,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(Branding.borderRadiusM),
-              ),
-            ),
-            child: const Text(
-              'Git',
-              style: TextStyle(
-                color: Branding.white,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
