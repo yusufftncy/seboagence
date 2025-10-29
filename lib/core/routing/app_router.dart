@@ -10,6 +10,8 @@ import '../../presentation/pages/works_page.dart';
 import '../../presentation/pages/conferences_page.dart';
 import '../../presentation/pages/contact_page.dart';
 import '../../presentation/pages/project_detail_page.dart';
+import '../../presentation/pages/vefa_detail_page.dart';
+import '../../presentation/pages/sefa_detail_page.dart';
 
 class AppRouter {
   static const String home = '/';
@@ -18,6 +20,8 @@ class AppRouter {
   static const String conferences = '/conferences';
   static const String contact = '/contact';
   static const String projectDetail = '/project';
+  static const String vefa = '/vefa';
+  static const String sefa = '/sefa';
 
   /// Sayfa yönlendirme fonksiyonu
   static Widget getPage(String routeName, {String? projectId}) {
@@ -34,6 +38,10 @@ class AppRouter {
         return const ContactPage();
       case projectDetail:
         return ProjectDetailPage(projectId: projectId ?? '1');
+      case vefa:
+        return const VefaDetailPage();
+      case sefa:
+        return const SefaDetailPage();
       default:
         return const HomePage();
     }

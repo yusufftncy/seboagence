@@ -947,6 +947,10 @@ class _HomePageState extends ConsumerState<HomePage>
                   builder: (context) => const SifaIpekDetailPage(),
                 ),
               );
+            } else if (project['id'] == 'vefa') {
+              NavigationService.goToVefa();
+            } else if (project['id'] == 'sefa') {
+              NavigationService.goToSefa();
             }
           },
           child: Padding(
@@ -1195,6 +1199,10 @@ class _HomePageState extends ConsumerState<HomePage>
                   builder: (context) => const SifaIpekDetailPage(),
                 ),
               );
+            } else if (project['id'] == 'vefa') {
+              NavigationService.goToVefa();
+            } else if (project['id'] == 'sefa') {
+              NavigationService.goToSefa();
             }
           },
           child: Padding(
@@ -1463,6 +1471,10 @@ class _HomePageState extends ConsumerState<HomePage>
                   builder: (context) => const SifaIpekDetailPage(),
                 ),
               );
+            } else if (project['id'] == 'vefa') {
+              NavigationService.goToVefa();
+            } else if (project['id'] == 'sefa') {
+              NavigationService.goToSefa();
             }
           },
           child: Padding(

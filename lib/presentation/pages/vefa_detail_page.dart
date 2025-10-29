@@ -1,7 +1,7 @@
-/// 🌿 Şifa İpek Projesi Detay Sayfası
+/// 🏠 VEFA Projesi Detay Sayfası
 ///
-/// Bu sayfa, Şifa İpek projesinin detaylarını gösterir.
-/// Yeşil ve beyaz renk teması kullanılır.
+/// Bu sayfa, VEFA projesinin detaylarını gösterir.
+/// Mavi ve beyaz renk teması kullanılır.
 library;
 
 import 'dart:async';
@@ -13,8 +13,8 @@ import '../../core/utils/responsive.dart';
 import '../../core/services/navigation_service.dart';
 import '../widgets/optimized_navigation_bar.dart';
 
-class SifaIpekDetailPage extends ConsumerWidget {
-  const SifaIpekDetailPage({super.key});
+class VefaDetailPage extends ConsumerWidget {
+  const VefaDetailPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,16 +23,16 @@ class SifaIpekDetailPage extends ConsumerWidget {
       body: Column(
         children: [
           const OptimizedNavigationBar(),
-          Expanded(child: _SifaIpekDetailContent()),
+          Expanded(child: _VefaDetailContent()),
         ],
       ),
     );
   }
 }
 
-/// Şifa İpek Detay İçeriği
-class _SifaIpekDetailContent extends StatelessWidget {
-  const _SifaIpekDetailContent();
+/// VEFA Detay İçeriği
+class _VefaDetailContent extends StatelessWidget {
+  const _VefaDetailContent();
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +93,7 @@ class _SifaIpekDetailContent extends StatelessWidget {
   }
 }
 
-/// Hero Section - Yeşil tema
+/// Hero Section - Mavi tema
 class _HeroSection extends StatelessWidget {
   const _HeroSection();
 
@@ -126,16 +126,16 @@ class _HeroSection extends StatelessWidget {
           ),
           child: Column(
             children: [
-              // Proje ikonu - Yeşil tema
+              // Proje ikonu - Mavi tema
               Container(
                 padding: EdgeInsets.all(isMobile ? 16 : 24),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF10B981).withValues(alpha: 0.1),
+                  color: const Color(0xFF3B82F6).withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Icon(
-                  Icons.favorite,
-                  color: const Color(0xFF10B981),
+                  Icons.school,
+                  color: const Color(0xFF3B82F6),
                   size: isMobile ? 36 : 48,
                 ),
               ),
@@ -145,7 +145,7 @@ class _HeroSection extends StatelessWidget {
 
               // Ana başlık
               Text(
-                'Şifa Projesi',
+                'VEFA Projesi',
                 style: TextStyle(
                   color: const Color(0xFF1F2937),
                   fontSize: isMobile
@@ -171,15 +171,23 @@ class _HeroSection extends StatelessWidget {
               // Proje açıklama metni
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 160.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 160.0,
                 ),
                 child: Text(
                   'Kalıcı Sağlık ve Kapsayıcı Kalkınmayla Gelen Derman\n\n"Şifa," kelime anlamı ile sadece fiziksel iyileşmeyi değil, aynı zamanda toplumsal derman bulmayı, ruhsal dinginliği ve kalıcı bir sağlıklı yaşamı ifade eder. Biz Şifa Bölümü olarak, toplumun tüm katmanlarında hissedilen bu bütünsel iyileşmenin, izole çabalarla değil, ancak güçlü bir ortak bilinçle sağlanabileceğine inanıyoruz. Bu inançla yola çıkarak, misyonumuzu belirlediğiniz beş temel direk üzerine kurduk: Yardımlaşma ve dayanışma ile toplumsal yaralarımızı sararken; doğa sevgisi ile yaşam kaynağımızı koruyor; kadın gücünü merkeze alarak toplumsal dönüşümü hızlandırıyor ve tüm bu unsurların birleşimiyle kapsayıcı ve sürdürülebilir kalkınmayı hedefliyoruz. Amacımız, sadece anlık çözümler sunmak değil, gelecek nesillere onurlu, sağlıklı ve derman bulmuş bir yaşam vaat eden, köklü bir etki yaratmaktır.',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
-                    fontSize: isMobile ? 12.0 : 16.0,
+                    fontSize: isMobile
+                        ? 12.0
+                        : isTablet
+                        ? 14.0
+                        : 16.0,
                     fontWeight: FontWeight.w600,
-                    height: 1.5,
+                    height: isTablet ? 1.4 : 1.5,
                   ),
                   textAlign: TextAlign.justify,
                 ),
@@ -191,13 +199,21 @@ class _HeroSection extends StatelessWidget {
               // Slogan
               Container(
                 margin: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 120.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 120.0,
                 ),
                 padding: EdgeInsets.all(
-                  isMobile ? Branding.spacingM : Branding.spacingXXL,
+                  isMobile
+                      ? Branding.spacingM
+                      : isTablet
+                      ? Branding.spacingXL
+                      : Branding.spacingXXL,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFECFDF5),
+                  color: const Color(0xFFEFF6FF),
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
@@ -211,10 +227,14 @@ class _HeroSection extends StatelessWidget {
                   '"Her ilmekte umut, her lifte yeniden doğuş."',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
-                    fontSize: isMobile ? 16.0 : 20.0,
+                    fontSize: isMobile
+                        ? 16.0
+                        : isTablet
+                        ? 18.0
+                        : 20.0,
                     fontWeight: FontWeight.w600,
                     fontStyle: FontStyle.italic,
-                    height: 1.4,
+                    height: isTablet ? 1.3 : 1.4,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -250,18 +270,26 @@ class _HeroSection extends StatelessWidget {
                 height: isMobile ? Branding.spacingM : Branding.spacingXXL,
               ),
 
-              // Şifa projesi açıklama metni
+              // VEFA projesi açıklama metni
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 160.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 160.0,
                 ),
                 child: Text(
-                  'Şifa projesi kapsamında, toplumsal iyileşme çalışmalarımızı ihtiyaç analizi yaparak belirlenen bölgelerde gerçekleştiriyoruz. Bu sayede projelerimiz toplumun en çok ihtiyaç duyduğu alanlarda etkili oluyor ve kalıcı değişim yaratıyor.',
+                  'Kadim Bir Mirasın İyileştiren Dokunuşu\n\nHatay\'ın zengin kültürel mirasının bir parçası olan ipek böcekçiliği, nesilden nesile aktarılan kadim bir sanattır. Özellikle Barış İpeği, ipek böceklerinin kozalarını terk ettikten sonra toplanan ve bu sayede canlı yaşam döngüsüne saygı duyan eşsiz bir üretim modelini temsil eder. Bu ipek, sadece bir kumaş malzemesi değil, aynı zamanda bölgenin direncini, sabrını ve doğayla uyum içinde yaşama felsefesini simgeler. Deprem felaketinin ardından bu geleneği yaşatma çabası, kültürel mirasın sadece binalardan ibaret olmadığını, aynı zamanda insan emeğinde ve hikâyelerde saklı olduğunu bir kez daha gözler önüne sermektedir.',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
-                    fontSize: isMobile ? 12.0 : 16.0,
+                    fontSize: isMobile
+                        ? 12.0
+                        : isTablet
+                        ? 14.0
+                        : 16.0,
                     fontWeight: FontWeight.w600,
-                    height: 1.4,
+                    height: isTablet ? 1.3 : 1.4,
                   ),
                   textAlign: TextAlign.justify,
                 ),
@@ -273,13 +301,21 @@ class _HeroSection extends StatelessWidget {
               // Kota ve Organizasyon Bölümü
               Container(
                 margin: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 120.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 120.0,
                 ),
                 padding: EdgeInsets.all(
-                  isMobile ? Branding.spacingM : Branding.spacingXXL,
+                  isMobile
+                      ? Branding.spacingM
+                      : isTablet
+                      ? Branding.spacingXL
+                      : Branding.spacingXXL,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFECFDF5), // Daha belirgin açık yeşil
+                  color: const Color(0xFFEFF6FF), // Açık mavi
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
@@ -296,7 +332,7 @@ class _HeroSection extends StatelessWidget {
                       width: isMobile ? 48 : 60,
                       height: isMobile ? 48 : 60,
                       decoration: BoxDecoration(
-                        color: const Color(0xFF10B981),
+                        color: const Color(0xFF3B82F6),
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Icon(
@@ -314,7 +350,11 @@ class _HeroSection extends StatelessWidget {
                       'El Birliğiyle Gelen Derman: Yardımlaşma ve Dayanışma',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 20.0 : 28.0,
+                        fontSize: isMobile
+                            ? 20.0
+                            : isTablet
+                            ? 24.0
+                            : 28.0,
                         fontWeight: FontWeight.w800,
                       ),
                       textAlign: TextAlign.center,
@@ -328,9 +368,13 @@ class _HeroSection extends StatelessWidget {
                       'Toplumsal Şifa, ancak birbirimize omuz verdiğimizde mümkündür. Bir toplumun yaralarını sarması, zorluklar karşısında kurduğu güçlü dayanışma köprüleriyle başlar. Biz, bu bölümde gönüllülük ruhunu ve karşılıksız desteği en önde tutuyoruz. İhtiyaç sahiplerine uzanan her el, toplumsal bağlarımızı güçlendiren ve yaralarımızı saran birer derman kaynağıdır. Birlikte hareket etme bilinciyle, toplumsal iyileşme sürecimizi hızlandırıyoruz.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 12.0 : 16.0,
+                        fontSize: isMobile
+                            ? 12.0
+                            : isTablet
+                            ? 14.0
+                            : 16.0,
                         fontWeight: FontWeight.w400,
-                        height: 1.4,
+                        height: isTablet ? 1.3 : 1.4,
                       ),
                       textAlign: TextAlign.left,
                     ),
@@ -344,13 +388,21 @@ class _HeroSection extends StatelessWidget {
               // İkinci Bölüm - Su Kalitesi
               Container(
                 margin: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 120.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 120.0,
                 ),
                 padding: EdgeInsets.all(
-                  isMobile ? Branding.spacingM : Branding.spacingXXL,
+                  isMobile
+                      ? Branding.spacingM
+                      : isTablet
+                      ? Branding.spacingXL
+                      : Branding.spacingXXL,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFECFDF5), // Daha belirgin açık yeşil
+                  color: const Color(0xFFEFF6FF), // Açık mavi
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
@@ -367,7 +419,7 @@ class _HeroSection extends StatelessWidget {
                       width: isMobile ? 48 : 60,
                       height: isMobile ? 48 : 60,
                       decoration: BoxDecoration(
-                        color: const Color(0xFF10B981),
+                        color: const Color(0xFF3B82F6),
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Icon(
@@ -385,7 +437,11 @@ class _HeroSection extends StatelessWidget {
                       'Doğanın İyileştirici Gücü: Ekolojik Şifa',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 20.0 : 28.0,
+                        fontSize: isMobile
+                            ? 20.0
+                            : isTablet
+                            ? 24.0
+                            : 28.0,
                         fontWeight: FontWeight.w800,
                       ),
                       textAlign: TextAlign.center,
@@ -399,9 +455,13 @@ class _HeroSection extends StatelessWidget {
                       'Kalıcı sağlık ve derman, temiz ve dengeli bir çevrede mümkündür. Doğanın mucizevi ve iyileştirici gücünün farkındayız. Bu nedenle, çevreye duyarlı, sürdürülebilir yaklaşımları benimseyerek doğal kaynaklarımızı koruyoruz. Doğa ile uyum içinde yaşamak, hem bedenimize hem de ruhumuza Şifa veren en temel kaynaktır. Ekolojik dengeyi gözeterek, gelecek nesillere daha sağlıklı bir çevre mirası bırakmayı hedefliyoruz.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 12.0 : 16.0,
+                        fontSize: isMobile
+                            ? 12.0
+                            : isTablet
+                            ? 14.0
+                            : 16.0,
                         fontWeight: FontWeight.w400,
-                        height: 1.4,
+                        height: isTablet ? 1.3 : 1.4,
                       ),
                       textAlign: TextAlign.left,
                     ),
@@ -415,13 +475,21 @@ class _HeroSection extends StatelessWidget {
               // Üçüncü Bölüm - Topluluk Eğitimi
               Container(
                 margin: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 120.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 120.0,
                 ),
                 padding: EdgeInsets.all(
-                  isMobile ? Branding.spacingM : Branding.spacingXXL,
+                  isMobile
+                      ? Branding.spacingM
+                      : isTablet
+                      ? Branding.spacingXL
+                      : Branding.spacingXXL,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFECFDF5), // Daha belirgin açık yeşil
+                  color: const Color(0xFFEFF6FF), // Açık mavi
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
@@ -438,7 +506,7 @@ class _HeroSection extends StatelessWidget {
                       width: isMobile ? 48 : 60,
                       height: isMobile ? 48 : 60,
                       decoration: BoxDecoration(
-                        color: const Color(0xFF10B981),
+                        color: const Color(0xFF3B82F6),
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Icon(
@@ -456,7 +524,11 @@ class _HeroSection extends StatelessWidget {
                       '♀ Güçlü Yarınlar: Kadın Gücüyle Şekillenen Toplum',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 20.0 : 28.0,
+                        fontSize: isMobile
+                            ? 20.0
+                            : isTablet
+                            ? 24.0
+                            : 28.0,
                         fontWeight: FontWeight.w800,
                       ),
                       textAlign: TextAlign.center,
@@ -470,9 +542,13 @@ class _HeroSection extends StatelessWidget {
                       'Toplumsal yapımızın iyileşme ve kalkınma süreci, kadınların güçlenmesiyle başlar. Kadın emeği ve vizyonu, topluma en hızlı ve en kalıcı dermanı getiren güçtür. Kadınlarımızın potansiyelini ortaya çıkarıyor, mesleki gelişimlerini destekliyor ve ekonomik hayata tam katılımlarını teşvik ediyoruz. Kadınların liderliği, toplumsal Şifa ve dönüşümün en önemli katalizörüdür.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 12.0 : 16.0,
+                        fontSize: isMobile
+                            ? 12.0
+                            : isTablet
+                            ? 14.0
+                            : 16.0,
                         fontWeight: FontWeight.w400,
-                        height: 1.4,
+                        height: isTablet ? 1.3 : 1.4,
                       ),
                       textAlign: TextAlign.left,
                     ),
@@ -486,13 +562,21 @@ class _HeroSection extends StatelessWidget {
               // Dördüncü Bölüm - Bütünsel Kalkınma
               Container(
                 margin: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 120.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 120.0,
                 ),
                 padding: EdgeInsets.all(
-                  isMobile ? Branding.spacingM : Branding.spacingXXL,
+                  isMobile
+                      ? Branding.spacingM
+                      : isTablet
+                      ? Branding.spacingXL
+                      : Branding.spacingXXL,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFECFDF5), // Daha belirgin açık yeşil
+                  color: const Color(0xFFEFF6FF), // Açık mavi
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
@@ -509,7 +593,7 @@ class _HeroSection extends StatelessWidget {
                       width: isMobile ? 48 : 60,
                       height: isMobile ? 48 : 60,
                       decoration: BoxDecoration(
-                        color: const Color(0xFF10B981),
+                        color: const Color(0xFF3B82F6),
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Icon(
@@ -527,7 +611,11 @@ class _HeroSection extends StatelessWidget {
                       'Bütünsel Kalkınma: Kalıcı Dermanın Teminatı',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 20.0 : 28.0,
+                        fontSize: isMobile
+                            ? 20.0
+                            : isTablet
+                            ? 24.0
+                            : 28.0,
                         fontWeight: FontWeight.w800,
                       ),
                       textAlign: TextAlign.center,
@@ -541,9 +629,13 @@ class _HeroSection extends StatelessWidget {
                       'Bizim için kalkınma; sadece ekonomik büyüme değil, aynı zamanda eğitim, sağlık ve fırsat eşitliği ile sağlanan bütünsel bir iyileşme sürecidir. Sürdürülebilir Kalkınma, bireylerin geleceğe güvenle baktığı, kalıcı Şifa bulduğu bir yaşamın teminatıdır. Bu amaçla, adil, kapsayıcı ve kalıcı çözümler üreterek toplumsal refahı artırmayı ve her bireyin onurlu bir yaşam sürmesini sağlamayı hedefliyoruz.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 12.0 : 16.0,
+                        fontSize: isMobile
+                            ? 12.0
+                            : isTablet
+                            ? 14.0
+                            : 16.0,
                         fontWeight: FontWeight.w400,
-                        height: 1.4,
+                        height: isTablet ? 1.3 : 1.4,
                       ),
                       textAlign: TextAlign.left,
                     ),
@@ -557,7 +649,11 @@ class _HeroSection extends StatelessWidget {
               // İyileşme Yolculuğuna Katılın Metni
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 200.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 80.0
+                      : 200.0,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -566,7 +662,11 @@ class _HeroSection extends StatelessWidget {
                       '💖 İyileşme Yolculuğumuza Katılın',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 18.0 : 24.0,
+                        fontSize: isMobile
+                            ? 18.0
+                            : isTablet
+                            ? 22.0
+                            : 24.0,
                         fontWeight: FontWeight.w700,
                         letterSpacing: -0.5,
                       ),
@@ -578,9 +678,13 @@ class _HeroSection extends StatelessWidget {
                       'Bu büyük Şifa yolculuğunda sizin de katkılarınızla ilerlemek istiyoruz. Sizin desteğiniz, dayanışma ruhumuzu büyütecek, doğamızı koruyacak ve kalkınma çabalarımızı daha fazla insana ulaştıracaktır. Birlikte, derman bulduğumuz, sağlıklı ve güçlü bir gelecek inşa edelim!',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 12.0 : 16.0,
+                        fontSize: isMobile
+                            ? 12.0
+                            : isTablet
+                            ? 14.0
+                            : 16.0,
                         fontWeight: FontWeight.w500,
-                        height: 1.4,
+                        height: isTablet ? 1.3 : 1.4,
                       ),
                       textAlign: TextAlign.justify,
                     ),
@@ -591,12 +695,16 @@ class _HeroSection extends StatelessWidget {
                 height: isMobile ? Branding.spacingM : Branding.spacingXXL,
               ),
 
-              // Şifa Fotoğrafı
+              // VEFA Fotoğrafı
               GestureDetector(
-                onTap: () => _SifaIpekDetailContent()._showImageDialog(context),
+                onTap: () => _VefaDetailContent()._showImageDialog(context),
                 child: Container(
                   margin: EdgeInsets.symmetric(
-                    horizontal: isMobile ? 20.0 : 80.0,
+                    horizontal: isMobile
+                        ? 20.0
+                        : isTablet
+                        ? 60.0
+                        : 80.0,
                   ),
                   height: isMobile ? 120 : 200,
                   decoration: BoxDecoration(
@@ -678,16 +786,16 @@ class _HeroSection extends StatelessWidget {
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF10B981).withValues(alpha: 0.1),
+                  color: const Color(0xFF3B82F6).withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: const Color(0xFF10B981).withValues(alpha: 0.3),
+                    color: const Color(0xFF3B82F6).withValues(alpha: 0.3),
                   ),
                 ),
                 child: const Text(
-                  'Toplumsal İyileşme Projesi',
+                  'Konut Projesi',
                   style: TextStyle(
-                    color: Color(0xFF10B981),
+                    color: Color(0xFF3B82F6),
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                   ),
@@ -709,7 +817,7 @@ class _HeroSection extends StatelessWidget {
           width: double.infinity,
           padding: const EdgeInsets.all(24),
           decoration: const BoxDecoration(
-            color: Color(0xFFECFDF5), // Açık yeşil
+            color: Color(0xFFEFF6FF), // Açık mavi
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(16),
               topRight: Radius.circular(16),
@@ -802,7 +910,7 @@ class _HeroSection extends StatelessWidget {
             height: 300,
             padding: const EdgeInsets.all(32),
             decoration: const BoxDecoration(
-              color: Color(0xFFECFDF5), // Açık yeşil
+              color: Color(0xFFEFF6FF), // Açık mavi
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(16),
                 bottomLeft: Radius.circular(16),
@@ -899,7 +1007,7 @@ class _HeroSection extends StatelessWidget {
             height: 350,
             padding: const EdgeInsets.all(40),
             decoration: const BoxDecoration(
-              color: Color(0xFFECFDF5), // Açık yeşil
+              color: Color(0xFFEFF6FF), // Açık mavi
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(16),
                 bottomLeft: Radius.circular(16),
@@ -1002,9 +1110,9 @@ class _ProjectImageSliderState extends State<_ProjectImageSlider> {
   // Proje görselleri listesi
   final List<Map<String, dynamic>> _projectImages = [
     {
-      'title': 'Şifa Projesi',
+      'title': 'VEFA Projesi',
       'description': 'Toplumsal iyileşme çalışmaları',
-      'image': 'assets/images/sifaslider1.jpg', // Şifa slider görseli
+      'image': 'assets/images/sifaslider1.jpg', // VEFA slider görseli
     },
     {
       'title': 'Toplumsal Dayanışma',
@@ -1107,10 +1215,10 @@ class _ProjectImageSliderState extends State<_ProjectImageSlider> {
                                   end: Alignment.bottomRight,
                                   colors: [
                                     const Color(
-                                      0xFF10B981,
+                                      0xFF3B82F6,
                                     ).withValues(alpha: 0.8),
                                     const Color(
-                                      0xFF059669,
+                                      0xFF2563EB,
                                     ).withValues(alpha: 0.9),
                                   ],
                                 ),
@@ -1175,8 +1283,8 @@ class _ProjectImageSliderState extends State<_ProjectImageSlider> {
               height: 8,
               decoration: BoxDecoration(
                 color: _currentIndex == index
-                    ? const Color(0xFF10B981)
-                    : const Color(0xFF10B981).withValues(alpha: 0.3),
+                    ? const Color(0xFF3B82F6)
+                    : const Color(0xFF3B82F6).withValues(alpha: 0.3),
                 borderRadius: BorderRadius.circular(4),
               ),
             ),

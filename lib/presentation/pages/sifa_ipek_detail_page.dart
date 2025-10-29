@@ -280,7 +280,7 @@ class _HeroSection extends StatelessWidget {
                       : 160.0,
                 ),
                 child: Text(
-                  'Şifa projesi kapsamında, toplumsal iyileşme çalışmalarımızı ihtiyaç analizi yaparak belirlenen bölgelerde gerçekleştiriyoruz. Bu sayede projelerimiz toplumun en çok ihtiyaç duyduğu alanlarda etkili oluyor ve kalıcı değişim yaratıyor.',
+                  'Kadim Bir Mirasın İyileştiren Dokunuşu\n\nHatay\'ın zengin kültürel mirasının bir parçası olan ipek böcekçiliği, nesilden nesile aktarılan kadim bir sanattır. Özellikle Barış İpeği, ipek böceklerinin kozalarını terk ettikten sonra toplanan ve bu sayede canlı yaşam döngüsüne saygı duyan eşsiz bir üretim modelini temsil eder. Bu ipek, sadece bir kumaş malzemesi değil, aynı zamanda bölgenin direncini, sabrını ve doğayla uyum içinde yaşama felsefesini simgeler. Deprem felaketinin ardından bu geleneği yaşatma çabası, kültürel mirasın sadece binalardan ibaret olmadığını, aynı zamanda insan emeğinde ve hikâyelerde saklı olduğunu bir kez daha gözler önüne sermektedir.',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
                     fontSize: isMobile

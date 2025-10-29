@@ -83,6 +83,26 @@ class NavigationService {
     }
   }
 
+  /// VEFA projesi sayfasına git
+  static void goToVefa() {
+    if (currentState != null) {
+      HapticFeedback.lightImpact();
+      _showLoadingAndNavigate('VEFA Projesi Yükleniyor...', () {
+        currentState!.pushNamed('/vefa');
+      });
+    }
+  }
+
+  /// SEFA projesi sayfasına git
+  static void goToSefa() {
+    if (currentState != null) {
+      HapticFeedback.lightImpact();
+      _showLoadingAndNavigate('SEFA Projesi Yükleniyor...', () {
+        currentState!.pushNamed('/sefa');
+      });
+    }
+  }
+
   /// Konferans detayına git
   static void goToConference(String conferenceId) {
     if (currentState != null) {

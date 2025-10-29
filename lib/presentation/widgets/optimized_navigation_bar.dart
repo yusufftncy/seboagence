@@ -1245,10 +1245,10 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
         NavigationService.goToWorks();
         break;
       case 'vefa':
-        NavigationService.goToProject('vefa');
+        NavigationService.goToVefa();
         break;
       case 'sefa':
-        NavigationService.goToProject('sefa');
+        NavigationService.goToSefa();
         break;
       case 'sifa':
         Navigator.push(
