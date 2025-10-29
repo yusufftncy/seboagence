@@ -13,9 +13,6 @@ import '../../core/services/navigation_service.dart';
 import '../widgets/optimized_navigation_bar.dart';
 import '../widgets/common/footer_widget.dart';
 import 'sifa_ipek_detail_page.dart';
-import 'cci_france_turquie_etkinligi_detail_page.dart';
-import 'fransiz_ticaret_odasi_konferansi_detail_page.dart';
-import 'cci_france_turquie_isbirligi_detail_page.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -2791,36 +2788,23 @@ class _HomePageState extends ConsumerState<HomePage>
   List<Map<String, dynamic>> _getConferencesData() {
     return [
       {
-        'id': 'cci_france_turquie_etkinligi',
-        'title': 'CCI France Turquie Etkinliği',
+        'title': 'Empowerment Through Voice Seminar',
         'description':
-            'Fransız Ticaret Odası Türkiye ile işbirliği etkinliği. 150+ katılımcının katıldığı bu başarılı etkinlikte, Türk-Fransız iş dünyası arasında güçlü bağlar kuruldu.',
+            'CCI France-Turquie, Dutch Business Association Turkey, CorporateConnections® ve Yapı Kredi Bankası işbirliğiyle düzenlenen "Empowerment Through Voice Seminar". Ünlü İletişim Stratejisti ve ses mentoru Arthur Samuel Joseph\'in konuşmacı olarak katıldığı bu özel etkinlikte, katılımcılar ses ve iletişim becerilerini geliştirme fırsatı buldular.',
         'location': 'İstanbul, Türkiye',
-        'date': 'Aralık 2025',
-        'type': 'Etkinlik',
-        'icon': Icons.business,
+        'date': 'Ekim 2025',
+        'type': 'Seminer',
+        'icon': Icons.record_voice_over,
         'color': const Color(0xFF6B6B6B),
       },
       {
-        'id': 'fransiz_ticaret_odasi_konferansi',
-        'title': 'Fransız Ticaret Odası Konferansı',
+        'title': 'CCI France-Turquie Etkinlik Serisi',
         'description':
-            'CCI France Turquie ile ortak düzenlenen ticaret konferansı. 200+ katılımcının katıldığı bu konferansta, sektörel gelişmeler ve iş fırsatları ele alındı.',
-        'location': 'İstanbul, Türkiye',
-        'date': 'Kasım 2025',
-        'type': 'Konferans',
-        'icon': Icons.event,
-        'color': const Color(0xFF6B6B6B),
-      },
-      {
-        'id': 'cci_france_turquie_isbirligi',
-        'title': 'CCI France Turquie İşbirliği Etkinliği',
-        'description':
-            'Fransız-Türk iş dünyası arasında köprü kuran etkinlik. 120+ katılımcının katıldığı bu etkinlikte, karşılıklı işbirliği fırsatları değerlendirildi.',
+            'Fransız Ticaret Odası CCI France-Turquie tarafından düzenlenen özel etkinlik serisi. Sebnem Berkol Yuceer\'in değerli desteğiyle organize edilen bu etkinlikte, iş dünyasından önemli isimler bir araya gelerek networking ve bilgi paylaşımı gerçekleştirdi. Tüm ortaklarımıza ve katılımcılarımıza teşekkürler.',
         'location': 'İstanbul, Türkiye',
         'date': 'Ekim 2025',
         'type': 'Etkinlik',
-        'icon': Icons.handshake,
+        'icon': Icons.business,
         'color': const Color(0xFF6B6B6B),
       },
     ];
@@ -2940,55 +2924,6 @@ class _HomePageState extends ConsumerState<HomePage>
               ),
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
-            ),
-
-            const SizedBox(height: 12),
-
-            // Detayları Gör butonu - Mobile'da küçük
-            GestureDetector(
-              onTap: () {
-                // Test için önce SnackBar göster
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Tıklanan etkinlik: ${conference['id']}'),
-                    backgroundColor: const Color(0xFF6B6B6B),
-                  ),
-                );
-                _navigateToConferenceDetail(
-                  context,
-                  conference['id'] as String,
-                );
-              },
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 8,
-                  horizontal: 12,
-                ),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [const Color(0xFF6B6B6B), const Color(0xFF4A4A4A)],
-                  ),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Detayları Gör',
-                      style: AppTypography.bodySmall.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 10,
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    Icon(Icons.arrow_forward, color: Colors.white, size: 10),
-                  ],
-                ),
-              ),
             ),
           ],
         ),
@@ -3112,55 +3047,6 @@ class _HomePageState extends ConsumerState<HomePage>
               maxLines: 4,
               overflow: TextOverflow.ellipsis,
             ),
-
-            const SizedBox(height: 16),
-
-            // Detayları Gör butonu - Tablet'te orta boyut
-            GestureDetector(
-              onTap: () {
-                // Test için önce SnackBar göster
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Tıklanan etkinlik: ${conference['id']}'),
-                    backgroundColor: const Color(0xFF6B6B6B),
-                  ),
-                );
-                _navigateToConferenceDetail(
-                  context,
-                  conference['id'] as String,
-                );
-              },
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 16,
-                ),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [const Color(0xFF6B6B6B), const Color(0xFF4A4A4A)],
-                  ),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Detayları Gör',
-                      style: AppTypography.bodyMedium.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 12,
-                      ),
-                    ),
-                    const SizedBox(width: 6),
-                    Icon(Icons.arrow_forward, color: Colors.white, size: 12),
-                  ],
-                ),
-              ),
-            ),
           ],
         ),
       ),
@@ -3282,55 +3168,6 @@ class _HomePageState extends ConsumerState<HomePage>
               ),
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
-            ),
-
-            const SizedBox(height: 16),
-
-            // Detayları Gör butonu - Desktop'ta büyük
-            GestureDetector(
-              onTap: () {
-                // Test için önce SnackBar göster
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text('Tıklanan etkinlik: ${conference['id']}'),
-                    backgroundColor: const Color(0xFF6B6B6B),
-                  ),
-                );
-                _navigateToConferenceDetail(
-                  context,
-                  conference['id'] as String,
-                );
-              },
-              child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 12,
-                  horizontal: 20,
-                ),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [const Color(0xFF6B6B6B), const Color(0xFF4A4A4A)],
-                  ),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Detayları Gör',
-                      style: AppTypography.bodyMedium.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 13,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Icon(Icons.arrow_forward, color: Colors.white, size: 14),
-                  ],
-                ),
-              ),
             ),
           ],
         ),
@@ -3554,48 +3391,6 @@ class _HomePageState extends ConsumerState<HomePage>
         },
       ),
     );
-  }
-
-  void _navigateToConferenceDetail(BuildContext context, String conferenceId) {
-    print('Navigating to conference detail: $conferenceId'); // Debug print
-    switch (conferenceId) {
-      case 'cci_france_turquie_etkinligi':
-        print('Opening CCI France Turquie Etkinliği page'); // Debug print
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const CciFranceTurquieEtkinligiDetailPage(),
-          ),
-        );
-        break;
-      case 'fransiz_ticaret_odasi_konferansi':
-        print('Opening Fransız Ticaret Odası Konferansı page'); // Debug print
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const FransizTicaretOdasiKonferansiDetailPage(),
-          ),
-        );
-        break;
-      case 'cci_france_turquie_isbirligi':
-        print('Opening CCI France Turquie İşbirliği page'); // Debug print
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const CciFranceTurquieIsbirligiDetailPage(),
-          ),
-        );
-        break;
-      default:
-        print('Unknown conference ID: $conferenceId'); // Debug print
-        // Varsayılan sayfa veya hata mesajı
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Etkinlik detayı bulunamadı.'),
-            backgroundColor: Color(0xFF6B6B6B),
-          ),
-        );
-    }
   }
 }
 

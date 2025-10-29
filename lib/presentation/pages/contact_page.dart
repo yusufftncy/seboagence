@@ -380,17 +380,17 @@ class _MobileContactCards extends StatelessWidget {
           icon: Icons.email,
           color: Branding.secondary,
           actionText: 'E-posta Gönder',
-          onTap: _launchEmail,
+          onTap: () => _launchEmail(context),
         ),
         SizedBox(height: Branding.spacingL),
         _ContactCard(
           title: 'Telefon Numaramız',
           content: AppConstants.companyPhone,
-          description: 'Hemen arayın, size yardımcı olalım',
+          description: 'Kullanıma Kapalı - Hemen arayın, size yardımcı olalım',
           icon: Icons.phone,
           color: Branding.secondary,
-          actionText: 'Hemen Ara',
-          onTap: _launchPhone,
+          actionText: 'Kullanıma Kapalı',
+          onTap: () {}, // Boş fonksiyon - tıklanamaz
         ),
         SizedBox(height: Branding.spacingL),
         _ContactCard(
@@ -400,7 +400,7 @@ class _MobileContactCards extends StatelessWidget {
           icon: Icons.location_on,
           color: Branding.secondary,
           actionText: 'Haritada Gör',
-          onTap: _launchMap,
+          onTap: () {}, // Boş fonksiyon - tıklanamaz
         ),
       ],
     );
@@ -425,7 +425,7 @@ class _TabletContactCards extends StatelessWidget {
                 icon: Icons.email,
                 color: Branding.secondary,
                 actionText: 'E-posta Gönder',
-                onTap: _launchEmail,
+                onTap: () => _launchEmail(context),
               ),
             ),
             SizedBox(width: Branding.spacingL),
@@ -433,11 +433,12 @@ class _TabletContactCards extends StatelessWidget {
               child: _ContactCard(
                 title: 'Telefon Numaramız',
                 content: AppConstants.companyPhone,
-                description: 'Hemen arayın, size yardımcı olalım',
+                description:
+                    'Kullanıma Kapalı - Hemen arayın, size yardımcı olalım',
                 icon: Icons.phone,
                 color: Branding.secondary,
-                actionText: 'Hemen Ara',
-                onTap: _launchPhone,
+                actionText: 'Kullanıma Kapalı',
+                onTap: () {}, // Boş fonksiyon - tıklanamaz
               ),
             ),
           ],
@@ -446,11 +447,11 @@ class _TabletContactCards extends StatelessWidget {
         _ContactCard(
           title: 'Ofis Adresimiz',
           content: AppConstants.companyAddress,
-          description: 'Ofisimizi ziyaret edebilirsiniz',
+          description: 'Kullanıma Kapalı - Ofisimizi ziyaret edebilirsiniz',
           icon: Icons.location_on,
           color: Branding.secondary,
-          actionText: 'Haritada Gör',
-          onTap: _launchMap,
+          actionText: 'Kullanıma Kapalı',
+          onTap: () {}, // Boş fonksiyon - tıklanamaz
         ),
       ],
     );
@@ -473,7 +474,7 @@ class _DesktopContactCards extends StatelessWidget {
             icon: Icons.email,
             color: Branding.secondary,
             actionText: 'E-posta Gönder',
-            onTap: _launchEmail,
+            onTap: () => _launchEmail(context),
           ),
         ),
         SizedBox(width: Branding.spacingL),
@@ -481,11 +482,12 @@ class _DesktopContactCards extends StatelessWidget {
           child: _ContactCard(
             title: 'Telefon Numaramız',
             content: AppConstants.companyPhone,
-            description: 'Hemen arayın, size yardımcı olalım',
+            description:
+                'Kullanıma Kapalı - Hemen arayın, size yardımcı olalım',
             icon: Icons.phone,
             color: Branding.secondary,
-            actionText: 'Hemen Ara',
-            onTap: _launchPhone,
+            actionText: 'Kullanıma Kapalı',
+            onTap: () {}, // Boş fonksiyon - tıklanamaz
           ),
         ),
         SizedBox(width: Branding.spacingL),
@@ -493,11 +495,11 @@ class _DesktopContactCards extends StatelessWidget {
           child: _ContactCard(
             title: 'Ofis Adresimiz',
             content: AppConstants.companyAddress,
-            description: 'Ofisimizi ziyaret edebilirsiniz',
+            description: 'Kullanıma Kapalı - Ofisimizi ziyaret edebilirsiniz',
             icon: Icons.location_on,
             color: Branding.secondary,
-            actionText: 'Haritada Gör',
-            onTap: _launchMap,
+            actionText: 'Kullanıma Kapalı',
+            onTap: () {}, // Boş fonksiyon - tıklanamaz
           ),
         ),
       ],
@@ -606,8 +608,22 @@ class _ContactCard extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton.icon(
               onPressed: onTap,
-              icon: Icon(Icons.arrow_forward, size: isMobile ? 16.0 : 18.0),
-              label: Text(actionText),
+              icon: Icon(
+                Icons.arrow_forward,
+                size: isMobile ? 16.0 : 18.0,
+                color: actionText == 'Kullanıma Kapalı'
+                    ? Colors.red
+                    : Branding.white,
+              ),
+              label: Text(
+                actionText,
+                style: TextStyle(
+                  color: actionText == 'Kullanıma Kapalı'
+                      ? Colors.red
+                      : Branding.white,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: color,
                 foregroundColor: Branding.white,
@@ -775,13 +791,27 @@ class _SocialButton extends StatelessWidget {
       children: [
         Icon(icon, color: Branding.white, size: 20.0),
         SizedBox(width: Branding.spacingS),
-        Text(
-          title,
-          style: const TextStyle(
-            color: Branding.white,
-            fontSize: 12.0,
-            fontWeight: FontWeight.w600,
-          ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                color: Branding.white,
+                fontSize: 12.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            if (title == 'Instagram' || title == 'Website')
+              Text(
+                'Kullanıma Kapalı',
+                style: const TextStyle(
+                  color: Colors.red,
+                  fontSize: 8.0,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+          ],
         ),
       ],
     );
@@ -800,6 +830,18 @@ class _SocialButton extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
+        if (title == 'Instagram' || title == 'Website')
+          Padding(
+            padding: const EdgeInsets.only(top: 2.0),
+            child: Text(
+              'Kullanıma Kapalı',
+              style: const TextStyle(
+                color: Colors.red,
+                fontSize: 9.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
       ],
     );
   }
@@ -900,31 +942,39 @@ class _MapSection extends StatelessWidget {
 }
 
 /// Utility Functions - Optimized
-void _launchEmail() async {
-  final Uri emailUri = Uri(
-    scheme: 'mailto',
-    path: AppConstants.companyEmail,
-    query: 'subject=İletişim&body=Merhaba,',
-  );
+void _launchEmail(BuildContext context) async {
+  final isMobile = Responsive.isMobile(context);
 
-  if (await canLaunchUrl(emailUri)) {
-    await launchUrl(emailUri);
-  }
-}
+  if (isMobile) {
+    // Mobil cihazlarda Gmail uygulamasına yönlendir
+    final Uri gmailUri = Uri(
+      scheme: 'gmail',
+      path: 'co',
+      query: 'to=${AppConstants.companyEmail}&subject=İletişim&body=Merhaba,',
+    );
 
-void _launchPhone() async {
-  final Uri phoneUri = Uri(scheme: 'tel', path: AppConstants.companyPhone);
+    if (await canLaunchUrl(gmailUri)) {
+      await launchUrl(gmailUri);
+    } else {
+      // Gmail uygulaması yoksa varsayılan e-posta uygulamasını aç
+      final Uri emailUri = Uri(
+        scheme: 'mailto',
+        path: AppConstants.companyEmail,
+        query: 'subject=İletişim&body=Merhaba,',
+      );
+      if (await canLaunchUrl(emailUri)) {
+        await launchUrl(emailUri);
+      }
+    }
+  } else {
+    // Tablet ve desktop'ta Gmail web sitesine yönlendir
+    final Uri gmailWebUri = Uri.parse(
+      'https://mail.google.com/mail/?view=cm&fs=1&to=${AppConstants.companyEmail}&su=İletişim&body=Merhaba,',
+    );
 
-  if (await canLaunchUrl(phoneUri)) {
-    await launchUrl(phoneUri);
-  }
-}
-
-void _launchMap() async {
-  final Uri mapUri = Uri.parse(AppConstants.companyAddress);
-
-  if (await canLaunchUrl(mapUri)) {
-    await launchUrl(mapUri);
+    if (await canLaunchUrl(gmailWebUri)) {
+      await launchUrl(gmailWebUri);
+    }
   }
 }
 
