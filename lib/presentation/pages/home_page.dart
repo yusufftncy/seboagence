@@ -13,6 +13,8 @@ import '../../core/services/navigation_service.dart';
 import '../widgets/optimized_navigation_bar.dart';
 import '../widgets/common/footer_widget.dart';
 import 'sifa_ipek_detail_page.dart';
+import 'empowerment_voice_seminar_detail_page.dart';
+import 'cci_france_turquie_event_detail_page.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -2788,21 +2790,23 @@ class _HomePageState extends ConsumerState<HomePage>
   List<Map<String, dynamic>> _getConferencesData() {
     return [
       {
+        'id': 'empowerment_voice_seminar',
         'title': 'Empowerment Through Voice Seminar',
         'description':
-            'CCI France-Turquie, Dutch Business Association Turkey, CorporateConnections® ve Yapı Kredi Bankası işbirliğiyle düzenlenen seminer. Arthur Samuel Joseph\'in konuşmacı olarak katıldığı etkinlikte, iletişim stratejileri ve ses mentorluğu konularında değerli paylaşımlar gerçekleştirildi.',
+            'CCI France-Turquie, Dutch Business Association Turkey, CorporateConnections® ve Yapı Kredi Bankası işbirliğiyle düzenlenen "Empowerment Through Voice Seminar". Ünlü İletişim Stratejisti ve ses mentoru Arthur Samuel Joseph\'in konuşmacı olarak katıldığı bu özel etkinlikte, katılımcılar ses ve iletişim becerilerini geliştirme fırsatı buldular.',
         'location': 'İstanbul, Türkiye',
-        'date': 'Eylül 2025',
+        'date': 'Ekim 2025',
         'type': 'Seminer',
         'icon': Icons.record_voice_over,
         'color': const Color(0xFF6B6B6B),
       },
       {
-        'title': 'Luxury Retail Brands Luncheon',
+        'id': 'cci_france_turquie_event',
+        'title': 'CCI France-Turquie Etkinlik Serisi',
         'description':
-            'CCI France-Turquie tarafından Rixos Tersane Istanbul - Aliée İstanbul\'da düzenlenen lüks perakende markaları öğle yemeği. Türkiye\'deki lüks perakende markalarının ülke müdürlerinin deneyim paylaşımı ve sektör bazlı görüş alışverişi için mükemmel bir platform oluşturdu.',
-        'location': 'Rixos Tersane Istanbul',
-        'date': 'Eylül 2025',
+            'Fransız Ticaret Odası CCI France-Turquie tarafından düzenlenen özel etkinlik serisi. Sebnem Berkol Yuceer\'in değerli desteğiyle organize edilen bu etkinlikte, iş dünyasından önemli isimler bir araya gelerek networking ve bilgi paylaşımı gerçekleştirdi. Tüm ortaklarımıza ve katılımcılarımıza teşekkürler.',
+        'location': 'İstanbul, Türkiye',
+        'date': 'Ekim 2025',
         'type': 'Etkinlik',
         'icon': Icons.business,
         'color': const Color(0xFF6B6B6B),
@@ -2924,6 +2928,42 @@ class _HomePageState extends ConsumerState<HomePage>
               ),
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
+            ),
+
+            const SizedBox(height: 12),
+
+            // Detayları Gör butonu - Mobile'da küçük
+            GestureDetector(
+              onTap: () {
+                _navigateToConferenceDetail(context, conference['id'] as String);
+              },
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [const Color(0xFF6B6B6B), const Color(0xFF4A4A4A)],
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Detayları Gör',
+                      style: AppTypography.bodySmall.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 10,
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    Icon(Icons.arrow_forward, color: Colors.white, size: 10),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -3047,6 +3087,42 @@ class _HomePageState extends ConsumerState<HomePage>
               maxLines: 4,
               overflow: TextOverflow.ellipsis,
             ),
+
+            const SizedBox(height: 16),
+
+            // Detayları Gör butonu - Tablet'te orta boyut
+            GestureDetector(
+              onTap: () {
+                _navigateToConferenceDetail(context, conference['id'] as String);
+              },
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [const Color(0xFF6B6B6B), const Color(0xFF4A4A4A)],
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Detayları Gör',
+                      style: AppTypography.bodyMedium.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 12,
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Icon(Icons.arrow_forward, color: Colors.white, size: 12),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -3168,6 +3244,42 @@ class _HomePageState extends ConsumerState<HomePage>
               ),
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
+            ),
+
+            const SizedBox(height: 16),
+
+            // Detayları Gör butonu - Desktop'ta büyük
+            GestureDetector(
+              onTap: () {
+                _navigateToConferenceDetail(context, conference['id'] as String);
+              },
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [const Color(0xFF6B6B6B), const Color(0xFF4A4A4A)],
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Detayları Gör',
+                      style: AppTypography.bodyMedium.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Icon(Icons.arrow_forward, color: Colors.white, size: 14),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -3392,6 +3504,35 @@ class _HomePageState extends ConsumerState<HomePage>
       ),
     );
   }
+
+  void _navigateToConferenceDetail(BuildContext context, String conferenceId) {
+    switch (conferenceId) {
+      case 'empowerment_voice_seminar':
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const EmpowermentVoiceSeminarDetailPage(),
+          ),
+        );
+        break;
+      case 'cci_france_turquie_event':
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const CciFranceTurquieEventDetailPage(),
+          ),
+        );
+        break;
+      default:
+        // Varsayılan sayfa veya hata mesajı
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Etkinlik detayı bulunamadı.'),
+            backgroundColor: Color(0xFF6B6B6B),
+          ),
+        );
+    }
+  }
 }
 
 // Background Pattern Painter
@@ -3462,6 +3603,5 @@ class _BackgroundPatternPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
-
 
 // Hoverable Footer Link Widget
