@@ -302,9 +302,7 @@ class _ChaptersSection extends StatelessWidget {
         if (title == 'Şifa') {
           Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (context) => const SifaIpekDetailPage(),
-            ),
+            MaterialPageRoute(builder: (context) => const SifaIpekDetailPage()),
           );
         } else if (title == 'Vefa') {
           NavigationService.goToVefa();
