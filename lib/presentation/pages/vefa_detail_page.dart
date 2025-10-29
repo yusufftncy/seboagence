@@ -72,7 +72,7 @@ class _VefaDetailContent extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
                           child: Image.asset(
-                            'assets/images/sifa2.jpg',
+                            'assets/images/vefa4.jpg',
                             fit: BoxFit.contain,
                           ),
                         ),
@@ -178,7 +178,7 @@ class _HeroSection extends StatelessWidget {
                       : 160.0,
                 ),
                 child: Text(
-                  'Kalıcı Sağlık ve Kapsayıcı Kalkınmayla Gelen Derman\n\n"Şifa," kelime anlamı ile sadece fiziksel iyileşmeyi değil, aynı zamanda toplumsal derman bulmayı, ruhsal dinginliği ve kalıcı bir sağlıklı yaşamı ifade eder. Biz Şifa Bölümü olarak, toplumun tüm katmanlarında hissedilen bu bütünsel iyileşmenin, izole çabalarla değil, ancak güçlü bir ortak bilinçle sağlanabileceğine inanıyoruz. Bu inançla yola çıkarak, misyonumuzu belirlediğiniz beş temel direk üzerine kurduk: Yardımlaşma ve dayanışma ile toplumsal yaralarımızı sararken; doğa sevgisi ile yaşam kaynağımızı koruyor; kadın gücünü merkeze alarak toplumsal dönüşümü hızlandırıyor ve tüm bu unsurların birleşimiyle kapsayıcı ve sürdürülebilir kalkınmayı hedefliyoruz. Amacımız, sadece anlık çözümler sunmak değil, gelecek nesillere onurlu, sağlıklı ve derman bulmuş bir yaşam vaat eden, köklü bir etki yaratmaktır.',
+                  'Geçmişin Yankıları, Geleceğin Gücü: Alanya\'nın Vefa Köprüsü\n\nVefa, takvim yapraklarının geri dönüşü değil; geçmişin derin anlamlarını, yorgun hatıralarını ve o günlerin kıymetli emeğini, içinde bulunduğumuz bugüne taşıyan, ruhu olan canlı bir köprüdür. Vefa, yalnızca kişisel anıları değil, bir şehrin taşlarında saklı kalmış kolektif belleği, bir ailenin nesiller boyu süren izlerini ve bir okulun koridorlarında yankılanan öğrenci sesini yeniden ve daha güçlü duyurmanın adıdır. Bu köprü, bizi Alanya\'da kök salmış, ailemizden kalan Kız Meslek Lisesi ve Turizm Otelcilik Okulu\'nda yetişen gençlerin sadece bir meslek edinme değil, aynı zamanda bir karakter inşa etme serüvenlerine odaklanmaya davet ediyor. Bu hikâyeler, vefanın sadece hatıralara değil, aynı zamanda geleceğe duyulan güçlü inanca işaret ettiğini kanıtlar niteliktedir.',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
                     fontSize: isMobile
@@ -224,7 +224,7 @@ class _HeroSection extends StatelessWidget {
                   ],
                 ),
                 child: Text(
-                  '"Her ilmekte umut, her lifte yeniden doğuş."',
+                  '"Geçmişin yankıları, geleceğin gücü olur."',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
                     fontSize: isMobile
@@ -280,7 +280,7 @@ class _HeroSection extends StatelessWidget {
                       : 160.0,
                 ),
                 child: Text(
-                  'Kadim Bir Mirasın İyileştiren Dokunuşu\n\nHatay\'ın zengin kültürel mirasının bir parçası olan ipek böcekçiliği, nesilden nesile aktarılan kadim bir sanattır. Özellikle Barış İpeği, ipek böceklerinin kozalarını terk ettikten sonra toplanan ve bu sayede canlı yaşam döngüsüne saygı duyan eşsiz bir üretim modelini temsil eder. Bu ipek, sadece bir kumaş malzemesi değil, aynı zamanda bölgenin direncini, sabrını ve doğayla uyum içinde yaşama felsefesini simgeler. Deprem felaketinin ardından bu geleneği yaşatma çabası, kültürel mirasın sadece binalardan ibaret olmadığını, aynı zamanda insan emeğinde ve hikâyelerde saklı olduğunu bir kez daha gözler önüne sermektedir.',
+                  '🧵 Üretmek: Bir Meslekten Öte, Bir Karakter Manifestosu\n\nOkullarımızda "üretmek" kavramı, dar anlamıyla bir beceri öğrenme eyleminin çok ötesinde, felsefi bir derinlik taşır. O, dürüstlüğü, meslek ahlakını, disiplini, sorumluluğu ve özgüveni ilmek ilmek dokuyan, adeta bir karakter manifestosudur. Gençlerimiz, özellikle de genç kadınlarımız, burada sadece mutfak, otelcilik veya el sanatları gibi meslekleri öğrenmezler; onlar, kendi emekleriyle, alın terleriyle hayata tutunmanın onurunu ve kimseye bağlı kalmamanın gücünü keşfederler. Bu üretim kültürü, onlara sadece ekonomik bağımsızlık kazandırmakla kalmaz, aynı zamanda zorluklar karşısında yılmama, çözüm odaklı olma ve çevreleri için de değer yaratma yetisi kazandırır.',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
                     fontSize: isMobile
@@ -347,7 +347,7 @@ class _HeroSection extends StatelessWidget {
 
                     // Başlık
                     Text(
-                      'El Birliğiyle Gelen Derman: Yardımlaşma ve Dayanışma',
+                      '🧭 Bir Kentin Nazımı: Dedemizin Mirası ve Süreklilik Anlayışı',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile
@@ -365,7 +365,7 @@ class _HeroSection extends StatelessWidget {
 
                     // Metin içeriği
                     Text(
-                      'Toplumsal Şifa, ancak birbirimize omuz verdiğimizde mümkündür. Bir toplumun yaralarını sarması, zorluklar karşısında kurduğu güçlü dayanışma köprüleriyle başlar. Biz, bu bölümde gönüllülük ruhunu ve karşılıksız desteği en önde tutuyoruz. İhtiyaç sahiplerine uzanan her el, toplumsal bağlarımızı güçlendiren ve yaralarımızı saran birer derman kaynağıdır. Birlikte hareket etme bilinciyle, toplumsal iyileşme sürecimizi hızlandırıyoruz.',
+                      'Dr. Ali Nazım Köseoğlu (1911-1997), Alanya\'da doğmuş, İstanbul Tıp Fakültesi mezunu ve Marmara Hastanesi\'nin kurucusu olan önemli bir şahsiyettir. Doğduğu şehir Alanya\'ya duyduğu büyük sevgi ile Alantur Otel\'in kurulması, Alanyaspor\'un kurucuları arasında yer alması ve eğitim alanındaki katkıları ile şehrin modernleşmesinde kilit rol oynamıştır.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile
@@ -434,7 +434,7 @@ class _HeroSection extends StatelessWidget {
 
                     // Başlık
                     Text(
-                      'Doğanın İyileştirici Gücü: Ekolojik Şifa',
+                      '📜 Sayfalarımızda Yaşayacak Olanlar: Belleğin Kayıtları',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile
@@ -452,7 +452,7 @@ class _HeroSection extends StatelessWidget {
 
                     // Metin içeriği
                     Text(
-                      'Kalıcı sağlık ve derman, temiz ve dengeli bir çevrede mümkündür. Doğanın mucizevi ve iyileştirici gücünün farkındayız. Bu nedenle, çevreye duyarlı, sürdürülebilir yaklaşımları benimseyerek doğal kaynaklarımızı koruyoruz. Doğa ile uyum içinde yaşamak, hem bedenimize hem de ruhumuza Şifa veren en temel kaynaktır. Ekolojik dengeyi gözeterek, gelecek nesillere daha sağlıklı bir çevre mirası bırakmayı hedefliyoruz.',
+                      'Bu sarsılmaz vefa duygusu ve sorumlulukla oluşturduğumuz bu özel bölüm, bir dijital bellek alanı, bir hatıra sandığı olarak tasarlanmıştır. Amacımız, sadece bilgi vermek değil, aynı zamanda ruhu hissettirmektir. Bu sayfalarda şunlar yer alacak ve sürekli güncel tutulacaktır:\n\n• "Bir Kentin Nazımı" Özel Alanı: Dedemiz Ali Nazım Köseoğlu\'nun hayatına, topluma katkılarına, bilinmeyen yönlerine ve Alanya\'daki silinmez izlerine adanmış detaylı bir kronoloji.\n\n• Zaman Tünelinden Kareler: Okulun kuruluş aşamasından bugüne uzanan sürecin görsel ve yazılı kayıtları.\n\n• Vefa ve Başarı Hikâyeleri: Okuldan mezun olan öğrencilerin ve öğretmenlerin yürek ısıtan hikâyeleri.\n\n• Alanya\'nın Kültürel Notları ve Bağlantılar: Kentin tarihi, mimarisi, yöresel lezzetleri ve gelenekleri.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile
@@ -521,7 +521,7 @@ class _HeroSection extends StatelessWidget {
 
                     // Başlık
                     Text(
-                      '♀ Güçlü Yarınlar: Kadın Gücüyle Şekillenen Toplum',
+                      '💪 Metanetle Çalışan Genç Kadınlar: Toplumun Temeli',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile
@@ -539,7 +539,7 @@ class _HeroSection extends StatelessWidget {
 
                     // Metin içeriği
                     Text(
-                      'Toplumsal yapımızın iyileşme ve kalkınma süreci, kadınların güçlenmesiyle başlar. Kadın emeği ve vizyonu, topluma en hızlı ve en kalıcı dermanı getiren güçtür. Kadınlarımızın potansiyelini ortaya çıkarıyor, mesleki gelişimlerini destekliyor ve ekonomik hayata tam katılımlarını teşvik ediyoruz. Kadınların liderliği, toplumsal Şifa ve dönüşümün en önemli katalizörüdür.',
+                      'Metanetle çalışan, üreten, topluma somut fayda sağlayan bu genç kadınlar, bir toplumun geleceğe uzanan en güçlü, en sarsılmaz temelleridir. Onların atölyelerde, mutfaklarda ya da servis alanlarında döktükleri her damla ter, toplumsal dönüşümün ve ilerlemenin de itici gücü olur. Üretimin sadece bir ekonomik faaliyet değil, aynı zamanda ahlaki ve toplumsal bir görev olduğu inancıyla yetişirler. Bu miras, vefanın sadece geçmişe değil, aynı zamanda parlak bir geleceğe de duyulan sorumluluk duygusu olduğunu gösteren en güçlü kanıttır.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile
@@ -608,7 +608,7 @@ class _HeroSection extends StatelessWidget {
 
                     // Başlık
                     Text(
-                      'Bütünsel Kalkınma: Kalıcı Dermanın Teminatı',
+                      '🎓 Eğitimin Kaldıraç Gücü: Ali Nazım Köseoğlu\'nun Vizyonu',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile
@@ -626,7 +626,7 @@ class _HeroSection extends StatelessWidget {
 
                     // Metin içeriği
                     Text(
-                      'Bizim için kalkınma; sadece ekonomik büyüme değil, aynı zamanda eğitim, sağlık ve fırsat eşitliği ile sağlanan bütünsel bir iyileşme sürecidir. Sürdürülebilir Kalkınma, bireylerin geleceğe güvenle baktığı, kalıcı Şifa bulduğu bir yaşamın teminatıdır. Bu amaçla, adil, kapsayıcı ve kalıcı çözümler üreterek toplumsal refahı artırmayı ve her bireyin onurlu bir yaşam sürmesini sağlamayı hedefliyoruz.',
+                      'Dr. Ali Nazım Köseoğlu, eğitimin toplumun kaderini değiştiren temel kaldıraç olduğuna inandı. Ali Nazım Köseoğlu Ortaokulu, Hacet Okulu ve Meziyet Köseoğlu Mesleki Eğitim Merkezi gibi kurumları şehre kazandırmıştır. Biz, bugün aynı anlayışla o mirası koruyarak, çağın gereklerine uygun olarak geliştiriyoruz. Amacımız, onun "Nazım" ruhunu, yani nezaketi, ahlakı, çalışkanlığı ve memleket sevgisini her öğrencinin kalbine nakşetmektir.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile
@@ -659,7 +659,7 @@ class _HeroSection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '💖 İyileşme Yolculuğumuza Katılın',
+                      '🌟 Vefa Yolculuğumuza Katılın',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile
@@ -675,7 +675,7 @@ class _HeroSection extends StatelessWidget {
                       height: isMobile ? Branding.spacingS : Branding.spacingL,
                     ),
                     Text(
-                      'Bu büyük Şifa yolculuğunda sizin de katkılarınızla ilerlemek istiyoruz. Sizin desteğiniz, dayanışma ruhumuzu büyütecek, doğamızı koruyacak ve kalkınma çabalarımızı daha fazla insana ulaştıracaktır. Birlikte, derman bulduğumuz, sağlıklı ve güçlü bir gelecek inşa edelim!',
+                      'Bu büyük vefa yolculuğunda sizin de katkılarınızla ilerlemek istiyoruz. Sizin desteğiniz, eğitim mirasımızı büyütecek, gençlerimizin hayallerini gerçekleştirmelerine yardımcı olacak ve Alanya\'nın kültürel belleğini daha güçlü hale getirecektir. Birlikte, geçmişin değerlerini geleceğe taşıyan, eğitimde mükemmelliği hedefleyen bir toplum inşa edelim!',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile
@@ -724,7 +724,7 @@ class _HeroSection extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Image.asset(
-                      'assets/images/sifa2.jpg',
+                      'assets/images/vefa4.jpg',
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
                         return Container(
@@ -762,7 +762,7 @@ class _HeroSection extends StatelessWidget {
 
               // Alt başlık
               Text(
-                'Toplumsal İyileşme ve Sürdürülebilir Kalkınma',
+                'Eğitim ve Gelişim Platformu',
                 style: TextStyle(
                   color: const Color(0xFF6B7280),
                   fontSize: isMobile
@@ -793,7 +793,7 @@ class _HeroSection extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  'Konut Projesi',
+                  'Eğitim Projesi',
                   style: TextStyle(
                     color: Color(0xFF3B82F6),
                     fontSize: 14,
@@ -827,7 +827,7 @@ class _HeroSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Barış İpeği Projesi',
+                'Ali Nazım Köseoğlu Eğitim Vakfı',
                 style: TextStyle(
                   color: const Color(0xFF1F2937),
                   fontSize: 20,
@@ -837,7 +837,7 @@ class _HeroSection extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                'Hatay\'da üretilen barış ipeği ile sosyal sorumluluk projeleri gerçekleştiriyor, toplumsal dayanışmayı güçlendiriyoruz.',
+                'Dr. Ali Nazım Köseoğlu\'nun eğitim mirasını yaşatan vakfımız, Alanya\'daki Kız Meslek Lisesi ve Turizm Otelcilik Okulu\'nda eğitim gören gençlerin mesleki gelişimlerini destekliyoruz.',
                 style: TextStyle(
                   color: const Color(0xFF6B7280),
                   fontSize: 14,
@@ -864,7 +864,7 @@ class _HeroSection extends StatelessWidget {
               bottomRight: Radius.circular(16),
             ),
             child: Image.asset(
-              'assets/images/sifa1.jpg',
+              'assets/images/alinazimkoseogli.jpg',
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
                 return Container(
@@ -901,98 +901,103 @@ class _HeroSection extends StatelessWidget {
 
   // Su Kuyusu Bölümü - Tablet
   Widget _buildTabletSuKuyusuSection() {
-    return Row(
-      children: [
-        // Sol bölüm - Mavi panel
-        Expanded(
-          flex: 1,
-          child: Container(
-            height: 300,
-            padding: const EdgeInsets.all(32),
-            decoration: const BoxDecoration(
-              color: Color(0xFFEFF6FF), // Açık mavi
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16),
-                bottomLeft: Radius.circular(16),
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Barış İpeği Projesi',
-                  style: TextStyle(
-                    color: const Color(0xFF1F2937),
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: -0.5,
-                  ),
+    return IntrinsicHeight(
+      child: Row(
+        children: [
+          // Sol bölüm - Mavi panel
+          Expanded(
+            flex: 1,
+            child: Container(
+              constraints: const BoxConstraints(minHeight: 300),
+              padding: const EdgeInsets.all(32),
+              decoration: const BoxDecoration(
+                color: Color(0xFFEFF6FF), // Açık mavi
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16),
+                  bottomLeft: Radius.circular(16),
                 ),
-                const SizedBox(height: 16),
-                Text(
-                  'Hatay\'da üretilen barış ipeği ile sosyal sorumluluk projeleri gerçekleştiriyor, toplumsal dayanışmayı güçlendiriyoruz.',
-                  style: TextStyle(
-                    color: const Color(0xFF6B7280),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    height: 1.4,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        // Sağ bölüm - Şifa fotoğrafı
-        Expanded(
-          flex: 1,
-          child: Container(
-            height: 300,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(16),
-                bottomRight: Radius.circular(16),
               ),
-            ),
-            child: ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(16),
-                bottomRight: Radius.circular(16),
-              ),
-              child: Image.asset(
-                'assets/images/sifa1.jpg',
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    color: const Color(0xFFF3F4F6),
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.image,
-                            color: const Color(0xFF6B7280),
-                            size: 64,
-                          ),
-                          const SizedBox(height: 12),
-                          Text(
-                            'Fotoğraf Yüklenemedi',
-                            style: TextStyle(
-                              color: const Color(0xFF6B7280),
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Ali Nazım Köseoğlu Eğitim Vakfı',
+                    style: TextStyle(
+                      color: const Color(0xFF1F2937),
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: -0.5,
                     ),
-                  );
-                },
+                  ),
+                  const SizedBox(height: 12),
+                  Flexible(
+                    child: Text(
+                      'Dr. Ali Nazım Köseoğlu\'nun eğitim mirasını yaşatan vakfımız, Alanya\'daki Kız Meslek Lisesi ve Turizm Otelcilik Okulu\'nda eğitim gören gençlerin mesleki gelişimlerini destekliyoruz.',
+                      style: TextStyle(
+                        color: const Color(0xFF6B7280),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        height: 1.3,
+                      ),
+                      overflow: TextOverflow.visible,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-        ),
-      ],
+          // Sağ bölüm - Şifa fotoğrafı
+          Expanded(
+            flex: 1,
+            child: Container(
+              constraints: const BoxConstraints(minHeight: 300),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                ),
+              ),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(16),
+                  bottomRight: Radius.circular(16),
+                ),
+                child: Image.asset(
+                  'assets/images/alinazimkoseogli.jpg',
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: const Color(0xFFF3F4F6),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.image,
+                              color: const Color(0xFF6B7280),
+                              size: 64,
+                            ),
+                            const SizedBox(height: 12),
+                            Text(
+                              'Fotoğraf Yüklenemedi',
+                              style: TextStyle(
+                                color: const Color(0xFF6B7280),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -1018,7 +1023,7 @@ class _HeroSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Barış İpeği Projesi',
+                  'Ali Nazım Köseoğlu Eğitim Vakfı',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
                     fontSize: 28,
@@ -1028,7 +1033,7 @@ class _HeroSection extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'Hatay\'da üretilen barış ipeği ile sosyal sorumluluk projeleri gerçekleştiriyor, toplumsal dayanışmayı güçlendiriyoruz.',
+                  'Dr. Ali Nazım Köseoğlu\'nun eğitim mirasını yaşatan vakfımız, Alanya\'daki Kız Meslek Lisesi ve Turizm Otelcilik Okulu\'nda eğitim gören gençlerin mesleki gelişimlerini destekliyor, karakter eğitimlerini güçlendiriyoruz.',
                   style: TextStyle(
                     color: const Color(0xFF6B7280),
                     fontSize: 18,
@@ -1057,7 +1062,7 @@ class _HeroSection extends StatelessWidget {
                 bottomRight: Radius.circular(16),
               ),
               child: Image.asset(
-                'assets/images/sifa1.jpg',
+                'assets/images/alinazimkoseogli.jpg',
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
                   return Container(
@@ -1111,18 +1116,28 @@ class _ProjectImageSliderState extends State<_ProjectImageSlider> {
   final List<Map<String, dynamic>> _projectImages = [
     {
       'title': 'VEFA Projesi',
-      'description': 'Toplumsal iyileşme çalışmaları',
-      'image': 'assets/images/sifaslider1.jpg', // VEFA slider görseli
+      'description': 'Eğitim ve Gelişim Platformu',
+      'image': 'assets/images/vefa1.jpg', // VEFA slider görseli
     },
     {
-      'title': 'Toplumsal Dayanışma',
-      'description': 'Birlikte iyileşme çalışmaları',
-      'image': 'assets/images/sifaslider2.jpg',
+      'title': 'Kız Meslek Lisesi',
+      'description': 'Mesleki Eğitim ve Karakter Gelişimi',
+      'image': 'assets/images/vefa2.jpg',
     },
     {
-      'title': 'Ekolojik Şifa',
-      'description': 'Doğa ile uyum içinde yaşam',
-      'image': 'assets/images/sifaslider3.jpg',
+      'title': 'Turizm Otelcilik Okulu',
+      'description': 'Hizmet Sektöründe Uzmanlık',
+      'image': 'assets/images/vefa3.jpg',
+    },
+    {
+      'title': 'Öğrenci Atölyeleri',
+      'description': 'Pratik Eğitim ve Uygulama',
+      'image': 'assets/images/vefa5.jpg',
+    },
+    {
+      'title': 'VEFA Kampusü',
+      'description': 'Eğitim ve Sosyal Yaşam Alanı',
+      'image': 'assets/images/vefa6.jpg',
     },
   ];
 
