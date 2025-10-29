@@ -10,6 +10,7 @@ import '../../core/theme/typography.dart';
 import '../../core/utils/responsive.dart';
 import '../../core/services/navigation_service.dart';
 import '../widgets/optimized_navigation_bar.dart';
+import '../widgets/common/footer_widget.dart';
 
 class AboutPage extends ConsumerWidget {
   const AboutPage({super.key});
@@ -42,7 +43,7 @@ class _AboutPageContent extends StatelessWidget {
           _ValuesSection(),
           _AchievementsSection(),
           _TeamSection(),
-          _FooterWidget(),
+          const FooterWidget(),
         ],
       ),
     );
@@ -936,6 +937,7 @@ class _TeamSection extends StatelessWidget {
 }
 
 /// Footer Widget
+// ignore: unused_element
 class _FooterWidget extends StatelessWidget {
   const _FooterWidget();
 
@@ -1468,7 +1470,7 @@ class _FooterWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        _buildMobileContactItem(Icons.email, 'info@seboagence.com'),
+        _buildMobileContactItem(Icons.email, 'seboagence@gmail.com'),
         _buildMobileContactItem(Icons.phone, '+90 (212) 555 0123'),
         _buildMobileContactItem(Icons.location_on, 'İstanbul, Türkiye'),
       ],
@@ -1488,7 +1490,7 @@ class _FooterWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 14),
-        _buildTabletContactItem(Icons.email, 'info@seboagence.com'),
+        _buildTabletContactItem(Icons.email, 'seboagence@gmail.com'),
         _buildTabletContactItem(Icons.phone, '+90 (212) 555 0123'),
         _buildTabletContactItem(Icons.location_on, 'İstanbul, Türkiye'),
       ],
@@ -1508,7 +1510,7 @@ class _FooterWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        _buildContactItem(Icons.email, 'info@seboagence.com'),
+        _buildContactItem(Icons.email, 'seboagence@gmail.com'),
         _buildContactItem(Icons.phone, '+90 (212) 555 0123'),
         _buildContactItem(Icons.location_on, 'İstanbul, Türkiye'),
       ],

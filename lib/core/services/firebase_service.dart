@@ -2,6 +2,7 @@ import 'dart:developer' as developer;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../firebase_options.dart';
 
 /// Firebase servislerini yöneten sınıf
 class FirebaseService {
@@ -22,7 +23,9 @@ class FirebaseService {
   Future<void> initialize() async {
     try {
       // Firebase Core'u başlat
-      await Firebase.initializeApp();
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
 
       // Servisleri başlat (sadece Analytics ve Firestore)
       _analytics = FirebaseAnalytics.instance;

@@ -12,6 +12,7 @@ import '../../core/utils/responsive.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/services/navigation_service.dart';
 import '../widgets/optimized_navigation_bar.dart';
+import '../widgets/common/footer_widget.dart';
 
 class ContactPage extends ConsumerWidget {
   const ContactPage({super.key});
@@ -45,7 +46,7 @@ class _ContactPageContent extends StatelessWidget {
           _ContactCardsSection(),
           _SocialMediaSection(),
           _MapSection(),
-          _FooterWidget(),
+          const FooterWidget(),
         ],
       ),
     );
@@ -843,17 +844,49 @@ class _MapSection extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    Icons.map,
+                    Icons.location_off,
                     color: Branding.white.withValues(alpha: 0.5),
                     size: 48.0,
                   ),
                   SizedBox(height: Branding.spacingM),
                   Text(
-                    'Harita Yükleniyor...',
+                    'Konum Hizmeti',
+                    style: TextStyle(
+                      color: Branding.white.withValues(alpha: 0.9),
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: Branding.spacingS),
+                  Text(
+                    'Şu anda kullanıma kapalı',
                     style: TextStyle(
                       color: Branding.white.withValues(alpha: 0.7),
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  SizedBox(height: Branding.spacingM),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 8.0,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Branding.secondary.withValues(alpha: 0.2),
+                      borderRadius: BorderRadius.circular(20.0),
+                      border: Border.all(
+                        color: Branding.secondary.withValues(alpha: 0.5),
+                        width: 1,
+                      ),
+                    ),
+                    child: Text(
+                      'Yakında Aktif',
+                      style: TextStyle(
+                        color: Branding.secondary,
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],
@@ -904,6 +937,7 @@ void _launchUrl(String url) async {
 }
 
 /// Footer Widget
+// ignore: unused_element
 class _FooterWidget extends StatelessWidget {
   const _FooterWidget();
 
@@ -1436,7 +1470,7 @@ class _FooterWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        _buildMobileContactItem(Icons.email, 'info@ajanssebo.com'),
+        _buildMobileContactItem(Icons.email, 'seboagence@gmail.com'),
         _buildMobileContactItem(Icons.phone, '+90 (212) 123 45 67'),
         _buildMobileContactItem(Icons.location_on, 'İstanbul, Türkiye'),
       ],
@@ -1456,7 +1490,7 @@ class _FooterWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 14),
-        _buildTabletContactItem(Icons.email, 'info@ajanssebo.com'),
+        _buildTabletContactItem(Icons.email, 'seboagence@gmail.com'),
         _buildTabletContactItem(Icons.phone, '+90 (212) 123 45 67'),
         _buildTabletContactItem(Icons.location_on, 'İstanbul, Türkiye'),
       ],
@@ -1476,7 +1510,7 @@ class _FooterWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        _buildContactItem(Icons.email, 'info@ajanssebo.com'),
+        _buildContactItem(Icons.email, 'seboagence@gmail.com'),
         _buildContactItem(Icons.phone, '+90 (212) 123 45 67'),
         _buildContactItem(Icons.location_on, 'İstanbul, Türkiye'),
       ],

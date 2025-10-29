@@ -57,7 +57,7 @@ class AppConstants {
   static const String deleteSuccessMessage = 'Kayıt başarıyla silindi';
 
   // İletişim Bilgileri
-  static const String companyEmail = 'info@seboagency.com';
+  static const String companyEmail = 'seboagence@gmail.com';
   static const String companyPhone = '+90 (212) 123 45 67';
   static const String companyAddress = 'İstanbul, Türkiye';
   static const String companyWebsite = 'www.seboagency.com';
