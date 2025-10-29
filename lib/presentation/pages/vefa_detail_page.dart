@@ -723,35 +723,38 @@ class _HeroSection extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
-                      'assets/images/vefa4.jpg',
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Container(
-                          color: const Color(0xFFF3F4F6),
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.image,
-                                  color: const Color(0xFF9CA3AF),
-                                  size: isMobile ? 36 : 64,
-                                ),
-                                SizedBox(height: Branding.spacingM),
-                                Text(
-                                  'Fotoğraf Yüklenemedi',
-                                  style: TextStyle(
-                                    color: const Color(0xFF6B7280),
-                                    fontSize: isMobile ? 14 : 18,
-                                    fontWeight: FontWeight.w500,
+                    child: Semantics(
+                      label: 'Vefa - Eğitim ve gelişim platformu projesi',
+                      child: Image.asset(
+                        'assets/images/vefa4.jpg',
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            color: const Color(0xFFF3F4F6),
+                            child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.image,
+                                    color: const Color(0xFF9CA3AF),
+                                    size: isMobile ? 36 : 64,
                                   ),
-                                ),
-                              ],
+                                  SizedBox(height: Branding.spacingM),
+                                  Text(
+                                    'Fotoğraf Yüklenemedi',
+                                    style: TextStyle(
+                                      color: const Color(0xFF6B7280),
+                                      fontSize: isMobile ? 14 : 18,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),
@@ -863,35 +866,39 @@ class _HeroSection extends StatelessWidget {
               bottomLeft: Radius.circular(16),
               bottomRight: Radius.circular(16),
             ),
-            child: Image.asset(
-              'assets/images/alinazimkoseogli.jpg',
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  color: const Color(0xFFF3F4F6),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.image,
-                          color: const Color(0xFF6B7280),
-                          size: 48,
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Fotoğraf Yüklenemedi',
-                          style: TextStyle(
+            child: Semantics(
+              label:
+                  'Alinazım Köseoğlu - Vefa projesi kurucusu ve eğitim uzmanı',
+              child: Image.asset(
+                'assets/images/alinazimkoseogli.jpg',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: const Color(0xFFF3F4F6),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.image,
                             color: const Color(0xFF6B7280),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
+                            size: 48,
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 8),
+                          Text(
+                            'Fotoğraf Yüklenemedi',
+                            style: TextStyle(
+                              color: const Color(0xFF6B7280),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ),
@@ -963,35 +970,39 @@ class _HeroSection extends StatelessWidget {
                   topRight: Radius.circular(16),
                   bottomRight: Radius.circular(16),
                 ),
-                child: Image.asset(
-                  'assets/images/alinazimkoseogli.jpg',
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Container(
-                      color: const Color(0xFFF3F4F6),
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.image,
-                              color: const Color(0xFF6B7280),
-                              size: 64,
-                            ),
-                            const SizedBox(height: 12),
-                            Text(
-                              'Fotoğraf Yüklenemedi',
-                              style: TextStyle(
+                child: Semantics(
+                  label:
+                      'Alinazım Köseoğlu - Vefa projesi kurucusu ve eğitim uzmanı',
+                  child: Image.asset(
+                    'assets/images/alinazimkoseogli.jpg',
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        color: const Color(0xFFF3F4F6),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.image,
                                 color: const Color(0xFF6B7280),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
+                                size: 64,
                               ),
-                            ),
-                          ],
+                              const SizedBox(height: 12),
+                              Text(
+                                'Fotoğraf Yüklenemedi',
+                                style: TextStyle(
+                                  color: const Color(0xFF6B7280),
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

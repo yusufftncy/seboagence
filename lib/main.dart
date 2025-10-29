@@ -1,3 +1,4 @@
+import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -10,15 +11,15 @@ import 'presentation/pages/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Firebase'i başlat
   try {
     await FirebaseService.instance.initialize();
   } catch (e) {
-    print('Firebase başlatma hatası: $e');
+    developer.log('Firebase başlatma hatası: $e', level: 1000);
     // Firebase başlatılamazsa da uygulama çalışmaya devam etsin
   }
-  
+
   runApp(const ProviderScope(child: MyApp()));
 }
 

@@ -1,13 +1,17 @@
 {
-    "name": "sebo_agence",
-    "short_name": "sebo_agence",
-    "start_url": ".",
+    "name": "Ajans Şebo - Yaratıcı Dijital Ajans",
+    "short_name": "Ajans Şebo",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Vakıflar ve kurumsal şirketler için yaratıcı dijital çözümler sunan önde gelen ajans. Web tasarım, marka kimliği, dijital pazarlama ve sosyal medya yönetimi hizmetleri.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
+    "lang": "tr",
+    "scope": "/",
+    "categories": ["business", "productivity", "utilities"],
+    "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
     "icons": [
         {
             "src": "icons/Icon-192.png",

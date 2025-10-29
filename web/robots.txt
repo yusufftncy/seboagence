@@ -1,0 +1,38 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://seboagence-7b74b.web.app/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Allow important pages
+Allow: /
+Allow: /#about
+Allow: /#services
+Allow: /#works
+Allow: /#contact
+
+# Block unnecessary files
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /*.png$
+Disallow: /*.jpg$
+Disallow: /*.jpeg$
+Disallow: /*.gif$
+Disallow: /*.svg$
+Disallow: /*.ico$
+
+# Allow important images
+Allow: /icons/
+Allow: /assets/images/
+
+# Host
+Host: https://seboagence-7b74b.web.app

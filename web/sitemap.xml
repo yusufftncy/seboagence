@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  
+  <!-- Ana Sayfa -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Hakkımızda -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/#about</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Hizmetler -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/#services</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Projeler -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/#works</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Vefa Projesi -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/#vefa</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Sefa Projesi -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/#sefa</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Sifa Projesi -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/#sifa</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- İletişim -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/#contact</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Blog (gelecekte eklenecek) -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/blog</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Vakıf Çözümleri -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/vakif-cozumleri</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Kurumsal Çözümler -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/kurumsal-cozumler</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Web Tasarım -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/web-tasarim</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Dijital Pazarlama -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/dijital-pazarlama</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Marka Kimliği -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/marka-kimligi</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- E-ticaret -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/e-ticaret</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Mobil Uygulama -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/mobil-uygulama</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- SEO Hizmetleri -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/seo-hizmetleri</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Sosyal Medya Yönetimi -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/sosyal-medya-yonetimi</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- İçerik Üretimi -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/icerik-uretimi</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Video Prodüksiyon -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/video-produksiyon</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Fotoğraf Çekimi -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/fotograf-cekimi</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Referanslar -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/referanslar</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Kariyer -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/kariyer</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Gizlilik Politikası -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/gizlilik-politikasi</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Kullanım Şartları -->
+  <url>
+    <loc>https://seboagence-7b74b.web.app/kullanim-sartlari</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+</urlset>

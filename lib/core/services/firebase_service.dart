@@ -1,3 +1,4 @@
+import 'dart:developer' as developer;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,9 +28,9 @@ class FirebaseService {
       _analytics = FirebaseAnalytics.instance;
       _firestore = FirebaseFirestore.instance;
 
-      print('Firebase başarıyla başlatıldı (Analytics + Firestore)');
+      developer.log('Firebase başarıyla başlatıldı (Analytics + Firestore)');
     } catch (e) {
-      print('Firebase başlatma hatası: $e');
+      developer.log('Firebase başlatma hatası: $e', level: 1000);
       rethrow;
     }
   }

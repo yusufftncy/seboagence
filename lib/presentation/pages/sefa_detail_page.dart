@@ -1311,36 +1311,39 @@ class _SefaImageItem extends StatelessWidget {
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
-          child: Image.asset(
-            imagePath,
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) {
-              return Container(
-                color: const Color(0xFF8B5CF6).withValues(alpha: 0.1),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.image,
-                        color: const Color(0xFF8B5CF6),
-                        size: isMobile ? 24 : 36,
-                      ),
-                      SizedBox(height: Branding.spacingS),
-                      Text(
-                        'Fotoğraf Yüklenemedi',
-                        style: TextStyle(
+          child: Semantics(
+            label: 'Sefa koleksiyonu - Yaratıcı tasarım ve sanat çözümleri',
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  color: const Color(0xFF8B5CF6).withValues(alpha: 0.1),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.image,
                           color: const Color(0xFF8B5CF6),
-                          fontSize: isMobile ? 10 : 12,
-                          fontWeight: FontWeight.w500,
+                          size: isMobile ? 24 : 36,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+                        SizedBox(height: Branding.spacingS),
+                        Text(
+                          'Fotoğraf Yüklenemedi',
+                          style: TextStyle(
+                            color: const Color(0xFF8B5CF6),
+                            fontSize: isMobile ? 10 : 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
       ),

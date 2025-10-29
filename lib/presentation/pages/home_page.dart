@@ -186,27 +186,30 @@ class _HomePageState extends ConsumerState<HomePage>
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // Main Title - Mobile'da küçük
+        // Main Title - H1 for SEO (Mobile)
         FadeTransition(
           opacity: _fadeAnimation,
           child: SlideTransition(
             position: _slideAnimation,
-            child: Text(
-              'ŞEBO AJANS',
-              style: AppTypography.h1.copyWith(
-                color: Branding.white,
-                fontSize: 28,
-                fontWeight: FontWeight.w900,
-                letterSpacing: 2.0,
-                shadows: [
-                  Shadow(
-                    color: Branding.black.withValues(alpha: 0.3),
-                    offset: const Offset(0, 2),
-                    blurRadius: 4,
-                  ),
-                ],
+            child: Semantics(
+              header: true,
+              child: Text(
+                'Ajans Şebo - Yaratıcı Dijital Ajans',
+                style: AppTypography.h1.copyWith(
+                  color: Branding.white,
+                  fontSize: 28,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 2.0,
+                  shadows: [
+                    Shadow(
+                      color: Branding.black.withValues(alpha: 0.3),
+                      offset: const Offset(0, 2),
+                      blurRadius: 4,
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
           ),
         ),
@@ -281,27 +284,30 @@ class _HomePageState extends ConsumerState<HomePage>
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // Main Title
+        // Main Title - H1 for SEO
         FadeTransition(
           opacity: _fadeAnimation,
           child: SlideTransition(
             position: _slideAnimation,
-            child: Text(
-              'ŞEBO AJANS',
-              style: AppTypography.h1.copyWith(
-                color: Branding.white,
-                fontSize: 48,
-                fontWeight: FontWeight.w900,
-                letterSpacing: 2.5,
-                shadows: [
-                  Shadow(
-                    color: Branding.black.withValues(alpha: 0.3),
-                    offset: const Offset(0, 3),
-                    blurRadius: 6,
-                  ),
-                ],
+            child: Semantics(
+              header: true,
+              child: Text(
+                'Ajans Şebo - Yaratıcı Dijital Ajans',
+                style: AppTypography.h1.copyWith(
+                  color: Branding.white,
+                  fontSize: 48,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 2.5,
+                  shadows: [
+                    Shadow(
+                      color: Branding.black.withValues(alpha: 0.3),
+                      offset: const Offset(0, 3),
+                      blurRadius: 6,
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
           ),
         ),
@@ -376,27 +382,30 @@ class _HomePageState extends ConsumerState<HomePage>
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // Main Title
+        // Main Title - H1 for SEO
         FadeTransition(
           opacity: _fadeAnimation,
           child: SlideTransition(
             position: _slideAnimation,
-            child: Text(
-              'ŞEBO AJANS',
-              style: AppTypography.h1.copyWith(
-                color: Branding.white,
-                fontSize: 56,
-                fontWeight: FontWeight.w900,
-                letterSpacing: 2.5,
-                shadows: [
-                  Shadow(
-                    color: Branding.black.withValues(alpha: 0.3),
-                    offset: const Offset(0, 3),
-                    blurRadius: 6,
-                  ),
-                ],
+            child: Semantics(
+              header: true,
+              child: Text(
+                'Ajans Şebo - Yaratıcı Dijital Ajans',
+                style: AppTypography.h1.copyWith(
+                  color: Branding.white,
+                  fontSize: 56,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 2.5,
+                  shadows: [
+                    Shadow(
+                      color: Branding.black.withValues(alpha: 0.3),
+                      offset: const Offset(0, 3),
+                      blurRadius: 6,
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
           ),
         ),

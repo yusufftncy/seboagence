@@ -723,35 +723,38 @@ class _HeroSection extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
-                      'assets/images/sifa2.jpg',
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Container(
-                          color: const Color(0xFFF3F4F6),
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.image,
-                                  color: const Color(0xFF9CA3AF),
-                                  size: isMobile ? 36 : 64,
-                                ),
-                                SizedBox(height: Branding.spacingM),
-                                Text(
-                                  'Fotoğraf Yüklenemedi',
-                                  style: TextStyle(
-                                    color: const Color(0xFF6B7280),
-                                    fontSize: isMobile ? 14 : 18,
-                                    fontWeight: FontWeight.w500,
+                    child: Semantics(
+                      label: 'Şifa İpek - Doğal ipek ürünleri ve kadın emeği koleksiyonu',
+                      child: Image.asset(
+                        'assets/images/sifa2.jpg',
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            color: const Color(0xFFF3F4F6),
+                            child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.image,
+                                    color: const Color(0xFF9CA3AF),
+                                    size: isMobile ? 36 : 64,
                                   ),
-                                ),
-                              ],
+                                  SizedBox(height: Branding.spacingM),
+                                  Text(
+                                    'Fotoğraf Yüklenemedi',
+                                    style: TextStyle(
+                                      color: const Color(0xFF6B7280),
+                                      fontSize: isMobile ? 14 : 18,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),

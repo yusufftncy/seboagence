@@ -1,0 +1,29 @@
+# TEAM
+
+    Developer: Ajans Şebo Development Team
+    Contact: info@seboagency.com
+    From: Istanbul, Turkey
+
+# THANKS
+
+    Flutter Team
+    Firebase Team
+    Google Fonts
+    Material Design
+
+# SITE
+
+    Last update: 2024/12/19
+    Language: Turkish / English
+    Doctype: HTML5
+    IDE: Flutter, Dart
+    Framework: Flutter Web
+    Hosting: Firebase Hosting
+    Analytics: Google Analytics
+    CDN: Firebase CDN
+
+# COLOPHON
+
+    Made with ❤️ in Istanbul, Turkey
+    For vakıflar and kurumsal şirketler
+    Bringing creativity to digital world
