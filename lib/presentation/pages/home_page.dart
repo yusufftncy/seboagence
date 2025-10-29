@@ -13,8 +13,9 @@ import '../../core/services/navigation_service.dart';
 import '../widgets/optimized_navigation_bar.dart';
 import '../widgets/common/footer_widget.dart';
 import 'sifa_ipek_detail_page.dart';
-import 'empowerment_voice_seminar_detail_page.dart';
-import 'cci_france_turquie_event_detail_page.dart';
+import 'cci_france_turquie_etkinligi_detail_page.dart';
+import 'fransiz_ticaret_odasi_konferansi_detail_page.dart';
+import 'cci_france_turquie_isbirligi_detail_page.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -2790,25 +2791,36 @@ class _HomePageState extends ConsumerState<HomePage>
   List<Map<String, dynamic>> _getConferencesData() {
     return [
       {
-        'id': 'empowerment_voice_seminar',
-        'title': 'Empowerment Through Voice Seminar',
+        'id': 'cci_france_turquie_etkinligi',
+        'title': 'CCI France Turquie Etkinliği',
         'description':
-            'CCI France-Turquie, Dutch Business Association Turkey, CorporateConnections® ve Yapı Kredi Bankası işbirliğiyle düzenlenen "Empowerment Through Voice Seminar". Ünlü İletişim Stratejisti ve ses mentoru Arthur Samuel Joseph\'in konuşmacı olarak katıldığı bu özel etkinlikte, katılımcılar ses ve iletişim becerilerini geliştirme fırsatı buldular.',
+            'Fransız Ticaret Odası Türkiye ile işbirliği etkinliği. 150+ katılımcının katıldığı bu başarılı etkinlikte, Türk-Fransız iş dünyası arasında güçlü bağlar kuruldu.',
         'location': 'İstanbul, Türkiye',
-        'date': 'Ekim 2025',
-        'type': 'Seminer',
-        'icon': Icons.record_voice_over,
+        'date': 'Aralık 2025',
+        'type': 'Etkinlik',
+        'icon': Icons.business,
         'color': const Color(0xFF6B6B6B),
       },
       {
-        'id': 'cci_france_turquie_event',
-        'title': 'CCI France-Turquie Etkinlik Serisi',
+        'id': 'fransiz_ticaret_odasi_konferansi',
+        'title': 'Fransız Ticaret Odası Konferansı',
         'description':
-            'Fransız Ticaret Odası CCI France-Turquie tarafından düzenlenen özel etkinlik serisi. Sebnem Berkol Yuceer\'in değerli desteğiyle organize edilen bu etkinlikte, iş dünyasından önemli isimler bir araya gelerek networking ve bilgi paylaşımı gerçekleştirdi. Tüm ortaklarımıza ve katılımcılarımıza teşekkürler.',
+            'CCI France Turquie ile ortak düzenlenen ticaret konferansı. 200+ katılımcının katıldığı bu konferansta, sektörel gelişmeler ve iş fırsatları ele alındı.',
+        'location': 'İstanbul, Türkiye',
+        'date': 'Kasım 2025',
+        'type': 'Konferans',
+        'icon': Icons.event,
+        'color': const Color(0xFF6B6B6B),
+      },
+      {
+        'id': 'cci_france_turquie_isbirligi',
+        'title': 'CCI France Turquie İşbirliği Etkinliği',
+        'description':
+            'Fransız-Türk iş dünyası arasında köprü kuran etkinlik. 120+ katılımcının katıldığı bu etkinlikte, karşılıklı işbirliği fırsatları değerlendirildi.',
         'location': 'İstanbul, Türkiye',
         'date': 'Ekim 2025',
         'type': 'Etkinlik',
-        'icon': Icons.business,
+        'icon': Icons.handshake,
         'color': const Color(0xFF6B6B6B),
       },
     ];
@@ -3547,21 +3559,30 @@ class _HomePageState extends ConsumerState<HomePage>
   void _navigateToConferenceDetail(BuildContext context, String conferenceId) {
     print('Navigating to conference detail: $conferenceId'); // Debug print
     switch (conferenceId) {
-      case 'empowerment_voice_seminar':
-        print('Opening Empowerment Voice Seminar page'); // Debug print
+      case 'cci_france_turquie_etkinligi':
+        print('Opening CCI France Turquie Etkinliği page'); // Debug print
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const EmpowermentVoiceSeminarDetailPage(),
+            builder: (context) => const CciFranceTurquieEtkinligiDetailPage(),
           ),
         );
         break;
-      case 'cci_france_turquie_event':
-        print('Opening CCI France-Turquie Event page'); // Debug print
+      case 'fransiz_ticaret_odasi_konferansi':
+        print('Opening Fransız Ticaret Odası Konferansı page'); // Debug print
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const CciFranceTurquieEventDetailPage(),
+            builder: (context) => const FransizTicaretOdasiKonferansiDetailPage(),
+          ),
+        );
+        break;
+      case 'cci_france_turquie_isbirligi':
+        print('Opening CCI France Turquie İşbirliği page'); // Debug print
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const CciFranceTurquieIsbirligiDetailPage(),
           ),
         );
         break;
