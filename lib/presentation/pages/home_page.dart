@@ -2935,11 +2935,17 @@ class _HomePageState extends ConsumerState<HomePage>
             // Detayları Gör butonu - Mobile'da küçük
             GestureDetector(
               onTap: () {
-                _navigateToConferenceDetail(context, conference['id'] as String);
+                _navigateToConferenceDetail(
+                  context,
+                  conference['id'] as String,
+                );
               },
               child: Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 8,
+                  horizontal: 12,
+                ),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
@@ -3093,11 +3099,17 @@ class _HomePageState extends ConsumerState<HomePage>
             // Detayları Gör butonu - Tablet'te orta boyut
             GestureDetector(
               onTap: () {
-                _navigateToConferenceDetail(context, conference['id'] as String);
+                _navigateToConferenceDetail(
+                  context,
+                  conference['id'] as String,
+                );
               },
               child: Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 16,
+                ),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
@@ -3251,11 +3263,17 @@ class _HomePageState extends ConsumerState<HomePage>
             // Detayları Gör butonu - Desktop'ta büyük
             GestureDetector(
               onTap: () {
-                _navigateToConferenceDetail(context, conference['id'] as String);
+                _navigateToConferenceDetail(
+                  context,
+                  conference['id'] as String,
+                );
               },
               child: Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 12,
+                  horizontal: 20,
+                ),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
@@ -3506,8 +3524,10 @@ class _HomePageState extends ConsumerState<HomePage>
   }
 
   void _navigateToConferenceDetail(BuildContext context, String conferenceId) {
+    print('Navigating to conference detail: $conferenceId'); // Debug print
     switch (conferenceId) {
       case 'empowerment_voice_seminar':
+        print('Opening Empowerment Voice Seminar page'); // Debug print
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -3516,6 +3536,7 @@ class _HomePageState extends ConsumerState<HomePage>
         );
         break;
       case 'cci_france_turquie_event':
+        print('Opening CCI France-Turquie Event page'); // Debug print
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -3524,6 +3545,7 @@ class _HomePageState extends ConsumerState<HomePage>
         );
         break;
       default:
+        print('Unknown conference ID: $conferenceId'); // Debug print
         // Varsayılan sayfa veya hata mesajı
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
