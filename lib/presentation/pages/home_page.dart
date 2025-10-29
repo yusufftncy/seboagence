@@ -2935,6 +2935,13 @@ class _HomePageState extends ConsumerState<HomePage>
             // Detayları Gör butonu - Mobile'da küçük
             GestureDetector(
               onTap: () {
+                // Test için önce SnackBar göster
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Tıklanan etkinlik: ${conference['id']}'),
+                    backgroundColor: const Color(0xFF6B6B6B),
+                  ),
+                );
                 _navigateToConferenceDetail(
                   context,
                   conference['id'] as String,
@@ -3099,6 +3106,13 @@ class _HomePageState extends ConsumerState<HomePage>
             // Detayları Gör butonu - Tablet'te orta boyut
             GestureDetector(
               onTap: () {
+                // Test için önce SnackBar göster
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Tıklanan etkinlik: ${conference['id']}'),
+                    backgroundColor: const Color(0xFF6B6B6B),
+                  ),
+                );
                 _navigateToConferenceDetail(
                   context,
                   conference['id'] as String,
@@ -3263,6 +3277,13 @@ class _HomePageState extends ConsumerState<HomePage>
             // Detayları Gör butonu - Desktop'ta büyük
             GestureDetector(
               onTap: () {
+                // Test için önce SnackBar göster
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Tıklanan etkinlik: ${conference['id']}'),
+                    backgroundColor: const Color(0xFF6B6B6B),
+                  ),
+                );
                 _navigateToConferenceDetail(
                   context,
                   conference['id'] as String,
