@@ -177,7 +177,11 @@ class _HeroSection extends StatelessWidget {
                   'Kalıcı Sağlık ve Kapsayıcı Kalkınmayla Gelen Derman\n\n"Şifa," kelime anlamı ile sadece fiziksel iyileşmeyi değil, aynı zamanda toplumsal derman bulmayı, ruhsal dinginliği ve kalıcı bir sağlıklı yaşamı ifade eder. Biz Şifa Bölümü olarak, toplumun tüm katmanlarında hissedilen bu bütünsel iyileşmenin, izole çabalarla değil, ancak güçlü bir ortak bilinçle sağlanabileceğine inanıyoruz. Bu inançla yola çıkarak, misyonumuzu belirlediğiniz beş temel direk üzerine kurduk: Yardımlaşma ve dayanışma ile toplumsal yaralarımızı sararken; doğa sevgisi ile yaşam kaynağımızı koruyor; kadın gücünü merkeze alarak toplumsal dönüşümü hızlandırıyor ve tüm bu unsurların birleşimiyle kapsayıcı ve sürdürülebilir kalkınmayı hedefliyoruz. Amacımız, sadece anlık çözümler sunmak değil, gelecek nesillere onurlu, sağlıklı ve derman bulmuş bir yaşam vaat eden, köklü bir etki yaratmaktır.',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
-                    fontSize: isMobile ? 12.0 : 16.0,
+                    fontSize: isMobile
+                        ? 12.0
+                        : isTablet
+                        ? 14.0
+                        : 16.0,
                     fontWeight: FontWeight.w600,
                     height: 1.5,
                   ),
@@ -211,7 +215,11 @@ class _HeroSection extends StatelessWidget {
                   '"Her ilmekte umut, her lifte yeniden doğuş."',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
-                    fontSize: isMobile ? 16.0 : 20.0,
+                    fontSize: isMobile
+                        ? 16.0
+                        : isTablet
+                        ? 18.0
+                        : 20.0,
                     fontWeight: FontWeight.w600,
                     fontStyle: FontStyle.italic,
                     height: 1.4,
@@ -259,7 +267,11 @@ class _HeroSection extends StatelessWidget {
                   'Şifa projesi kapsamında, toplumsal iyileşme çalışmalarımızı ihtiyaç analizi yaparak belirlenen bölgelerde gerçekleştiriyoruz. Bu sayede projelerimiz toplumun en çok ihtiyaç duyduğu alanlarda etkili oluyor ve kalıcı değişim yaratıyor.',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
-                    fontSize: isMobile ? 12.0 : 16.0,
+                    fontSize: isMobile
+                        ? 12.0
+                        : isTablet
+                        ? 14.0
+                        : 16.0,
                     fontWeight: FontWeight.w600,
                     height: 1.4,
                   ),
@@ -314,7 +326,11 @@ class _HeroSection extends StatelessWidget {
                       'El Birliğiyle Gelen Derman: Yardımlaşma ve Dayanışma',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 20.0 : 28.0,
+                        fontSize: isMobile
+                            ? 20.0
+                            : isTablet
+                            ? 24.0
+                            : 28.0,
                         fontWeight: FontWeight.w800,
                       ),
                       textAlign: TextAlign.center,
@@ -328,7 +344,11 @@ class _HeroSection extends StatelessWidget {
                       'Toplumsal Şifa, ancak birbirimize omuz verdiğimizde mümkündür. Bir toplumun yaralarını sarması, zorluklar karşısında kurduğu güçlü dayanışma köprüleriyle başlar. Biz, bu bölümde gönüllülük ruhunu ve karşılıksız desteği en önde tutuyoruz. İhtiyaç sahiplerine uzanan her el, toplumsal bağlarımızı güçlendiren ve yaralarımızı saran birer derman kaynağıdır. Birlikte hareket etme bilinciyle, toplumsal iyileşme sürecimizi hızlandırıyoruz.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 12.0 : 16.0,
+                        fontSize: isMobile
+                            ? 12.0
+                            : isTablet
+                            ? 14.0
+                            : 16.0,
                         fontWeight: FontWeight.w400,
                         height: 1.4,
                       ),
@@ -385,7 +405,11 @@ class _HeroSection extends StatelessWidget {
                       'Doğanın İyileştirici Gücü: Ekolojik Şifa',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 20.0 : 28.0,
+                        fontSize: isMobile
+                            ? 20.0
+                            : isTablet
+                            ? 24.0
+                            : 28.0,
                         fontWeight: FontWeight.w800,
                       ),
                       textAlign: TextAlign.center,
@@ -399,7 +423,11 @@ class _HeroSection extends StatelessWidget {
                       'Kalıcı sağlık ve derman, temiz ve dengeli bir çevrede mümkündür. Doğanın mucizevi ve iyileştirici gücünün farkındayız. Bu nedenle, çevreye duyarlı, sürdürülebilir yaklaşımları benimseyerek doğal kaynaklarımızı koruyoruz. Doğa ile uyum içinde yaşamak, hem bedenimize hem de ruhumuza Şifa veren en temel kaynaktır. Ekolojik dengeyi gözeterek, gelecek nesillere daha sağlıklı bir çevre mirası bırakmayı hedefliyoruz.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 12.0 : 16.0,
+                        fontSize: isMobile
+                            ? 12.0
+                            : isTablet
+                            ? 14.0
+                            : 16.0,
                         fontWeight: FontWeight.w400,
                         height: 1.4,
                       ),
@@ -456,7 +484,11 @@ class _HeroSection extends StatelessWidget {
                       '♀ Güçlü Yarınlar: Kadın Gücüyle Şekillenen Toplum',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 20.0 : 28.0,
+                        fontSize: isMobile
+                            ? 20.0
+                            : isTablet
+                            ? 24.0
+                            : 28.0,
                         fontWeight: FontWeight.w800,
                       ),
                       textAlign: TextAlign.center,
@@ -470,7 +502,11 @@ class _HeroSection extends StatelessWidget {
                       'Toplumsal yapımızın iyileşme ve kalkınma süreci, kadınların güçlenmesiyle başlar. Kadın emeği ve vizyonu, topluma en hızlı ve en kalıcı dermanı getiren güçtür. Kadınlarımızın potansiyelini ortaya çıkarıyor, mesleki gelişimlerini destekliyor ve ekonomik hayata tam katılımlarını teşvik ediyoruz. Kadınların liderliği, toplumsal Şifa ve dönüşümün en önemli katalizörüdür.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 12.0 : 16.0,
+                        fontSize: isMobile
+                            ? 12.0
+                            : isTablet
+                            ? 14.0
+                            : 16.0,
                         fontWeight: FontWeight.w400,
                         height: 1.4,
                       ),
@@ -527,7 +563,11 @@ class _HeroSection extends StatelessWidget {
                       'Bütünsel Kalkınma: Kalıcı Dermanın Teminatı',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 20.0 : 28.0,
+                        fontSize: isMobile
+                            ? 20.0
+                            : isTablet
+                            ? 24.0
+                            : 28.0,
                         fontWeight: FontWeight.w800,
                       ),
                       textAlign: TextAlign.center,
@@ -541,7 +581,11 @@ class _HeroSection extends StatelessWidget {
                       'Bizim için kalkınma; sadece ekonomik büyüme değil, aynı zamanda eğitim, sağlık ve fırsat eşitliği ile sağlanan bütünsel bir iyileşme sürecidir. Sürdürülebilir Kalkınma, bireylerin geleceğe güvenle baktığı, kalıcı Şifa bulduğu bir yaşamın teminatıdır. Bu amaçla, adil, kapsayıcı ve kalıcı çözümler üreterek toplumsal refahı artırmayı ve her bireyin onurlu bir yaşam sürmesini sağlamayı hedefliyoruz.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 12.0 : 16.0,
+                        fontSize: isMobile
+                            ? 12.0
+                            : isTablet
+                            ? 14.0
+                            : 16.0,
                         fontWeight: FontWeight.w400,
                         height: 1.4,
                       ),
@@ -566,7 +610,11 @@ class _HeroSection extends StatelessWidget {
                       '💖 İyileşme Yolculuğumuza Katılın',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 18.0 : 24.0,
+                        fontSize: isMobile
+                            ? 18.0
+                            : isTablet
+                            ? 21.0
+                            : 24.0,
                         fontWeight: FontWeight.w700,
                         letterSpacing: -0.5,
                       ),
@@ -578,7 +626,11 @@ class _HeroSection extends StatelessWidget {
                       'Bu büyük Şifa yolculuğunda sizin de katkılarınızla ilerlemek istiyoruz. Sizin desteğiniz, dayanışma ruhumuzu büyütecek, doğamızı koruyacak ve kalkınma çabalarımızı daha fazla insana ulaştıracaktır. Birlikte, derman bulduğumuz, sağlıklı ve güçlü bir gelecek inşa edelim!',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
-                        fontSize: isMobile ? 12.0 : 16.0,
+                        fontSize: isMobile
+                            ? 12.0
+                            : isTablet
+                            ? 14.0
+                            : 16.0,
                         fontWeight: FontWeight.w500,
                         height: 1.4,
                       ),
@@ -635,7 +687,11 @@ class _HeroSection extends StatelessWidget {
                                   'Fotoğraf Yüklenemedi',
                                   style: TextStyle(
                                     color: const Color(0xFF6B7280),
-                                    fontSize: isMobile ? 14 : 18,
+                                    fontSize: isMobile
+                                        ? 14
+                                        : isTablet
+                                        ? 16
+                                        : 18,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -1129,7 +1185,11 @@ class _ProjectImageSliderState extends State<_ProjectImageSlider> {
                                       'Fotoğraf Yüklenemedi',
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: isMobile ? 16 : 24,
+                                        fontSize: isMobile
+                                            ? 16
+                                            : isTablet
+                                            ? 20
+                                            : 24,
                                         fontWeight: FontWeight.w700,
                                       ),
                                       textAlign: TextAlign.center,
