@@ -12,7 +12,6 @@ import '../../core/utils/responsive.dart';
 import '../../core/services/navigation_service.dart';
 import '../widgets/optimized_navigation_bar.dart';
 import 'sifa_ipek_detail_page.dart';
-import 'vefa_detail_page.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -948,13 +947,6 @@ class _HomePageState extends ConsumerState<HomePage>
                   builder: (context) => const SifaIpekDetailPage(),
                 ),
               );
-            } else if (project['id'] == 'vefa') {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const VefaDetailPage(),
-                ),
-              );
             }
           },
           child: Padding(
@@ -1201,13 +1193,6 @@ class _HomePageState extends ConsumerState<HomePage>
                 context,
                 MaterialPageRoute(
                   builder: (context) => const SifaIpekDetailPage(),
-                ),
-              );
-            } else if (project['id'] == 'vefa') {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const VefaDetailPage(),
                 ),
               );
             }
@@ -1476,13 +1461,6 @@ class _HomePageState extends ConsumerState<HomePage>
                 context,
                 MaterialPageRoute(
                   builder: (context) => const SifaIpekDetailPage(),
-                ),
-              );
-            } else if (project['id'] == 'vefa') {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const VefaDetailPage(),
                 ),
               );
             }

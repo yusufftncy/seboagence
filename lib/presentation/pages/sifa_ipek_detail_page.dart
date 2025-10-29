@@ -171,7 +171,11 @@ class _HeroSection extends StatelessWidget {
               // Proje açıklama metni
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 160.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 160.0,
                 ),
                 child: Text(
                   'Kalıcı Sağlık ve Kapsayıcı Kalkınmayla Gelen Derman\n\n"Şifa," kelime anlamı ile sadece fiziksel iyileşmeyi değil, aynı zamanda toplumsal derman bulmayı, ruhsal dinginliği ve kalıcı bir sağlıklı yaşamı ifade eder. Biz Şifa Bölümü olarak, toplumun tüm katmanlarında hissedilen bu bütünsel iyileşmenin, izole çabalarla değil, ancak güçlü bir ortak bilinçle sağlanabileceğine inanıyoruz. Bu inançla yola çıkarak, misyonumuzu belirlediğiniz beş temel direk üzerine kurduk: Yardımlaşma ve dayanışma ile toplumsal yaralarımızı sararken; doğa sevgisi ile yaşam kaynağımızı koruyor; kadın gücünü merkeze alarak toplumsal dönüşümü hızlandırıyor ve tüm bu unsurların birleşimiyle kapsayıcı ve sürdürülebilir kalkınmayı hedefliyoruz. Amacımız, sadece anlık çözümler sunmak değil, gelecek nesillere onurlu, sağlıklı ve derman bulmuş bir yaşam vaat eden, köklü bir etki yaratmaktır.',
@@ -183,7 +187,7 @@ class _HeroSection extends StatelessWidget {
                         ? 14.0
                         : 16.0,
                     fontWeight: FontWeight.w600,
-                    height: 1.5,
+                    height: isTablet ? 1.4 : 1.5,
                   ),
                   textAlign: TextAlign.justify,
                 ),
@@ -195,10 +199,18 @@ class _HeroSection extends StatelessWidget {
               // Slogan
               Container(
                 margin: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 120.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 120.0,
                 ),
                 padding: EdgeInsets.all(
-                  isMobile ? Branding.spacingM : Branding.spacingXXL,
+                  isMobile
+                      ? Branding.spacingM
+                      : isTablet
+                      ? Branding.spacingXL
+                      : Branding.spacingXXL,
                 ),
                 decoration: BoxDecoration(
                   color: const Color(0xFFECFDF5),
@@ -222,7 +234,7 @@ class _HeroSection extends StatelessWidget {
                         : 20.0,
                     fontWeight: FontWeight.w600,
                     fontStyle: FontStyle.italic,
-                    height: 1.4,
+                    height: isTablet ? 1.3 : 1.4,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -261,7 +273,11 @@ class _HeroSection extends StatelessWidget {
               // Şifa projesi açıklama metni
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 160.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 160.0,
                 ),
                 child: Text(
                   'Şifa projesi kapsamında, toplumsal iyileşme çalışmalarımızı ihtiyaç analizi yaparak belirlenen bölgelerde gerçekleştiriyoruz. Bu sayede projelerimiz toplumun en çok ihtiyaç duyduğu alanlarda etkili oluyor ve kalıcı değişim yaratıyor.',
@@ -273,7 +289,7 @@ class _HeroSection extends StatelessWidget {
                         ? 14.0
                         : 16.0,
                     fontWeight: FontWeight.w600,
-                    height: 1.4,
+                    height: isTablet ? 1.3 : 1.4,
                   ),
                   textAlign: TextAlign.justify,
                 ),
@@ -285,10 +301,18 @@ class _HeroSection extends StatelessWidget {
               // Kota ve Organizasyon Bölümü
               Container(
                 margin: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 120.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 120.0,
                 ),
                 padding: EdgeInsets.all(
-                  isMobile ? Branding.spacingM : Branding.spacingXXL,
+                  isMobile
+                      ? Branding.spacingM
+                      : isTablet
+                      ? Branding.spacingXL
+                      : Branding.spacingXXL,
                 ),
                 decoration: BoxDecoration(
                   color: const Color(0xFFECFDF5), // Daha belirgin açık yeşil
@@ -350,7 +374,7 @@ class _HeroSection extends StatelessWidget {
                             ? 14.0
                             : 16.0,
                         fontWeight: FontWeight.w400,
-                        height: 1.4,
+                        height: isTablet ? 1.3 : 1.4,
                       ),
                       textAlign: TextAlign.left,
                     ),
@@ -364,10 +388,18 @@ class _HeroSection extends StatelessWidget {
               // İkinci Bölüm - Su Kalitesi
               Container(
                 margin: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 120.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 120.0,
                 ),
                 padding: EdgeInsets.all(
-                  isMobile ? Branding.spacingM : Branding.spacingXXL,
+                  isMobile
+                      ? Branding.spacingM
+                      : isTablet
+                      ? Branding.spacingXL
+                      : Branding.spacingXXL,
                 ),
                 decoration: BoxDecoration(
                   color: const Color(0xFFECFDF5), // Daha belirgin açık yeşil
@@ -429,7 +461,7 @@ class _HeroSection extends StatelessWidget {
                             ? 14.0
                             : 16.0,
                         fontWeight: FontWeight.w400,
-                        height: 1.4,
+                        height: isTablet ? 1.3 : 1.4,
                       ),
                       textAlign: TextAlign.left,
                     ),
@@ -443,10 +475,18 @@ class _HeroSection extends StatelessWidget {
               // Üçüncü Bölüm - Topluluk Eğitimi
               Container(
                 margin: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 120.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 120.0,
                 ),
                 padding: EdgeInsets.all(
-                  isMobile ? Branding.spacingM : Branding.spacingXXL,
+                  isMobile
+                      ? Branding.spacingM
+                      : isTablet
+                      ? Branding.spacingXL
+                      : Branding.spacingXXL,
                 ),
                 decoration: BoxDecoration(
                   color: const Color(0xFFECFDF5), // Daha belirgin açık yeşil
@@ -508,7 +548,7 @@ class _HeroSection extends StatelessWidget {
                             ? 14.0
                             : 16.0,
                         fontWeight: FontWeight.w400,
-                        height: 1.4,
+                        height: isTablet ? 1.3 : 1.4,
                       ),
                       textAlign: TextAlign.left,
                     ),
@@ -522,10 +562,18 @@ class _HeroSection extends StatelessWidget {
               // Dördüncü Bölüm - Bütünsel Kalkınma
               Container(
                 margin: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 120.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 60.0
+                      : 120.0,
                 ),
                 padding: EdgeInsets.all(
-                  isMobile ? Branding.spacingM : Branding.spacingXXL,
+                  isMobile
+                      ? Branding.spacingM
+                      : isTablet
+                      ? Branding.spacingXL
+                      : Branding.spacingXXL,
                 ),
                 decoration: BoxDecoration(
                   color: const Color(0xFFECFDF5), // Daha belirgin açık yeşil
@@ -587,7 +635,7 @@ class _HeroSection extends StatelessWidget {
                             ? 14.0
                             : 16.0,
                         fontWeight: FontWeight.w400,
-                        height: 1.4,
+                        height: isTablet ? 1.3 : 1.4,
                       ),
                       textAlign: TextAlign.left,
                     ),
@@ -601,7 +649,11 @@ class _HeroSection extends StatelessWidget {
               // İyileşme Yolculuğuna Katılın Metni
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 200.0,
+                  horizontal: isMobile
+                      ? 20.0
+                      : isTablet
+                      ? 80.0
+                      : 200.0,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -613,7 +665,7 @@ class _HeroSection extends StatelessWidget {
                         fontSize: isMobile
                             ? 18.0
                             : isTablet
-                            ? 21.0
+                            ? 22.0
                             : 24.0,
                         fontWeight: FontWeight.w700,
                         letterSpacing: -0.5,
@@ -632,7 +684,7 @@ class _HeroSection extends StatelessWidget {
                             ? 14.0
                             : 16.0,
                         fontWeight: FontWeight.w500,
-                        height: 1.4,
+                        height: isTablet ? 1.3 : 1.4,
                       ),
                       textAlign: TextAlign.justify,
                     ),
@@ -648,7 +700,11 @@ class _HeroSection extends StatelessWidget {
                 onTap: () => _SifaIpekDetailContent()._showImageDialog(context),
                 child: Container(
                   margin: EdgeInsets.symmetric(
-                    horizontal: isMobile ? 20.0 : 80.0,
+                    horizontal: isMobile
+                        ? 20.0
+                        : isTablet
+                        ? 60.0
+                        : 80.0,
                   ),
                   height: isMobile ? 120 : 200,
                   decoration: BoxDecoration(
@@ -687,11 +743,7 @@ class _HeroSection extends StatelessWidget {
                                   'Fotoğraf Yüklenemedi',
                                   style: TextStyle(
                                     color: const Color(0xFF6B7280),
-                                    fontSize: isMobile
-                                        ? 14
-                                        : isTablet
-                                        ? 16
-                                        : 18,
+                                    fontSize: isMobile ? 14 : 18,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -1185,11 +1237,7 @@ class _ProjectImageSliderState extends State<_ProjectImageSlider> {
                                       'Fotoğraf Yüklenemedi',
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: isMobile
-                                            ? 16
-                                            : isTablet
-                                            ? 20
-                                            : 24,
+                                        fontSize: isMobile ? 16 : 24,
                                         fontWeight: FontWeight.w700,
                                       ),
                                       textAlign: TextAlign.center,
