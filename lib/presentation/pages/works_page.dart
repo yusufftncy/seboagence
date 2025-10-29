@@ -362,6 +362,39 @@ class _ChaptersSection extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
+              SizedBox(height: Branding.spacingL),
+              OutlinedButton(
+                onPressed: () {
+                  if (title == 'Şifa') {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const SifaIpekDetailPage()),
+                    );
+                  } else if (title == 'Vefa') {
+                    NavigationService.goToVefa();
+                  } else if (title == 'Sefa') {
+                    NavigationService.goToSefa();
+                  }
+                },
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: Branding.white,
+                  side: BorderSide(color: Branding.white.withValues(alpha: 0.8)),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: Branding.spacingL,
+                    vertical: Branding.spacingM,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(Branding.borderRadiusM),
+                  ),
+                ),
+                child: const Text(
+                  'Detayları Gör',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Branding.white,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

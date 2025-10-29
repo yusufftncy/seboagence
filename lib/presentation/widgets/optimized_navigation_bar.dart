@@ -43,6 +43,7 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
   // State
   bool _isMenuOpen = false;
   bool _isScrolled = false;
+   bool _isHosIslerExpanded = false;
 
   // Performance optimizations
   static const Duration _fastAnimation = Duration(milliseconds: 150);
@@ -794,17 +795,20 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       backgroundColor: Colors.transparent,
       isScrollControlled: true,
       enableDrag: true,
-      builder: (context) => _buildMobileMenuOverlay(),
+      builder: (context) => StatefulBuilder(
+        builder: (context, setModalState) => _buildMobileMenuOverlay(setModalState),
+      ),
     ).then((_) {
       if (mounted) {
         setState(() {
           _isMenuOpen = false;
+          _isHosIslerExpanded = false;
         });
       }
     });
   }
 
-  Widget _buildMobileMenuOverlay() {
+  Widget _buildMobileMenuOverlay(StateSetter setModalState) {
     return SlideTransition(
       position: _slideAnimation,
       child: Container(
@@ -1021,11 +1025,39 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
                     Icons.info,
                     false,
                   ),
-                  _buildResponsiveMobileMenuItem(
-                    'Hoş İşler',
-                    Icons.work,
-                    false,
-                  ),
+                  _buildHosIslerExpandableItem(setModalState),
+                  if (_isHosIslerExpanded) ...[
+                    const SizedBox(height: 8),
+                    _buildMobileSubMenuItem(
+                      title: 'Vefa',
+                      icon: Icons.favorite,
+                      onTap: () {
+                        Navigator.pop(context);
+                        NavigationService.goToVefa();
+                      },
+                    ),
+                    _buildMobileSubMenuItem(
+                      title: 'Sefa',
+                      icon: Icons.palette,
+                      onTap: () {
+                        Navigator.pop(context);
+                        NavigationService.goToSefa();
+                      },
+                    ),
+                    _buildMobileSubMenuItem(
+                      title: 'Şifa',
+                      icon: Icons.healing,
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SifaIpekDetailPage(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                   _buildResponsiveMobileMenuItem(
                     'Konferanslar',
                     Icons.event,
@@ -1045,6 +1077,240 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
     );
   }
 
+  Widget _buildHosIslerExpandableItem(StateSetter setModalState) {
+    final bool isActive = _isHosIslerExpanded;
+    return Container(
+      margin: EdgeInsets.only(
+        bottom: Responsive.mobileResponsiveValue(
+          context,
+          smallMobile: 4.0,
+          mediumMobile: 6.0,
+          largeMobile: 8.0,
+          tablet: 10.0,
+          desktop: 12.0,
+        ),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () {
+            HapticFeedback.lightImpact();
+            setModalState(() {
+              _isHosIslerExpanded = !_isHosIslerExpanded;
+            });
+          },
+          borderRadius: BorderRadius.circular(
+            Responsive.mobileResponsiveValue(
+              context,
+              smallMobile: 8.0,
+              mediumMobile: 10.0,
+              largeMobile: 12.0,
+              tablet: 14.0,
+              desktop: 16.0,
+            ),
+          ),
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: Responsive.mobileResponsiveValue(
+                context,
+                smallMobile: 12.0,
+                mediumMobile: 14.0,
+                largeMobile: 16.0,
+                tablet: 18.0,
+                desktop: 20.0,
+              ),
+              vertical: Responsive.mobileResponsiveValue(
+                context,
+                smallMobile: 8.0,
+                mediumMobile: 10.0,
+                largeMobile: 12.0,
+                tablet: 14.0,
+                desktop: 16.0,
+              ),
+            ),
+            decoration: BoxDecoration(
+              gradient: isActive
+                  ? const LinearGradient(
+                      colors: [Color(0x0DFFFFFF), Color(0x1AFFFFFF)],
+                    )
+                  : null,
+              borderRadius: BorderRadius.circular(
+                Responsive.mobileResponsiveValue(
+                  context,
+                  smallMobile: 8.0,
+                  mediumMobile: 10.0,
+                  largeMobile: 12.0,
+                  tablet: 14.0,
+                  desktop: 16.0,
+                ),
+              ),
+              border: Border.all(
+                color: Colors.white.withValues(alpha: 0.05),
+                width: Responsive.mobileResponsiveValue(
+                  context,
+                  smallMobile: 0.3,
+                  mediumMobile: 0.4,
+                  largeMobile: 0.5,
+                  tablet: 0.6,
+                  desktop: 0.7,
+                ),
+              ),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(
+                    Responsive.mobileResponsiveValue(
+                      context,
+                      smallMobile: 4.0,
+                      mediumMobile: 5.0,
+                      largeMobile: 6.0,
+                      tablet: 7.0,
+                      desktop: 8.0,
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [Color(0x0DFFFFFF), Color(0x1AFFFFFF)],
+                    ),
+                    borderRadius: BorderRadius.circular(
+                      Responsive.mobileResponsiveValue(
+                        context,
+                        smallMobile: 4.0,
+                        mediumMobile: 5.0,
+                        largeMobile: 6.0,
+                        tablet: 7.0,
+                        desktop: 8.0,
+                      ),
+                    ),
+                  ),
+                  child: Icon(
+                    Icons.work,
+                    color: Branding.white,
+                    size: Responsive.mobileResponsiveValue(
+                      context,
+                      smallMobile: 14.0,
+                      mediumMobile: 16.0,
+                      largeMobile: 18.0,
+                      tablet: 20.0,
+                      desktop: 22.0,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: Responsive.mobileResponsiveValue(
+                    context,
+                    smallMobile: 8.0,
+                    mediumMobile: 10.0,
+                    largeMobile: 12.0,
+                    tablet: 14.0,
+                    desktop: 16.0,
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    'Hoş İşler',
+                    style: TextStyle(
+                      color: Branding.white,
+                      fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
+                      fontSize: Responsive.mobileResponsiveValue(
+                        context,
+                        smallMobile: 13.0,
+                        mediumMobile: 14.0,
+                        largeMobile: 15.0,
+                        tablet: 16.0,
+                        desktop: 17.0,
+                      ),
+                    ),
+                  ),
+                ),
+                AnimatedRotation(
+                  turns: isActive ? 0.5 : 0.0,
+                  duration: const Duration(milliseconds: 200),
+                  child: Icon(
+                    Icons.keyboard_arrow_down,
+                    color: Colors.white.withValues(alpha: 0.3),
+                    size: Responsive.mobileResponsiveValue(
+                      context,
+                      smallMobile: 16.0,
+                      mediumMobile: 18.0,
+                      largeMobile: 20.0,
+                      tablet: 22.0,
+                      desktop: 24.0,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMobileSubMenuItem({
+    required String title,
+    required IconData icon,
+    required VoidCallback onTap,
+  }) {
+    return Container
+      (
+      margin: EdgeInsets.only(
+        left: Responsive.mobileResponsiveValue(
+          context,
+          smallMobile: 20.0,
+          mediumMobile: 22.0,
+          largeMobile: 24.0,
+          tablet: 26.0,
+          desktop: 28.0,
+        ),
+        bottom: Responsive.mobileResponsiveValue(
+          context,
+          smallMobile: 6.0,
+          mediumMobile: 8.0,
+          largeMobile: 8.0,
+          tablet: 10.0,
+          desktop: 10.0,
+        ),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(8),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.05),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: Colors.white.withValues(alpha: 0.1),
+                width: 0.5,
+              ),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  icon,
+                  color: Branding.white.withValues(alpha: 0.7),
+                  size: 16,
+                ),
+                const SizedBox(width: 12),
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: Branding.white.withValues(alpha: 0.85),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
   Widget _buildResponsiveMobileMenuItem(
     String title,
     IconData icon,
