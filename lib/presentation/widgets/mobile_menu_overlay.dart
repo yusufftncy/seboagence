@@ -217,15 +217,11 @@ class _MobileMenuOverlayState extends State<MobileMenuOverlay>
   }
 
   void _navigateToWorks() {
-    if (NavigationService.currentState != null) {
-      NavigationService.currentState!.pushNamed('/project/works');
-    }
+    NavigationService.goToWorks();
   }
 
   void _navigateToConferences() {
-    if (NavigationService.currentState != null) {
-      NavigationService.currentState!.pushNamed('/conferences');
-    }
+    NavigationService.goToConferences();
   }
 
   void _navigateToContact() {

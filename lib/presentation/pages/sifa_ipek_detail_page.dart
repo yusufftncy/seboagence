@@ -4,6 +4,7 @@
 /// Yeşil ve beyaz renk teması kullanılır.
 library;
 
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/theme/branding.dart';
@@ -37,6 +38,57 @@ class _SifaIpekDetailContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(children: [_HeroSection(), _FooterWidget(context)]),
+    );
+  }
+
+  void _showImageDialog(BuildContext context) {
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        opaque: false,
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return PopScope(
+            canPop: true,
+            onPopInvokedWithResult: (didPop, result) {
+              if (!didPop) {
+                Navigator.of(context).pop();
+              }
+            },
+            child: Scaffold(
+              backgroundColor: Colors.black.withValues(alpha: 0.7),
+              body: GestureDetector(
+                onTap: () => Navigator.of(context).pop(),
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: Colors.transparent,
+                  child: Center(
+                    child: AbsorbPointer(
+                      absorbing: false,
+                      child: Container(
+                        constraints: BoxConstraints(
+                          maxWidth: MediaQuery.of(context).size.width * 0.9,
+                          maxHeight: MediaQuery.of(context).size.height * 0.8,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.asset(
+                            'assets/images/sifa2.jpg',
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+        transitionDuration: const Duration(milliseconds: 300),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(opacity: animation, child: child);
+        },
+      ),
     );
   }
 }
@@ -93,7 +145,7 @@ class _HeroSection extends StatelessWidget {
 
               // Ana başlık
               Text(
-                'Şifa İpek Projesi',
+                'Şifa Projesi',
                 style: TextStyle(
                   color: const Color(0xFF1F2937),
                   fontSize: isMobile
@@ -122,7 +174,7 @@ class _HeroSection extends StatelessWidget {
                   horizontal: isMobile ? 20.0 : 160.0,
                 ),
                 child: Text(
-                  'Dünya nüfusunun onda biri, yani yaklaşık 700 milyon insan temiz suya ulaşamıyor. Yaklaşık 2 milyar insanın içtiği su hijyen kurallarına uymuyor. Kirli suyun neden olduğu kolera, ishal ve tifo nedeniyle her gün yaklaşık 1.000 çocuk ölüyor. Kuraklık, hastalık ve suya ulaşma güçlüğü nedeniyle her yıl hayatını kaybeden insan sayısı 2 milyonu geçiyor.\n\nKuraklık, yokluk, hızlı nüfus artışı ve kirlilik içilebilir temiz su kaynaklarını tehdit ediyor. Milyonlarca insanın sağlıklı suya sahip olamadığı dünyamızda salgın hastalıklar giderek artıyor. Temiz su kaynaklarının azalmaması için ciddi ve uygulanabilir önlemler alınmazsa insanların karşı karşıya olduğu tehlikeler daha da artacak. Özellikle Afrika ve Asya bölgesi başta olmak üzere dünyanın birçok bölgesinde insanlar günlük su ihtiyaçlarını karşılayabilmek için kilometrelerce yürümek zorunda kalıyor.\n\n22 ülkede 3.000 Euro\'ya normal standartlarda bir su kuyusu açtırabilirsiniz.',
+                  'Kalıcı Sağlık ve Kapsayıcı Kalkınmayla Gelen Derman\n\n"Şifa," kelime anlamı ile sadece fiziksel iyileşmeyi değil, aynı zamanda toplumsal derman bulmayı, ruhsal dinginliği ve kalıcı bir sağlıklı yaşamı ifade eder. Biz Şifa Bölümü olarak, toplumun tüm katmanlarında hissedilen bu bütünsel iyileşmenin, izole çabalarla değil, ancak güçlü bir ortak bilinçle sağlanabileceğine inanıyoruz. Bu inançla yola çıkarak, misyonumuzu belirlediğiniz beş temel direk üzerine kurduk: Yardımlaşma ve dayanışma ile toplumsal yaralarımızı sararken; doğa sevgisi ile yaşam kaynağımızı koruyor; kadın gücünü merkeze alarak toplumsal dönüşümü hızlandırıyor ve tüm bu unsurların birleşimiyle kapsayıcı ve sürdürülebilir kalkınmayı hedefliyoruz. Amacımız, sadece anlık çözümler sunmak değil, gelecek nesillere onurlu, sağlıklı ve derman bulmuş bir yaşam vaat eden, köklü bir etki yaratmaktır.',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
                     fontSize: isMobile ? 12.0 : 16.0,
@@ -130,6 +182,41 @@ class _HeroSection extends StatelessWidget {
                     height: 1.5,
                   ),
                   textAlign: TextAlign.justify,
+                ),
+              ),
+              SizedBox(
+                height: isMobile ? Branding.spacingM : Branding.spacingXXL,
+              ),
+
+              // Slogan
+              Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: isMobile ? 20.0 : 120.0,
+                ),
+                padding: EdgeInsets.all(
+                  isMobile ? Branding.spacingM : Branding.spacingXXL,
+                ),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFECFDF5),
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.05),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Text(
+                  '"Her ilmekte umut, her lifte yeniden doğuş."',
+                  style: TextStyle(
+                    color: const Color(0xFF1F2937),
+                    fontSize: isMobile ? 16.0 : 20.0,
+                    fontWeight: FontWeight.w600,
+                    fontStyle: FontStyle.italic,
+                    height: 1.4,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
               SizedBox(
@@ -163,13 +250,13 @@ class _HeroSection extends StatelessWidget {
                 height: isMobile ? Branding.spacingM : Branding.spacingXXL,
               ),
 
-              // Su kuyusu açıklama metni
+              // Şifa projesi açıklama metni
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: isMobile ? 20.0 : 160.0,
                 ),
                 child: Text(
-                  'Su kuyusu açılışlarında ülke seçimi, bölgelerdeki ihtiyaçlar değerlendirilerek vakfımız tarafından yapılır. Böylece kuyular ihtiyaç sahiplerinin en faydalı kullanacağı şekilde hizmete açılır.',
+                  'Şifa projesi kapsamında, toplumsal iyileşme çalışmalarımızı ihtiyaç analizi yaparak belirlenen bölgelerde gerçekleştiriyoruz. Bu sayede projelerimiz toplumun en çok ihtiyaç duyduğu alanlarda etkili oluyor ve kalıcı değişim yaratıyor.',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
                     fontSize: isMobile ? 12.0 : 16.0,
@@ -224,7 +311,7 @@ class _HeroSection extends StatelessWidget {
 
                     // Başlık
                     Text(
-                      'Kota ve Organizasyon',
+                      'El Birliğiyle Gelen Derman: Yardımlaşma ve Dayanışma',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile ? 20.0 : 28.0,
@@ -238,7 +325,7 @@ class _HeroSection extends StatelessWidget {
 
                     // Metin içeriği
                     Text(
-                      'Su kuyusu açılan ülke ve bölgeler yıl içerisinde çevre koşulları ve ihtiyaçlara göre değişiklik göstermektedir. Her yıl ağırlıklı olarak Doğu Afrika ve Batı Afrika ülkelerinde olmak üzere Orta Doğu, Orta Asya ve Güney Asya ülkelerinde de ihtiyaca göre su kuyusu projeleri yapılmaktadır.\n\nBölgelerde açılacak su kuyusu sayıları, ülke ihtiyaçlarına göre yılın başında belirlenmekte ve belirlenen kotalar dahilinde su kuyuları açılmaktadır.\n\nSu kuyularının büyük bir bölümü başkent ve merkezlere uzak, genellikle kırsal ve ihtiyacın en yoğun olduğu bölgelerde açılmaktadır.',
+                      'Toplumsal Şifa, ancak birbirimize omuz verdiğimizde mümkündür. Bir toplumun yaralarını sarması, zorluklar karşısında kurduğu güçlü dayanışma köprüleriyle başlar. Biz, bu bölümde gönüllülük ruhunu ve karşılıksız desteği en önde tutuyoruz. İhtiyaç sahiplerine uzanan her el, toplumsal bağlarımızı güçlendiren ve yaralarımızı saran birer derman kaynağıdır. Birlikte hareket etme bilinciyle, toplumsal iyileşme sürecimizi hızlandırıyoruz.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile ? 12.0 : 16.0,
@@ -295,7 +382,7 @@ class _HeroSection extends StatelessWidget {
 
                     // Başlık
                     Text(
-                      'Su Kalitesi ve Test',
+                      'Doğanın İyileştirici Gücü: Ekolojik Şifa',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile ? 20.0 : 28.0,
@@ -309,7 +396,7 @@ class _HeroSection extends StatelessWidget {
 
                     // Metin içeriği
                     Text(
-                      'Açılan her su kuyusu, uluslararası standartlara uygun olarak test edilmekte ve su kalitesi kontrol edilmektedir. Su kuyularından alınan numuneler laboratuvarlarda analiz edilerek içme suyu standartlarına uygunluğu belirlenmektedir.\n\nSu kalitesi testleri, kuyu açılışından sonra düzenli aralıklarla tekrarlanmakta ve sürekli izleme yapılmaktadır. Bu sayede kuyu kullanıcılarının güvenli ve temiz suya erişimi sağlanmaktadır.\n\nTest sonuçları, yerel sağlık otoriteleri ile paylaşılarak bölgesel su kalitesi standartlarının korunmasına katkı sağlanmaktadır.',
+                      'Kalıcı sağlık ve derman, temiz ve dengeli bir çevrede mümkündür. Doğanın mucizevi ve iyileştirici gücünün farkındayız. Bu nedenle, çevreye duyarlı, sürdürülebilir yaklaşımları benimseyerek doğal kaynaklarımızı koruyoruz. Doğa ile uyum içinde yaşamak, hem bedenimize hem de ruhumuza Şifa veren en temel kaynaktır. Ekolojik dengeyi gözeterek, gelecek nesillere daha sağlıklı bir çevre mirası bırakmayı hedefliyoruz.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile ? 12.0 : 16.0,
@@ -366,7 +453,7 @@ class _HeroSection extends StatelessWidget {
 
                     // Başlık
                     Text(
-                      'Topluluk Eğitimi',
+                      '♀ Güçlü Yarınlar: Kadın Gücüyle Şekillenen Toplum',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile ? 20.0 : 28.0,
@@ -380,7 +467,7 @@ class _HeroSection extends StatelessWidget {
 
                     // Metin içeriği
                     Text(
-                      'Su kuyusu açılışları sırasında yerel topluluklara hijyen, su tasarrufu ve kuyu bakımı konularında eğitimler verilmektedir. Bu eğitimler, kuyuların uzun vadeli ve sürdürülebilir kullanımını sağlamaktadır.\n\nEğitim programları, çocuklardan yetişkinlere kadar tüm yaş gruplarını kapsamakta ve interaktif yöntemlerle gerçekleştirilmektedir. Topluluk liderleri ve öğretmenler de bu süreçte aktif rol almaktadır.\n\nEğitim sonrasında topluluk üyeleri, kuyu bakımından sorumlu komiteler oluşturarak kuyuların sürekli bakımını üstlenmektedir.',
+                      'Toplumsal yapımızın iyileşme ve kalkınma süreci, kadınların güçlenmesiyle başlar. Kadın emeği ve vizyonu, topluma en hızlı ve en kalıcı dermanı getiren güçtür. Kadınlarımızın potansiyelini ortaya çıkarıyor, mesleki gelişimlerini destekliyor ve ekonomik hayata tam katılımlarını teşvik ediyoruz. Kadınların liderliği, toplumsal Şifa ve dönüşümün en önemli katalizörüdür.',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile ? 12.0 : 16.0,
@@ -396,7 +483,78 @@ class _HeroSection extends StatelessWidget {
                 height: isMobile ? Branding.spacingM : Branding.spacingXXL,
               ),
 
-              // Ne Yapabilirsiniz Metni
+              // Dördüncü Bölüm - Bütünsel Kalkınma
+              Container(
+                margin: EdgeInsets.symmetric(
+                  horizontal: isMobile ? 20.0 : 120.0,
+                ),
+                padding: EdgeInsets.all(
+                  isMobile ? Branding.spacingM : Branding.spacingXXL,
+                ),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFECFDF5), // Daha belirgin açık yeşil
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.05),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    // Üstteki ikon
+                    Container(
+                      width: isMobile ? 48 : 60,
+                      height: isMobile ? 48 : 60,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF10B981),
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Icon(
+                        Icons.trending_up,
+                        color: Colors.white,
+                        size: isMobile ? 24 : 30,
+                      ),
+                    ),
+                    SizedBox(
+                      height: isMobile ? Branding.spacingM : Branding.spacingXL,
+                    ),
+
+                    // Başlık
+                    Text(
+                      'Bütünsel Kalkınma: Kalıcı Dermanın Teminatı',
+                      style: TextStyle(
+                        color: const Color(0xFF1F2937),
+                        fontSize: isMobile ? 20.0 : 28.0,
+                        fontWeight: FontWeight.w800,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: isMobile ? Branding.spacingM : Branding.spacingXL,
+                    ),
+
+                    // Metin içeriği
+                    Text(
+                      'Bizim için kalkınma; sadece ekonomik büyüme değil, aynı zamanda eğitim, sağlık ve fırsat eşitliği ile sağlanan bütünsel bir iyileşme sürecidir. Sürdürülebilir Kalkınma, bireylerin geleceğe güvenle baktığı, kalıcı Şifa bulduğu bir yaşamın teminatıdır. Bu amaçla, adil, kapsayıcı ve kalıcı çözümler üreterek toplumsal refahı artırmayı ve her bireyin onurlu bir yaşam sürmesini sağlamayı hedefliyoruz.',
+                      style: TextStyle(
+                        color: const Color(0xFF1F2937),
+                        fontSize: isMobile ? 12.0 : 16.0,
+                        fontWeight: FontWeight.w400,
+                        height: 1.4,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: isMobile ? Branding.spacingM : Branding.spacingXXL,
+              ),
+
+              // İyileşme Yolculuğuna Katılın Metni
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: isMobile ? 20.0 : 200.0,
@@ -405,7 +563,7 @@ class _HeroSection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Ne Yapabilirsiniz?',
+                      '💖 İyileşme Yolculuğumuza Katılın',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile ? 18.0 : 24.0,
@@ -417,7 +575,7 @@ class _HeroSection extends StatelessWidget {
                       height: isMobile ? Branding.spacingS : Branding.spacingL,
                     ),
                     Text(
-                      'Aileniz, arkadaş grubunuz, iş arkadaşlarınız veya akrabalarınızla bir araya gelerek su kuyusu açtırabilir ya da su kuyusu fonuna dilediğiniz miktarda bağışta bulunarak ihtiyaç sahibi kardeşlerimizin suya kavuşması için gerekli çalışmaların (su kuyusu onarımı, jeneratör alımı, su kanalı yapımı, depo alımı, tesisat kurulum ve onarımı vb.) yapılmasına katkıda bulunabilirsiniz. Su kuyusu açtırmak için bölge seçimi yapmadan önce İHH Su Kuyusu birimiyle irtibata geçmeniz gerekir.',
+                      'Bu büyük Şifa yolculuğunda sizin de katkılarınızla ilerlemek istiyoruz. Sizin desteğiniz, dayanışma ruhumuzu büyütecek, doğamızı koruyacak ve kalkınma çabalarımızı daha fazla insana ulaştıracaktır. Birlikte, derman bulduğumuz, sağlıklı ve güçlü bir gelecek inşa edelim!',
                       style: TextStyle(
                         color: const Color(0xFF1F2937),
                         fontSize: isMobile ? 12.0 : 16.0,
@@ -433,36 +591,60 @@ class _HeroSection extends StatelessWidget {
                 height: isMobile ? Branding.spacingM : Branding.spacingXXL,
               ),
 
-              // Fotoğraf Placeholder
-              Container(
-                margin: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20.0 : 80.0,
-                ),
-                height: isMobile ? 120 : 200,
-                decoration: BoxDecoration(
-                  color: const Color(0xFFF3F4F6),
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: const Color(0xFFE5E7EB), width: 1),
-                ),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.image,
-                        color: const Color(0xFF9CA3AF),
-                        size: isMobile ? 36 : 64,
-                      ),
-                      SizedBox(height: Branding.spacingM),
-                      Text(
-                        'Fotoğraf Yeri',
-                        style: TextStyle(
-                          color: const Color(0xFF6B7280),
-                          fontSize: isMobile ? 14 : 18,
-                          fontWeight: FontWeight.w500,
-                        ),
+              // Şifa Fotoğrafı
+              GestureDetector(
+                onTap: () => _SifaIpekDetailContent()._showImageDialog(context),
+                child: Container(
+                  margin: EdgeInsets.symmetric(
+                    horizontal: isMobile ? 20.0 : 80.0,
+                  ),
+                  height: isMobile ? 120 : 200,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: const Color(0xFFE5E7EB),
+                      width: 1,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.1),
+                        blurRadius: 8,
+                        offset: const Offset(0, 4),
                       ),
                     ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.asset(
+                      'assets/images/sifa2.jpg',
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: const Color(0xFFF3F4F6),
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.image,
+                                  color: const Color(0xFF9CA3AF),
+                                  size: isMobile ? 36 : 64,
+                                ),
+                                SizedBox(height: Branding.spacingM),
+                                Text(
+                                  'Fotoğraf Yüklenemedi',
+                                  style: TextStyle(
+                                    color: const Color(0xFF6B7280),
+                                    fontSize: isMobile ? 14 : 18,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
@@ -472,7 +654,7 @@ class _HeroSection extends StatelessWidget {
 
               // Alt başlık
               Text(
-                'Hatay\'da Barış İpeği ile Sosyal Sorumluluk',
+                'Toplumsal İyileşme ve Sürdürülebilir Kalkınma',
                 style: TextStyle(
                   color: const Color(0xFF6B7280),
                   fontSize: isMobile
@@ -503,7 +685,7 @@ class _HeroSection extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  'Sosyal Sorumluluk Projesi',
+                  'Toplumsal İyileşme Projesi',
                   style: TextStyle(
                     color: Color(0xFF10B981),
                     fontSize: 14,
@@ -537,7 +719,7 @@ class _HeroSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Susuzluğa Çare Ol',
+                'Barış İpeği Projesi',
                 style: TextStyle(
                   color: const Color(0xFF1F2937),
                   fontSize: 20,
@@ -547,7 +729,7 @@ class _HeroSection extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Text(
-                'Her bölgenin şartlarına göre hayata geçirilen su kuyuları şimdiye kadar milyonlarca insanın susuzluğuna çare oldu.',
+                'Hatay\'da üretilen barış ipeği ile sosyal sorumluluk projeleri gerçekleştiriyor, toplumsal dayanışmayı güçlendiriyoruz.',
                 style: TextStyle(
                   color: const Color(0xFF6B7280),
                   fontSize: 14,
@@ -558,36 +740,50 @@ class _HeroSection extends StatelessWidget {
             ],
           ),
         ),
-        // Sağ bölüm - Fotoğraf placeholder
+        // Sağ bölüm - Şifa fotoğrafı
         Container(
           width: double.infinity,
           height: 200,
           decoration: const BoxDecoration(
-            color: Color(0xFFF3F4F6),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(16),
               bottomRight: Radius.circular(16),
             ),
           ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.water_drop,
-                  color: const Color(0xFF10B981),
-                  size: 48,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Su Kuyusu Fotoğrafı',
-                  style: TextStyle(
-                    color: const Color(0xFF6B7280),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(16),
+              bottomRight: Radius.circular(16),
+            ),
+            child: Image.asset(
+              'assets/images/sifa1.jpg',
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  color: const Color(0xFFF3F4F6),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.image,
+                          color: const Color(0xFF6B7280),
+                          size: 48,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Fotoğraf Yüklenemedi',
+                          style: TextStyle(
+                            color: const Color(0xFF6B7280),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                );
+              },
             ),
           ),
         ),
@@ -617,7 +813,7 @@ class _HeroSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Susuzluğa Çare Ol',
+                  'Barış İpeği Projesi',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
                     fontSize: 24,
@@ -627,7 +823,7 @@ class _HeroSection extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Her bölgenin şartlarına göre hayata geçirilen su kuyuları şimdiye kadar milyonlarca insanın susuzluğuna çare oldu.',
+                  'Hatay\'da üretilen barış ipeği ile sosyal sorumluluk projeleri gerçekleştiriyor, toplumsal dayanışmayı güçlendiriyoruz.',
                   style: TextStyle(
                     color: const Color(0xFF6B7280),
                     fontSize: 16,
@@ -639,37 +835,51 @@ class _HeroSection extends StatelessWidget {
             ),
           ),
         ),
-        // Sağ bölüm - Fotoğraf placeholder
+        // Sağ bölüm - Şifa fotoğrafı
         Expanded(
           flex: 1,
           child: Container(
             height: 300,
             decoration: const BoxDecoration(
-              color: Color(0xFFF3F4F6),
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(16),
                 bottomRight: Radius.circular(16),
               ),
             ),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.water_drop,
-                    color: const Color(0xFF10B981),
-                    size: 64,
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    'Su Kuyusu Fotoğrafı',
-                    style: TextStyle(
-                      color: const Color(0xFF6B7280),
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(16),
+                bottomRight: Radius.circular(16),
+              ),
+              child: Image.asset(
+                'assets/images/sifa1.jpg',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: const Color(0xFFF3F4F6),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.image,
+                            color: const Color(0xFF6B7280),
+                            size: 64,
+                          ),
+                          const SizedBox(height: 12),
+                          Text(
+                            'Fotoğraf Yüklenemedi',
+                            style: TextStyle(
+                              color: const Color(0xFF6B7280),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  );
+                },
               ),
             ),
           ),
@@ -700,7 +910,7 @@ class _HeroSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Susuzluğa Çare Ol',
+                  'Barış İpeği Projesi',
                   style: TextStyle(
                     color: const Color(0xFF1F2937),
                     fontSize: 28,
@@ -710,7 +920,7 @@ class _HeroSection extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'Her bölgenin şartlarına göre hayata geçirilen su kuyuları şimdiye kadar milyonlarca insanın susuzluğuna çare oldu.',
+                  'Hatay\'da üretilen barış ipeği ile sosyal sorumluluk projeleri gerçekleştiriyor, toplumsal dayanışmayı güçlendiriyoruz.',
                   style: TextStyle(
                     color: const Color(0xFF6B7280),
                     fontSize: 18,
@@ -722,37 +932,51 @@ class _HeroSection extends StatelessWidget {
             ),
           ),
         ),
-        // Sağ bölüm - Fotoğraf placeholder
+        // Sağ bölüm - Şifa fotoğrafı
         Expanded(
           flex: 1,
           child: Container(
             height: 350,
             decoration: const BoxDecoration(
-              color: Color(0xFFF3F4F6),
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(16),
                 bottomRight: Radius.circular(16),
               ),
             ),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.water_drop,
-                    color: const Color(0xFF10B981),
-                    size: 80,
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    'Su Kuyusu Fotoğrafı',
-                    style: TextStyle(
-                      color: const Color(0xFF6B7280),
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(16),
+                bottomRight: Radius.circular(16),
+              ),
+              child: Image.asset(
+                'assets/images/sifa1.jpg',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: const Color(0xFFF3F4F6),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.image,
+                            color: const Color(0xFF6B7280),
+                            size: 80,
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            'Fotoğraf Yüklenemedi',
+                            style: TextStyle(
+                              color: const Color(0xFF6B7280),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  );
+                },
               ),
             ),
           ),
@@ -773,35 +997,51 @@ class _ProjectImageSlider extends StatefulWidget {
 class _ProjectImageSliderState extends State<_ProjectImageSlider> {
   final PageController _pageController = PageController();
   int _currentIndex = 0;
+  Timer? _timer;
 
   // Proje görselleri listesi
   final List<Map<String, dynamic>> _projectImages = [
     {
-      'title': 'Su Kuyusu Açılışı',
-      'description': 'Afrika\'da açılan su kuyusu',
-      'image': 'assets/images/sebnemyuceer.jpg', // Mevcut görsel
+      'title': 'Şifa Projesi',
+      'description': 'Toplumsal iyileşme çalışmaları',
+      'image': 'assets/images/sifaslider1.jpg', // Şifa slider görseli
     },
     {
-      'title': 'Topluluk Eğitimi',
-      'description': 'Yerel halka hijyen eğitimi',
-      'image': 'assets/images/sebnemyuceer.jpg',
+      'title': 'Toplumsal Dayanışma',
+      'description': 'Birlikte iyileşme çalışmaları',
+      'image': 'assets/images/sifaslider2.jpg',
     },
     {
-      'title': 'Su Kalitesi Testi',
-      'description': 'Laboratuvar analizi',
-      'image': 'assets/images/sebnemyuceer.jpg',
-    },
-    {
-      'title': 'Kuyu Bakımı',
-      'description': 'Teknik bakım çalışması',
-      'image': 'assets/images/sebnemyuceer.jpg',
+      'title': 'Ekolojik Şifa',
+      'description': 'Doğa ile uyum içinde yaşam',
+      'image': 'assets/images/sifaslider3.jpg',
     },
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _startAutoSlide();
+  }
+
+  @override
   void dispose() {
+    _timer?.cancel();
     _pageController.dispose();
     super.dispose();
+  }
+
+  void _startAutoSlide() {
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+      if (mounted) {
+        int nextIndex = (_currentIndex + 1) % _projectImages.length;
+        _pageController.animateToPage(
+          nextIndex,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
   }
 
   @override
@@ -814,10 +1054,10 @@ class _ProjectImageSliderState extends State<_ProjectImageSlider> {
         // Slider Container
         SizedBox(
           height: isMobile
-              ? 200
+              ? 300
               : isTablet
-              ? 280
-              : 320,
+              ? 400
+              : 450,
           child: GestureDetector(
             onTap: () {
               // Otomatik olarak sonraki slide'a geç
@@ -856,49 +1096,49 @@ class _ProjectImageSliderState extends State<_ProjectImageSlider> {
                       fit: StackFit.expand,
                       children: [
                         // Görsel
-                        Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [
-                                const Color(0xFF10B981).withValues(alpha: 0.8),
-                                const Color(0xFF059669).withValues(alpha: 0.9),
-                              ],
-                            ),
-                          ),
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.water_drop,
-                                  color: Colors.white,
-                                  size: isMobile ? 48 : 80,
+                        Image.asset(
+                          imageData['image'],
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [
+                                    const Color(
+                                      0xFF10B981,
+                                    ).withValues(alpha: 0.8),
+                                    const Color(
+                                      0xFF059669,
+                                    ).withValues(alpha: 0.9),
+                                  ],
                                 ),
-                                SizedBox(height: Branding.spacingM),
-                                Text(
-                                  imageData['title'],
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: isMobile ? 16 : 24,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                  textAlign: TextAlign.center,
+                              ),
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.image,
+                                      color: Colors.white,
+                                      size: isMobile ? 48 : 80,
+                                    ),
+                                    SizedBox(height: Branding.spacingM),
+                                    Text(
+                                      'Fotoğraf Yüklenemedi',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: isMobile ? 16 : 24,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
                                 ),
-                                SizedBox(height: Branding.spacingS),
-                                Text(
-                                  imageData['description'],
-                                  style: TextStyle(
-                                    color: Colors.white.withValues(alpha: 0.9),
-                                    fontSize: isMobile ? 12 : 16,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                          ),
+                              ),
+                            );
+                          },
                         ),
                         // Gradient overlay
                         Container(

@@ -9,6 +9,7 @@ import '../../core/theme/branding.dart';
 import '../../core/utils/responsive.dart';
 import '../../core/services/navigation_service.dart';
 import 'optimized_logo.dart';
+import '../pages/sifa_ipek_detail_page.dart';
 
 class OptimizedNavigationBar extends StatefulWidget {
   final bool isSticky;
@@ -587,9 +588,9 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
   Widget _buildProjectsDropdown() {
     return _buildDropdownMenu('Hoş İşler', Icons.work, [
       _buildDropdownItem('Tüm Projeler', 'tum_projeler', Icons.list),
+      _buildDropdownItem('Şifa Projesi', 'sifa', Icons.healing),
       _buildDropdownItem('Vefa Projesi', 'vefa', Icons.favorite),
       _buildDropdownItem('Sefa Projesi', 'sefa', Icons.palette),
-      _buildDropdownItem('Şifa Projesi', 'sifa', Icons.healing),
     ], _handleProjectNavigation);
   }
 
@@ -1226,6 +1227,9 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
       case 'Hakkımızda':
         NavigationService.goToAbout();
         break;
+      case 'Hoş İşler':
+        NavigationService.goToWorks();
+        break;
       case 'Konferanslar':
         NavigationService.goToConferences();
         break;
@@ -1247,7 +1251,10 @@ class _OptimizedNavigationBarState extends State<OptimizedNavigationBar>
         NavigationService.goToProject('sefa');
         break;
       case 'sifa':
-        NavigationService.goToProject('sifa');
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const SifaIpekDetailPage()),
+        );
         break;
     }
   }
