@@ -242,19 +242,20 @@ class _PastEventsSection extends StatelessWidget {
           SizedBox(height: Branding.spacingXL),
           Responsive.responsiveWidget(
             context,
-            mobile: _buildMobilePastEvents(),
-            tablet: _buildTabletPastEvents(),
-            desktop: _buildDesktopPastEvents(),
+            mobile: _buildMobilePastEvents(context),
+            tablet: _buildTabletPastEvents(context),
+            desktop: _buildDesktopPastEvents(context),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildMobilePastEvents() {
+  Widget _buildMobilePastEvents(BuildContext context) {
     return Column(
       children: [
         _buildPastEventCard(
+          context: context,
           title: 'CCI France Turquie Etkinliği',
           date: 'Aralık 2025',
           participants: '150+ Katılımcı',
@@ -263,6 +264,7 @@ class _PastEventsSection extends StatelessWidget {
         ),
         SizedBox(height: Branding.spacingL),
         _buildPastEventCard(
+          context: context,
           title: 'Fransız Ticaret Odası Konferansı',
           date: 'Kasım 2025',
           participants: '200+ Katılımcı',
@@ -272,6 +274,7 @@ class _PastEventsSection extends StatelessWidget {
         ),
         SizedBox(height: Branding.spacingL),
         _buildPastEventCard(
+          context: context,
           title: 'CCI France Turquie İşbirliği Etkinliği',
           date: 'Ekim 2025',
           participants: '120+ Katılımcı',
@@ -282,13 +285,14 @@ class _PastEventsSection extends StatelessWidget {
     );
   }
 
-  Widget _buildTabletPastEvents() {
+  Widget _buildTabletPastEvents(BuildContext context) {
     return Column(
       children: [
         Row(
           children: [
             Expanded(
               child: _buildPastEventCard(
+                context: context,
                 title: 'CCI France Turquie Etkinliği',
                 date: 'Aralık 2025',
                 participants: '150+ Katılımcı',
@@ -300,6 +304,7 @@ class _PastEventsSection extends StatelessWidget {
             SizedBox(width: Branding.spacingL),
             Expanded(
               child: _buildPastEventCard(
+                context: context,
                 title: 'Fransız Ticaret Odası Konferansı',
                 date: 'Kasım 2025',
                 participants: '200+ Katılımcı',
@@ -315,6 +320,7 @@ class _PastEventsSection extends StatelessWidget {
           children: [
             Expanded(
               child: _buildPastEventCard(
+                context: context,
                 title: 'CCI France Turquie İşbirliği Etkinliği',
                 date: 'Ekim 2025',
                 participants: '120+ Katılımcı',
@@ -331,11 +337,12 @@ class _PastEventsSection extends StatelessWidget {
     );
   }
 
-  Widget _buildDesktopPastEvents() {
+  Widget _buildDesktopPastEvents(BuildContext context) {
     return Row(
       children: [
         Expanded(
           child: _buildPastEventCard(
+            context: context,
             title: 'CCI France Turquie Etkinliği',
             date: 'Aralık 2025',
             participants: '150+ Katılımcı',
@@ -347,6 +354,7 @@ class _PastEventsSection extends StatelessWidget {
         SizedBox(width: Branding.spacingL),
         Expanded(
           child: _buildPastEventCard(
+            context: context,
             title: 'Fransız Ticaret Odası Konferansı',
             date: 'Kasım 2025',
             participants: '200+ Katılımcı',
@@ -358,6 +366,7 @@ class _PastEventsSection extends StatelessWidget {
         SizedBox(width: Branding.spacingL),
         Expanded(
           child: _buildPastEventCard(
+            context: context,
             title: 'CCI France Turquie İşbirliği Etkinliği',
             date: 'Ekim 2025',
             participants: '120+ Katılımcı',
@@ -371,6 +380,7 @@ class _PastEventsSection extends StatelessWidget {
   }
 
   Widget _buildPastEventCard({
+    required BuildContext context,
     required String title,
     required String date,
     required String participants,
@@ -465,7 +475,16 @@ class _PastEventsSection extends StatelessWidget {
 
           // Detayları gör butonu
           OutlinedButton(
-            onPressed: () {},
+            onPressed: () {
+              _showPastEventDetails(
+                context,
+                title: title,
+                date: date,
+                participants: participants,
+                description: description,
+                color: color,
+              );
+            },
             style: OutlinedButton.styleFrom(
               foregroundColor: Branding.white,
               side: BorderSide(color: Branding.white),
@@ -487,6 +506,132 @@ class _PastEventsSection extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void _showPastEventDetails(
+    BuildContext context, {
+    required String title,
+    required String date,
+    required String participants,
+    required String description,
+    required Color color,
+  }) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: const Color(0xFF0F1628),
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (ctx) {
+        final isMobile = Responsive.isMobile(ctx);
+        return Padding(
+          padding: EdgeInsets.only(
+            left: Branding.spacingXL,
+            right: Branding.spacingXL,
+            top: Branding.spacingXL,
+            bottom: MediaQuery.of(ctx).viewInsets.bottom + Branding.spacingXL,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: color.withValues(alpha: 0.2),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Text(
+                        'Tamamlandı',
+                        style: TextStyle(
+                          color: Branding.white,
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    IconButton(
+                      onPressed: () => Navigator.of(ctx).pop(),
+                      icon: const Icon(Icons.close, color: Branding.white),
+                    ),
+                  ],
+                ),
+                SizedBox(height: Branding.spacingL),
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: Branding.white,
+                    fontSize: isMobile ? 22.0 : 26.0,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                SizedBox(height: Branding.spacingS),
+                Row(
+                  children: [
+                    const Icon(Icons.calendar_today, color: Branding.white, size: 16.0),
+                    const SizedBox(width: 8),
+                    Text(
+                      date,
+                      style: TextStyle(
+                        color: Branding.white.withValues(alpha: 0.95),
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    const Icon(Icons.people, color: Branding.white, size: 16.0),
+                    const SizedBox(width: 8),
+                    Text(
+                      participants,
+                      style: TextStyle(
+                        color: Branding.white.withValues(alpha: 0.95),
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: Branding.spacingL),
+                Text(
+                  description,
+                  style: TextStyle(
+                    color: Branding.white.withValues(alpha: 0.9),
+                    fontSize: isMobile ? 14.0 : 16.0,
+                    height: 1.6,
+                  ),
+                ),
+                SizedBox(height: Branding.spacingL),
+                Divider(color: Branding.white.withValues(alpha: 0.1)),
+                SizedBox(height: Branding.spacingM),
+                Text(
+                  'Etkinlik Özeti',
+                  style: TextStyle(
+                    color: Branding.white,
+                    fontSize: isMobile ? 16.0 : 18.0,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Bu etkinlikte sektör profesyonelleriyle kapsamlı networking ve bilgi paylaşımı gerçekleştirildi. Sunumlar, paneller ve soru-cevap oturumları ile katılımcılar güncel trendler hakkında derinlemesine bilgi edindiler.',
+                  style: TextStyle(
+                    color: Branding.white.withValues(alpha: 0.85),
+                    fontSize: isMobile ? 13.0 : 14.0,
+                    height: 1.6,
+                  ),
+                ),
+                SizedBox(height: Branding.spacingXL),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

@@ -396,10 +396,10 @@ class _MobileContactCards extends StatelessWidget {
         _ContactCard(
           title: 'Ofis Adresimiz',
           content: AppConstants.companyAddress,
-          description: 'Ofisimizi ziyaret edebilirsiniz',
+          description: 'Kullanıma Kapalı - Ofisimizi ziyaret edebilirsiniz',
           icon: Icons.location_on,
           color: Branding.secondary,
-          actionText: 'Haritada Gör',
+          actionText: 'Kullanıma Kapalı',
           onTap: () {}, // Boş fonksiyon - tıklanamaz
         ),
       ],
