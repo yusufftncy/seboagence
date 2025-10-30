@@ -41,7 +41,7 @@ class SeboAgencyApp extends ConsumerWidget {
     final themeMode = ref.watch(themeModeProvider);
 
     return MaterialApp(
-      title: 'Ajans Şebo',
+      title: 'L’Agence Şebo',
       debugShowCheckedModeBanner: false,
       navigatorKey: NavigationService.navigatorKey,
       home: const HomePage(),

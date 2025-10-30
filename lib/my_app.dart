@@ -57,7 +57,7 @@ class MyAppPageView extends StatelessWidget {
         ),
         const SizedBox(height: Branding.spacingL),
         Text(
-          'Ajans Şebo Web Uygulaması',
+          'L’Agence Şebo Web Uygulaması',
           style: AppTypography.h4.copyWith(
             color: Branding.white.withValues(alpha: 0.9),
             fontSize: 18,
@@ -79,7 +79,7 @@ class MyAppPageView extends StatelessWidget {
         ),
         const SizedBox(height: Branding.spacingL),
         Text(
-          'Ajans Şebo Web Uygulaması',
+          'L’Agence Şebo Web Uygulaması',
           style: AppTypography.h4.copyWith(
             color: Branding.white.withValues(alpha: 0.9),
             fontSize: 20,
@@ -101,7 +101,7 @@ class MyAppPageView extends StatelessWidget {
         ),
         const SizedBox(height: Branding.spacingL),
         Text(
-          'Ajans Şebo Web Uygulaması',
+          'L’Agence Şebo Web Uygulaması',
           style: AppTypography.h4.copyWith(
             color: Branding.white.withValues(alpha: 0.9),
             fontSize: 24,

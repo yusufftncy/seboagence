@@ -195,7 +195,7 @@ class _HomePageState extends ConsumerState<HomePage>
             child: Semantics(
               header: true,
               child: Text(
-                'Ajans Şebo',
+                "L'Agence Şebo",
                 style: AppTypography.h1.copyWith(
                   color: Branding.white,
                   fontSize: 28,
@@ -293,7 +293,7 @@ class _HomePageState extends ConsumerState<HomePage>
             child: Semantics(
               header: true,
               child: Text(
-                'Ajans Şebo',
+                "L'Agence Şebo",
                 style: AppTypography.h1.copyWith(
                   color: Branding.white,
                   fontSize: 48,
@@ -391,7 +391,7 @@ class _HomePageState extends ConsumerState<HomePage>
             child: Semantics(
               header: true,
               child: Text(
-                'Ajans Şebo',
+                "L'Agence Şebo",
                 style: AppTypography.h1.copyWith(
                   color: Branding.white,
                   fontSize: 56,

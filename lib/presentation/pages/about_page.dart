@@ -63,7 +63,7 @@ class _HeroSection extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.symmetric(
         horizontal: isMobile ? Branding.spacingL : Branding.spacingXXL,
-        vertical: isMobile ? Branding.spacingXXL : Branding.spacingXXL * 2,
+        vertical: isMobile ? Branding.spacingXL : Branding.spacingXXL * 2,
       ),
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -93,7 +93,7 @@ class _HeroSection extends StatelessWidget {
 
           // Alt başlık
           Text(
-            'Dijital Dünyada Fark Yaratıyoruz',
+            'L’Agence Şebo — Hoş İşler Platformu',
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.9),
               fontSize: isMobile
@@ -110,7 +110,7 @@ class _HeroSection extends StatelessWidget {
 
           // Açıklama
           Text(
-            'Şebo Agency olarak, 2019 yılından bu yana dijital pazarlama, web tasarım ve mobil uygulama geliştirme alanlarında uzmanlaşmış bir ekibiz. Müşterilerimizin dijital dönüşüm yolculuğunda güvenilir partneri olarak, yaratıcı çözümlerle markalarını öne çıkarıyoruz.',
+            'L’Agence Şebo; kim olduğumuzu, ne iş yaptığımızı ve neden çalıştığımızı açıkça anlatan bir ajanstır.\n\nHoş İşler adını verdiğimiz bir platformumuz var ve üç ana bölümden oluşuyor: Şifa, Vefa, Sefa. Şifa bölümünde özellikle Hatay\'da yetişen Barış İpeği üzerinden yürüttüğümüz “Şifa İpek” projesiyle; deprem sonrası köylerde kadın çiftçilerin tezgâhlarında dokudukları ürünlerin gerçek değere dönüştürülmesine katkı sağlıyoruz. Vefa; Alanya\'da ailemden kalan kız meslek lisesi ve turizm otelcilik okulu öğrencilerine destek ile Alanya odaklı projeleri kapsıyor. Sefa ise Şifa İpeği ile üretilen keyifli ürünlerden oluşan bir seriyi ifade ediyor.\n\nYurt dışı konferans, görüşme ve konuşmalarımızı da bu çatı altında düzenli olarak paylaşıyoruz; böylece yaptığımız işleri ve etkisini şeffaf biçimde görünür kılıyoruz.',
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.8),
               fontSize: isMobile ? 16.0 : 18.0,
@@ -214,7 +214,7 @@ class _MissionVisionSection extends StatelessWidget {
           ),
           SizedBox(height: Branding.spacingS),
           Text(
-            'Her projede müşteri memnuniyetini ön planda tutarak, stratejik yaklaşım ve yaratıcı tasarım anlayışıyla markaların dijital varlığını güçlendiriyoruz. Müşterilerimizin iş hedeflerine ulaşması için özelleştirilmiş çözümler üretiyoruz.',
+            'Biz; anlamlı, fayda üreten ve toplumsal değeri olan projeleri görünür kılmak için varız.\nStrateji → tasarım → üretim → ölçüm döngüsüyle işlerimizi uçtan uca yönetir; Hoş İşler platformu (Şifa/Şifa İpek, Vefa, Sefa) üzerinden hikâyeleri kalıcı etkiye dönüştürürüz.',
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.8),
               fontSize: 14.0,
@@ -265,7 +265,7 @@ class _MissionVisionSection extends StatelessWidget {
           ),
           SizedBox(height: Branding.spacingS),
           Text(
-            'Türkiye\'nin önde gelen dijital ajanslarından biri olarak, sürekli gelişen teknoloji dünyasında yenilikçi yaklaşımlarla sektörde öncü konumumuzu korumak ve müşterilerimize en güncel çözümleri sunmak.',
+            'L’Agence Şebo\'yu; yerel değerleri küresel sahnede doğru anlatan, etkisi ölçülebilir projelerle anılan bir yapı olarak büyütmek. \nHoş İşler ağını genişleterek Şifa/Şifa İpek, Vefa ve Sefa başlıklarında daha fazla iyi işe aracılık etmek.',
             style: TextStyle(
               color: Branding.white.withValues(alpha: 0.8),
               fontSize: 14.0,
@@ -319,153 +319,155 @@ class _ValuesSection extends StatelessWidget {
 
           Responsive.responsiveWidget(
             context,
-            mobile: _buildMobileValues(),
-            tablet: _buildTabletValues(),
-            desktop: _buildDesktopValues(),
+            mobile: _buildMobileValues(context),
+            tablet: _buildTabletValues(context),
+            desktop: _buildDesktopValues(context),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildMobileValues() {
+  Widget _buildMobileValues(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         _buildValueCard(
+          context,
           icon: Icons.lightbulb,
           title: 'Yaratıcılık',
           description:
-              'Her projede özgün ve etkileyici tasarım çözümleri geliştiriyoruz',
+              'Yerel değerleri güçlü hikâye anlatımıyla görünür kılar; her projede özgün ve etkileyici tasarımlar üretiriz.',
           color: Branding.primary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildValueCard(
+          context,
           icon: Icons.star,
           title: 'Kalite',
           description:
-              'Uluslararası standartlarda, detaylara önem veren yaklaşımla çalışıyoruz',
+              'Süreç ve çıktıları standartlaştırırız; iş hedefleriyle uyumlu, ölçülebilir ve sürdürülebilir kaliteyi esas alırız.',
           color: Branding.secondary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildValueCard(
+          context,
           icon: Icons.security,
           title: 'Güvenilirlik',
           description:
-              'Zamanında teslimat ve şeffaf iletişimle güvenilir partnerlik kuruyoruz',
+              'Şeffaf iletişim, zamanında teslim ve Hoş İşler altında düzenli paylaşım ile kalıcı güven inşa ederiz.',
           color: Branding.secondary,
         ),
         SizedBox(height: Branding.spacingL),
         _buildValueCard(
+          context,
           icon: Icons.trending_up,
           title: 'İnovasyon',
           description:
-              'En son teknolojileri takip ederek sürekli yenilik ve gelişim sağlıyoruz',
+              'Alanlar arası işbirliği ve yeni formatlarla yenilik getirir; veriye dayalı iyileştirme ile büyütürüz.',
           color: Branding.primary,
         ),
       ],
     );
   }
 
-  Widget _buildTabletValues() {
-    return Column(
+  Widget _buildTabletValues(BuildContext context) {
+    return GridView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: Branding.spacingL,
+        crossAxisSpacing: Branding.spacingL,
+        childAspectRatio: 1.4,
+      ),
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: _buildValueCard(
-                icon: Icons.lightbulb,
-                title: 'Yaratıcılık',
-                description: 'Benzersiz ve etkili çözümler üretiyoruz',
-                color: Branding.primary,
-              ),
-            ),
-            SizedBox(width: Branding.spacingL),
-            Expanded(
-              child: _buildValueCard(
-                icon: Icons.star,
-                title: 'Kalite',
-                description: 'En yüksek standartlarda hizmet veriyoruz',
-                color: Branding.secondary,
-              ),
-            ),
-          ],
+        _buildValueCard(
+          context,
+          icon: Icons.lightbulb,
+          title: 'Yaratıcılık',
+          description: 'Yerel değerleri güçlü hikâyelerle görünür kılarız',
+          color: Branding.primary,
         ),
-        SizedBox(height: Branding.spacingL),
-        Row(
-          children: [
-            Expanded(
-              child: _buildValueCard(
-                icon: Icons.security,
-                title: 'Güvenilirlik',
-                description: 'Sözümüzü tutar, güvenilir partneriz',
-                color: Branding.secondary,
-              ),
-            ),
-            SizedBox(width: Branding.spacingL),
-            Expanded(
-              child: _buildValueCard(
-                icon: Icons.trending_up,
-                title: 'İnovasyon',
-                description: 'Sürekli gelişim ve yenilik peşindeyiz',
-                color: Branding.primary,
-              ),
-            ),
-          ],
+        _buildValueCard(
+          context,
+          icon: Icons.star,
+          title: 'Kalite',
+          description: 'Standartlaştırılmış süreç ve ölçülebilir çıktı',
+          color: Branding.secondary,
+        ),
+        _buildValueCard(
+          context,
+          icon: Icons.security,
+          title: 'Güvenilirlik',
+          description: 'Şeffaf paylaşım ve zamanında teslim',
+          color: Branding.secondary,
+        ),
+        _buildValueCard(
+          context,
+          icon: Icons.trending_up,
+          title: 'İnovasyon',
+          description: 'Alanlar arası işbirliği, veriye dayalı büyüme',
+          color: Branding.primary,
         ),
       ],
     );
   }
 
-  Widget _buildDesktopValues() {
-    return Row(
+  Widget _buildDesktopValues(BuildContext context) {
+    return GridView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 4,
+        mainAxisSpacing: Branding.spacingL,
+        crossAxisSpacing: Branding.spacingL,
+        childAspectRatio: 1.5,
+      ),
       children: [
-        Expanded(
-          child: _buildValueCard(
-            icon: Icons.lightbulb,
-            title: 'Yaratıcılık',
-            description: 'Benzersiz ve etkili çözümler üretiyoruz',
-            color: Branding.primary,
-          ),
+        _buildValueCard(
+          context,
+          icon: Icons.lightbulb,
+          title: 'Yaratıcılık',
+          description: 'Yerel değerleri güçlü hikâyelerle görünür kılarız',
+          color: Branding.primary,
         ),
-        SizedBox(width: Branding.spacingL),
-        Expanded(
-          child: _buildValueCard(
-            icon: Icons.star,
-            title: 'Kalite',
-            description: 'En yüksek standartlarda hizmet veriyoruz',
-            color: Branding.secondary,
-          ),
+        _buildValueCard(
+          context,
+          icon: Icons.star,
+          title: 'Kalite',
+          description: 'Standartlaştırılmış süreç ve ölçülebilir çıktı',
+          color: Branding.secondary,
         ),
-        SizedBox(width: Branding.spacingL),
-        Expanded(
-          child: _buildValueCard(
-            icon: Icons.security,
-            title: 'Güvenilirlik',
-            description: 'Sözümüzü tutar, güvenilir partneriz',
-            color: Branding.secondary,
-          ),
+        _buildValueCard(
+          context,
+          icon: Icons.security,
+          title: 'Güvenilirlik',
+          description: 'Şeffaf paylaşım ve zamanında teslim',
+          color: Branding.secondary,
         ),
-        SizedBox(width: Branding.spacingL),
-        Expanded(
-          child: _buildValueCard(
-            icon: Icons.trending_up,
-            title: 'İnovasyon',
-            description: 'Sürekli gelişim ve yenilik peşindeyiz',
-            color: Branding.primary,
-          ),
+        _buildValueCard(
+          context,
+          icon: Icons.trending_up,
+          title: 'İnovasyon',
+          description: 'Alanlar arası işbirliği, veriye dayalı büyüme',
+          color: Branding.primary,
         ),
       ],
     );
   }
 
-  Widget _buildValueCard({
+  Widget _buildValueCard(
+    BuildContext context, {
     required IconData icon,
     required String title,
     required String description,
     required Color color,
   }) {
+    final isMobile = Responsive.isMobile(context);
     return Container(
-      padding: EdgeInsets.all(Branding.spacingXL),
+      width: double.infinity,
+      padding: EdgeInsets.all(isMobile ? Branding.spacingL : Branding.spacingXL),
       decoration: BoxDecoration(
         color: Branding.white.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(Branding.borderRadiusL),
@@ -477,19 +479,19 @@ class _ValuesSection extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.all(Branding.spacingL),
+            padding: EdgeInsets.all(isMobile ? Branding.spacingS : Branding.spacingL),
             decoration: BoxDecoration(
               color: color.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(Branding.borderRadiusM),
             ),
-            child: Icon(icon, color: Branding.white, size: 32.0),
+            child: Icon(icon, color: Branding.white, size: isMobile ? 22.0 : 32.0),
           ),
           SizedBox(height: Branding.spacingL),
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               color: Branding.white,
-              fontSize: 20.0,
+              fontSize: isMobile ? 16.0 : 20.0,
               fontWeight: FontWeight.w700,
             ),
             textAlign: TextAlign.center,
@@ -498,8 +500,8 @@ class _ValuesSection extends StatelessWidget {
           Text(
             description,
             style: TextStyle(
-              color: Branding.white.withValues(alpha: 0.8),
-              fontSize: 14.0,
+              color: Branding.white.withValues(alpha: 0.75),
+              fontSize: isMobile ? 12.0 : 14.0,
               fontWeight: FontWeight.w400,
               height: 1.4,
             ),
@@ -527,214 +529,187 @@ class _AchievementsSection extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // Minimal header
+          // Header
           Text(
-            'Rakamlarla Başarımız',
+            'Neden Şebo? – Yaklaşımımız ve Farkımız',
             style: TextStyle(
               color: Branding.white,
-              fontSize: isMobile ? 24.0 : 32.0,
-              fontWeight: FontWeight.w300,
-              letterSpacing: 1.2,
+              fontSize: isMobile ? 28.0 : 36.0,
+              fontWeight: FontWeight.w700,
             ),
             textAlign: TextAlign.center,
           ),
           SizedBox(height: isMobile ? Branding.spacingM : Branding.spacingL),
 
-          // Minimal subtitle
-          Container(
-            width: isMobile ? 200 : 300,
-            height: 1,
-            color: Branding.primary.withValues(alpha: 0.3),
+          SizedBox(height: Branding.spacingS),
+          Text(
+            'L’Agence Şebo olarak; rakamdan çok değere odaklanırız.\nHer iş aynı disiplinle yürür: strateji → tasarım → üretim → ölçüm.',
+            style: TextStyle(
+              color: Branding.white.withValues(alpha: 0.75),
+              fontSize: isMobile ? 14.0 : 16.0,
+              height: 1.6,
+            ),
+            textAlign: TextAlign.center,
           ),
           SizedBox(height: isMobile ? Branding.spacingXL : Branding.spacingXXL),
 
+          // Three pillars
           Responsive.responsiveWidget(
             context,
-            mobile: _buildMobileAchievements(),
-            tablet: _buildTabletAchievements(),
-            desktop: _buildDesktopAchievements(),
+            mobile: _buildMobileWhyUs(context),
+            tablet: _buildTabletWhyUs(context),
+            desktop: _buildDesktopWhyUs(context),
+          ),
+
+          SizedBox(height: isMobile ? Branding.spacingXL : Branding.spacingXXL),
+
+          // Short testimonial / principle
+          Container(
+            padding: EdgeInsets.all(Branding.spacingXL),
+            decoration: BoxDecoration(
+              color: Branding.white.withValues(alpha: 0.06),
+              borderRadius: BorderRadius.circular(Branding.borderRadiusL),
+              border: Border.all(color: Branding.white.withValues(alpha: 0.1)),
+            ),
+            child: Column(
+              children: [
+                Icon(Icons.format_quote, color: Branding.white.withValues(alpha: 0.7)),
+                SizedBox(height: Branding.spacingS),
+                Text(
+                  '“Ölçemediğin şeyi geliştiremezsin.”\nHer projeyi net hedeflerle başlatır; çıktıları Hoş İşler çatısı altında şeffafça paylaşırız.',
+                  style: TextStyle(
+                    color: Branding.white.withValues(alpha: 0.9),
+                    fontSize: isMobile ? 14.0 : 16.0,
+                    height: 1.6,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
-
-  Widget _buildMobileAchievements() {
+  // New content builders
+  Widget _buildMobileWhyUs(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        // First row - 2 cards
-        Row(
-          children: [
-            Expanded(
-              child: _buildMinimalAchievementCard(
-                number: '150+',
-                title: 'Proje',
-                color: Branding.primary,
-              ),
-            ),
-            SizedBox(width: Branding.spacingM),
-            Expanded(
-              child: _buildMinimalAchievementCard(
-                number: '80+',
-                title: 'Müşteri',
-                color: Branding.secondary,
-              ),
-            ),
-          ],
+        _buildWhyUsCard(
+          context,
+          icon: Icons.route,
+          title: 'Strateji Odaklı',
+          description:
+              'Kim olduğumuzu ve ne amaçladığımızı netleştirir; hedef kitle, mesaj ve kanalları stratejiyle belirleriz.',
+          color: Branding.primary,
         ),
         SizedBox(height: Branding.spacingL),
-        // Second row - 2 cards
-        Row(
-          children: [
-            Expanded(
-              child: _buildMinimalAchievementCard(
-                number: '5+',
-                title: 'Yıl',
-                color: Branding.primary,
-              ),
-            ),
-            SizedBox(width: Branding.spacingM),
-            Expanded(
-              child: _buildMinimalAchievementCard(
-                number: '98%',
-                title: 'Memnuniyet',
-                color: Branding.secondary,
-              ),
-            ),
-          ],
+        _buildWhyUsCard(
+          context,
+          icon: Icons.volunteer_activism,
+          title: 'Hoş İşler Etkisi',
+          description:
+              'Şifa/Şifa İpek, Vefa ve Sefa ile yerel değerleri görünür kılar; toplumsal faydayı projelerin merkezine koyarız.',
+          color: Branding.secondary,
+        ),
+        SizedBox(height: Branding.spacingL),
+        _buildWhyUsCard(
+          context,
+          icon: Icons.public,
+          title: 'Küresel Paylaşım',
+          description:
+              'Konferans, görüşme ve konuşmaları düzenli olarak yayımlar; etki ve öğrenimleri şeffaf biçimde paylaşırız.',
+          color: Branding.primary,
         ),
       ],
     );
   }
 
-  Widget _buildTabletAchievements() {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: _buildMinimalAchievementCard(
-                number: '150+',
-                title: 'Proje',
-                color: Branding.primary,
-              ),
-            ),
-            SizedBox(width: Branding.spacingXL),
-            Expanded(
-              child: _buildMinimalAchievementCard(
-                number: '80+',
-                title: 'Müşteri',
-                color: Branding.secondary,
-              ),
-            ),
-          ],
-        ),
-        SizedBox(height: Branding.spacingXXL),
-        Row(
-          children: [
-            Expanded(
-              child: _buildMinimalAchievementCard(
-                number: '5+',
-                title: 'Yıl',
-                color: Branding.primary,
-              ),
-            ),
-            SizedBox(width: Branding.spacingXL),
-            Expanded(
-              child: _buildMinimalAchievementCard(
-                number: '98%',
-                title: 'Memnuniyet',
-                color: Branding.secondary,
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildDesktopAchievements() {
+  Widget _buildTabletWhyUs(BuildContext context) {
     return Row(
       children: [
         Expanded(
-          child: _buildMinimalAchievementCard(
-            number: '150+',
-            title: 'Proje',
+          child: _buildWhyUsCard(
+            context,
+            icon: Icons.route,
+            title: 'Strateji Odaklı',
+            description:
+                'Hedef kitle, mesaj ve kanalları netleştirip işe stratejiyle başlarız.',
             color: Branding.primary,
           ),
         ),
-        SizedBox(width: Branding.spacingXXL),
+        SizedBox(width: Branding.spacingL),
         Expanded(
-          child: _buildMinimalAchievementCard(
-            number: '80+',
-            title: 'Müşteri',
+          child: _buildWhyUsCard(
+            context,
+            icon: Icons.design_services,
+            title: 'Uçtan Uca Üretim',
+            description:
+                'Tasarım, geliştirme, içerik ve reklam yönetimini tek çatıda toplarız.',
             color: Branding.secondary,
           ),
         ),
-        SizedBox(width: Branding.spacingXXL),
+        SizedBox(width: Branding.spacingL),
         Expanded(
-          child: _buildMinimalAchievementCard(
-            number: '5+',
-            title: 'Yıl',
+          child: _buildWhyUsCard(
+            context,
+            icon: Icons.analytics_outlined,
+            title: 'Ölçülebilir Sonuç',
+            description:
+                'Raporlar ve KPI’larla görünür değer üretir, iş hedefini büyütürüz.',
             color: Branding.primary,
-          ),
-        ),
-        SizedBox(width: Branding.spacingXXL),
-        Expanded(
-          child: _buildMinimalAchievementCard(
-            number: '98%',
-            title: 'Memnuniyet',
-            color: Branding.secondary,
           ),
         ),
       ],
     );
   }
 
-  Widget _buildMinimalAchievementCard({
-    required String number,
+  Widget _buildDesktopWhyUs(BuildContext context) => _buildTabletWhyUs(context);
+
+  Widget _buildWhyUsCard(
+    BuildContext context, {
+    required IconData icon,
     required String title,
+    required String description,
     required Color color,
   }) {
+    final isMobile = Responsive.isMobile(context);
     return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: Branding.spacingL,
-        horizontal: Branding.spacingS,
+      width: double.infinity,
+      padding: EdgeInsets.all(isMobile ? Branding.spacingL : Branding.spacingXL),
+      decoration: BoxDecoration(
+        color: Branding.white.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(Branding.borderRadiusL),
+        border: Border.all(color: Branding.white.withValues(alpha: 0.12)),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Number with subtle background
           Container(
-            width: 80,
-            height: 80,
+            padding: EdgeInsets.all(isMobile ? Branding.spacingS : Branding.spacingM),
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: color.withValues(alpha: 0.1),
-              border: Border.all(color: color.withValues(alpha: 0.3), width: 1),
+              color: color.withValues(alpha: 0.2),
+              borderRadius: BorderRadius.circular(Branding.borderRadiusM),
             ),
-            child: Center(
-              child: Text(
-                number,
-                style: TextStyle(
-                  color: color,
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.w300,
-                  letterSpacing: 1.0,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
+            child: Icon(icon, color: Branding.white, size: isMobile ? 24.0 : 28.0),
           ),
-          SizedBox(height: Branding.spacingM),
-
-          // Title with minimal styling
+          SizedBox(height: Branding.spacingL),
           Text(
             title,
             style: TextStyle(
-              color: Branding.white.withValues(alpha: 0.9),
-              fontSize: 14.0,
-              fontWeight: FontWeight.w300,
-              letterSpacing: 0.5,
+              color: Branding.white,
+              fontSize: isMobile ? 16.0 : 18.0,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          SizedBox(height: Branding.spacingS),
+          Text(
+            description,
+            style: TextStyle(
+              color: Branding.white.withValues(alpha: 0.85),
+              fontSize: isMobile ? 13.0 : 14.0,
+              height: 1.5,
             ),
             textAlign: TextAlign.center,
           ),
@@ -783,19 +758,20 @@ class _TeamSection extends StatelessWidget {
 
           Responsive.responsiveWidget(
             context,
-            mobile: _buildMobileTeam(),
-            tablet: _buildTabletTeam(),
-            desktop: _buildDesktopTeam(),
+            mobile: _buildMobileTeam(context),
+            tablet: _buildTabletTeam(context),
+            desktop: _buildDesktopTeam(context),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildMobileTeam() {
+  Widget _buildMobileTeam(BuildContext context) {
     return Column(
       children: [
         _buildTeamCard(
+          context,
           name: 'Şebo Yüceer',
           role: 'Kurucu & CEO',
           description:
@@ -804,6 +780,7 @@ class _TeamSection extends StatelessWidget {
         ),
         SizedBox(height: Branding.spacingL),
         _buildTeamCard(
+          context,
           name: 'Şebo Ekibi',
           role: 'Uzman Takım',
           description:
@@ -814,11 +791,12 @@ class _TeamSection extends StatelessWidget {
     );
   }
 
-  Widget _buildTabletTeam() {
+  Widget _buildTabletTeam(BuildContext context) {
     return Row(
       children: [
         Expanded(
           child: _buildTeamCard(
+            context,
             name: 'Şebo Yüceer',
             role: 'Kurucu & CEO',
             description: 'Dijital strateji ve yönetim uzmanı',
@@ -828,6 +806,7 @@ class _TeamSection extends StatelessWidget {
         SizedBox(width: Branding.spacingL),
         Expanded(
           child: _buildTeamCard(
+            context,
             name: 'Şebo Ekibi',
             role: 'Yaratıcı Takım',
             description: 'Tasarım ve geliştirme uzmanları',
@@ -838,11 +817,12 @@ class _TeamSection extends StatelessWidget {
     );
   }
 
-  Widget _buildDesktopTeam() {
+  Widget _buildDesktopTeam(BuildContext context) {
     return Row(
       children: [
         Expanded(
           child: _buildTeamCard(
+            context,
             name: 'Şebo Yüceer',
             role: 'Kurucu & CEO',
             description: 'Dijital strateji ve yönetim uzmanı',
@@ -852,6 +832,7 @@ class _TeamSection extends StatelessWidget {
         SizedBox(width: Branding.spacingL),
         Expanded(
           child: _buildTeamCard(
+            context,
             name: 'Şebo Ekibi',
             role: 'Yaratıcı Takım',
             description: 'Tasarım ve geliştirme uzmanları',
@@ -862,7 +843,7 @@ class _TeamSection extends StatelessWidget {
     );
   }
 
-  Widget _buildTeamCard({
+  Widget _buildTeamCard(BuildContext context, {
     required String name,
     required String role,
     required String description,
@@ -888,13 +869,16 @@ class _TeamSection extends StatelessWidget {
               borderRadius: BorderRadius.circular(40.0),
             ),
             child: name == 'Şebo Yüceer'
-                ? ClipRRect(
-                    borderRadius: BorderRadius.circular(40.0),
-                    child: Image.asset(
-                      'assets/images/sebnemyuceer.jpg',
-                      width: 80.0,
-                      height: 80.0,
-                      fit: BoxFit.cover,
+                ? GestureDetector(
+                    onTap: () => _showImageDialog(context, 'assets/images/sebnemyuceer.jpg'),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(40.0),
+                      child: Image.asset(
+                        'assets/images/sebnemyuceer.jpg',
+                        width: 80.0,
+                        height: 80.0,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   )
                 : Icon(Icons.person, color: color, size: 40.0),
@@ -931,6 +915,57 @@ class _TeamSection extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ],
+      ),
+    );
+  }
+
+  void _showImageDialog(BuildContext context, String imagePath) {
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        opaque: false,
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return PopScope(
+            canPop: true,
+            onPopInvokedWithResult: (didPop, result) {
+              if (!didPop) {
+                Navigator.of(context).pop();
+              }
+            },
+            child: Scaffold(
+              backgroundColor: Colors.black.withValues(alpha: 0.7),
+              body: GestureDetector(
+                onTap: () => Navigator.of(context).pop(),
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: Colors.transparent,
+                  child: Center(
+                    child: AbsorbPointer(
+                      absorbing: false,
+                      child: Container(
+                        constraints: BoxConstraints(
+                          maxWidth: MediaQuery.of(context).size.width * 0.9,
+                          maxHeight: MediaQuery.of(context).size.height * 0.8,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.asset(
+                            imagePath,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+        transitionDuration: const Duration(milliseconds: 300),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(opacity: animation, child: child);
+        },
       ),
     );
   }

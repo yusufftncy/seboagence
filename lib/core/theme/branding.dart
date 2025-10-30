@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Ajans Şebo marka kimliği ve renk paleti
+/// L’Agence Şebo marka kimliği ve renk paleti
 class Branding {
   // Renk Paleti - Kurumsal Renkler
   static const Color primaryColor = Color(0xFF1A237E); // Deep navy blue

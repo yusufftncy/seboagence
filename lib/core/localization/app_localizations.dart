@@ -156,7 +156,7 @@ class AppLocalizations {
       'projectDescription': 'Yaratıcı çözümlerle markaların dijital dönüşümü.',
       
       // Ajans Bilgileri
-      'agencyName': 'Ajans Şebo',
+      'agencyName': 'L’Agence Şebo',
       'agencyTagline': 'Yaratıcı Ajans',
       'agencyDescription': 'Dijital dünyada fark yaratan çözümler.',
       
